@@ -1,0 +1,10 @@
+language: csharp
+solution: eWolfApps/eWolfApps.sln
+
+install:
+  - nuget restore eWolfApps/eWolfApps.sln
+  - nuget install NUnit.Runners -Version 3.8.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release eWolfApps/eWolfApps.sln
+#  - mono ./testrunner/NUnit.Runners.3.8.0/tools/nunit3-console.exe eWolfApps/PodCaster/eWolfPodcasterUnitTests/bin/Release/eWolfPodcasterUnitTests.dll
+  
