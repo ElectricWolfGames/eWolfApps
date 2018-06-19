@@ -11,6 +11,7 @@ namespace eWolfPodcasterUnitTests
         public void ShouldHavePlayerDetailsMyDefault()
         {
             Episode e = new Episode();
+
             e.PlayedDetails.Should().NotBeNull();
         }
     }
