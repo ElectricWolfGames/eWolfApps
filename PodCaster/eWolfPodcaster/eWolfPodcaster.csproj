@@ -44,6 +44,7 @@
     <Compile Include="Data\PlayedDetails.cs" />
     <Compile Include="Data\Show.cs" />
     <Compile Include="Data\ShowOptions.cs" />
+    <Compile Include="Data\Shows.cs" />
     <Compile Include="Data\ShowStorageType.cs" />
     <Compile Include="PersistenceHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
