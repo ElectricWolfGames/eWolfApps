@@ -43,6 +43,7 @@
     <Compile Include="Data\Episode.cs" />
     <Compile Include="Data\PlayedDetails.cs" />
     <Compile Include="Data\Show.cs" />
+    <Compile Include="Data\ShowOptions.cs" />
     <Compile Include="Data\ShowStorageType.cs" />
     <Compile Include="PersistenceHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
