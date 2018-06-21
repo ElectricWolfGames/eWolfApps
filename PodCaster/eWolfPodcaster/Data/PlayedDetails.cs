@@ -1,5 +1,8 @@
-﻿namespace eWolfPodcaster.Data
+﻿using System;
+
+namespace eWolfPodcaster.Data
 {
+    [Serializable]
     public class PlayedDetails
     {
         public long PlayedLength { get; set; }

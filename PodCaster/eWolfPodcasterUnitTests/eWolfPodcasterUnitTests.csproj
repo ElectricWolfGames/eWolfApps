@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Data\EpisodeTests.cs" />
     <Compile Include="Data\ShowsTests.cs" />
+    <Compile Include="PersistenceHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

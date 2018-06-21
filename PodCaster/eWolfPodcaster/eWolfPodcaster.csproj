@@ -41,12 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Episode.cs" />
+    <Compile Include="Interfaces\ISaveable.cs" />
     <Compile Include="Data\PlayedDetails.cs" />
     <Compile Include="Data\Show.cs" />
+    <Compile Include="Data\ShowControl.cs" />
     <Compile Include="Data\ShowOptions.cs" />
     <Compile Include="Data\Shows.cs" />
     <Compile Include="Data\ShowStorageType.cs" />
     <Compile Include="PersistenceHelper.cs" />
+    <Compile Include="PersistenceStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

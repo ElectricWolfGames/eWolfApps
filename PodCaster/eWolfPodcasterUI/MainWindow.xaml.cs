@@ -1,6 +1,9 @@
 ﻿using eWolfPodcaster;
 using eWolfPodcaster.Data;
+using eWolfPodcaster.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 
 namespace eWolfPodcasterUI
@@ -16,7 +19,17 @@ namespace eWolfPodcasterUI
         {
             InitializeComponent();
 
-            PersistenceHelper.LoadData();
+            PersistenceHelper ph = new PersistenceHelper(GetOutputFolder());
+
+            ShowControl sc = new ShowControl();
+            sc.Title = "TestShowName";
+
+            ph.SaveData(new List<ISaveable>() { sc });
+        }
+
+        public string GetOutputFolder()
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
         }
     }
 }

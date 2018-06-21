@@ -2,6 +2,7 @@
 
 namespace eWolfPodcaster.Data
 {
+    [Serializable]
     public class Episode
     {
         public string Description { get; set; }

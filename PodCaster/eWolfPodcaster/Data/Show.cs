@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace eWolfPodcaster.Data
 {
+    [Serializable]
     public class Show
     {
         public ICollection<Episode> Episodes { get; set; }
