@@ -1,4 +1,5 @@
 ﻿using eWolfPodcaster.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
@@ -6,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace eWolfPodcaster
 {
-    public class PersistenceHelper
+    public class PersistenceHelper<T>
     {
         private string _outputFolder;
 
@@ -16,8 +17,31 @@ namespace eWolfPodcaster
             Directory.CreateDirectory(_outputFolder);
         }
 
-        public void LoadData()
+        public List<T> LoadData()
         {
+            List<T> items = new List<T>();
+
+            string[] files = Directory.GetFiles(_outputFolder);
+            foreach (string file in files)
+            {
+                Stream stream = null;
+                try
+                {
+                    IFormatter formatter = new BinaryFormatter();
+                    stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    T sd = (T)formatter.Deserialize(stream);
+                    stream.Close();
+
+                    items.Add(sd);
+                }
+                catch (Exception ex)
+                {
+                    if (stream != null)
+                        stream.Close();
+                }
+            }
+
+            return items;
         }
 
         public bool SaveData(List<ISaveable> saveableItems)

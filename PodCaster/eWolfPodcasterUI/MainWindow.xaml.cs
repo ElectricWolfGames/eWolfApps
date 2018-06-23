@@ -19,7 +19,7 @@ namespace eWolfPodcasterUI
         {
             InitializeComponent();
 
-            PersistenceHelper ph = new PersistenceHelper(GetOutputFolder());
+            PersistenceHelper<Show> ph = new PersistenceHelper<Show>(GetOutputFolder());
 
             ShowControl sc = new ShowControl();
             sc.Title = "TestShowName";
