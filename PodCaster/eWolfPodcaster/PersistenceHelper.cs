@@ -8,7 +8,6 @@ namespace eWolfPodcaster
 {
     public class PersistenceHelper
     {
-        private PersistenceStorage _persistenceStore = PersistenceStorage.File;
         private string _outputFolder;
 
         public PersistenceHelper(string outputFolder)
@@ -21,24 +20,32 @@ namespace eWolfPodcaster
         {
         }
 
-        public void SaveData(List<ISaveable> saveableItems)
+        public bool SaveData(List<ISaveable> saveableItems)
         {
+            bool allSaved = true;
             foreach (ISaveable saveable in saveableItems)
             {
                 string outputFileName = Path.Combine(_outputFolder, saveable.GetFileName);
                 IFormatter formatter = new BinaryFormatter();
+                Stream stream = null;
                 try
                 {
-                    Stream stream = StreamFactory.GetStream(outputFileName, _persistenceStore);
+                    stream = StreamFactory.GetStream(outputFileName);
                     SaveToStream(stream, formatter, saveable);
+                    stream.Close();
                 }
                 catch
                 {
+                    if (stream != null)
+                        stream.Close();
+
+                    allSaved = false;
                 }
             }
+            return allSaved;
         }
 
-        public static bool SaveToStream(Stream stream, IFormatter formatter, object objectToSave)
+        private static bool SaveToStream(Stream stream, IFormatter formatter, object objectToSave)
         {
             try
             {
@@ -49,24 +56,6 @@ namespace eWolfPodcaster
             {
                 return false;
             }
-        }
-    }
-
-    public static class StreamFactory
-    {
-        public static Stream GetStream(string outputName, PersistenceStorage store)
-        {
-            Stream stream = null;
-            if (store == PersistenceStorage.File)
-            {
-                stream = new FileStream(outputName, FileMode.Create, FileAccess.Write, FileShare.None);
-            }
-            if (store == PersistenceStorage.Memory)
-            {
-                stream = new MemoryStream();
-            }
-
-            return stream;
         }
     }
 }

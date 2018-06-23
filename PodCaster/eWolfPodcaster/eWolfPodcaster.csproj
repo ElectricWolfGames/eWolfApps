@@ -49,8 +49,8 @@
     <Compile Include="Data\Shows.cs" />
     <Compile Include="Data\ShowStorageType.cs" />
     <Compile Include="PersistenceHelper.cs" />
-    <Compile Include="PersistenceStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreamFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

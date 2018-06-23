@@ -10,21 +10,56 @@ namespace eWolfPodcasterUnitTests
     public class PersistenceHelperTests
     {
         [Test]
-        public void ShouldSaveFile()
+        public void ShouldSaveOneFile()
         {
-            TempSaveable sc = new TempSaveable();
+            RemoveTempFolder();
 
-            try
-            {
-                Directory.Delete(GetOutputFolder());
-            }
-            catch { }
-
+            TempSaveable tempSaveable = new TempSaveable();
             PersistenceHelper ph = new PersistenceHelper(GetOutputFolder());
-            ph.SaveData(new List<ISaveable>() { sc });
+            ph.SaveData(new List<ISaveable>() { tempSaveable });
 
             string finalName = Path.Combine(GetOutputFolder(), "TestSave.data");
             File.Exists(finalName).Should().BeTrue();
+        }
+
+        [Test]
+        public void ShouldSaveTwoFile()
+        {
+            RemoveTempFolder();
+
+            TempSaveable tempSaveable = new TempSaveable();
+            TempSaveableAnotherName tempSaveableB = new TempSaveableAnotherName();
+            PersistenceHelper ph = new PersistenceHelper(GetOutputFolder());
+            bool results = ph.SaveData(new List<ISaveable>() { tempSaveable, tempSaveableB });
+
+            results.Should().BeTrue();
+            string finalName = Path.Combine(GetOutputFolder(), "TestSave.data");
+            File.Exists(finalName).Should().BeTrue();
+
+            finalName = Path.Combine(GetOutputFolder(), "TestSave2.data");
+            File.Exists(finalName).Should().BeTrue();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            RemoveTempFolder();
+        }
+
+        private string GetOutputFolder()
+        {
+            return Path.Combine(Path.GetTempPath(), "eWolfTests");
+        }
+
+        private void RemoveTempFolder()
+        {
+            try
+            {
+                Directory.Delete(GetOutputFolder(), true);
+            }
+            catch
+            {
+            }
         }
 
         public class TempSaveable : ISaveable
@@ -32,9 +67,9 @@ namespace eWolfPodcasterUnitTests
             public string GetFileName => "TestSave.data";
         }
 
-        public string GetOutputFolder()
+        public class TempSaveableAnotherName : ISaveable
         {
-            return Path.Combine(Path.GetTempPath(), "eWolfTests");
+            public string GetFileName => "TestSave2.data";
         }
     }
 }
