@@ -44,7 +44,7 @@ namespace eWolfPodcaster
             return items;
         }
 
-        public bool SaveData(List<ISaveable> saveableItems)
+        public bool SaveData(IEnumerable<ISaveable> saveableItems)
         {
             bool allSaved = true;
             foreach (ISaveable saveable in saveableItems)

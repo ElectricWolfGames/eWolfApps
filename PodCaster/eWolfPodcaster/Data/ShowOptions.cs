@@ -9,7 +9,7 @@ namespace eWolfPodcaster.Data
 
         public string Category { get; set; }
 
-        public bool CheckforUpdates { get; set; }
+        public bool CheckforUpdates { get; set; } = true;
 
         public bool IncludeSubFolders { get; set; }
 

@@ -19,12 +19,27 @@ namespace eWolfPodcasterUI
         {
             InitializeComponent();
 
-            PersistenceHelper<Show> ph = new PersistenceHelper<Show>(GetOutputFolder());
+            PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(GetOutputFolder());
 
+            List<ShowControl> showList = ph.LoadData();
+            if (showList.Count == 0)
+            {
+                ShowControl sc = CreateFakeShow();
+                showList.Add(sc);
+                ph.SaveData(showList);
+            }
+        }
+
+        private ShowControl CreateFakeShow()
+        {
             ShowControl sc = new ShowControl();
-            sc.Title = "TestShowName";
+            sc.Title = "CodingBlocks";
+            sc.RssFeed = "http://www.codingblocks.net/feed/podcast";
+            sc.ShowOption.AudoDownloadEpisodes = false;
+            sc.ShowOption.Category = "Dev";
+            sc.ShowOption.CheckforUpdates = true;
 
-            ph.SaveData(new List<ISaveable>() { sc });
+            return sc;
         }
 
         public string GetOutputFolder()
