@@ -9,7 +9,7 @@ namespace eWolfPodcasterUnitTests
         [Test]
         public void ShouldAddShowToShowList()
         {
-            Show s = new Show()
+            ShowControl s = new ShowControl()
             {
                 Title = "My Title",
                 RssFeed = "Somewhere"
@@ -24,12 +24,12 @@ namespace eWolfPodcasterUnitTests
         [Test]
         public void ShouldNotAddAnotherShowWithSameRSSFeedOrTitle()
         {
-            Show s = new Show()
+            ShowControl s = new ShowControl()
             {
                 Title = "My Title",
                 RssFeed = "Somewhere"
             };
-            Show sb = new Show()
+            ShowControl sb = new ShowControl()
             {
                 Title = "My Title",
                 RssFeed = "elseWhere"
@@ -46,12 +46,12 @@ namespace eWolfPodcasterUnitTests
         [Test]
         public void ShouldBeAbleToAddTwoDifferentShows()
         {
-            Show s = new Show()
+            ShowControl s = new ShowControl()
             {
                 Title = "My Title A",
                 RssFeed = "Somewhere"
             };
-            Show sb = new Show()
+            ShowControl sb = new ShowControl()
             {
                 Title = "My Title B",
                 RssFeed = "elseWhere"

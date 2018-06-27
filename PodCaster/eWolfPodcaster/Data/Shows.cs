@@ -5,14 +5,14 @@ namespace eWolfPodcaster.Data
 {
     public class Shows
     {
-        private ICollection<Show> _shows = new List<Show>();
+        private List<ShowControl> _shows = new List<ShowControl>();
 
         public int Count
         {
             get { return _shows.Count; }
         }
 
-        public void Add(Show show)
+        public void Add(ShowControl show)
         {
             if (_shows.Where((x) => x.RssFeed == show.RssFeed).Any())
                 return;
@@ -21,6 +21,32 @@ namespace eWolfPodcaster.Data
                 return;
 
             _shows.Add(show);
+        }
+
+        public void Load(string outputFolder)
+        {
+            PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
+
+            _shows = ph.LoadData();
+
+            if (_shows.Count == 0)
+            {
+                ShowControl sc = CreateFakeShow();
+                _shows.Add(sc);
+                ph.SaveData(_shows);
+            }
+        }
+
+        private ShowControl CreateFakeShow()
+        {
+            ShowControl sc = new ShowControl();
+            sc.Title = "CodingBlocks";
+            sc.RssFeed = "http://www.codingblocks.net/feed/podcast";
+            sc.ShowOption.AudoDownloadEpisodes = false;
+            sc.ShowOption.Category = "Dev";
+            sc.ShowOption.CheckforUpdates = true;
+
+            return sc;
         }
     }
 }
