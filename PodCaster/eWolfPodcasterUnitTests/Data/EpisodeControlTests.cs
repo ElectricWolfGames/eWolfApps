@@ -60,7 +60,7 @@ namespace eWolfPodcasterUnitTests
             EpisodeControl ec = new EpisodeControl();
             ec.SetTextNodeData("pubDate", "Sun, 08 Jan 2017 06:47:50 GMT");
 
-            ec.PublishedDate.ToString().Should().Be("08/01/2017 06:47:50");
+            ec.PublishedDate.ToString("dd/MM/yyyy hh:mm:ss").Should().Be("08/01/2017 06:47:50");
         }
 
         [Test]

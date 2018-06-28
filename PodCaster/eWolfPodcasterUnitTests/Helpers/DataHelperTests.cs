@@ -13,7 +13,7 @@ namespace eWolfPodcasterUI.Helpers
         public void ShouldParseValidDates(string date, string expected)
         {
             DateTime dt = DataHelper.ParseDate(date);
-            dt.ToString().Should().Be(expected);
+            dt.ToString("dd/MM/yyyy HH:mm:ss").Should().Be(expected);
         }
     }
 }
