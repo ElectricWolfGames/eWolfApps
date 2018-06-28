@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace eWolfPodcaster.Helpers
 {
     public static class DataHelper
     {
+        private static List<string> _textToRemove = new List<string>() { "EDT", "EST", "GMT" };
+
         public static DateTime ParseDate(string publisedData)
         {
             DateTime dt = DateTime.Now;
-            publisedData = publisedData.Replace("EDT", "");
-            publisedData = publisedData.Replace("EST", "");
-            publisedData = publisedData.Replace("GMT", "");
+
+            publisedData = DataCleansing.RemoveAllStrings(publisedData, _textToRemove);
 
             try
             {

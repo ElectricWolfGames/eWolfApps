@@ -57,6 +57,7 @@
     <Compile Include="Data\EpisodeControlTests.cs" />
     <Compile Include="Data\EpisodeTests.cs" />
     <Compile Include="Data\ShowsTests.cs" />
+    <Compile Include="Helpers\DataCleansingTests.cs" />
     <Compile Include="Helpers\DataHelperTests.cs" />
     <Compile Include="PersistenceHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
