@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using eWolfPodcaster.Helpers;
+using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 
 namespace eWolfPodcaster.Data
 {
@@ -26,7 +28,6 @@ namespace eWolfPodcaster.Data
         public void Load(string outputFolder)
         {
             PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
-
             _shows = ph.LoadData();
 
             if (_shows.Count == 0)
@@ -47,6 +48,19 @@ namespace eWolfPodcaster.Data
             sc.ShowOption.CheckforUpdates = true;
 
             return sc;
+        }
+
+        public void UpdateAllRSSFeeds()
+        {
+            foreach (ShowControl sc in _shows)
+            {
+                if (sc.ShowOption.CheckforUpdates)
+                {
+                    XmlReader RSSFeed = sc.UpdateRSSFile();
+                    List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
+                    sc.UpdateEpisode(episodes);
+                }
+            }
         }
     }
 }

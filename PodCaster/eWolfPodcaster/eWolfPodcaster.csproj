@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Episode.cs" />
+    <Compile Include="Data\EpisodeControl.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Interfaces\ISaveable.cs" />
     <Compile Include="Data\PlayedDetails.cs" />
     <Compile Include="Data\Show.cs" />

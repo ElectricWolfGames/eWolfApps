@@ -1,0 +1,75 @@
+﻿using eWolfPodcaster.Data;
+using FluentAssertions;
+using NUnit.Framework;
+
+namespace eWolfPodcasterUnitTests
+{
+    public class EpisodeControlTests
+    {
+        [Test]
+        public void ShouldSetTheElementTitle()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.SetTextNodeData("title", "MyTitle");
+
+            ec.Title.Should().Be("MyTitle");
+        }
+
+        [Test]
+        public void ShouldSetTheElementDescription()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.SetTextNodeData("description", "Description");
+
+            ec.Description.Should().Be("Description");
+        }
+
+        [Test]
+        public void ShouldSetTheElementItunesDescription()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.SetTextNodeData("itunes:summary", "Description");
+
+            ec.Description.Should().Be("Description");
+        }
+
+        [Test]
+        public void ShouldSetTheElementPubDate()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.SetTextNodeData("pubDate", "Sun, 08 Jan 2017 06:47:50 GMT");
+
+            ec.PublishedDate.ToString().Should().Be("08/01/2017 06:47:50");
+        }
+
+        [Test]
+        public void ShouldSetTheElementLinkOnlyIfNotEmpty()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.SetTextNodeData("link", "UrlFirst");
+
+            ec.PodcastURL.Should().Be("UrlFirst");
+
+            ec.SetTextNodeData("link", string.Empty);
+            ec.PodcastURL.Should().Be("UrlFirst");
+        }
+
+        [Test]
+        public void ShouldSetTheElementDuration()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.SetTextNodeData("itunes:duration", "10:10");
+
+            ec.PlayedDetails.ShowLength.Should().Be(1010);
+        }
+
+        [Test]
+        public void ShouldNotFalloverForFakeElementDuration()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.SetTextNodeData("itunes:duration", "ALongTime");
+
+            ec.PlayedDetails.ShowLength.Should().Be(0);
+        }
+    }
+}
