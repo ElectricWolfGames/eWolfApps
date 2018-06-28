@@ -2,7 +2,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace eWolfPodcasterUnitTests
+namespace eWolfPodcasterUnitTests.Data
 {
     public class EpisodeControlTests
     {
@@ -13,6 +13,20 @@ namespace eWolfPodcasterUnitTests
             ec.SetTextNodeData("itunes:duration", "ALongTime");
 
             ec.PlayedDetails.ShowLength.Should().Be(0);
+        }
+
+        [Test]
+        public void ShouldSeeEpisodesAreSame()
+        {
+            EpisodeControl ec = new EpisodeControl();
+            ec.Title = "Title";
+            ec.PodcastURL = "PodcastURL";
+
+            EpisodeControl ecB = new EpisodeControl();
+            ecB.Title = "Title";
+            ecB.PodcastURL = "PodcastURL";
+
+            ec.SameAs(ecB).Should().BeTrue();
         }
 
         [Test]
@@ -70,20 +84,6 @@ namespace eWolfPodcasterUnitTests
             ec.SetTextNodeData("title", "MyTitle");
 
             ec.Title.Should().Be("MyTitle");
-        }
-
-        [Test]
-        public void ShouldSeeEpisodesAreSame()
-        {
-            EpisodeControl ec = new EpisodeControl();
-            ec.Title = "Title";
-            ec.PodcastURL = "PodcastURL";
-
-            EpisodeControl ecB = new EpisodeControl();
-            ecB.Title = "Title";
-            ecB.PodcastURL = "PodcastURL";
-
-            ec.SameAs(ecB).Should().BeTrue();
         }
     }
 }

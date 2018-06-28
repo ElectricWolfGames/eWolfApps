@@ -2,7 +2,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace eWolfPodcasterUnitTests
+namespace eWolfPodcasterUnitTests.Data
 {
     public class ShowsTests
     {
@@ -17,28 +17,6 @@ namespace eWolfPodcasterUnitTests
 
             Shows shows = new Shows();
             shows.Add(s);
-
-            shows.Count.Should().Be(1);
-        }
-
-        [Test]
-        public void ShouldNotAddAnotherShowWithSameRSSFeedOrTitle()
-        {
-            ShowControl s = new ShowControl()
-            {
-                Title = "My Title",
-                RssFeed = "Somewhere"
-            };
-            ShowControl sb = new ShowControl()
-            {
-                Title = "My Title",
-                RssFeed = "elseWhere"
-            };
-
-            Shows shows = new Shows();
-            shows.Add(s);
-            shows.Add(s);
-            shows.Add(sb);
 
             shows.Count.Should().Be(1);
         }
@@ -62,6 +40,28 @@ namespace eWolfPodcasterUnitTests
             shows.Add(sb);
 
             shows.Count.Should().Be(2);
+        }
+
+        [Test]
+        public void ShouldNotAddAnotherShowWithSameRSSFeedOrTitle()
+        {
+            ShowControl s = new ShowControl()
+            {
+                Title = "My Title",
+                RssFeed = "Somewhere"
+            };
+            ShowControl sb = new ShowControl()
+            {
+                Title = "My Title",
+                RssFeed = "elseWhere"
+            };
+
+            Shows shows = new Shows();
+            shows.Add(s);
+            shows.Add(s);
+            shows.Add(sb);
+
+            shows.Count.Should().Be(1);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
+﻿using eWolfPodcaster.Helpers;
 using FluentAssertions;
-using eWolfPodcaster.Helpers;
+using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace eWolfPodcasterUI.Helpers
+namespace eWolfPodcasterTests.Helpers
 {
     public class DataCleansingTests
     {
@@ -16,15 +16,6 @@ namespace eWolfPodcasterUI.Helpers
             str.Should().Be("All  Everything ");
         }
 
-        [Test]
-        public void ShouldRemoveManyStrings()
-        {
-            string str = "All and and and Everything else";
-            str = DataCleansing.RemoveAllStrings(str, new List<string>() { "and", "else" });
-
-            str.Should().Be("All    Everything ");
-        }
-
         [TestCase("A  B", "A B")]
         [TestCase("Words with single and      lots    of spaces", "Words with single and lots of spaces")]
         public void ShouldRemoveDoubleSpaces(string starting, string expected)
@@ -32,6 +23,15 @@ namespace eWolfPodcasterUI.Helpers
             string end = DataCleansing.RemoveDoubleSpaces(starting);
 
             end.Should().Be(expected);
+        }
+
+        [Test]
+        public void ShouldRemoveManyStrings()
+        {
+            string str = "All and and and Everything else";
+            str = DataCleansing.RemoveAllStrings(str, new List<string>() { "and", "else" });
+
+            str.Should().Be("All    Everything ");
         }
     }
 }

@@ -2,7 +2,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace eWolfPodcasterUnitTests
+namespace eWolfPodcasterUnitTests.Data
 {
     [TestFixture]
     public class EpisodeTests

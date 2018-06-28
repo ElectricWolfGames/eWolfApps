@@ -4,7 +4,7 @@ using NUnit.Framework;
 using System;
 using System.Globalization;
 
-namespace eWolfPodcasterUI.Helpers
+namespace eWolfPodcasterTests.Helpers
 {
     public class DataHelperTests
     {
