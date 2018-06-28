@@ -8,14 +8,15 @@ namespace eWolfPodcaster.Helpers
         public static DateTime ParseDate(string publisedData)
         {
             DateTime dt = DateTime.Now;
-            publisedData = publisedData.Replace("EDT", "GMT");
-            publisedData = publisedData.Replace("EST", "GMT");
+            publisedData = publisedData.Replace("EDT", "");
+            publisedData = publisedData.Replace("EST", "");
+            publisedData = publisedData.Replace("GMT", "");
 
             try
             {
                 dt = DateTime.Parse(publisedData,
-                    CultureInfo.CurrentCulture,
-                    DateTimeStyles.AssumeUniversal);
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None);
             }
             catch (FormatException)
             {
