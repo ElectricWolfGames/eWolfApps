@@ -45,6 +45,17 @@ namespace eWolfPodcaster.Data
             }
         }
 
+        public bool SameAs(EpisodeControl newEpisode)
+        {
+            if (Title == newEpisode.Title)
+                return true;
+
+            if (PodcastURL == newEpisode.PodcastURL)
+                return true;
+
+            return false;
+        }
+
         public void SetPublishDate(string publisedData)
         {
             PublishedDate = DataHelper.ParseDate(publisedData);

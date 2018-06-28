@@ -25,8 +25,18 @@ namespace eWolfPodcaster.Data
             return reader;
         }
 
-        internal void UpdateEpisode(List<EpisodeControl> episodes)
+        internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
         {
+            foreach (EpisodeControl newEpisode in newEpisodes)
+            {
+                foreach (EpisodeControl oldEpisodes in Episodes)
+                {
+                    if (!oldEpisodes.SameAs(newEpisode))
+                    {
+                        Episodes.Add(oldEpisodes);
+                    }
+                }
+            }
         }
     }
 }

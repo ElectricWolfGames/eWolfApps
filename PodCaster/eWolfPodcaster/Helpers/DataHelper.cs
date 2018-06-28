@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace eWolfPodcaster.Helpers
 {
@@ -9,9 +10,10 @@ namespace eWolfPodcaster.Helpers
             DateTime dt = DateTime.Now;
             publisedData = publisedData.Replace("EDT", "GMT");
             publisedData = publisedData.Replace("EST", "GMT");
+
             try
             {
-                dt = DateTime.Parse(publisedData);
+                dt = DateTime.Parse(publisedData, new CultureInfo("en-GB"));
             }
             catch (FormatException)
             {
