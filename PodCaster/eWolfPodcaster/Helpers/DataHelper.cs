@@ -13,7 +13,7 @@ namespace eWolfPodcaster.Helpers
 
             try
             {
-                dt = DateTime.Parse(publisedData, new CultureInfo("en-GB"));
+                dt = DateTime.Parse(publisedData, new CultureInfo("en-US"));
             }
             catch (FormatException)
             {
