@@ -2,6 +2,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 using System;
+using System.Globalization;
 
 namespace eWolfPodcasterUI.Helpers
 {
@@ -13,7 +14,7 @@ namespace eWolfPodcasterUI.Helpers
         public void ShouldParseValidDates(string date, string expected)
         {
             DateTime dt = DataHelper.ParseDate(date);
-            dt.ToString("dd/MM/yyyy HH:mm:ss").Should().Be(expected);
+            dt.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.CurrentCulture).Should().Be(expected);
         }
     }
 }
