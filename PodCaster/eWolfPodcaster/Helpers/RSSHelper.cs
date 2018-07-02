@@ -12,6 +12,7 @@ namespace eWolfPodcaster.Helpers
             EpisodeControl showData = new EpisodeControl();
 
             string elementName = string.Empty;
+
             while (reader.Read())
             {
                 switch (reader.NodeType)

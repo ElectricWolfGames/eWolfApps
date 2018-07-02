@@ -59,6 +59,7 @@
     <Compile Include="Data\ShowsTests.cs" />
     <Compile Include="Helpers\DataCleansingTests.cs" />
     <Compile Include="Helpers\DataHelperTests.cs" />
+    <Compile Include="Helpers\ReadEpisodesTests.cs" />
     <Compile Include="PersistenceHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +71,9 @@
       <Project>{85B28B62-F1E1-4107-A269-34BCDC15B166}</Project>
       <Name>eWolfPodcaster</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Examples\4Episodes.xml" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
