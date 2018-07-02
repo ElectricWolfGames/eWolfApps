@@ -6,7 +6,7 @@ namespace eWolfPodcaster.Data
     [Serializable]
     public class Show
     {
-        public ICollection<Episode> Episodes { get; set; }
+        public List<Episode> Episodes { get; set; } = new List<Episode>();
 
         public string RssFeed { get; set; }
 

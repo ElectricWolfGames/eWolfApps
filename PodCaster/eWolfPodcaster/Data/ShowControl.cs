@@ -13,6 +13,23 @@ namespace eWolfPodcaster.Data
             get { return Title + ".Show"; }
         }
 
+        internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
+        {
+            foreach (EpisodeControl newEpisode in newEpisodes)
+            {
+                bool orignalEpisode = true;
+                foreach (EpisodeControl oldEpisodes in Episodes)
+                {
+                    if (oldEpisodes.SameAs(newEpisode))
+                    {
+                        orignalEpisode = false;
+                    }
+                }
+                if (orignalEpisode)
+                    Episodes.Add(newEpisode);
+            }
+        }
+
         internal XmlReader UpdateRSSFile()
         {
             XmlReader reader = null;
@@ -23,20 +40,6 @@ namespace eWolfPodcaster.Data
             reader = XmlReader.Create(RssFeed, settings);
 
             return reader;
-        }
-
-        internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
-        {
-            foreach (EpisodeControl newEpisode in newEpisodes)
-            {
-                foreach (EpisodeControl oldEpisodes in Episodes)
-                {
-                    if (!oldEpisodes.SameAs(newEpisode))
-                    {
-                        Episodes.Add(oldEpisodes);
-                    }
-                }
-            }
         }
     }
 }
