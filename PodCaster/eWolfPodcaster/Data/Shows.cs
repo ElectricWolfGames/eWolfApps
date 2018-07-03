@@ -38,16 +38,10 @@ namespace eWolfPodcaster.Data
             }
         }
 
-        private ShowControl CreateFakeShow()
+        public void Save(string outputFolder)
         {
-            ShowControl sc = new ShowControl();
-            sc.Title = "CodingBlocks";
-            sc.RssFeed = "http://www.codingblocks.net/feed/podcast";
-            sc.ShowOption.AudoDownloadEpisodes = false;
-            sc.ShowOption.Category = "Dev";
-            sc.ShowOption.CheckforUpdates = true;
-
-            return sc;
+            PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
+            ph.SaveData(_shows);
         }
 
         public void UpdateAllRSSFeeds()
@@ -61,6 +55,19 @@ namespace eWolfPodcaster.Data
                     sc.UpdateEpisode(episodes);
                 }
             }
+        }
+
+        private ShowControl CreateFakeShow()
+        {
+            ShowControl sc = new ShowControl();
+            sc.Title = "CodingBlocks";
+            sc.RssFeed = "http://www.codingblocks.net/feed/podcast";
+            sc.ShowOption.AudoDownloadEpisodes = false;
+            sc.ShowOption.Category = "Dev";
+            sc.ShowOption.CheckforUpdates = true;
+            sc.Episodes = new List<Episode>();
+
+            return sc;
         }
     }
 }
