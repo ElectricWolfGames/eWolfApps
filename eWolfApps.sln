@@ -15,12 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterUnitTests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8F711A4-BB7F-47F7-A781-4BDC92932834}"
 	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterUWP", "PodCaster\eWolfPodcasterUWP\eWolfPodcasterUWP.csproj", "{5218A553-BFCF-4133-8289-BBF43617C65C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterCore", "PodCaster\eWolfPodcasterCore\eWolfPodcasterCore.csproj", "{53DA1140-1AF7-4832-A764-767AD6124A8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWolfPodcasterCore", "PodCaster\eWolfPodcasterCore\eWolfPodcasterCore.csproj", "{53DA1140-1AF7-4832-A764-767AD6124A8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
