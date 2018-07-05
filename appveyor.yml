@@ -4,7 +4,6 @@ pull_requests:
 os: Visual Studio 2015
 configuration: Release
 platform:
-- x86
 - x64
 - ARM
 assembly_info:
@@ -14,9 +13,9 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 before_build:
-- cmd: pushd . && cd src && nuget restore && popd
+- cmd: pushd . && nuget restore && popd
 build:
-  project: src\eWolfApps.sln
+  project: eWolfApps.sln
   parallel: true
   verbosity: minimal
 deploy: off
