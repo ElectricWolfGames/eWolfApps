@@ -1,5 +1,4 @@
-﻿using eWolfPodcasterCore;
-using eWolfPodcasterCore.Data;
+﻿using eWolfPodcasterCore.Data;
 using System;
 using System.IO;
 using System.Windows;
