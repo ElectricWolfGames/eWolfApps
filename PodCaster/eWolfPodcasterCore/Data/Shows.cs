@@ -1,9 +1,9 @@
-﻿using eWolfPodcaster.Helpers;
+﻿using eWolfPodcasterCore.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 
-namespace eWolfPodcaster.Data
+namespace eWolfPodcasterCore.Data
 {
     public class Shows
     {

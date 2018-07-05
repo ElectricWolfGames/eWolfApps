@@ -1,4 +1,4 @@
-﻿namespace eWolfPodcaster.Data
+﻿namespace eWolfPodcasterCore.Data
 {
     public enum ShowStorageType
     {

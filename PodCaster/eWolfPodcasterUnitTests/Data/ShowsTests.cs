@@ -1,4 +1,4 @@
-﻿using eWolfPodcaster.Data;
+﻿using eWolfPodcasterCore.Data;
 using FluentAssertions;
 using NUnit.Framework;
 

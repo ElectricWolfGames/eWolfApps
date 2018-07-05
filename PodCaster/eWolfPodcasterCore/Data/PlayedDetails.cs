@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace eWolfPodcaster.Data
+namespace eWolfPodcasterCore.Data
 {
     [Serializable]
     public class PlayedDetails

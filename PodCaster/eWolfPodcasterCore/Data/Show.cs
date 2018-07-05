@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace eWolfPodcaster.Data
+namespace eWolfPodcasterCore.Data
 {
     [Serializable]
     public class Show

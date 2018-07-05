@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace eWolfPodcaster.Helpers
+namespace eWolfPodcasterCore.Helpers
 {
     public static class DataCleansing
     {

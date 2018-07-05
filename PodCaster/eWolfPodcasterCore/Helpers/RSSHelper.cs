@@ -1,8 +1,11 @@
-﻿using eWolfPodcaster.Data;
+﻿using eWolfPodcasterCore.Data;
 using System.Collections.Generic;
 using System.Xml;
+using System.Runtime.CompilerServices;
 
-namespace eWolfPodcaster.Helpers
+[assembly: InternalsVisibleTo("eWolfPodcasterUnitTests")]
+
+namespace eWolfPodcasterCore.Helpers
 {
     public class RSSHelper
     {

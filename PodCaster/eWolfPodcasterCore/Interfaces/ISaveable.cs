@@ -1,4 +1,4 @@
-﻿namespace eWolfPodcaster.Interfaces
+﻿namespace eWolfPodcasterCore.Interfaces
 {
     public interface ISaveable
     {

@@ -1,11 +1,11 @@
-﻿using eWolfPodcaster.Interfaces;
+﻿using eWolfPodcasterCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace eWolfPodcaster
+namespace eWolfPodcasterCore
 {
     public class PersistenceHelper<T>
     {

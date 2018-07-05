@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace eWolfPodcaster.Helpers
+namespace eWolfPodcasterCore.Helpers
 {
     public static class DataHelper
     {

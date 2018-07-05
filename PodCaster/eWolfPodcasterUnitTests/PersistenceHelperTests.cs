@@ -1,5 +1,5 @@
-﻿using eWolfPodcaster;
-using eWolfPodcaster.Interfaces;
+﻿using eWolfPodcasterCore;
+using eWolfPodcasterCore.Interfaces;
 using FluentAssertions;
 using NUnit.Framework;
 using System;

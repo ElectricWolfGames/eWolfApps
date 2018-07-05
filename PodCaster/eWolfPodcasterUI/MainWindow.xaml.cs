@@ -1,5 +1,5 @@
-﻿using eWolfPodcaster.Data;
-using eWolfPodcasterCore;
+﻿using eWolfPodcasterCore;
+using eWolfPodcasterCore.Data;
 using System;
 using System.IO;
 using System.Windows;
@@ -11,7 +11,6 @@ namespace eWolfPodcasterUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private CoreTest ct = new CoreTest();
         private Shows _shows = new Shows();
 
         public MainWindow()
@@ -25,7 +24,7 @@ namespace eWolfPodcasterUI
 
         public string GetOutputFolder()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
+            return Path.Combine("c:\\eWolf\\eWolfTestApp");
         }
     }
 }

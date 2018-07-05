@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace eWolfPodcaster
+namespace eWolfPodcasterCore
 {
     public static class StreamFactory
     {

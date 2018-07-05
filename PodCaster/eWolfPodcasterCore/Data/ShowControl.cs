@@ -1,9 +1,9 @@
-﻿using eWolfPodcaster.Interfaces;
+﻿using eWolfPodcasterCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace eWolfPodcaster.Data
+namespace eWolfPodcasterCore.Data
 {
     [Serializable]
     public class ShowControl : Show, ISaveable
