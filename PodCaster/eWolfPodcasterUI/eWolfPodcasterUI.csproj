@@ -113,6 +113,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\eWolfPodcasterCore\eWolfPodcasterCore.csproj">
+      <Project>{53da1140-1af7-4832-a764-767ad6124a8b}</Project>
+      <Name>eWolfPodcasterCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eWolfPodcaster\eWolfPodcaster.csproj">
       <Project>{85B28B62-F1E1-4107-A269-34BCDC15B166}</Project>
       <Name>eWolfPodcaster</Name>

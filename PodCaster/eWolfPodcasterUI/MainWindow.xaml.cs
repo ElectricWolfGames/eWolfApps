@@ -1,4 +1,5 @@
 ﻿using eWolfPodcaster.Data;
+using eWolfPodcasterCore;
 using System;
 using System.IO;
 using System.Windows;
@@ -10,6 +11,7 @@ namespace eWolfPodcasterUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CoreTest ct = new CoreTest();
         private Shows _shows = new Shows();
 
         public MainWindow()
