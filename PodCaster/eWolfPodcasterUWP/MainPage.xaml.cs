@@ -16,9 +16,9 @@ namespace eWolfPodcasterUWP
         {
             this.InitializeComponent();
 
-            _shows.Load(GetOutputFolder());
+            /*_shows.Load(GetOutputFolder());
             _shows.UpdateAllRSSFeeds();
-            _shows.Save(GetOutputFolder());
+            _shows.Save(GetOutputFolder());*/
         }
 
         public string GetOutputFolder()

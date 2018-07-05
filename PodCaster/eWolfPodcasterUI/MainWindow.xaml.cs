@@ -24,7 +24,7 @@ namespace eWolfPodcasterUI
 
         public string GetOutputFolder()
         {
-            return Path.Combine("c:\\eWolf\\eWolfTestApp");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
         }
     }
 }
