@@ -1,6 +1,10 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 
+before_build:
+- cmd: >-
+    nuget restore
+
 build:
   publish_nuget: false
   publish_nuget_symbols: false
