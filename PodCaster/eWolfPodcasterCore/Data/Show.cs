@@ -13,5 +13,13 @@ namespace eWolfPodcasterCore.Data
         public ShowOptions ShowOption { get; set; } = new ShowOptions();
 
         public string Title { get; set; }
+
+        public int Count
+        {
+            get
+            {
+                return Episodes.Count;
+            }
+        }
     }
 }

@@ -14,6 +14,11 @@ namespace eWolfPodcasterCore.Data
             get { return _shows.Count; }
         }
 
+        public List<ShowControl> ShowList
+        {
+            get { return _shows; }
+        }
+
         public void Add(ShowControl show)
         {
             if (_shows.Where((x) => x.RssFeed == show.RssFeed).Any())
