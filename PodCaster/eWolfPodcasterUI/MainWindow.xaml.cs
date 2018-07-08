@@ -1,6 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 
@@ -24,27 +23,41 @@ namespace eWolfPodcasterUI
             AddShowItems();
         }
 
-        private void AddShowItems()
-        {
-            /*List<User> items = new List<User>();
-            items.Add(new User() { Name = "John Doe", Age = 42, Mail = "john@doe-family.com" });
-            items.Add(new User() { Name = "Jane Doe", Age = 39, Mail = "jane@doe-family.com" });
-            items.Add(new User() { Name = "Sammy Doe", Age = 7, Mail = "sammy.doe@gmail.com" });*/
-            ShowsItems.ItemsSource = _shows.ShowList;
-        }
-
         public string GetOutputFolder()
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
         }
-    }
 
-    public class User
-    {
-        public string Name { get; set; }
+        private void AddShowItems()
+        {
+            ShowsItems.ItemsSource = _shows.ShowList;
+        }
 
-        public int Age { get; set; }
+        private void ButtonAddShowClick(object sender, RoutedEventArgs e)
+        {
+            AddNewShow addNewShow = new AddNewShow();
+            addNewShow.ShowName = "new show name";
+            addNewShow.ShowDialog();
 
-        public string Mail { get; set; }
+            if (addNewShow.Apply)
+            {
+                ShowControl sc = new ShowControl()
+                {
+                    Title = addNewShow.ShowName,
+                    RssFeed = addNewShow.RSSFeed
+                };
+                _shows.Add(sc);
+            }
+        }
+
+        private void ButtonSubShowClick(object sender, RoutedEventArgs e)
+        {
+            var selectedItems = ShowsItems.SelectedItems;
+            if (selectedItems.Count == 0)
+                return;
+
+            ShowControl selectedItem = (ShowControl)selectedItems[0];
+            _shows.RemoveShow(selectedItem);
+        }
     }
 }

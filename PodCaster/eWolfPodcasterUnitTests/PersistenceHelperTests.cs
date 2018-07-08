@@ -4,6 +4,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace eWolfPodcasterUnitTests
@@ -52,7 +53,7 @@ namespace eWolfPodcasterUnitTests
             PersistenceHelper<TempSaveable> ph = new PersistenceHelper<TempSaveable>(GetOutputFolder());
             ph.SaveData(new List<ISaveable>() { tempSaveable });
 
-            List<TempSaveable> loadItems = ph.LoadData();
+            ObservableCollection<TempSaveable> loadItems = ph.LoadData();
             loadItems.Should().HaveCount(1);
             loadItems[0].Name.Should().Be("MyName");
             loadItems[0].OtherData.Should().Be("OtherData");

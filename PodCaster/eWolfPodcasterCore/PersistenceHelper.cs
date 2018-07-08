@@ -1,6 +1,7 @@
 ﻿using eWolfPodcasterCore.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -17,9 +18,9 @@ namespace eWolfPodcasterCore
             Directory.CreateDirectory(_outputFolder);
         }
 
-        public List<T> LoadData()
+        public ObservableCollection<T> LoadData()
         {
-            List<T> items = new List<T>();
+            ObservableCollection<T> items = new ObservableCollection<T>();
 
             string[] files = Directory.GetFiles(_outputFolder);
             foreach (string file in files)

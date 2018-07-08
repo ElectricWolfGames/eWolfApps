@@ -5,7 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
-        Title="MainWindowPods" Height="850" Width="950">
+        Title="MainWindowPods" Height="622.772" Width="950">
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <xcad:DockingManager Grid.Row="1" MaxHeight="850"
                            AllowMixedOrientation="True"
@@ -24,7 +44,7 @@
                 <xcad:LayoutPanel Orientation="Horizontal">
                     <xcad:LayoutAnchorablePane DockWidth="250">
                         <xcad:LayoutAnchorable ContentId="Shows" Title="Shows" CanHide="False" CanClose="False" AutoHideWidth="240">
-                            <ListView Margin="10" Name="ShowsItems">
+                            <ListView Margin="10,44,10,10" Name="ShowsItems">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Title" Width="144" DisplayMemberBinding="{Binding Title}" />
@@ -54,5 +74,15 @@
                 </xcad:LayoutPanel>
             </xcad:LayoutRoot>
         </xcad:DockingManager>
+        <Button Content="" HorizontalAlignment="Left" Margin="16,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonAddShowClick" Style="{StaticResource MyButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/AddItem.png" />
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="55,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonSubShowClick" Style="{StaticResource MyButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/SubItem.png" />
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

@@ -1,5 +1,7 @@
 ﻿using eWolfPodcasterCore.Helpers;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml;
 
@@ -7,14 +9,14 @@ namespace eWolfPodcasterCore.Data
 {
     public class Shows
     {
-        private List<ShowControl> _shows = new List<ShowControl>();
+        private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();
 
         public int Count
         {
             get { return _shows.Count; }
         }
 
-        public List<ShowControl> ShowList
+        public ObservableCollection<ShowControl> ShowList
         {
             get { return _shows; }
         }
@@ -30,6 +32,14 @@ namespace eWolfPodcasterCore.Data
             _shows.Add(show);
         }
 
+        public void AddNewShow()
+        {
+            ShowControl sc = CreateFakeShow();
+            sc.Title = "New Show";
+            sc.RssFeed = "feed";
+            Add(sc);
+        }
+
         public void Load(string outputFolder)
         {
             PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
@@ -41,6 +51,11 @@ namespace eWolfPodcasterCore.Data
                 _shows.Add(sc);
                 ph.SaveData(_shows);
             }
+        }
+
+        public void RemoveShow(ShowControl itemToRemove)
+        {
+            _shows.Remove(itemToRemove);
         }
 
         public void Save(string outputFolder)

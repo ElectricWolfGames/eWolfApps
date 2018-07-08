@@ -1,0 +1,18 @@
+﻿<Window x:Class="eWolfPodcasterUI.AddNewShow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eWolfPodcasterUI"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="AddNewShow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="101,69,0,0" VerticalAlignment="Top" />
+        <TextBox Text="{Binding ShowName, Mode=TwoWay}" x:Name="textbox" HorizontalAlignment="Left" Height="23" Margin="148,72,0,0" VerticalAlignment="Top" Width="386" />
+        <Label Content="Rss Feed" HorizontalAlignment="Left" Margin="87,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.487" />
+        <TextBox Text="{Binding RSSFeed, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="148,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="564" />
+        <Button Content="Ok" HorizontalAlignment="Left" Margin="637,341,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="101,341,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" />
+    </Grid>
+</Window>
