@@ -23,10 +23,10 @@ namespace eWolfPodcasterCore.Data
 
         public void Add(ShowControl show)
         {
-            if (_shows.Where((x) => x.RssFeed == show.RssFeed).Any())
+            if (_shows.Any((x) => x.RssFeed == show.RssFeed))
                 return;
 
-            if (_shows.Where((x) => x.Title == show.Title).Any())
+            if (_shows.Any((x) => x.Title == show.Title))
                 return;
 
             _shows.Add(show);
@@ -85,7 +85,7 @@ namespace eWolfPodcasterCore.Data
             sc.ShowOption.AudoDownloadEpisodes = false;
             sc.ShowOption.Category = "Dev";
             sc.ShowOption.CheckforUpdates = true;
-            sc.Episodes = new List<Episode>();
+            sc.Episodes = new List<EpisodeControl>();
 
             return sc;
         }

@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace eWolfPodcasterCore.Helpers
 {
-    public class RSSHelper
+    public static class RSSHelper
     {
         internal static List<EpisodeControl> ReadEpisodes(XmlReader reader)
         {

@@ -32,15 +32,12 @@ namespace eWolfPodcasterCore.Data
                     break;
 
                 case "itunes:duration":
-                    try
-                    {
-                        string dur = value;
-                        dur = dur.Replace(":", string.Empty);
-                        PlayedDetails.ShowLength = double.Parse(dur);
-                    }
-                    catch
-                    {
-                    }
+                    string dur = value;
+                    dur = dur.Replace(":", string.Empty);
+                    double showLength;
+                    if (double.TryParse(dur, out showLength))
+                        PlayedDetails.ShowLength = showLength;
+
                     break;
             }
         }

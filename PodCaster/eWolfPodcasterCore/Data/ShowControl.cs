@@ -18,9 +18,9 @@ namespace eWolfPodcasterCore.Data
             foreach (EpisodeControl newEpisode in newEpisodes)
             {
                 bool orignalEpisode = true;
-                foreach (EpisodeControl oldEpisodes in Episodes)
+                foreach (EpisodeControl episode in Episodes)
                 {
-                    if (oldEpisodes.SameAs(newEpisode))
+                    if (episode.SameAs(newEpisode))
                     {
                         orignalEpisode = false;
                     }

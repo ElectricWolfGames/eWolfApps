@@ -6,7 +6,7 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class Show
     {
-        public List<Episode> Episodes { get; set; } = new List<Episode>();
+        public List<EpisodeControl> Episodes { get; set; } = new List<EpisodeControl>();
 
         public string RssFeed { get; set; }
 

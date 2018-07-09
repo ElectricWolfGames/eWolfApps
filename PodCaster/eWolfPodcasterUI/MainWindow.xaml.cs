@@ -17,8 +17,8 @@ namespace eWolfPodcasterUI
             InitializeComponent();
 
             _shows.Load(GetOutputFolder());
-            // _shows.UpdateAllRSSFeeds();
-            // _shows.Save(GetOutputFolder());
+            _shows.UpdateAllRSSFeeds();
+            _shows.Save(GetOutputFolder());
 
             AddShowItems();
         }

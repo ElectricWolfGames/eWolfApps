@@ -10,7 +10,7 @@ namespace eWolfPodcasterCore
 {
     public class PersistenceHelper<T>
     {
-        private string _outputFolder;
+        private readonly string _outputFolder;
 
         public PersistenceHelper(string outputFolder)
         {
@@ -35,7 +35,7 @@ namespace eWolfPodcasterCore
 
                     items.Add(sd);
                 }
-                catch (Exception ex)
+                catch
                 {
                     if (stream != null)
                         stream.Close();
@@ -56,8 +56,10 @@ namespace eWolfPodcasterCore
                 try
                 {
                     stream = StreamFactory.GetStream(outputFileName);
-                    SaveToStream(stream, formatter, saveable);
-                    stream.Close();
+                    if (SaveToStream(stream, formatter, saveable))
+                        stream.Close();
+                    else
+                        allSaved = false;
                 }
                 catch
                 {
