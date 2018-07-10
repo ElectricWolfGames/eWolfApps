@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace eWolfPodcasterUI
 {
@@ -58,6 +59,21 @@ namespace eWolfPodcasterUI
 
             ShowControl selectedItem = (ShowControl)selectedItems[0];
             _shows.RemoveShow(selectedItem);
+        }
+
+        private void EpisodesItems_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+        }
+
+        private void ShowsItems_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem;
+            ShowControl sc = item as ShowControl;
+
+            if (sc != null)
+            {
+                EpisodesItems.ItemsSource = sc.Episodes;
+            }
         }
     }
 }

@@ -6,9 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="672.209" Width="972.684">
 
     <Grid>
-
+        <ListView Name="ShowsItems" HorizontalAlignment="Left" Height="518" VerticalAlignment="Bottom" Width="250" RenderTransformOrigin="0.48,0.504" Margin="10,144,0,10" Background="{ThemeResource SystemControlDisabledAccentBrush}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Text="{Binding Title}" Width="220">Title</TextBlock>
+                        <TextBlock Text="{Binding Count}" Width="30" HorizontalAlignment="Right">Count</TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

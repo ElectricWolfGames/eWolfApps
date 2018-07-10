@@ -53,6 +53,15 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public void CreateFakeList()
+        {
+            ShowControl sc = CreateFakeShow();
+            _shows.Add(sc);
+
+            sc = CreateFakeShowB();
+            _shows.Add(sc);
+        }
+
         public void RemoveShow(ShowControl itemToRemove)
         {
             _shows.Remove(itemToRemove);
@@ -84,6 +93,19 @@ namespace eWolfPodcasterCore.Data
             sc.RssFeed = "http://www.codingblocks.net/feed/podcast";
             sc.ShowOption.AudoDownloadEpisodes = false;
             sc.ShowOption.Category = "Dev";
+            sc.ShowOption.CheckforUpdates = true;
+            sc.Episodes = new List<EpisodeControl>();
+
+            return sc;
+        }
+
+        private ShowControl CreateFakeShowB()
+        {
+            ShowControl sc = new ShowControl();
+            sc.Title = "Other";
+            sc.RssFeed = "http://www.codingblocks.net";
+            sc.ShowOption.AudoDownloadEpisodes = false;
+            sc.ShowOption.Category = "Music";
             sc.ShowOption.CheckforUpdates = true;
             sc.Episodes = new List<EpisodeControl>();
 
