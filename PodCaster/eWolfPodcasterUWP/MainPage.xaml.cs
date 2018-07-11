@@ -5,9 +5,6 @@ using Windows.UI.Xaml.Controls;
 
 namespace eWolfPodcasterUWP
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         private Shows _shows = new Shows();
@@ -15,6 +12,9 @@ namespace eWolfPodcasterUWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            Uri newuri = new Uri("http://media.blubrry.com/codingblocks/s/www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/codingblocks/coding-blocks-episode-84.mp3");
+            // myPlayer.Source = newuri;
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values["exampleSetting"] = "Hello Windows";
