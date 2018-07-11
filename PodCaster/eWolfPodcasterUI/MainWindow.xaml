@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="MainWindowPods" Height="622.772" Width="950">
     <Window.Resources>
         <Style x:Key="MyButton" TargetType="Button">
@@ -57,12 +58,42 @@
                     <xcad:LayoutDocumentPaneGroup DockWidth="675" Orientation="Vertical">
                         <xcad:LayoutDocumentPane DockHeight="100">
                             <xcad:LayoutDocument ContentId="PlayControls" Title="PlayControls">
-                                <Button Content="Document 1 Content" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Grid>
+                                    <Button x:Name="btnPlay" VerticalAlignment="Top"
+                                        Click="BtnPlay_Click"
+                                        Margin="260,10,0,0"
+                                        Width="30" Height="30" HorizontalAlignment="Left"
+                                        Content=""
+                                        RenderTransformOrigin="-0.008,0.478" Grid.Column="2">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="Images/Play.png" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button x:Name="btnPause" VerticalAlignment="Top"
+                                        Click="BtnPause_Click"
+                                        Margin="302,10,0,0"
+                                        Width="30" Height="30" HorizontalAlignment="Left"
+                                        Content="" Grid.Column="2">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="Images/Pause.png" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button x:Name="btnStop" VerticalAlignment="Top"
+                                        Click="BtnStop_Click"
+                                        Margin="346,10,0,0"
+                                        Width="32" Height="30" HorizontalAlignment="Left"
+                                        Content="" Grid.Column="2">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="Images/Stop.png" />
+                                        </Button.Background>
+                                    </Button>
+                                    <TextBox x:Name="_currentPodCastDescription" Margin="3,48,13,0" VerticalAlignment="Bottom" Height="108" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
+                                </Grid>
                             </xcad:LayoutDocument>
                         </xcad:LayoutDocumentPane>
                         <xcad:LayoutDocumentPane DockHeight="400">
                             <xcad:LayoutDocument ContentId="Episodes" Title="Episodes">
-                                <ListBox Margin="0,0,0,0" Name="EpisodesItems" MouseDoubleClick="EpisodesItems_MouseDoubleClick">
+                                <ListBox Margin="0,0,0,0" Name="EpisodesItems" SelectionChanged="EpisodeListBox_SelectionChanged">
                                 </ListBox>
                             </xcad:LayoutDocument>
                         </xcad:LayoutDocumentPane>
