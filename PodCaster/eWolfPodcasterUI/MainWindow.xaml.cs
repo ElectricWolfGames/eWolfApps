@@ -1,6 +1,11 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterUI.CustomDialog;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,6 +17,7 @@ namespace eWolfPodcasterUI
     public partial class MainWindow : Window
     {
         private Shows _shows = new Shows();
+        public ObservableCollection<IPodCastInfo> Podcasts = new ObservableCollection<IPodCastInfo>();
 
         public MainWindow()
         {
@@ -72,7 +78,23 @@ namespace eWolfPodcasterUI
 
             if (sc != null)
             {
-                EpisodesItems.ItemsSource = sc.Episodes;
+                Podcasts.Clear();
+
+                List<EpisodeControl> orderedByDateList = null;
+                orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+
+                foreach (EpisodeControl x in orderedByDateList)
+                {
+                    if (x.Hidden)
+                        continue;
+
+                    IPodCastInfo pce = new PodcastEpisode();
+                    pce.EpisodeData = x;
+                    // x.NewEpisode = false;
+                    Podcasts.Add(pce);
+                }
+
+                EpisodesItems.ItemsSource = Podcasts;
             }
         }
     }

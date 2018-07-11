@@ -10,5 +10,7 @@ namespace eWolfPodcasterCore.Data
         public double ShowLength { get; set; }
 
         public bool Watched { get; set; }
+
+        public double PlayedLengthScaled { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using eWolfPodcasterCore.Data;
 using System.Collections.Generic;
-using System.Xml;
 using System.Runtime.CompilerServices;
+using System.Xml;
 
 [assembly: InternalsVisibleTo("eWolfPodcasterUnitTests")]
 

@@ -62,14 +62,8 @@
                         </xcad:LayoutDocumentPane>
                         <xcad:LayoutDocumentPane DockHeight="400">
                             <xcad:LayoutDocument ContentId="Episodes" Title="Episodes">
-                                <ListView Margin="0,0,0,0" Name="EpisodesItems" MouseDoubleClick="EpisodesItems_MouseDoubleClick">
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridViewColumn Header="Name" Width="160" DisplayMemberBinding="{Binding Title}" />
-                                            <GridViewColumn Header="Description" Width="400" DisplayMemberBinding="{Binding Description}" />
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
+                                <ListBox Margin="0,0,0,0" Name="EpisodesItems" MouseDoubleClick="EpisodesItems_MouseDoubleClick">
+                                </ListBox>
                             </xcad:LayoutDocument>
                         </xcad:LayoutDocumentPane>
                         <xcad:LayoutDocumentPane>

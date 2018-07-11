@@ -1,11 +1,42 @@
 ﻿using eWolfPodcasterCore.Helpers;
+using eWolfPodcasterCore.Interfaces;
 using System;
 
 namespace eWolfPodcasterCore.Data
 {
     [Serializable]
-    public class EpisodeControl : Episode
+    public class EpisodeControl : Episode, IPodCastInfo
     {
+        public IPodCastInfo EpisodeData
+        {
+            get { return null; }
+            set { }
+        }
+
+        public long PlayedLength
+        {
+            get
+            {
+                return PlayedDetails.PlayedLength;
+            }
+            set
+            {
+                PlayedDetails.PlayedLength = value;
+            }
+        }
+
+        public double PlayedLengthScaled
+        {
+            get
+            {
+                return PlayedDetails.PlayedLengthScaled;
+            }
+            set
+            {
+                PlayedDetails.PlayedLengthScaled = value;
+            }
+        }
+
         public void SetTextNodeData(string elementName, string value)
         {
             switch (elementName)
@@ -56,6 +87,20 @@ namespace eWolfPodcasterCore.Data
         public void SetPublishDate(string publisedData)
         {
             PublishedDate = DataHelper.ParseDate(publisedData);
+        }
+
+        public bool IsOffLine()
+        {
+            return false;
+        }
+
+        public string GetOffLineFileName()
+        {
+            return "filename";
+        }
+
+        public void DownloadAsMp3()
+        {
         }
     }
 }

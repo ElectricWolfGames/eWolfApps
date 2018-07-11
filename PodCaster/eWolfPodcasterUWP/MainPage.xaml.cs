@@ -1,9 +1,7 @@
 ﻿using eWolfPodcasterCore.Data;
 using System;
-using System.Linq;
 using System.IO;
 using Windows.UI.Xaml.Controls;
-using System.Collections.Generic;
 
 namespace eWolfPodcasterUWP
 {
