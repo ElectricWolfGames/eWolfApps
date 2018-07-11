@@ -9,8 +9,7 @@ namespace eWolfPodcasterCore.Data
     {
         public IPodCastInfo EpisodeData
         {
-            get { return null; }
-            set { }
+            get; set;
         }
 
         public long PlayedLength
@@ -101,6 +100,7 @@ namespace eWolfPodcasterCore.Data
 
         public void DownloadAsMp3()
         {
+            // will do this soon.
         }
     }
 }

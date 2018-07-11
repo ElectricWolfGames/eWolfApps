@@ -17,7 +17,7 @@ namespace eWolfPodcasterUI
     public partial class MainWindow : Window
     {
         private Shows _shows = new Shows();
-        public ObservableCollection<IPodCastInfo> Podcasts = new ObservableCollection<IPodCastInfo>();
+        private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
 
         public MainWindow()
         {
@@ -69,6 +69,13 @@ namespace eWolfPodcasterUI
 
         private void EpisodesItems_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            var item = (sender as ListView).SelectedItem;
+            EpisodeControl ec = item as EpisodeControl;
+
+            if (ec != null)
+            {
+                // show this as the episode to play.
+            }
         }
 
         private void ShowsItems_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -78,7 +85,7 @@ namespace eWolfPodcasterUI
 
             if (sc != null)
             {
-                Podcasts.Clear();
+                _podcasts.Clear();
 
                 List<EpisodeControl> orderedByDateList = null;
                 orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
@@ -90,11 +97,10 @@ namespace eWolfPodcasterUI
 
                     IPodCastInfo pce = new PodcastEpisode();
                     pce.EpisodeData = x;
-                    // x.NewEpisode = false;
-                    Podcasts.Add(pce);
+                    _podcasts.Add(pce);
                 }
 
-                EpisodesItems.ItemsSource = Podcasts;
+                EpisodesItems.ItemsSource = _podcasts;
             }
         }
     }

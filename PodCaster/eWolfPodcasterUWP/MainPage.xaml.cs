@@ -11,7 +11,6 @@ namespace eWolfPodcasterUWP
     public sealed partial class MainPage : Page
     {
         private Shows _shows = new Shows();
-        // private List<string> _items;
 
         public MainPage()
         {
@@ -22,17 +21,7 @@ namespace eWolfPodcasterUWP
 
             _shows.CreateFakeList();
 
-            // _items = new List<string>();
-
-            /*
-            _items.Add("item A");
-            _items.Add("item B");*/
-
             AddShowItems();
-
-            /*_shows.Load(GetOutputFolder());
-            _shows.UpdateAllRSSFeeds();
-            _shows.Save(GetOutputFolder());*/
         }
 
         public string GetOutputFolder()

@@ -70,7 +70,7 @@ namespace eWolfPodcasterUWP
         /// <param name="e">Details about the navigation failure</param>
         private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+            // still to do
         }
 
         /// <summary>
@@ -83,7 +83,6 @@ namespace eWolfPodcasterUWP
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
     }
