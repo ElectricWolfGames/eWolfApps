@@ -72,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AddNewShow.xaml">
+    <Page Include="Pages\AddNewShow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,7 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddNewShow.xaml.cs">
+    <Compile Include="Pages\AddNewShow.xaml.cs">
       <DependentUpon>AddNewShow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">

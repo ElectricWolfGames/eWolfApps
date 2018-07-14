@@ -6,14 +6,26 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="672.209" Width="972.684">
-
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <SplitView IsPaneOpen="True"
            DisplayMode="Inline"
-           OpenPaneLength="296">
+           OpenPaneLength="350">
         <SplitView.Pane>
             <Grid>
-                <ListView x:Name="ShowsItems" HorizontalAlignment="Left" Height="385" VerticalAlignment="Center" Width="250" RenderTransformOrigin="0.48,0.504" Margin="10,0,0,0" Background="{ThemeResource SystemControlDisabledAccentBrush}">
+                <ListView x:Name="ShowsItems" HorizontalAlignment="Center" Height="856" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,144,0,0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -23,18 +35,33 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <TextBlock Text="Pane"
-                   FontSize="24"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center" />
+                <Button Click="ButtonAddShowClick"
+                        Margin="19,27,0,0"
+                        Height="96" Width="96" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Images/AddItem.png" />
+                    </StackPanel>
+                </Button>
+
+                <Button Click="ButtonSubShowClick"
+                        Margin="120,27,0,0"
+                        Height="96" Width="96" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Images/SubItem.png" />
+                    </StackPanel>
+                </Button>
             </Grid>
         </SplitView.Pane>
 
-        <Grid>
+        <Grid Background="{ThemeResource HubSectionHeaderPointerOverForegroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="61*" />
+                <RowDefinition Height="51*" />
+            </Grid.RowDefinitions>
             <TextBlock Text="Content"
                    FontSize="24"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center" />
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center" Margin="0,320,0,0" FocusVisualPrimaryBrush="{ThemeResource ComboBoxItemSelectedPointerOverBackgroundThemeBrush}" />
         </Grid>
     </SplitView>
 </Page>
