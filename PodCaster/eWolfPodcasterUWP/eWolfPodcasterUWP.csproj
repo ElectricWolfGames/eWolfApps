@@ -98,6 +98,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewShowParams.cs" />
     <Compile Include="Pages\AddNewShow.xaml.cs">
       <DependentUpon>AddNewShow.xaml</DependentUpon>
     </Compile>

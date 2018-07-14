@@ -14,7 +14,7 @@ namespace eWolfPodcasterUI
         public AddNewShow()
         {
             InitializeComponent();
-            this.DataContext = this;
+            DataContext = this;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

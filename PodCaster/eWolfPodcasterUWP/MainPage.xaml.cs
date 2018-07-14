@@ -15,9 +15,9 @@ namespace eWolfPodcasterUWP
         {
             Console.WriteLine("ctor");
 
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
             Uri newuri = new Uri("http://media.blubrry.com/codingblocks/s/www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/codingblocks/coding-blocks-episode-84.mp3");
             // myPlayer.Source = newuri;
@@ -42,21 +42,12 @@ namespace eWolfPodcasterUWP
 
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
         {
-            /*AddNewShow addNewShow = new AddNewShow();
-            addNewShow.ShowName = "new show name";
-            addNewShow.ShowDialog();
+            var parameters = new NewShowParams();
+            parameters.Title = "New show name";
+            parameters.RssFeed = "Rss Feed";
+            parameters.Shows = _shows;
 
-            if (addNewShow.Apply)
-            {
-                ShowControl sc = new ShowControl()
-                {
-                    Title = addNewShow.ShowName,
-                    RssFeed = addNewShow.RSSFeed
-                };
-                _shows.Add(sc);
-            }*/
-
-            this.Frame.Navigate(typeof(AddNewShow));
+            Frame.Navigate(typeof(AddNewShow), parameters);
         }
 
         private void ButtonSubShowClick(object sender, RoutedEventArgs e)

@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using eWolfPodcasterCore.Data;
+using System.ComponentModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace eWolfPodcasterUWP.Pages
 {
@@ -9,18 +11,16 @@ namespace eWolfPodcasterUWP.Pages
     /// </summary>
     public sealed partial class AddNewShow : Page
     {
-        private string _showName = string.Empty;
         private string _rssFeed = string.Empty;
+        private string _showName = string.Empty;
 
         public AddNewShow()
         {
             InitializeComponent();
-            this.DataContext = this;
+            DataContext = this;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public bool Apply { get; set; }
 
         public string RSSFeed
         {
@@ -49,6 +49,18 @@ namespace eWolfPodcasterUWP.Pages
             }
         }
 
+        private Shows _shows { get; set; }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            var parameters = (NewShowParams)e.Parameter;
+            ShowName = parameters.Title;
+            RSSFeed = parameters.RssFeed;
+            _shows = parameters.Shows;
+        }
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -58,21 +70,27 @@ namespace eWolfPodcasterUWP.Pages
             }
         }
 
-        private void buttonOKClick(object sender, RoutedEventArgs e)
+        private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
-            Apply = false;
             ClosePage();
         }
 
-        private void buttonCancelClick(object sender, RoutedEventArgs e)
+        private void ButtonOKClick(object sender, RoutedEventArgs e)
         {
-            Apply = true;
+            ShowControl sc = new ShowControl()
+            {
+                Title = ShowName,
+                RssFeed = RSSFeed
+            };
+
+            _shows.Add(sc);
+
             ClosePage();
         }
 
         private void ClosePage()
         {
-            this.Frame.GoBack();
+            Frame.GoBack();
         }
     }
 }

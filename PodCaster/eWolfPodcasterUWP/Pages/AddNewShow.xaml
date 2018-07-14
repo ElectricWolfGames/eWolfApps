@@ -13,7 +13,7 @@
         <TextBox Text="{Binding ShowName, Mode=TwoWay}" x:Name="textbox" HorizontalAlignment="Left" Height="23" Margin="148,72,0,0" VerticalAlignment="Top" Width="386" />
         <TextBlock Text="Rss Feed" HorizontalAlignment="Left" Margin="81,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.487" />
         <TextBox Text="{Binding RSSFeed, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="148,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="741" />
-        <Button Content="Ok" HorizontalAlignment="Left" Margin="814,224,0,0" VerticalAlignment="Top" Width="75" Click="buttonOKClick" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="148,224,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelClick" />
+        <Button Content="Ok" HorizontalAlignment="Left" Margin="814,224,0,0" VerticalAlignment="Top" Width="75" Click="ButtonOKClick" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="148,224,0,0" VerticalAlignment="Top" Width="75" Click="ButtonCancelClick" />
     </Grid>
 </Page>
