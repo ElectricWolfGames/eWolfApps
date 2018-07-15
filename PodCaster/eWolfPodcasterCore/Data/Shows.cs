@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Xml;
 
 namespace eWolfPodcasterCore.Data
 {
+    [Serializable]
     public class Shows
     {
         private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();

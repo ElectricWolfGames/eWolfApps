@@ -25,7 +25,7 @@
            OpenPaneLength="350">
         <SplitView.Pane>
             <Grid>
-                <ListView x:Name="ShowsItems" HorizontalAlignment="Center" Height="856" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,144,0,0">
+                <ListView x:Name="ShowsItems" HorizontalAlignment="Center" Height="897" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,103,0,0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -36,16 +36,16 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button Click="ButtonAddShowClick"
-                        Margin="19,27,0,0"
-                        Height="96" Width="96" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        Margin="20,27,0,0"
+                        Height="64" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Image Source="Images/AddItem.png" />
                     </StackPanel>
                 </Button>
 
                 <Button Click="ButtonSubShowClick"
-                        Margin="120,27,0,0"
-                        Height="96" Width="96" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        Margin="84,27,0,0"
+                        Height="64" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Image Source="Images/SubItem.png" />
                     </StackPanel>

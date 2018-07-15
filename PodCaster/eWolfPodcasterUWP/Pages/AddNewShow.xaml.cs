@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
+using System;
 using System.ComponentModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -13,6 +14,7 @@ namespace eWolfPodcasterUWP.Pages
     {
         private string _rssFeed = string.Empty;
         private string _showName = string.Empty;
+        private Action _saveShows;
 
         public AddNewShow()
         {
@@ -59,6 +61,7 @@ namespace eWolfPodcasterUWP.Pages
             ShowName = parameters.Title;
             RSSFeed = parameters.RssFeed;
             _shows = parameters.Shows;
+            _saveShows = parameters.SaveCall;
         }
 
         protected void OnPropertyChanged(string name)
@@ -84,6 +87,8 @@ namespace eWolfPodcasterUWP.Pages
             };
 
             _shows.Add(sc);
+
+            _saveShows();
 
             ClosePage();
         }

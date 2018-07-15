@@ -2,6 +2,9 @@
 using eWolfPodcasterUWP.Pages;
 using System;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -9,30 +12,24 @@ namespace eWolfPodcasterUWP
 {
     public sealed partial class MainPage : Page
     {
+        private StorageFolder _localFolder;
+        private ApplicationDataContainer _localSettings;
         private Shows _shows = new Shows();
 
         public MainPage()
         {
-            Console.WriteLine("ctor");
-
             InitializeComponent();
+
+            _localSettings = ApplicationData.Current.LocalSettings;
+            _localFolder = ApplicationData.Current.LocalFolder;
 
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
-            Uri newuri = new Uri("http://media.blubrry.com/codingblocks/s/www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/codingblocks/coding-blocks-episode-84.mp3");
-            // myPlayer.Source = newuri;
+            LoadShowsAsync();
 
-            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            localSettings.Values["exampleSetting"] = "Hello Windows";
-
-            _shows.CreateFakeList();
+            SaveShowsAsync();
 
             AddShowItems();
-        }
-
-        public string GetOutputFolder()
-        {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
         }
 
         private void AddShowItems()
@@ -46,6 +43,7 @@ namespace eWolfPodcasterUWP
             parameters.Title = "New show name";
             parameters.RssFeed = "Rss Feed";
             parameters.Shows = _shows;
+            parameters.SaveCall = () => SaveShowsAsync();
 
             Frame.Navigate(typeof(AddNewShow), parameters);
         }
@@ -58,6 +56,34 @@ namespace eWolfPodcasterUWP
 
             ShowControl selectedItem = (ShowControl)selectedItems[0];
             _shows.RemoveShow(selectedItem);
+
+            SaveShowsAsync();
+        }
+
+        private async void LoadShowsAsync()
+        {
+            try
+            {
+                IFormatter formatter = new BinaryFormatter();
+                StorageFile sampleFile = await _localFolder.CreateFileAsync("Shows.list", CreationCollisionOption.OpenIfExists);
+
+                var stream = await sampleFile.OpenAsync(FileAccessMode.Read);
+                _shows = (Shows)formatter.Deserialize(stream.AsStream());
+            }
+            catch
+            {
+            }
+        }
+
+        private async void SaveShowsAsync()
+        {
+            IFormatter formatter = new BinaryFormatter();
+
+            StorageFile sampleFile = await _localFolder.CreateFileAsync("Shows.list", CreationCollisionOption.ReplaceExisting);
+            MemoryStream stream = new MemoryStream();
+            formatter.Serialize(stream, _shows);
+
+            await FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
         }
     }
 }

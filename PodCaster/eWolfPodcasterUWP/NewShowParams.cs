@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
+using System;
 
 namespace eWolfPodcasterUWP
 {
@@ -9,5 +10,7 @@ namespace eWolfPodcasterUWP
         public string RssFeed { get; set; }
 
         public Shows Shows { get; set; }
+
+        public Action SaveCall { get; set; }
     }
 }
