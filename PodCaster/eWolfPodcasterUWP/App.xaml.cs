@@ -42,7 +42,7 @@ namespace eWolfPodcasterUWP
 
                 if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Load state from previously suspended application
+                    // Load state from previously suspended application
                 }
 
                 // Place the frame in the current Window

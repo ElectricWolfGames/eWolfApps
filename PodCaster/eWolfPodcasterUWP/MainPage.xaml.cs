@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -39,11 +40,13 @@ namespace eWolfPodcasterUWP
 
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
         {
-            var parameters = new NewShowParams();
-            parameters.Title = "New show name";
-            parameters.RssFeed = "Rss Feed";
-            parameters.Shows = _shows;
-            parameters.SaveCall = () => SaveShowsAsync();
+            var parameters = new NewShowParams
+            {
+                Title = "New show name",
+                RssFeed = "Rss Feed",
+                Shows = _shows,
+                SaveCall = () => SaveShowsAsync()
+            };
 
             Frame.Navigate(typeof(AddNewShow), parameters);
         }
@@ -66,12 +69,15 @@ namespace eWolfPodcasterUWP
             {
                 IFormatter formatter = new BinaryFormatter();
                 StorageFile sampleFile = await _localFolder.CreateFileAsync("Shows.list", CreationCollisionOption.OpenIfExists);
+                if (!sampleFile.IsAvailable)
+                    return;
 
                 var stream = await sampleFile.OpenAsync(FileAccessMode.Read);
                 _shows = (Shows)formatter.Deserialize(stream.AsStream());
             }
             catch
             {
+                // fail safe - can't find or load show
             }
         }
 

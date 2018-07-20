@@ -89,9 +89,12 @@ namespace eWolfPodcasterCore.Data
 
         private ShowControl CreateFakeShow()
         {
-            ShowControl sc = new ShowControl();
-            sc.Title = "CodingBlocks";
-            sc.RssFeed = "http://www.codingblocks.net/feed/podcast";
+            ShowControl sc = new ShowControl
+            {
+                Title = "CodingBlocks",
+                RssFeed = "http://www.codingblocks.net/feed/podcast"
+            };
+
             sc.ShowOption.AudoDownloadEpisodes = false;
             sc.ShowOption.Category = "Dev";
             sc.ShowOption.CheckforUpdates = true;
@@ -102,9 +105,12 @@ namespace eWolfPodcasterCore.Data
 
         private ShowControl CreateFakeShowB()
         {
-            ShowControl sc = new ShowControl();
-            sc.Title = "Other";
-            sc.RssFeed = "http://www.codingblocks.net";
+            ShowControl sc = new ShowControl
+            {
+                Title = "Other",
+                RssFeed = "http://www.codingblocks.net"
+            };
+
             sc.ShowOption.AudoDownloadEpisodes = false;
             sc.ShowOption.Category = "Music";
             sc.ShowOption.CheckforUpdates = true;

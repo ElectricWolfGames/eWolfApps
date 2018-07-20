@@ -64,13 +64,9 @@ namespace eWolfPodcasterUWP.Pages
             _saveShows = parameters.SaveCall;
         }
 
-        protected void OnPropertyChanged(string name)
+        private void OnPropertyChanged(string name)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
