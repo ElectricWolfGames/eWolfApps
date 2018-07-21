@@ -1,25 +1,22 @@
 ﻿using eWolfPodcasterCore.Interfaces;
 using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
 
-namespace eWolfPodcasterUI.CustomDialog
+namespace eWolfPodcasterUWP
 {
-    public partial class PodcastEpisode : UserControl, IPodCastInfo
+    public class PodcastEpisode : IPodCastInfo
     {
         private IPodCastInfo _episodeData;
 
         public PodcastEpisode()
         {
-            InitializeComponent();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Description
         {
-            get { return _episodeData.Description; }
+            get
+            {
+                return _episodeData.Description;
+            }
         }
 
         public IPodCastInfo EpisodeData
@@ -32,7 +29,6 @@ namespace eWolfPodcasterUI.CustomDialog
             set
             {
                 _episodeData = value;
-                _showplayed.Height = _episodeData.PlayedLengthScaled;
             }
         }
 
@@ -52,7 +48,6 @@ namespace eWolfPodcasterUI.CustomDialog
             set
             {
                 _episodeData.PlayedLengthScaled = value;
-                _showplayed.Height = value;
             }
         }
 
@@ -106,30 +101,6 @@ namespace eWolfPodcasterUI.CustomDialog
         public bool IsOffLine()
         {
             return EpisodeData.IsOffLine();
-        }
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-        private void _butRemove_Click(object sender, RoutedEventArgs e)
-        {
-            // remove episode
-        }
-
-        /// <summary>
-        /// User has click on the download button
-        /// </summary>
-        /// <param name="sender">The send of the event</param>
-        /// <param name="e">The event data</param>
-        private void _buttonDownloadShow_Click(object sender, RoutedEventArgs e)
-        {
-            _episodeData.DownloadAsMp3();
         }
     }
 }

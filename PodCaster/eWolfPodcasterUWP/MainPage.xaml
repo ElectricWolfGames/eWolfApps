@@ -55,13 +55,18 @@
 
         <Grid Background="{ThemeResource HubSectionHeaderPointerOverForegroundThemeBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="61*" />
-                <RowDefinition Height="51*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="75*" />
             </Grid.RowDefinitions>
-            <TextBlock Text="Content"
-                   FontSize="24"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Center" Margin="0,320,0,0" FocusVisualPrimaryBrush="{ThemeResource ComboBoxItemSelectedPointerOverBackgroundThemeBrush}" />
+            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" Height="740" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,10,0,0" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding Title}"><Run Text="Title" /></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </SplitView>
 </Page>
