@@ -80,9 +80,16 @@ namespace eWolfPodcasterCore.Data
             {
                 if (sc.ShowOption.CheckforUpdates)
                 {
-                    XmlReader RSSFeed = sc.UpdateRSSFile();
-                    List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
-                    sc.UpdateEpisode(episodes);
+                    try
+                    {
+                        XmlReader RSSFeed = sc.UpdateRSSFile();
+                        List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
+                        sc.UpdateEpisode(episodes);
+                    }
+                    catch
+                    {
+                        // can't read Feed
+                    }
                 }
             }
         }

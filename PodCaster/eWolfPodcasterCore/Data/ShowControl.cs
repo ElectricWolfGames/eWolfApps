@@ -37,7 +37,14 @@ namespace eWolfPodcasterCore.Data
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.DtdProcessing = DtdProcessing.Parse;
 
-            reader = XmlReader.Create(RssFeed, settings);
+            try
+            {
+                reader = XmlReader.Create(RssFeed, settings);
+            }
+            catch
+            {
+                // can't read rss
+            }
 
             return reader;
         }

@@ -10,7 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
+using Windows.Foundation;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -65,7 +67,7 @@ namespace eWolfPodcasterUWP
         async protected void OnSuspending(object sender, SuspendingEventArgs args)
         {
             SuspendingDeferral deferral = args.SuspendingOperation.GetDeferral();
-            SaveShowsAsync();
+            await SaveShowsAsync();
             deferral.Complete();
         }
 
@@ -159,7 +161,7 @@ namespace eWolfPodcasterUWP
             }
         }
 
-        private async void SaveShowsAsync()
+        private async Task<bool> SaveShowsAsync()
         {
             IFormatter formatter = new BinaryFormatter();
 
@@ -167,7 +169,8 @@ namespace eWolfPodcasterUWP
             MemoryStream stream = new MemoryStream();
             formatter.Serialize(stream, _shows);
 
-            await FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
+            FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
+            return true;
         }
 
         private void ShowsItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
