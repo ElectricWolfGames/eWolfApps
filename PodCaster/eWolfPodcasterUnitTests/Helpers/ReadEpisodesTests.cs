@@ -7,7 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace eWolfPodcasterTests.Helpers
+namespace eWolfPodcasterUnitTests.Helpers
 {
     public class ReadEpisodesTests
     {

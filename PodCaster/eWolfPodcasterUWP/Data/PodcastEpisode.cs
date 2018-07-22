@@ -1,12 +1,10 @@
 ﻿using eWolfPodcasterCore.Interfaces;
 using System;
 
-namespace eWolfPodcasterUWP
+namespace eWolfPodcasterUWP.Data
 {
     public class PodcastEpisode : IPodCastInfo
     {
-        private IPodCastInfo _episodeData;
-
         public PodcastEpisode()
         {
         }
@@ -15,39 +13,28 @@ namespace eWolfPodcasterUWP
         {
             get
             {
-                return _episodeData.Description;
+                return EpisodeData.Description;
             }
         }
 
-        public IPodCastInfo EpisodeData
-        {
-            get
-            {
-                return _episodeData;
-            }
-
-            set
-            {
-                _episodeData = value;
-            }
-        }
+        public IPodCastInfo EpisodeData { get; set; }
 
         public long PlayedLength
         {
-            get { return _episodeData.PlayedLength; }
-            set { _episodeData.PlayedLength = value; }
+            get { return EpisodeData.PlayedLength; }
+            set { EpisodeData.PlayedLength = value; }
         }
 
         public double PlayedLengthScaled
         {
             get
             {
-                return _episodeData.PlayedLengthScaled;
+                return EpisodeData.PlayedLengthScaled;
             }
 
             set
             {
-                _episodeData.PlayedLengthScaled = value;
+                EpisodeData.PlayedLengthScaled = value;
             }
         }
 
@@ -55,7 +42,7 @@ namespace eWolfPodcasterUWP
         {
             get
             {
-                if (_episodeData.IsOffLine())
+                if (EpisodeData.IsOffLine())
                     return "-";
                 else
                     return "D";
@@ -64,12 +51,12 @@ namespace eWolfPodcasterUWP
 
         public string PodCastTime
         {
-            get { return _episodeData.PublishedDate.ToLongDateString(); }
+            get { return EpisodeData.PublishedDate.ToLongDateString(); }
         }
 
         public string PodcastURL
         {
-            get { return _episodeData.PodcastURL; }
+            get { return EpisodeData.PodcastURL; }
         }
 
         public DateTime PublishedDate
@@ -84,7 +71,7 @@ namespace eWolfPodcasterUWP
         {
             get
             {
-                return _episodeData.Title;
+                return EpisodeData.Title;
             }
         }
 

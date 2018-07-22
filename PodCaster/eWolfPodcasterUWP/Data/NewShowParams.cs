@@ -1,7 +1,7 @@
 ﻿using eWolfPodcasterCore.Data;
 using System;
 
-namespace eWolfPodcasterUWP
+namespace eWolfPodcasterUWP.Data
 {
     public class NewShowParams
     {

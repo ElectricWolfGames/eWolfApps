@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace eWolfPodcasterUI.CustomDialog
+namespace eWolfPodcasterUI.UserControls
 {
     public partial class PodcastEpisode : UserControl, IPodCastInfo
     {

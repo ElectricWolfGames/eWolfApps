@@ -1,6 +1,7 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Interfaces;
-using eWolfPodcasterUI.CustomDialog;
+using eWolfPodcasterUI.Pages;
+using eWolfPodcasterUI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

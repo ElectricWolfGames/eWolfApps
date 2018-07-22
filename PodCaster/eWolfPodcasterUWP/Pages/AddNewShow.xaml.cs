@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterUWP.Data;
 using System;
 using System.ComponentModel;
 using Windows.UI.Xaml;

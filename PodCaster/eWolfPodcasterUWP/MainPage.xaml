@@ -25,7 +25,7 @@
            OpenPaneLength="350">
         <SplitView.Pane>
             <Grid>
-                <ListView x:Name="ShowsItems" HorizontalAlignment="Center" Height="897" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,103,0,0">
+                <ListView x:Name="ShowsItems" HorizontalAlignment="Center" Height="897" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,103,0,0" SelectionChanged="ShowsItems_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>

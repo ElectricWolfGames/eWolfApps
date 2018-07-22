@@ -1,5 +1,6 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterUWP.Data;
 using eWolfPodcasterUWP.Pages;
 using System;
 using System.Collections.Generic;
@@ -126,6 +127,13 @@ namespace eWolfPodcasterUWP
             formatter.Serialize(stream, _shows);
 
             await FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
+        }
+
+        private void ShowsItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem;
+            ShowControl sc = item as ShowControl;
+            PopulatePodCastsFromShow(sc);
         }
     }
 }

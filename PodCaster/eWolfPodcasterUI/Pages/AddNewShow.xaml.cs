@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace eWolfPodcasterUI
+namespace eWolfPodcasterUI.Pages
 {
     /// <summary>
     /// Interaction logic for AddNewShow.xaml

@@ -3,7 +3,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace eWolfPodcasterTests.Helpers
+namespace eWolfPodcasterUnitTests.Helpers
 {
     public class DataCleansingTests
     {
