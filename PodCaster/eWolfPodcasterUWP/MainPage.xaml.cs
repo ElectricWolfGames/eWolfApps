@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,6 +29,7 @@ namespace eWolfPodcasterUWP
         {
             InitializeComponent();
             DataContext = this;
+            Application.Current.Suspending += new SuspendingEventHandler(OnSuspending);
 
             _localSettings = ApplicationData.Current.LocalSettings;
             _localFolder = ApplicationData.Current.LocalFolder;
@@ -50,12 +52,21 @@ namespace eWolfPodcasterUWP
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public event SuspendingEventHandler Suspending;
+
         public string PodcastDescription
         {
             get
             {
                 return _currentPodcast?.Description;
             }
+        }
+
+        async protected void OnSuspending(object sender, SuspendingEventArgs args)
+        {
+            SuspendingDeferral deferral = args.SuspendingOperation.GetDeferral();
+            SaveShowsAsync();
+            deferral.Complete();
         }
 
         protected void OnPropertyChanged(string propertyName)
