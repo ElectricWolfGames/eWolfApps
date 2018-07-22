@@ -20,7 +20,20 @@ namespace eWolfPodcasterUWP.Pages
         public AddNewShow()
         {
             InitializeComponent();
+
+            PopulateCategory();
+
             DataContext = this;
+        }
+
+        private void PopulateCategory()
+        {
+            CategoryList.Items.Add("Music");
+            CategoryList.Items.Add("Developer");
+            CategoryList.Items.Add("Science");
+            CategoryList.Items.Add("Space");
+            CategoryList.Items.Add("History");
+            CategoryList.Items.Add("Tech");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -82,6 +95,8 @@ namespace eWolfPodcasterUWP.Pages
                 Title = ShowName,
                 RssFeed = RSSFeed
             };
+
+            sc.ShowOption.Category = CategoryList.SelectedValue.ToString();
 
             _shows.Add(sc);
 

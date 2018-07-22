@@ -13,6 +13,14 @@ namespace eWolfPodcasterCore.Data
             get { return Title + ".Show"; }
         }
 
+        public string TitleCount
+        {
+            get
+            {
+                return Title + $" {Count}";
+            }
+        }
+
         internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
         {
             foreach (EpisodeControl newEpisode in newEpisodes)

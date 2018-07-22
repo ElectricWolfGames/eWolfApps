@@ -48,7 +48,7 @@
                             <ListView Margin="10,44,10,10" Name="ShowsItems" MouseDoubleClick="ShowsItems_MouseDoubleClick">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Title" Width="144" DisplayMemberBinding="{Binding Title}" />
+                                        <GridViewColumn Header="Title" Width="144" DisplayMemberBinding="{Binding TitleCount}" />
                                         <GridViewColumn Header="Count" Width="32" DisplayMemberBinding="{Binding Count}" />
                                     </GridView>
                                 </ListView.View>

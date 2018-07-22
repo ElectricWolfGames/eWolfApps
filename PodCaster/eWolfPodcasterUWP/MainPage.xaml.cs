@@ -42,8 +42,6 @@ namespace eWolfPodcasterUWP
 
             _shows.UpdateAllRSSFeeds();
 
-            SaveShowsAsync();
-
             AddShowItems();
 
             DispatcherTimer timer = new DispatcherTimer();

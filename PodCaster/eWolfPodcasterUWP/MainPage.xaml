@@ -29,7 +29,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <TextBlock Text="{Binding Title}" Width="220"><Run Text="Title" /></TextBlock>
+                                <TextBlock Text="{Binding TitleCount}" Width="220"><Run Text="Title" /></TextBlock>
                                 <TextBlock Text="{Binding Count}" Width="30" HorizontalAlignment="Right"><Run Text="Count" /></TextBlock>
                             </Grid>
                         </DataTemplate>
@@ -58,7 +58,7 @@
                 <RowDefinition Height="25*" />
                 <RowDefinition Height="75*" />
             </Grid.RowDefinitions>
-            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" Height="740" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,10,0,0" Grid.Row="1" SelectionChanged="EpisodesItems_SelectionChanged">
+            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,10,0,0" Grid.Row="3" SelectionChanged="EpisodesItems_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
