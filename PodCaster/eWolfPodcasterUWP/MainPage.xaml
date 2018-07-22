@@ -58,7 +58,7 @@
                 <RowDefinition Height="25*" />
                 <RowDefinition Height="75*" />
             </Grid.RowDefinitions>
-            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" Height="740" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,10,0,0" Grid.Row="1">
+            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" Height="740" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,10,0,0" Grid.Row="1" SelectionChanged="EpisodesItems_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -67,6 +67,18 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Grid>
+                <MediaElement x:Name="MediaPlayer"
+                          HorizontalAlignment="Left"
+                          Height="100"
+                          VerticalAlignment="Top"
+                          AreTransportControlsEnabled="True"
+                          Width="718" />
+                <TextBlock x:Name ="_currentPodCastDescription"
+                       Text="{Binding PodcastDescription, Mode=OneWay}"
+                       HorizontalAlignment="Left" Height="137" Margin="10,109,0,0"
+                       TextWrapping="Wrap" VerticalAlignment="Top" Width="1124" />
+            </Grid>
         </Grid>
     </SplitView>
 </Page>

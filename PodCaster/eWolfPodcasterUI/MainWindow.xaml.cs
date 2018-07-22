@@ -127,17 +127,7 @@ namespace eWolfPodcasterUI
 
             _currentPodcast = e.AddedItems[0] as PodcastEpisode;
 
-            string urlToPlay = string.Empty;
-            if (_currentPodcast.IsOffLine())
-            {
-                urlToPlay = _currentPodcast.GetOffLineFileName();
-            }
-            else
-            {
-                urlToPlay = _currentPodcast.PodcastURL.Replace("https", "http");
-            }
-
-            _mediaPlayer.Open(new Uri(urlToPlay));
+            _mediaPlayer.Open(new Uri(_currentPodcast.UrlToPlay));
             _mediaPlayer.Position = new TimeSpan(_currentPodcast.PlayedLength);
             _mediaPlayer.Play();
             OnPropertyChanged("PodcastDescription");

@@ -5,6 +5,7 @@ using eWolfPodcasterUWP.Pages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,17 +16,18 @@ using Windows.UI.Xaml.Controls;
 
 namespace eWolfPodcasterUWP
 {
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
+        private PodcastEpisode _currentPodcast = null;
         private StorageFolder _localFolder;
         private ApplicationDataContainer _localSettings;
-        private Shows _shows = new Shows();
-        private PodcastEpisode _currentPodcast = null;
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
+        private Shows _shows = new Shows();
 
         public MainPage()
         {
             InitializeComponent();
+            DataContext = this;
 
             _localSettings = ApplicationData.Current.LocalSettings;
             _localFolder = ApplicationData.Current.LocalFolder;
@@ -34,40 +36,31 @@ namespace eWolfPodcasterUWP
 
             LoadShowsAsync();
 
+            _shows.UpdateAllRSSFeeds();
+
             SaveShowsAsync();
 
             AddShowItems();
 
-            TEMP_GetEpisodes();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += TimerTick;
+            timer.Start();
         }
 
-        private void TEMP_GetEpisodes()
-        {
-            _shows.UpdateAllRSSFeeds();
-            PopulatePodCastsFromShow(_shows.ShowList[0]);
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void PopulatePodCastsFromShow(ShowControl sc)
+        public string PodcastDescription
         {
-            if (sc != null)
+            get
             {
-                _podcasts.Clear();
-
-                List<EpisodeControl> orderedByDateList = null;
-                orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
-
-                foreach (EpisodeControl x in orderedByDateList)
-                {
-                    if (x.Hidden)
-                        continue;
-
-                    IPodCastInfo pce = new PodcastEpisode();
-                    pce.EpisodeData = x;
-                    _podcasts.Add(pce);
-                }
-
-                EpisodesItems.ItemsSource = _podcasts;
+                return _currentPodcast?.Description;
             }
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void AddShowItems()
@@ -100,6 +93,20 @@ namespace eWolfPodcasterUWP
             SaveShowsAsync();
         }
 
+        private void EpisodesItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count == 0)
+                return;
+
+            _currentPodcast = e.AddedItems[0] as PodcastEpisode;
+
+            MediaPlayer.Source = new Uri(_currentPodcast.UrlToPlay);
+            MediaPlayer.AutoPlay = true;
+
+            MediaPlayer.Position = new TimeSpan(_currentPodcast.PlayedLength);
+            OnPropertyChanged("PodcastDescription");
+        }
+
         private async void LoadShowsAsync()
         {
             try
@@ -115,6 +122,29 @@ namespace eWolfPodcasterUWP
             catch
             {
                 // fail safe - can't find or load show
+            }
+        }
+
+        private void PopulatePodCastsFromShow(ShowControl sc)
+        {
+            if (sc != null)
+            {
+                _podcasts.Clear();
+
+                List<EpisodeControl> orderedByDateList = null;
+                orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+
+                foreach (EpisodeControl x in orderedByDateList)
+                {
+                    if (x.Hidden)
+                        continue;
+
+                    IPodCastInfo pce = new PodcastEpisode();
+                    pce.EpisodeData = x;
+                    _podcasts.Add(pce);
+                }
+
+                EpisodesItems.ItemsSource = _podcasts;
             }
         }
 
@@ -134,6 +164,14 @@ namespace eWolfPodcasterUWP
             var item = (sender as ListView).SelectedItem;
             ShowControl sc = item as ShowControl;
             PopulatePodCastsFromShow(sc);
+        }
+
+        private void TimerTick(object sender, object e)
+        {
+            if (MediaPlayer.Source != null && MediaPlayer.NaturalDuration.HasTimeSpan)
+            {
+                _currentPodcast.PlayedLength = MediaPlayer.Position.Ticks;
+            }
         }
     }
 }

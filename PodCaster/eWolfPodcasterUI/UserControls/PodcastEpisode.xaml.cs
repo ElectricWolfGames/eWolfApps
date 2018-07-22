@@ -93,6 +93,18 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
+        public string UrlToPlay
+        {
+            get
+            {
+                if (IsOffLine())
+                {
+                    return GetOffLineFileName();
+                }
+                return PodcastURL.Replace("https", "http");
+            }
+        }
+
         public void DownloadAsMp3()
         {
             throw new NotImplementedException();
