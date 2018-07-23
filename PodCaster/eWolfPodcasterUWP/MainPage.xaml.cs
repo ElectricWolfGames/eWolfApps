@@ -191,8 +191,8 @@ namespace eWolfPodcasterUWP
 
         private void PopulateTree()
         {
-            string[] allCategorys = CategoryHelper.GetAll(_shows.ShowList);
-            ShowControl[] showsInCat;
+            var allCategorys = CategoryHelper.GetAllCategoriesFromShows(_shows.ShowList);
+            IReadOnlyCollection<ShowControl> showsInCat;
             TreeViewNode categoryNode;
 
             foreach (string category in allCategorys)
@@ -201,7 +201,7 @@ namespace eWolfPodcasterUWP
                 categoryNode.Content = category;
                 ShowsItemsTree.RootNodes.Add(categoryNode);
 
-                showsInCat = CategoryHelper.GetAllShowsInCategory(_shows.ShowList, category);
+                showsInCat = CategoryHelper.GetAllShowsForCategory(_shows.ShowList, category);
                 foreach (ShowControl show in showsInCat)
                 {
                     TreeViewNode showNode = new TreeViewNode();

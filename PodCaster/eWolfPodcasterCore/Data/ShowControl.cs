@@ -47,8 +47,10 @@ namespace eWolfPodcasterCore.Data
         {
             XmlReader reader = null;
 
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.DtdProcessing = DtdProcessing.Parse;
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
 
             try
             {

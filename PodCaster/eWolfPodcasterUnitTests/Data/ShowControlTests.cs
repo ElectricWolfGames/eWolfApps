@@ -56,8 +56,10 @@ namespace eWolfPodcasterUnitTests.Data
         [Test]
         public void ShouldShowNameCount()
         {
-            ShowControl sc = new ShowControl();
-            sc.Title = "MyShow";
+            ShowControl sc = new ShowControl
+            {
+                Title = "MyShow"
+            };
 
             List<EpisodeControl> episodes = new List<EpisodeControl>();
             EpisodeControl episode = new EpisodeControl()
