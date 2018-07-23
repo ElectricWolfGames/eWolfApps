@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterUWP.Data;
 using eWolfPodcasterUWP.Pages;
@@ -12,7 +13,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
-using Windows.Foundation;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -43,6 +43,8 @@ namespace eWolfPodcasterUWP
             _shows.UpdateAllRSSFeeds();
 
             AddShowItems();
+
+            PopulateTree();
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(100);
@@ -118,14 +120,14 @@ namespace eWolfPodcasterUWP
             OnPropertyChanged("PodcastDescription");
         }
 
-        private async void LoadShowsAsync()
+        private async Task<bool> LoadShowsAsync()
         {
             try
             {
                 IFormatter formatter = new BinaryFormatter();
                 StorageFile sampleFile = await _localFolder.CreateFileAsync("Shows.list", CreationCollisionOption.OpenIfExists);
                 if (!sampleFile.IsAvailable)
-                    return;
+                    return true;
 
                 var stream = await sampleFile.OpenAsync(FileAccessMode.Read);
                 _shows = (Shows)formatter.Deserialize(stream.AsStream());
@@ -134,6 +136,7 @@ namespace eWolfPodcasterUWP
             {
                 // fail safe - can't find or load show
             }
+            return true;
         }
 
         private void PopulatePodCastsFromShow(ShowControl sc)
@@ -167,7 +170,7 @@ namespace eWolfPodcasterUWP
             MemoryStream stream = new MemoryStream();
             formatter.Serialize(stream, _shows);
 
-            FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
+            await FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
             return true;
         }
 
@@ -183,6 +186,40 @@ namespace eWolfPodcasterUWP
             if (MediaPlayer.Source != null && MediaPlayer.NaturalDuration.HasTimeSpan)
             {
                 _currentPodcast.PlayedLength = MediaPlayer.Position.Ticks;
+            }
+        }
+
+        private void PopulateTree()
+        {
+            string[] allCategorys = CategoryHelper.GetAll(_shows.ShowList);
+            ShowControl[] showsInCat;
+            TreeViewNode categoryNode;
+
+            foreach (string category in allCategorys)
+            {
+                categoryNode = new TreeViewNode();
+                categoryNode.Content = category;
+                ShowsItemsTree.RootNodes.Add(categoryNode);
+
+                showsInCat = CategoryHelper.GetAllShowsInCategory(_shows.ShowList, category);
+                foreach (ShowControl show in showsInCat)
+                {
+                    TreeViewNode showNode = new TreeViewNode();
+                    showNode.Content = show;
+
+                    categoryNode.Children.Add(showNode);
+                }
+            }
+        }
+
+        private void ShowsItemsTree_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
+        {
+            var node = args.InvokedItem as TreeViewNode;
+            ShowControl sc = node.Content as ShowControl;
+
+            if (sc != null)
+            {
+                PopulatePodCastsFromShow(sc);
             }
         }
     }

@@ -24,8 +24,16 @@
            DisplayMode="Inline"
            OpenPaneLength="350">
         <SplitView.Pane>
-            <Grid>
-                <ListView x:Name="ShowsItems" HorizontalAlignment="Center" Height="897" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.48,0.504" Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,103,0,0" SelectionChanged="ShowsItems_SelectionChanged">
+            <Grid Background="{ThemeResource AppBarSeparatorForegroundThemeBrush}">
+                <TreeView x:Name="ShowsItemsTree" HorizontalAlignment="Center" Margin="0,122,0,0" VerticalAlignment="Top" Width="290" Height="502" Foreground="Black" ItemInvoked="ShowsItemsTree_ItemInvoked">
+                </TreeView>
+                <ListView x:Name="ShowsItems"
+                          HorizontalAlignment="Center"
+                          Height="371"
+                          VerticalAlignment="Top"
+                          Width="312"
+                          RenderTransformOrigin="0.48,0.504"
+                          Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,629,0,0" SelectionChanged="ShowsItems_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>

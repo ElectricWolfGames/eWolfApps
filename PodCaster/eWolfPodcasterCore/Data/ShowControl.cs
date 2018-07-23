@@ -21,6 +21,11 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public override string ToString()
+        {
+            return TitleCount;
+        }
+
         internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
         {
             foreach (EpisodeControl newEpisode in newEpisodes)
