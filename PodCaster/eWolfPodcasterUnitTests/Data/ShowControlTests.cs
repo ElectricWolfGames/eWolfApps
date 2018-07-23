@@ -52,5 +52,25 @@ namespace eWolfPodcasterUnitTests.Data
             sc.UpdateEpisode(episodes);
             sc.Episodes.Should().HaveCount(1);
         }
+
+        [Test]
+        public void ShouldShowNameCount()
+        {
+            ShowControl sc = new ShowControl();
+            sc.Title = "MyShow";
+
+            List<EpisodeControl> episodes = new List<EpisodeControl>();
+            EpisodeControl episode = new EpisodeControl()
+            {
+                Title = "MyFirstEpisode",
+                PodcastURL = "UrlA"
+            };
+
+            episodes.Add(episode);
+
+            sc.UpdateEpisode(episodes);
+            sc.ToString().Should().StartWith("MyShow");
+            sc.ToString().Should().Contain("1");
+        }
     }
 }
