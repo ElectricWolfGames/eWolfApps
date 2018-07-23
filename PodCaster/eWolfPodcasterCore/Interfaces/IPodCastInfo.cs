@@ -4,11 +4,7 @@ namespace eWolfPodcasterCore.Interfaces
 {
     public interface IPodCastInfo
     {
-        string Title { get; }
-
         string Description { get; }
-
-        string PodcastURL { get; }
 
         IPodCastInfo EpisodeData { get; set; }
 
@@ -16,12 +12,16 @@ namespace eWolfPodcasterCore.Interfaces
 
         double PlayedLengthScaled { get; set; }
 
-        bool IsOffLine();
+        string PodcastURL { get; }
 
-        string GetOffLineFileName();
+        DateTime PublishedDate { get; }
+
+        string Title { get; }
 
         void DownloadAsMp3();
 
-        DateTime PublishedDate { get; }
+        string GetOffLineFileName();
+
+        bool IsOffLine();
     }
 }
