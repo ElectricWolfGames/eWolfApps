@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterUI", "PodCaster\eWolfPodcasterUI\eWolfPodcasterUI.csproj", "{DDDBF813-0227-43E4-854C-0C9153C091D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterUnitTests", "PodCaster\eWolfPodcasterUnitTests\eWolfPodcasterUnitTests.csproj", "{4BE384AF-0600-4182-A959-2E35E0828FAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53DA1140-1AF7-4832-A764-767AD6124A8B} = {53DA1140-1AF7-4832-A764-767AD6124A8B}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8F711A4-BB7F-47F7-A781-4BDC92932834}"
 	ProjectSection(SolutionItems) = preProject

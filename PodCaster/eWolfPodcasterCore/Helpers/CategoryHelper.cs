@@ -1,31 +1,30 @@
 ﻿using eWolfPodcasterCore.Data;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace eWolfPodcasterCore.Helpers
 {
     public static class CategoryHelper
     {
-        public static string[] GetAll(ObservableCollection<ShowControl> shows)
+        public static IReadOnlyCollection<string> GetAllCategoriesFromShows(IList<ShowControl> shows)
         {
-            List<string> cats = new List<string>();
+            IList<string> cats = new List<string>();
             foreach (var show in shows)
             {
-                if (!string.IsNullOrWhiteSpace(show.ShowOption.Category))
+                if (string.IsNullOrWhiteSpace(show.ShowOption.Category))
+                    continue;
+
+                if (!cats.Contains(show.ShowOption.Category))
                 {
-                    if (!cats.Contains(show.ShowOption.Category))
-                    {
-                        cats.Add(show.ShowOption.Category);
-                    }
+                    cats.Add(show.ShowOption.Category);
                 }
             }
 
-            return cats.ToArray();
+            return (IReadOnlyCollection<string>)cats;
         }
 
-        public static ShowControl[] GetAllShowsInCategory(ObservableCollection<ShowControl> shows, string category)
+        public static IReadOnlyCollection<ShowControl> GetAllShowsForCategory(IList<ShowControl> shows, string category)
         {
-            List<ShowControl> showInCat = new List<ShowControl>();
+            IList<ShowControl> showInCat = new List<ShowControl>();
             foreach (var show in shows)
             {
                 if (show.ShowOption.Category == category)
@@ -34,7 +33,7 @@ namespace eWolfPodcasterCore.Helpers
                 }
             }
 
-            return showInCat.ToArray();
+            return (IReadOnlyCollection<ShowControl>)showInCat;
         }
     }
 }
