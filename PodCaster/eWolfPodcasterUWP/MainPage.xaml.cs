@@ -1,6 +1,7 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterUWP.BackGround;
 using eWolfPodcasterUWP.Data;
 using eWolfPodcasterUWP.Pages;
 using System;
@@ -19,7 +20,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace eWolfPodcasterUWP
 {
-    public sealed partial class MainPage : Page, INotifyPropertyChanged
+    public partial class MainPage : Page, INotifyPropertyChanged
     {
         private PodcastEpisode _currentPodcast = null;
         private ShowControl _currentShow = null;
@@ -41,19 +42,19 @@ namespace eWolfPodcasterUWP
 
             LoadShowsAsync();
 
-            //_shows.UpdateAllRSSFeeds();
+            CreateRssBackGround();
 
             PopulateTree();
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+            DispatcherTimer timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(100)
+            };
             timer.Tick += TimerTick;
             timer.Start();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public event SuspendingEventHandler Suspending;
 
         public string PodcastDescription
         {
@@ -63,16 +64,16 @@ namespace eWolfPodcasterUWP
             }
         }
 
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         async protected void OnSuspending(object sender, SuspendingEventArgs args)
         {
             SuspendingDeferral deferral = args.SuspendingOperation.GetDeferral();
             await SaveShowsAsync();
             deferral.Complete();
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
@@ -99,6 +100,12 @@ namespace eWolfPodcasterUWP
             }
         }
 
+        private async void CreateRssBackGround()
+        {
+            RssBackGround rbg = new RssBackGround(_shows);
+            await Task.Run(() => rbg.Runner());
+        }
+
         private void EpisodesItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count == 0)
@@ -113,14 +120,14 @@ namespace eWolfPodcasterUWP
             OnPropertyChanged("PodcastDescription");
         }
 
-        private async Task<bool> LoadShowsAsync()
+        private async void LoadShowsAsync()
         {
             try
             {
                 IFormatter formatter = new BinaryFormatter();
                 StorageFile sampleFile = await _localFolder.CreateFileAsync("Shows.list", CreationCollisionOption.OpenIfExists);
                 if (!sampleFile.IsAvailable)
-                    return true;
+                    return;
 
                 var stream = await sampleFile.OpenAsync(FileAccessMode.Read);
                 _shows = (Shows)formatter.Deserialize(stream.AsStream());
@@ -129,7 +136,6 @@ namespace eWolfPodcasterUWP
             {
                 // fail safe - can't find or load show
             }
-            return true;
         }
 
         private void PopulatePodCastsFromShow(ShowControl sc)
@@ -146,12 +152,40 @@ namespace eWolfPodcasterUWP
                     if (x.Hidden)
                         continue;
 
-                    IPodCastInfo pce = new PodcastEpisode();
-                    pce.EpisodeData = x;
+                    IPodCastInfo pce = new PodcastEpisode
+                    {
+                        EpisodeData = x
+                    };
                     _podcasts.Add(pce);
                 }
 
                 EpisodesItems.ItemsSource = _podcasts;
+            }
+        }
+
+        private void PopulateTree()
+        {
+            var allCategorys = CategoryHelper.GetAllCategoriesFromShows(_shows.ShowList);
+            IReadOnlyCollection<ShowControl> showsInCat;
+            TreeViewNode categoryNode;
+
+            foreach (string category in allCategorys)
+            {
+                categoryNode = new TreeViewNode
+                {
+                    Content = category
+                };
+                ShowsItemsTree.RootNodes.Add(categoryNode);
+
+                showsInCat = CategoryHelper.GetAllShowsForCategory(_shows.ShowList, category);
+                foreach (ShowControl show in showsInCat)
+                {
+                    TreeViewNode showNode = new TreeViewNode
+                    {
+                        Content = show
+                    };
+                    categoryNode.Children.Add(showNode);
+                }
             }
         }
 
@@ -174,42 +208,11 @@ namespace eWolfPodcasterUWP
             PopulatePodCastsFromShow(sc);
         }
 
-        private void TimerTick(object sender, object e)
-        {
-            if (MediaPlayer.Source != null && MediaPlayer.NaturalDuration.HasTimeSpan)
-            {
-                _currentPodcast.PlayedLength = MediaPlayer.Position.Ticks;
-            }
-        }
-
-        private void PopulateTree()
-        {
-            var allCategorys = CategoryHelper.GetAllCategoriesFromShows(_shows.ShowList);
-            IReadOnlyCollection<ShowControl> showsInCat;
-            TreeViewNode categoryNode;
-
-            foreach (string category in allCategorys)
-            {
-                categoryNode = new TreeViewNode();
-                categoryNode.Content = category;
-                ShowsItemsTree.RootNodes.Add(categoryNode);
-
-                showsInCat = CategoryHelper.GetAllShowsForCategory(_shows.ShowList, category);
-                foreach (ShowControl show in showsInCat)
-                {
-                    TreeViewNode showNode = new TreeViewNode();
-                    showNode.Content = show;
-                    categoryNode.Children.Add(showNode);
-                }
-            }
-        }
-
         private void ShowsItemsTree_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
         {
             var node = args.InvokedItem as TreeViewNode;
-            ShowControl sc = node.Content as ShowControl;
 
-            if (sc != null)
+            if (node.Content is ShowControl sc)
             {
                 _currentShow = sc;
                 PopulatePodCastsFromShow(sc);
@@ -217,6 +220,14 @@ namespace eWolfPodcasterUWP
             else
             {
                 _currentShow = null;
+            }
+        }
+
+        private void TimerTick(object sender, object e)
+        {
+            if (MediaPlayer.Source != null && MediaPlayer.NaturalDuration.HasTimeSpan)
+            {
+                _currentPodcast.PlayedLength = MediaPlayer.Position.Ticks;
             }
         }
     }

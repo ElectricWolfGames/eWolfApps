@@ -14,23 +14,35 @@ namespace eWolfPodcasterCore.Data
 
         public int Count
         {
-            get { return _shows.Count; }
+            get
+            {
+                return _shows.Count;
+            }
         }
 
         public ObservableCollection<ShowControl> ShowList
         {
-            get { return _shows; }
+            get
+            {
+                lock (_shows)
+                {
+                    return _shows;
+                }
+            }
         }
 
         public void Add(ShowControl show)
         {
-            if (_shows.Any((x) => x.RssFeed == show.RssFeed))
-                return;
+            lock (_shows)
+            {
+                if (_shows.Any((x) => x.RssFeed == show.RssFeed))
+                    return;
 
-            if (_shows.Any((x) => x.Title == show.Title))
-                return;
+                if (_shows.Any((x) => x.Title == show.Title))
+                    return;
 
-            _shows.Add(show);
+                _shows.Add(show);
+            }
         }
 
         public void AddNewShow()
@@ -65,30 +77,39 @@ namespace eWolfPodcasterCore.Data
 
         public void RemoveShow(ShowControl itemToRemove)
         {
-            _shows.Remove(itemToRemove);
+            lock (_shows)
+            {
+                _shows.Remove(itemToRemove);
+            }
         }
 
         public void Save(string outputFolder)
         {
-            PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
-            ph.SaveData(_shows);
+            lock (_shows)
+            {
+                PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
+                ph.SaveData(_shows);
+            }
         }
 
         public void UpdateAllRSSFeeds()
         {
-            foreach (ShowControl sc in _shows)
+            lock (_shows)
             {
-                if (sc.ShowOption.CheckforUpdates)
+                foreach (ShowControl sc in _shows)
                 {
-                    try
+                    if (sc.ShowOption.CheckforUpdates)
                     {
-                        XmlReader RSSFeed = sc.UpdateRSSFile();
-                        List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
-                        sc.UpdateEpisode(episodes);
-                    }
-                    catch
-                    {
-                        // can't read Feed
+                        try
+                        {
+                            XmlReader RSSFeed = sc.UpdateRSSFile();
+                            List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
+                            sc.UpdateEpisode(episodes);
+                        }
+                        catch
+                        {
+                            // can't read Feed
+                        }
                     }
                 }
             }
