@@ -34,7 +34,7 @@ namespace eWolfPodcasterUnitTests.Helpers
             IReadOnlyCollection<string> cats = CategoryHelper.GetAllCategoriesFromShows(shows);
             cats.Should().HaveCount(2);
             cats.Should().Contain("Cat Two");
-            cats.Should().Contain("Cat One test");
+            cats.Should().Contain("Cat One");
         }
 
         [Test]
