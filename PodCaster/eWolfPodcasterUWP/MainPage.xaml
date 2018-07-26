@@ -8,6 +8,27 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
+        <Style x:Key="TreeViewStyle1" TargetType="TreeView">
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TreeView">
+                        <TreeViewList x:Name="ListControl" AllowDrop="True"
+                              CanReorderItems="True" CanDragItems="True"
+                              ItemContainerStyle="{StaticResource TreeViewItemStyle}"
+                              ItemTemplate="{StaticResource TreeViewItemDataTemplate}">
+                            <TreeViewList.ItemContainerTransitions>
+                                <TransitionCollection>
+                                    <ContentThemeTransition />
+                                    <ReorderThemeTransition />
+                                    <EntranceThemeTransition IsStaggeringEnabled="False" />
+                                </TransitionCollection>
+                            </TreeViewList.ItemContainerTransitions>
+                        </TreeViewList>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="MyButton" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -25,24 +46,14 @@
            OpenPaneLength="350">
         <SplitView.Pane>
             <Grid Background="{ThemeResource AppBarSeparatorForegroundThemeBrush}">
-                <TreeView x:Name="ShowsItemsTree" HorizontalAlignment="Center" Margin="0,122,0,0" VerticalAlignment="Top" Width="290" Height="502" Foreground="Black" ItemInvoked="ShowsItemsTree_ItemInvoked">
-                </TreeView>
-                <ListView x:Name="ShowsItems"
+                <TreeView x:Name="ShowsItemsTree"
                           HorizontalAlignment="Center"
-                          Height="371"
+                          Margin="0,122,0,0"
                           VerticalAlignment="Top"
-                          Width="312"
-                          RenderTransformOrigin="0.48,0.504"
-                          Background="{ThemeResource PivotNavButtonPressedBorderThemeBrush}" Margin="0,629,0,0" SelectionChanged="ShowsItems_SelectionChanged">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding TitleCount}" Width="220"><Run Text="Title" /></TextBlock>
-                                <TextBlock Text="{Binding Count}" Width="30" HorizontalAlignment="Right"><Run Text="Count" /></TextBlock>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                          Width="310" Height="868"
+                          Foreground="#FFD63F3F"
+                          ItemInvoked="ShowsItemsTree_ItemInvoked" FocusVisualSecondaryBrush="#FF6883BD" FocusVisualPrimaryBrush="#FF76B96B" BorderBrush="#FFF59E9E" Background="#FF954141">
+                </TreeView>
                 <Button Click="ButtonAddShowClick"
                         Margin="20,27,0,0"
                         Height="64" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top">

@@ -22,6 +22,7 @@ namespace eWolfPodcasterUWP
     public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
         private PodcastEpisode _currentPodcast = null;
+        private ShowControl _currentShow = null;
         private StorageFolder _localFolder;
         private ApplicationDataContainer _localSettings;
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
@@ -40,9 +41,7 @@ namespace eWolfPodcasterUWP
 
             LoadShowsAsync();
 
-            _shows.UpdateAllRSSFeeds();
-
-            AddShowItems();
+            //_shows.UpdateAllRSSFeeds();
 
             PopulateTree();
 
@@ -76,11 +75,6 @@ namespace eWolfPodcasterUWP
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void AddShowItems()
-        {
-            ShowsItems.ItemsSource = _shows.ShowList;
-        }
-
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
         {
             var parameters = new NewShowParams
@@ -96,14 +90,13 @@ namespace eWolfPodcasterUWP
 
         private void ButtonSubShowClick(object sender, RoutedEventArgs e)
         {
-            var selectedItems = ShowsItems.SelectedItems;
-            if (selectedItems.Count == 0)
-                return;
-
-            ShowControl selectedItem = (ShowControl)selectedItems[0];
-            _shows.RemoveShow(selectedItem);
-
-            SaveShowsAsync();
+            if (_currentShow != null)
+            {
+                _shows.RemoveShow(_currentShow);
+                _currentShow = null;
+                SaveShowsAsync();
+                PopulateTree();
+            }
         }
 
         private void EpisodesItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -206,7 +199,6 @@ namespace eWolfPodcasterUWP
                 {
                     TreeViewNode showNode = new TreeViewNode();
                     showNode.Content = show;
-
                     categoryNode.Children.Add(showNode);
                 }
             }
@@ -219,7 +211,12 @@ namespace eWolfPodcasterUWP
 
             if (sc != null)
             {
+                _currentShow = sc;
                 PopulatePodCastsFromShow(sc);
+            }
+            else
+            {
+                _currentShow = null;
             }
         }
     }
