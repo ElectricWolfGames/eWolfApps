@@ -17,7 +17,7 @@ namespace eWolfPodcasterUnitTests.Helpers
             ShowControl s = new ShowControl()
             {
                 Title = "My Title A",
-                RssFeed = "Somewhere"           
+                RssFeed = "Somewhere"
             };
             s.ShowOption.Category = "Cat One";
 
@@ -34,7 +34,7 @@ namespace eWolfPodcasterUnitTests.Helpers
             IReadOnlyCollection<string> cats = CategoryHelper.GetAllCategoriesFromShows(shows);
             cats.Should().HaveCount(2);
             cats.Should().Contain("Cat Two");
-            cats.Should().Contain("Cat One");
+            cats.Should().Contain("Cat One test");
         }
 
         [Test]
