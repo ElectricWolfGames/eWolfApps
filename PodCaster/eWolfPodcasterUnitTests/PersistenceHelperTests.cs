@@ -47,9 +47,11 @@ namespace eWolfPodcasterUnitTests
         {
             RemoveTempFolder();
 
-            TempSaveable tempSaveable = new TempSaveable();
-            tempSaveable.Name = "MyName";
-            tempSaveable.OtherData = "OtherData";
+            TempSaveable tempSaveable = new TempSaveable
+            {
+                Name = "MyName",
+                OtherData = "OtherData"
+            };
             PersistenceHelper<TempSaveable> ph = new PersistenceHelper<TempSaveable>(GetOutputFolder());
             ph.SaveData(new List<ISaveable>() { tempSaveable });
 
@@ -78,6 +80,7 @@ namespace eWolfPodcasterUnitTests
             }
             catch
             {
+                // Fail safe
             }
         }
 

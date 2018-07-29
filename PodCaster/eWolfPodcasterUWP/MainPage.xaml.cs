@@ -4,6 +4,7 @@ using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterUWP.BackGround;
 using eWolfPodcasterUWP.Data;
 using eWolfPodcasterUWP.Pages;
+using eWolfPodcasterUWP.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +23,7 @@ namespace eWolfPodcasterUWP
 {
     public partial class MainPage : Page, INotifyPropertyChanged
     {
-        private PodcastEpisode _currentPodcast = null;
+        private PodcastEpisodeUC _currentPodcast = null;
         private ShowControl _currentShow = null;
         private StorageFolder _localFolder;
         private ApplicationDataContainer _localSettings;
@@ -111,7 +112,7 @@ namespace eWolfPodcasterUWP
             if (e.AddedItems.Count == 0)
                 return;
 
-            _currentPodcast = e.AddedItems[0] as PodcastEpisode;
+            _currentPodcast = e.AddedItems[0] as PodcastEpisodeUC;
 
             MediaPlayer.Source = new Uri(_currentPodcast.UrlToPlay);
             MediaPlayer.AutoPlay = true;
@@ -152,10 +153,7 @@ namespace eWolfPodcasterUWP
                     if (x.Hidden)
                         continue;
 
-                    IPodCastInfo pce = new PodcastEpisode
-                    {
-                        EpisodeData = x
-                    };
+                    IPodCastInfo pce = new PodcastEpisodeUC(x);
                     _podcasts.Add(pce);
                 }
 
@@ -228,6 +226,13 @@ namespace eWolfPodcasterUWP
             if (MediaPlayer.Source != null && MediaPlayer.NaturalDuration.HasTimeSpan)
             {
                 _currentPodcast.PlayedLength = MediaPlayer.Position.Ticks;
+
+                double totalWidth = 700;
+
+                // TOTO: remove the totalWidth = 781 magic number
+                totalWidth /= MediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
+                totalWidth *= MediaPlayer.Position.TotalMilliseconds;
+                _currentPodcast.PlayedLengthScaled = (float)totalWidth;
             }
         }
     }

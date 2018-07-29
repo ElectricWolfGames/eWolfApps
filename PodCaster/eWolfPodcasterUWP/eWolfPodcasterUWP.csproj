@@ -103,9 +103,11 @@
     <Compile Include="Pages\AddNewShow.xaml.cs">
       <DependentUpon>AddNewShow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Data\PodcastEpisode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BackGround\RssBackGround.cs" />
+    <Compile Include="UserControls\PodcastEpisodeUC.xaml.cs">
+      <DependentUpon>PodcastEpisodeUC.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -140,6 +142,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\AddNewShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PodcastEpisodeUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,28 +1,39 @@
 ﻿using eWolfPodcasterCore.Interfaces;
 using System;
+using System.ComponentModel;
+using Windows.UI.Xaml.Controls;
 
-namespace eWolfPodcasterUWP.Data
+namespace eWolfPodcasterUWP.UserControls
 {
-    public class PodcastEpisode : IPodCastInfo
+    public sealed partial class PodcastEpisodeUC : UserControl, IPodCastInfo, INotifyPropertyChanged
     {
-        public PodcastEpisode()
+        public PodcastEpisodeUC(IPodCastInfo item)
         {
+            EpisodeData = item;
+            DataContext = this;
+
+            this.InitializeComponent();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Description
         {
-            get
-            {
-                return EpisodeData.Description;
-            }
+            get { return EpisodeData.Description; }
         }
 
         public IPodCastInfo EpisodeData { get; set; }
 
         public long PlayedLength
         {
-            get { return EpisodeData.PlayedLength; }
-            set { EpisodeData.PlayedLength = value; }
+            get
+            {
+                return EpisodeData.PlayedLength;
+            }
+            set
+            {
+                EpisodeData.PlayedLength = value;
+            }
         }
 
         public double PlayedLengthScaled
@@ -35,6 +46,7 @@ namespace eWolfPodcasterUWP.Data
             set
             {
                 EpisodeData.PlayedLengthScaled = value;
+                OnPropertyChanged("PlayedLengthScaled");
             }
         }
 
@@ -100,6 +112,11 @@ namespace eWolfPodcasterUWP.Data
         public bool IsOffLine()
         {
             return EpisodeData.IsOffLine();
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
