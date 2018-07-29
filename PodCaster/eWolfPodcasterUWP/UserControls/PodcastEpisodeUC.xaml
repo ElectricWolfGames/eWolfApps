@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     d:DesignHeight="46"
     d:DesignWidth="700" Background="#FF24571C">
-    <Grid Background="#FF1E361D" BorderBrush="Black">
+    <Grid Background="#FF1F361E" BorderBrush="Black">
         <TextBlock Text="{Binding Title}" Foreground="White" Width="700" />
         <TextBlock Text="{Binding Description}" Margin="10,20,1,0" FontSize="10" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="22" Width="690" />
         <Rectangle HorizontalAlignment="Left" Height="10" Margin="0,35,0,0" VerticalAlignment="Center" Width="{Binding PlayedLengthScaled}" Fill="Yellow" />

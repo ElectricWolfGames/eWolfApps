@@ -29,6 +29,7 @@ namespace eWolfPodcasterUWP
         private ApplicationDataContainer _localSettings;
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
         private Shows _shows = new Shows();
+        private long _setPlayBackTime = -1;
 
         public MainPage()
         {
@@ -114,10 +115,13 @@ namespace eWolfPodcasterUWP
 
             _currentPodcast = e.AddedItems[0] as PodcastEpisodeUC;
 
-            MediaPlayer.Source = new Uri(_currentPodcast.UrlToPlay);
+            MediaPlayer.Stop();
             MediaPlayer.AutoPlay = true;
-
+            MediaPlayer.Source = new Uri(_currentPodcast.UrlToPlay);
             MediaPlayer.Position = new TimeSpan(_currentPodcast.PlayedLength);
+            _setPlayBackTime = _currentPodcast.PlayedLength;
+            MediaPlayer.Play();
+
             OnPropertyChanged("PodcastDescription");
         }
 
@@ -225,11 +229,23 @@ namespace eWolfPodcasterUWP
         {
             if (MediaPlayer.Source != null && MediaPlayer.NaturalDuration.HasTimeSpan)
             {
+                if (_setPlayBackTime > 0)
+                {
+                    if (MediaPlayer.Position.Ticks < _setPlayBackTime)
+                    {
+                        MediaPlayer.Position = new TimeSpan(_setPlayBackTime);
+                        return;
+                    }
+                    else
+                    {
+                        _setPlayBackTime = -1;
+                    }
+                }
+
                 _currentPodcast.PlayedLength = MediaPlayer.Position.Ticks;
 
                 double totalWidth = 700;
 
-                // TOTO: remove the totalWidth = 781 magic number
                 totalWidth /= MediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
                 totalWidth *= MediaPlayer.Position.TotalMilliseconds;
                 _currentPodcast.PlayedLengthScaled = (float)totalWidth;

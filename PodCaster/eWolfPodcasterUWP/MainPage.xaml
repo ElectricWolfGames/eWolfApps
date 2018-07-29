@@ -77,7 +77,7 @@
                 <RowDefinition Height="25*" />
                 <RowDefinition Height="75*" />
             </Grid.RowDefinitions>
-            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="#BD000000" Margin="0,10,0,0" Grid.Row="3" SelectionChanged="EpisodesItems_SelectionChanged">
+            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="#BD031703" Margin="0,10,0,0" Grid.Row="3" SelectionChanged="EpisodesItems_SelectionChanged">
             </ListView>
             <Grid>
                 <MediaElement x:Name="MediaPlayer"
