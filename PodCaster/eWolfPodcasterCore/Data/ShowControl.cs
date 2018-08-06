@@ -8,11 +8,6 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class ShowControl : Show, ISaveable
     {
-        public string GetFileName
-        {
-            get { return Title + ".Show"; }
-        }
-
         public string TitleCount
         {
             get
@@ -20,6 +15,11 @@ namespace eWolfPodcasterCore.Data
                 return Title + $" {Count}";
             }
         }
+        public string GetFileName
+        {
+            get { return Title + ".Show"; }
+        }
+
 
         public override string ToString()
         {
