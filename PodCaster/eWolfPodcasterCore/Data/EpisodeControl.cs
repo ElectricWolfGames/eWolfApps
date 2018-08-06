@@ -36,6 +36,37 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public void DownloadAsMp3()
+        {
+            // will do this soon.
+        }
+
+        public string GetOffLineFileName()
+        {
+            return "filename";
+        }
+
+        public bool IsOffLine()
+        {
+            return false;
+        }
+
+        public bool SameAs(EpisodeControl newEpisode)
+        {
+            if (Title == newEpisode.Title)
+                return true;
+
+            if (PodcastURL == newEpisode.PodcastURL)
+                return true;
+
+            return false;
+        }
+
+        public void SetPublishDate(string publisedData)
+        {
+            PublishedDate = DataHelper.ParseDate(publisedData);
+        }
+
         public void SetTextNodeData(string elementName, string value)
         {
             switch (elementName)
@@ -70,37 +101,6 @@ namespace eWolfPodcasterCore.Data
 
                     break;
             }
-        }
-
-        public bool SameAs(EpisodeControl newEpisode)
-        {
-            if (Title == newEpisode.Title)
-                return true;
-
-            if (PodcastURL == newEpisode.PodcastURL)
-                return true;
-
-            return false;
-        }
-
-        public void SetPublishDate(string publisedData)
-        {
-            PublishedDate = DataHelper.ParseDate(publisedData);
-        }
-
-        public bool IsOffLine()
-        {
-            return false;
-        }
-
-        public string GetOffLineFileName()
-        {
-            return "filename";
-        }
-
-        public void DownloadAsMp3()
-        {
-            // will do this soon.
         }
     }
 }
