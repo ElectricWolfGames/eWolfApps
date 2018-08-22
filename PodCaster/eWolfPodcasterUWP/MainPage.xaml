@@ -46,14 +46,19 @@
            OpenPaneLength="350">
         <SplitView.Pane>
             <Grid Background="{ThemeResource AppBarSeparatorForegroundThemeBrush}">
+
                 <TreeView x:Name="ShowsItemsTree"
                           HorizontalAlignment="Center"
                           Margin="0,122,0,0"
                           VerticalAlignment="Top"
-                          Width="310" Height="868"
+                          Width="330" Height="868"
                           Foreground="#FFD63F3F"
-                          ItemInvoked="ShowsItemsTree_ItemInvoked" FocusVisualSecondaryBrush="#FF6883BD" FocusVisualPrimaryBrush="#FF76B96B" BorderBrush="#FFF59E9E" Background="#FF954141">
+                          ItemInvoked="ShowsItemsTree_ItemInvoked"
+                          FocusVisualSecondaryBrush="#FF6883BD"
+                          FocusVisualPrimaryBrush="#FF76B96B"
+                          BorderBrush="#FFF59E9E" Background="#FF954141">
                 </TreeView>
+
                 <Button Click="ButtonAddShowClick"
                         Margin="20,27,0,0"
                         Height="64" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -69,6 +74,7 @@
                         <Image Source="Images/SubItem.png" />
                     </StackPanel>
                 </Button>
+                <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" />
             </Grid>
         </SplitView.Pane>
 
@@ -77,8 +83,7 @@
                 <RowDefinition Height="25*" />
                 <RowDefinition Height="75*" />
             </Grid.RowDefinitions>
-            <ListView x:Name="EpisodesItems" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.48,0.504" Background="#BD031703" Margin="0,10,0,0" Grid.Row="3" SelectionChanged="EpisodesItems_SelectionChanged">
-            </ListView>
+            <ListView x:Name="EpisodesItems" RenderTransformOrigin="0.48,0.504" Background="#BD031703" Margin="0,10,10,0" Grid.Row="1" SelectionChanged="EpisodesItems_SelectionChanged" />
             <Grid>
                 <MediaElement x:Name="MediaPlayer"
                           HorizontalAlignment="Left"
@@ -89,7 +94,7 @@
                 <TextBlock x:Name ="_currentPodCastDescription"
                        Text="{Binding PodcastDescription, Mode=OneWay}"
                        HorizontalAlignment="Left" Height="137" Margin="10,109,0,0"
-                       TextWrapping="Wrap" VerticalAlignment="Top" Width="1124" />
+                       TextWrapping="Wrap" VerticalAlignment="Top" Width="710" />
             </Grid>
         </Grid>
     </SplitView>

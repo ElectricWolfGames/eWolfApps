@@ -171,6 +171,8 @@ namespace eWolfPodcasterUWP
             IReadOnlyCollection<ShowControl> showsInCat;
             TreeViewNode categoryNode;
 
+            ShowsItemsTree.RootNodes.Clear();
+
             foreach (string category in allCategorys)
             {
                 categoryNode = new TreeViewNode
@@ -200,6 +202,7 @@ namespace eWolfPodcasterUWP
             formatter.Serialize(stream, _shows);
 
             await FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
+            PopulateTree();
             return true;
         }
 
