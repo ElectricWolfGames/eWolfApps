@@ -1,5 +1,4 @@
 ﻿using eWolfPodcasterCore.Data;
-using System;
 using System.Threading;
 
 namespace eWolfPodcasterUWP.BackGround
