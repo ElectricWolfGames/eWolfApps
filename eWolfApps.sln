@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PodCaster", "PodCaster", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterUI", "PodCaster\eWolfPodcasterUI\eWolfPodcasterUI.csproj", "{DDDBF813-0227-43E4-854C-0C9153C091D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterUnitTests", "PodCaster\eWolfPodcasterUnitTests\eWolfPodcasterUnitTests.csproj", "{4BE384AF-0600-4182-A959-2E35E0828FAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPodcasterCoreUnitTests", "PodCaster\eWolfPodcasterUnitTests\eWolfPodcasterCoreUnitTests.csproj", "{4BE384AF-0600-4182-A959-2E35E0828FAF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{53DA1140-1AF7-4832-A764-767AD6124A8B} = {53DA1140-1AF7-4832-A764-767AD6124A8B}
 	EndProjectSection
