@@ -15,8 +15,10 @@ namespace eWolfPodcasterCoreUnitTests.Helpers
         public void ShouldParse4Episodes()
         {
             XmlReader reader = null;
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.DtdProcessing = DtdProcessing.Parse;
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
 
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "eWolfPodcasterCoreUnitTests.Examples.4Episodes.xml";

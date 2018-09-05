@@ -18,13 +18,17 @@ namespace eWolfPodcasterCoreUnitTests.Data
         [Test]
         public void ShouldSeeEpisodesAreSame()
         {
-            EpisodeControl ec = new EpisodeControl();
-            ec.Title = "Title";
-            ec.PodcastURL = "PodcastURL";
+            EpisodeControl ec = new EpisodeControl
+            {
+                Title = "Title",
+                PodcastURL = "PodcastURL"
+            };
 
-            EpisodeControl ecB = new EpisodeControl();
-            ecB.Title = "Title";
-            ecB.PodcastURL = "PodcastURL";
+            EpisodeControl ecB = new EpisodeControl
+            {
+                Title = "Title",
+                PodcastURL = "PodcastURL"
+            };
 
             ec.SameAs(ecB).Should().BeTrue();
         }
