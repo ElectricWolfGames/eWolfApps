@@ -64,7 +64,7 @@ namespace eWolfPodcasterCore.Data
 
         public void SetPublishDate(string publisedData)
         {
-            PublishedDate = DataHelper.ParseDate(publisedData);
+            PublishedDate = DateTimeHelper.ParseDate(publisedData);
         }
 
         public void SetTextNodeData(string elementName, string value)

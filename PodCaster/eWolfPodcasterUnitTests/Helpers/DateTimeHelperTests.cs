@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace eWolfPodcasterCoreUnitTests.Helpers
 {
-    public class DataHelperTests
+    public class DateTimeHelperTests
     {
         //[Ignore("Another problem with datetime conversion")]
         [TestCase("Sat, 31 Dec 2016 00:08:57 +0000", "31/12/2016 00:08:57")]
@@ -14,7 +14,7 @@ namespace eWolfPodcasterCoreUnitTests.Helpers
         [TestCase("Tue, 18 May 2015 18:00:01 GMT", "18/05/2015 18:00:01")]
         public void ShouldParseValidDates(string date, string expected)
         {
-            DateTime dt = DataHelper.ParseDate(date);
+            DateTime dt = DateTimeHelper.ParseDate(date);
             dt.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture).Should().Be(expected);
         }
     }

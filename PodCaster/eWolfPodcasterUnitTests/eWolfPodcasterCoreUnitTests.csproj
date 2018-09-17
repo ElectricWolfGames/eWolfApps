@@ -96,7 +96,7 @@
     <Compile Include="Data\ShowsTests.cs" />
     <Compile Include="Helpers\CategoryHelperTests.cs" />
     <Compile Include="Helpers\DataCleansingTests.cs" />
-    <Compile Include="Helpers\DataHelperTests.cs" />
+    <Compile Include="Helpers\DateTimeHelperTests.cs" />
     <Compile Include="Helpers\ReadEpisodesTests.cs" />
     <Compile Include="PersistenceHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

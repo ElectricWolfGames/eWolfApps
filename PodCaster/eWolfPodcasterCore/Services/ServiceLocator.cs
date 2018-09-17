@@ -10,9 +10,10 @@ namespace eWolfPodcasterCore.Services
 
         private ServiceLocator()
         {
-            services = new Dictionary<object, object>();
-
-            services.Add(typeof(CategoryHolderService), new CategoryHolderService());
+            services = new Dictionary<object, object>
+            {
+                { typeof(CategoryHolderService), new CategoryHolderService() }
+            };
         }
 
         public static ServiceLocator Instance
@@ -33,8 +34,9 @@ namespace eWolfPodcasterCore.Services
             {
                 return (T)services[typeof(T)];
             }
-            catch (KeyNotFoundException)
+            catch
             {
+                // Fail safe
             }
             return default(T);
         }
