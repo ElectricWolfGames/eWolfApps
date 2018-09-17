@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Services;
 using eWolfPodcasterUWP.Data;
 using System;
 using System.ComponentModel;
@@ -28,19 +29,10 @@ namespace eWolfPodcasterUWP.Pages
 
         private void PopulateCategory()
         {
-            CategoryList.Items.Add("Music");
-            CategoryList.Items.Add("Developer");
-            CategoryList.Items.Add("Science");
-            CategoryList.Items.Add("Space");
-            CategoryList.Items.Add("History");
-            CategoryList.Items.Add("Tech");
-            CategoryList.Items.Add("Drama");
-            CategoryList.Items.Add("Nature");
-            CategoryList.Items.Add("Food");
-            CategoryList.Items.Add("SciFi");
-            CategoryList.Items.Add("Gaming");
-            CategoryList.Items.Add("Others");
-            CategoryList.Items.Add("Misc");
+            foreach (string category in CategoryHolderService.GetAllCategories)
+            {
+                CategoryList.Items.Add(category);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

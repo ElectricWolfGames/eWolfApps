@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using eWolfPodcasterCore.Services;
+using System.ComponentModel;
 using System.Windows;
 
 namespace eWolfPodcasterUI.Pages
@@ -8,13 +9,14 @@ namespace eWolfPodcasterUI.Pages
     /// </summary>
     public partial class AddNewShow : Window, INotifyPropertyChanged
     {
-        private string _showName = string.Empty;
         private string _rssFeed = string.Empty;
+        private string _showName = string.Empty;
 
         public AddNewShow()
         {
             InitializeComponent();
             DataContext = this;
+            PopulateCategory();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -67,6 +69,14 @@ namespace eWolfPodcasterUI.Pages
         {
             Apply = true;
             Close();
+        }
+
+        private void PopulateCategory()
+        {
+            foreach (string category in CategoryHolderService.GetAllCategories)
+            {
+                CategoryList.Items.Add(category);
+            }
         }
     }
 }
