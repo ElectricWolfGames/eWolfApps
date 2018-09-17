@@ -15,11 +15,11 @@ namespace eWolfPodcasterCore.Data
                 return Title + $" {Count}";
             }
         }
+
         public string GetFileName
         {
             get { return Title + ".Show"; }
         }
-
 
         public override string ToString()
         {
