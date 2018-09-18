@@ -3,7 +3,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace eWolfPodcasterUnitTests.Data
+namespace eWolfPodcasterCoreUnitTests.Data
 {
     public class ShowControlTests
     {

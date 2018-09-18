@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Xml;
 
-[assembly: InternalsVisibleTo("eWolfPodcasterUnitTests")]
+[assembly: InternalsVisibleTo("eWolfPodcasterCoreUnitTests")]
 
 namespace eWolfPodcasterCore.Helpers
 {

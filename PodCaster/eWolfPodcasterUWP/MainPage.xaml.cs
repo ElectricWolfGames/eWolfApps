@@ -28,8 +28,8 @@ namespace eWolfPodcasterUWP
         private StorageFolder _localFolder;
         private ApplicationDataContainer _localSettings;
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
-        private Shows _shows = new Shows();
         private long _setPlayBackTime = -1;
+        private Shows _shows = new Shows();
 
         public MainPage()
         {
@@ -171,6 +171,8 @@ namespace eWolfPodcasterUWP
             IReadOnlyCollection<ShowControl> showsInCat;
             TreeViewNode categoryNode;
 
+            ShowsItemsTree.RootNodes.Clear();
+
             foreach (string category in allCategorys)
             {
                 categoryNode = new TreeViewNode
@@ -200,6 +202,7 @@ namespace eWolfPodcasterUWP
             formatter.Serialize(stream, _shows);
 
             await FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
+            PopulateTree();
             return true;
         }
 
@@ -222,6 +225,7 @@ namespace eWolfPodcasterUWP
             else
             {
                 _currentShow = null;
+                node.IsExpanded = !node.IsExpanded;
             }
         }
 

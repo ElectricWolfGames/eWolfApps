@@ -7,7 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace eWolfPodcasterUnitTests.Helpers
+namespace eWolfPodcasterCoreUnitTests.Helpers
 {
     public class ReadEpisodesTests
     {
@@ -15,11 +15,13 @@ namespace eWolfPodcasterUnitTests.Helpers
         public void ShouldParse4Episodes()
         {
             XmlReader reader = null;
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.DtdProcessing = DtdProcessing.Parse;
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
 
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "eWolfPodcasterUnitTests.Examples.4Episodes.xml";
+            var resourceName = "eWolfPodcasterCoreUnitTests.Examples.4Episodes.xml";
 
             List<EpisodeControl> episodes;
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))

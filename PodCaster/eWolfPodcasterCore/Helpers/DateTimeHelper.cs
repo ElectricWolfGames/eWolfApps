@@ -4,9 +4,9 @@ using System.Globalization;
 
 namespace eWolfPodcasterCore.Helpers
 {
-    public static class DataHelper
+    public static class DateTimeHelper
     {
-        private static List<string> _textToRemove = new List<string>() { "EDT", "EST", "GMT" };
+        private static readonly List<string> _textToRemove = new List<string>() { "EDT", "EST", "GMT" };
 
         public static DateTime ParseDate(string publisedData)
         {

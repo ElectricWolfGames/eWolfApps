@@ -1,11 +1,11 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("eWolfPodcasterUnitTests")]
+[assembly: AssemblyTitle("eWolfPodcasterCoreUnitTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ElecticWolf")]
-[assembly: AssemblyProduct("eWolfPodcasterUnitTests")]
+[assembly: AssemblyProduct("eWolfPodcasterCoreUnitTests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
