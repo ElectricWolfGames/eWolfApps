@@ -24,24 +24,30 @@ namespace eWolfPodcasterCore
             string[] files = Directory.GetFiles(_outputFolder);
             foreach (string file in files)
             {
-                Stream stream = null;
-                try
-                {
-                    IFormatter formatter = new BinaryFormatter();
-                    stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
-                    T sd = (T)formatter.Deserialize(stream);
-                    stream.Close();
-
-                    items.Add(sd);
-                }
-                catch
-                {
-                    if (stream != null)
-                        stream.Close();
-                }
+                items.Add(LoadDataSingle(file));
             }
 
             return items;
+        }
+
+        public T LoadDataSingle(string file)
+        {
+            Stream stream = null;
+            try
+            {
+                IFormatter formatter = new BinaryFormatter();
+                stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+                T sd = (T)formatter.Deserialize(stream);
+                stream.Close();
+
+                return sd;
+            }
+            catch
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+            return default(T);
         }
 
         public bool SaveData(IEnumerable<ISaveable> saveableItems)
@@ -49,26 +55,32 @@ namespace eWolfPodcasterCore
             bool allSaved = true;
             foreach (ISaveable saveable in saveableItems)
             {
-                string outputFileName = Path.Combine(_outputFolder, saveable.GetFileName);
-                IFormatter formatter = new BinaryFormatter();
-                Stream stream = null;
-                try
-                {
-                    stream = StreamFactory.GetStream(outputFileName);
-                    if (SaveToStream(stream, formatter, saveable))
-                        stream.Close();
-                    else
-                        allSaved = false;
-                }
-                catch
-                {
-                    if (stream != null)
-                        stream.Close();
-
-                    allSaved = false;
-                }
+                allSaved &= SaveDataSingle(saveable);
             }
             return allSaved;
+        }
+
+        public bool SaveDataSingle(ISaveable saveable)
+        {
+            string outputFileName = Path.Combine(_outputFolder, saveable.GetFileName);
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = null;
+            try
+            {
+                stream = StreamFactory.GetStream(outputFileName);
+                if (SaveToStream(stream, formatter, saveable))
+                    stream.Close();
+                else
+                    return false;
+            }
+            catch
+            {
+                if (stream != null)
+                    stream.Close();
+
+                return false;
+            }
+            return true;
         }
 
         private static bool SaveToStream(Stream stream, IFormatter formatter, object objectToSave)
