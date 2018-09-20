@@ -35,8 +35,10 @@ namespace eWolfPodcasterUI
 
             AddShowItems();
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+            DispatcherTimer timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(100)
+            };
             timer.Tick += TimerTick;
             timer.Start();
         }
@@ -66,11 +68,7 @@ namespace eWolfPodcasterUI
 
         protected void OnPropertyChanged(string name)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         private void AddShowItems()
@@ -95,8 +93,10 @@ namespace eWolfPodcasterUI
 
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
         {
-            AddNewShow addNewShow = new AddNewShow();
-            addNewShow.ShowName = "new show name";
+            AddNewShow addNewShow = new AddNewShow
+            {
+                ShowName = "new show name"
+            };
             addNewShow.ShowDialog();
 
             if (addNewShow.Apply)
@@ -150,8 +150,10 @@ namespace eWolfPodcasterUI
                     if (x.Hidden)
                         continue;
 
-                    IPodCastInfo pce = new PodcastEpisode();
-                    pce.EpisodeData = x;
+                    IPodCastInfo pce = new PodcastEpisode
+                    {
+                        EpisodeData = x
+                    };
                     _podcasts.Add(pce);
                 }
 
