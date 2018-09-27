@@ -10,7 +10,7 @@ namespace eWolfCommon.Diagnostics
 
         private Logger()
         {
-            _fileName = @"T:\NGMData1\Reserved\IT Development\Karl Gillott\ToolsLogs\" + System.Environment.MachineName + "_";
+            _fileName = @"SomeWhere\" + System.Environment.MachineName + "_";
         }
 
         public static Logger Instance
