@@ -11,7 +11,7 @@ namespace SystemTrayTools
     public partial class Form1 : Form
     {
         private string _clipBoardCopy = string.Empty;
-        private MenuActionsHolder _menuActionsHolder;
+        private MenuActionsHolder _menuActionsHolder = new MenuActionsHolder();
         private List<IIntervalUpdates> _updates;
 
         public Form1()

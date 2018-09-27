@@ -22,7 +22,7 @@ namespace SystemTrayTools.Actions
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("System Tray Tool");
 
-            sb.AppendLine("Built on ");
+            sb.AppendLine("Built on [Need to add the build date here]");
 
             MessageBox.Show(sb.ToString(), "About Box", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

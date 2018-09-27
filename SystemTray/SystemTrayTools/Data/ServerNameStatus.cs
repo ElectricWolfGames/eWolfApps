@@ -10,17 +10,17 @@ namespace SystemTrayTools.Data
             // Need to take this from a locla file - so we don't need to commit the names
         };
 
-        public static List<ServerNameStatus> ServerList => serverList;
-        public string Address { get; set; }
-        public string Name { get; set; }
-        public string Status { get; set; }
-
         public ServerNameStatus(string name, string address)
         {
             Name = name;
             Address = address;
             Status = "Unkonwn";
         }
+
+        public static List<ServerNameStatus> ServerList => serverList;
+        public string Address { get; set; }
+        public string Name { get; set; }
+        public string Status { get; set; }
 
         internal string OutputData()
         {

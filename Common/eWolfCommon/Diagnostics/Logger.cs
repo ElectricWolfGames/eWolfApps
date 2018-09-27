@@ -10,7 +10,7 @@ namespace eWolfCommon.Diagnostics
 
         private Logger()
         {
-            _fileName = @"SomeWhere\" + System.Environment.MachineName + "_";
+            _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + System.Environment.MachineName + "_");
         }
 
         public static Logger Instance

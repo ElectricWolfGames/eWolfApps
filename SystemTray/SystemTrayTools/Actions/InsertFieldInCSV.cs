@@ -9,17 +9,15 @@ namespace SystemTrayTools.Actions
 {
     public class InsertFieldInCSV : IMenuAction
     {
-        public MenuItem GetMeunItem()
-        {
-            return new MenuItem("InsertField", new EventHandler(handler_method));
-        }
-
         public int OrderIndex
         {
             get { return 3; }
         }
 
-        #region Private Methods
+        public MenuItem GetMeunItem()
+        {
+            return new MenuItem("InsertField", new EventHandler(handler_method));
+        }
 
         private void handler_method(object sender, EventArgs e)
         {
@@ -29,7 +27,5 @@ namespace SystemTrayTools.Actions
 
             ClipboardHelpers.SetTextForClipboard(string.Join(",", fields));
         }
-
-        #endregion Private Methods
     }
 }
