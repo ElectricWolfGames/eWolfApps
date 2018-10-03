@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using eWolfPodcasterCore.Data;
+using System;
+using System.Collections.Generic;
 
 namespace eWolfPodcasterCore.Services
 {
@@ -12,7 +14,8 @@ namespace eWolfPodcasterCore.Services
         {
             services = new Dictionary<object, object>
             {
-                { typeof(CategoryHolderService), new CategoryHolderService() }
+                { typeof(CategoryHolderService), new CategoryHolderService() },
+                { typeof(Shows), new Shows() }
             };
         }
 
@@ -39,6 +42,11 @@ namespace eWolfPodcasterCore.Services
                 // Fail safe
             }
             return default(T);
+        }
+
+        public void SetService<T>(T shows)
+        {
+            services[typeof(T)] = shows;
         }
     }
 }

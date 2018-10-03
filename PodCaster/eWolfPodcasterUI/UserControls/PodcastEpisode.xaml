@@ -28,6 +28,6 @@
         <Label x:Name="_labelName" Content="{Binding Title}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="564" />
         <Label x:Name="_labelTime" Content="{Binding PlayedLengthScaled}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="171" Margin="574,0,0,0" />
         <Label x:Name="_labelDescription" Content="{Binding Description}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="735" Margin="10,15,0,0" Height="43" />
-        <Button x:Name="_buttonDownloadShow" Content="{Binding IsOffLine}" HorizontalAlignment="Left" Margin="754,30,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="_buttonDownloadShow_Click" RenderTransformOrigin="0.148,0.524" BorderThickness="0" />
+        <Button x:Name="_buttonDownloadShow" Content="{Binding IsOffLineDisplay}" HorizontalAlignment="Left" Margin="754,30,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="_buttonDownloadShow_Click" RenderTransformOrigin="0.148,0.524" BorderThickness="0" />
     </Grid>
 </UserControl>

@@ -2,6 +2,8 @@
 
 namespace eWolfPodcasterCore.Services
 {
+    // TODO: Need to load and save the categorys as we can add new ones.
+    // TODO: Maybe get the starting list from the web site and check for new ones
     public class CategoryHolderService
     {
         public CategoryHolderService()

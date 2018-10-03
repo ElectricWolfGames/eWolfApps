@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Helpers;
+using eWolfPodcasterCore.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,6 +12,14 @@ namespace eWolfPodcasterCore.Data
     public class Shows
     {
         private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();
+
+        public static Shows GetShows
+        {
+            get
+            {
+                return ServiceLocator.Instance.GetService<Shows>();
+            }
+        }
 
         public int Count
         {
@@ -53,6 +62,15 @@ namespace eWolfPodcasterCore.Data
             Add(sc);
         }
 
+        public void CreateFakeList()
+        {
+            ShowControl sc = CreateFakeShow();
+            _shows.Add(sc);
+
+            sc = CreateFakeShowB();
+            _shows.Add(sc);
+        }
+
         public void Load(string outputFolder)
         {
             PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
@@ -64,15 +82,6 @@ namespace eWolfPodcasterCore.Data
                 _shows.Add(sc);
                 ph.SaveData(_shows);
             }
-        }
-
-        public void CreateFakeList()
-        {
-            ShowControl sc = CreateFakeShow();
-            _shows.Add(sc);
-
-            sc = CreateFakeShowB();
-            _shows.Add(sc);
         }
 
         public void RemoveShow(ShowControl itemToRemove)
@@ -145,6 +154,11 @@ namespace eWolfPodcasterCore.Data
             sc.Episodes = new List<EpisodeControl>();
 
             return sc;
+        }
+
+        public static void SetShow(Shows shows)
+        {
+            ServiceLocator.Instance.SetService<Shows>(shows);            
         }
     }
 }

@@ -23,15 +23,14 @@ namespace eWolfPodcasterUI
         private readonly MediaPlayer _mediaPlayer = new MediaPlayer();
         private PodcastEpisode _currentPodcast = null;
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
-        private Shows _shows = new Shows();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _shows.Load(GetOutputFolder());
-            _shows.UpdateAllRSSFeeds();
-            _shows.Save(GetOutputFolder());
+            Shows.GetShows.Load(GetOutputFolder());
+            Shows.GetShows.UpdateAllRSSFeeds();
+            Shows.GetShows.Save(GetOutputFolder());
 
             AddShowItems();
 
@@ -73,7 +72,7 @@ namespace eWolfPodcasterUI
 
         private void AddShowItems()
         {
-            ShowsItems.ItemsSource = _shows.ShowList;
+            ShowsItems.ItemsSource = Shows.GetShows.ShowList;
         }
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
@@ -106,7 +105,7 @@ namespace eWolfPodcasterUI
                     Title = addNewShow.ShowName,
                     RssFeed = addNewShow.RSSFeed
                 };
-                _shows.Add(sc);
+                Shows.GetShows.Add(sc);
             }
         }
 
@@ -117,7 +116,7 @@ namespace eWolfPodcasterUI
                 return;
 
             ShowControl selectedItem = (ShowControl)selectedItems[0];
-            _shows.RemoveShow(selectedItem);
+            Shows.GetShows.RemoveShow(selectedItem);
         }
 
         private void EpisodeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

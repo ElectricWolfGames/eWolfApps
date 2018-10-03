@@ -56,17 +56,6 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
-        public string PodCastDownloadable
-        {
-            get
-            {
-                if (_episodeData.IsOffLine())
-                    return "-";
-                else
-                    return "D";
-            }
-        }
-
         public string PodCastTime
         {
             get { return _episodeData.PublishedDate.ToLongDateString(); }
@@ -131,7 +120,8 @@ namespace eWolfPodcasterUI.UserControls
 
         private void _butRemove_Click(object sender, RoutedEventArgs e)
         {
-            // remove episode
+            int i = 0;
+            i++;
         }
 
         /// <summary>
@@ -142,6 +132,11 @@ namespace eWolfPodcasterUI.UserControls
         private void _buttonDownloadShow_Click(object sender, RoutedEventArgs e)
         {
             _episodeData.DownloadAsMp3();
+        }
+
+        private string IsOffLineDisplay()
+        {
+            return IsOffLine() ? "D" : "-";
         }
     }
 }
