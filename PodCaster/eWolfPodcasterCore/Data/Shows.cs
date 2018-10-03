@@ -155,10 +155,16 @@ namespace eWolfPodcasterCore.Data
 
             return sc;
         }
-
-        public static void SetShow(Shows shows)
+        
+        public void ReplaceAllShows(Shows shows)
         {
-            ServiceLocator.Instance.SetService<Shows>(shows);            
+            _shows.Clear();
+
+            foreach (ShowControl sc in shows.ShowList)
+            {
+                _shows.Add(sc);
+            }
+            
         }
     }
 }

@@ -135,7 +135,7 @@ namespace eWolfPodcasterUWP
                     return;
 
                 var stream = await sampleFile.OpenAsync(FileAccessMode.Read);
-                Shows.SetShow((Shows)formatter.Deserialize(stream.AsStream()));
+                Shows.GetShows.ReplaceAllShows((Shows)formatter.Deserialize(stream.AsStream()));
             }
             catch
             {
