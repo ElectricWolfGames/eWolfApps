@@ -14,7 +14,8 @@ namespace eWolfPodcasterCore.Services
             services = new Dictionary<object, object>
             {
                 { typeof(CategoryHolderService), new CategoryHolderService() },
-                { typeof(Shows), new Shows() }
+                { typeof(Shows), new Shows() },
+                { typeof(ShowLibraryService), new ShowLibraryService() }
             };
         }
 

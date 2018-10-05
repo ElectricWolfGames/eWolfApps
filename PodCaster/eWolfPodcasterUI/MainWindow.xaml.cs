@@ -1,5 +1,6 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Services;
 using eWolfPodcasterUI.Pages;
 using eWolfPodcasterUI.UserControls;
 using System;
@@ -32,6 +33,8 @@ namespace eWolfPodcasterUI
             Shows.GetShows.UpdateAllRSSFeeds();
             Shows.GetShows.Save(GetOutputFolder());
 
+            ShowLibraryService.GetLibrary.Load(GetLibraryPath());
+
             AddShowItems();
 
             DispatcherTimer timer = new DispatcherTimer
@@ -63,6 +66,11 @@ namespace eWolfPodcasterUI
         public string GetOutputFolder()
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
+        }
+
+        public string GetLibraryPath()
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp\\PodcastList.xml");
         }
 
         protected void OnPropertyChanged(string name)

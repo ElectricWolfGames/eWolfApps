@@ -107,6 +107,9 @@ namespace eWolfPodcasterCore.Data
             {
                 foreach (ShowControl sc in _shows)
                 {
+                    if (sc == null)
+                        continue;
+
                     if (sc.ShowOption.CheckforUpdates)
                     {
                         try
@@ -155,7 +158,7 @@ namespace eWolfPodcasterCore.Data
 
             return sc;
         }
-        
+
         public void ReplaceAllShows(Shows shows)
         {
             _shows.Clear();
@@ -164,7 +167,6 @@ namespace eWolfPodcasterCore.Data
             {
                 _shows.Add(sc);
             }
-            
         }
     }
 }

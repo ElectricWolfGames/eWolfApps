@@ -55,6 +55,9 @@ namespace eWolfPodcasterCore
             bool allSaved = true;
             foreach (ISaveable saveable in saveableItems)
             {
+                if (saveable == null)
+                    continue;
+
                 allSaved &= SaveDataSingle(saveable);
             }
             return allSaved;
