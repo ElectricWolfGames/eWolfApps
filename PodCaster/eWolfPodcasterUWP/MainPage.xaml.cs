@@ -29,7 +29,6 @@ namespace eWolfPodcasterUWP
         private ApplicationDataContainer _localSettings;
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
         private long _setPlayBackTime = -1;
-        //private Shows _shows = new Shows();
 
         public MainPage()
         {

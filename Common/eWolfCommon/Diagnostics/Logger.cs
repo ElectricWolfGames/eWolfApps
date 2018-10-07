@@ -6,7 +6,7 @@ namespace eWolfCommon.Diagnostics
     public sealed class Logger
     {
         private static Logger _logger = null;
-        private readonly string _fileName = string.Empty;
+        private readonly string _fileName;
 
         private Logger()
         {

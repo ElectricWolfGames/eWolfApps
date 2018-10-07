@@ -42,8 +42,7 @@ namespace SystemTrayTools.Actions
         public void OnDisplayitem_SetFromClipboard(object sender, EventArgs e)
         {
             // get the index from the sender text.
-            ToolStripItem tsi = sender as ToolStripItem;
-            if (tsi == null)
+            if (!(sender is ToolStripItem tsi))
                 return;
 
             int value = int.Parse(tsi.Name);

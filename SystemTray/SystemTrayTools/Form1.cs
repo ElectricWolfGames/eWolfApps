@@ -18,8 +18,10 @@ namespace SystemTrayTools
         {
             InitializeComponent();
 
-            TimeClock = new Timer();
-            TimeClock.Interval = 1000;
+            TimeClock = new Timer
+            {
+                Interval = 1000
+            };
             TimeClock.Start();
             TimeClock.Tick += new EventHandler(Timer_Tick);
 
@@ -33,10 +35,6 @@ namespace SystemTrayTools
         public void Timer_Tick(object sender, EventArgs e)
         {
             UpdateAll();
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
         }
 
         private void NotifyIconsMouseDoubleClick(object sender, MouseEventArgs e)
