@@ -17,6 +17,7 @@ namespace eWolfPodcasterCoreUnitTests.Services
 
             List<eWolfPodcastShows> shows = new List<eWolfPodcastShows>();
             eWolfPodcastShows show = new eWolfPodcastShows();
+            show.Show = new eWolfPodcastShowsShow();
             show.Show.Category = "DEV";
             show.Show.Description = "My dev podcast";
             show.Show.Name = "DEV one";
