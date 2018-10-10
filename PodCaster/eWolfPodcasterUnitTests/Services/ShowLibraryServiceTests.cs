@@ -33,7 +33,7 @@ namespace eWolfPodcasterCoreUnitTests.Services
             showFromLibrary.Name.Should().Be("DEV one");
             showFromLibrary.Catergery.Should().Be("DEV");
 
-            showFromLibrary.Description.Should().Be("DEV");
+            showFromLibrary.Description.Should().Be("My dev podcast");
             showFromLibrary.URL.Should().Be("WWW.Somewhere");
         }
     }
