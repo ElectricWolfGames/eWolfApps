@@ -55,13 +55,13 @@ namespace eWolfPodcasterUI.Pages
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
             Apply = false;
             Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ButtonOKClick(object sender, RoutedEventArgs e)
         {
             Apply = true;
             Close();
