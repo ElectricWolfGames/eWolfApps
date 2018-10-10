@@ -117,6 +117,11 @@ namespace eWolfPodcasterUI
             }
         }
 
+        private void ButtonLibraryShowClick(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Show the libary options here");
+        }
+
         private void ButtonSubShowClick(object sender, RoutedEventArgs e)
         {
             var selectedItems = ShowsItems.SelectedItems;

@@ -114,5 +114,10 @@
                 <ImageBrush ImageSource="Images/SubItem.png" />
             </Button.Background>
         </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="94,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonLibraryShowClick" Style="{StaticResource MyButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/SubItem.png" />
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

@@ -1,17 +1,11 @@
-﻿using eWolfPodcasterCore.Library;
+﻿using eWolfCommon.Helpers;
+using eWolfPodcasterCore.Library;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using eWolfCommon.Helpers;
 
 namespace eWolfPodcasterCore.Services
 {
     public class ShowLibraryService
     {
-        // list of shows we can add
-        // each show needs
-        // need to be able to load this in from a file or from the EW site.
         private readonly List<ShowLibraryData> _library = new List<ShowLibraryData>();
 
         public ShowLibraryService()
@@ -33,8 +27,22 @@ namespace eWolfPodcasterCore.Services
 
         public void Load(string file)
         {
+            _library.Clear();
             eWolfPodcast wp = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(file);
-            // need to add the files to the library
+
+            foreach (var p in wp.Shows)
+            {
+                if (p != null && p.Show != null)
+                {
+                    ShowLibraryData sld = new ShowLibraryData();
+                    sld.Name = p.Show.Name;
+                    sld.Catergery = p.Show.Category;
+                    sld.URL = p.Show.Url;
+                    _library.Add(sld);
+                }
+            }
+            int i = 0;
+            i++;
         }
     }
 }

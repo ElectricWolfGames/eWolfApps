@@ -1,13 +1,13 @@
 ﻿namespace eWolfCommon.Builders
 {
-    public static class StringExtensions
+    public static class HTMLStringExtensions
     {
-        public static string Bold(this string value)
+        public static string HTMLBold(this string value)
         {
             return $"<strong>{value}</strong>";
         }
 
-        public static string Italic(this string value)
+        public static string HTMLItalic(this string value)
         {
             return $"<i>{value}</i>";
         }

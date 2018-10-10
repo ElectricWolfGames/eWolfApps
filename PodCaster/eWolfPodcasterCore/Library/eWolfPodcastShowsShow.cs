@@ -10,6 +10,10 @@
 
         private string urlField;
 
+        private string categoryField;
+
+        private string description;
+
         /// <remarks/>
         public string Name
         {
@@ -34,6 +38,25 @@
             {
                 this.urlField = value;
             }
+        }
+
+        /// <remarks/>
+        public string Category
+        {
+            get
+            {
+                return categoryField;
+            }
+            set
+            {
+                categoryField = value;
+            }
+        }
+
+        public string Description
+        {
+            get => description;
+            set => description = value;
         }
     }
 }
