@@ -27,22 +27,25 @@ namespace eWolfPodcasterCore.Services
 
         public void Load(string file)
         {
-            _library.Clear();
-            eWolfPodcast wp = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(file);
+            eWolfPodcast eWolfPodcast = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(file);
+            ProcessFiles(eWolfPodcast);
+        }
 
-            foreach (var p in wp.Shows)
+        internal void ProcessFiles(eWolfPodcast eWolfPodcast)
+        { 
+            _library.Clear();
+            
+            foreach (eWolfPodcastShows podcast in eWolfPodcast.Shows)
             {
-                if (p != null && p.Show != null)
+                if (podcast != null && podcast.Show != null)
                 {
                     ShowLibraryData sld = new ShowLibraryData();
-                    sld.Name = p.Show.Name;
-                    sld.Catergery = p.Show.Category;
-                    sld.URL = p.Show.Url;
+                    sld.Name = podcast.Show.Name;
+                    sld.Catergery = podcast.Show.Category;
+                    sld.URL = podcast.Show.Url;
                     _library.Add(sld);
                 }
             }
-            int i = 0;
-            i++;
         }
     }
 }
