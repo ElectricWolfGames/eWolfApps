@@ -16,11 +16,16 @@ namespace eWolfPodcasterCoreUnitTests.Services
             eWolfPodcast pods = new eWolfPodcast();
 
             List<eWolfPodcastShows> shows = new List<eWolfPodcastShows>();
-            eWolfPodcastShows show = new eWolfPodcastShows();
-            show.Show.Category = "DEV";
-            show.Show.Description = "My dev podcast";
-            show.Show.Name = "DEV one";
-            show.Show.Url = "WWW.Somewhere";
+            eWolfPodcastShows show = new eWolfPodcastShows
+            {
+                Show = new eWolfPodcastShowsShow
+                {
+                    Category = "DEV",
+                    Description = "My dev podcast",
+                    Name = "DEV one",
+                    Url = "WWW.Somewhere"
+                }
+            };
             shows.Add(show);
 
             pods.Shows = shows.ToArray();
@@ -32,7 +37,7 @@ namespace eWolfPodcasterCoreUnitTests.Services
             showFromLibrary.Name.Should().Be("DEV one");
             showFromLibrary.Catergery.Should().Be("DEV");
 
-            showFromLibrary.Description.Should().Be("DEV");
+            showFromLibrary.Description.Should().Be("My dev podcast");
             showFromLibrary.URL.Should().Be("WWW.Somewhere");
         }
     }

@@ -32,17 +32,20 @@ namespace eWolfPodcasterCore.Services
         }
 
         internal void ProcessFiles(eWolfPodcast eWolfPodcast)
-        { 
+        {
             _library.Clear();
-            
+
             foreach (eWolfPodcastShows podcast in eWolfPodcast.Shows)
             {
                 if (podcast != null && podcast.Show != null)
                 {
-                    ShowLibraryData sld = new ShowLibraryData();
-                    sld.Name = podcast.Show.Name;
-                    sld.Catergery = podcast.Show.Category;
-                    sld.URL = podcast.Show.Url;
+                    ShowLibraryData sld = new ShowLibraryData
+                    {
+                        Name = podcast.Show.Name,
+                        Description = podcast.Show.Description,
+                        Catergery = podcast.Show.Category,
+                        URL = podcast.Show.Url
+                    };
                     _library.Add(sld);
                 }
             }
