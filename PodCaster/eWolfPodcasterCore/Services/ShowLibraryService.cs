@@ -25,10 +25,28 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
+        public List<string> Groups()
+        {
+            List<string> groups = new List<string>();
+            foreach (ShowLibraryData showLibraryData in _library)
+            {
+                groups.Add(showLibraryData.Catergery);
+            }
+
+            return groups;
+        }
+
         public void Load(string file)
         {
-            eWolfPodcast eWolfPodcast = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(file);
-            ProcessFiles(eWolfPodcast);
+            try
+            {
+                eWolfPodcast eWolfPodcast = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(file);
+                ProcessFiles(eWolfPodcast);
+            }
+            catch
+            {
+                // Can't find or load library file
+            }
         }
 
         internal void ProcessFiles(eWolfPodcast eWolfPodcast)

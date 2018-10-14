@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using eWolfPodcasterCore.Services;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace eWolfPodcasterUI.Pages
 {
@@ -22,7 +11,16 @@ namespace eWolfPodcasterUI.Pages
         public ShowLibrary()
         {
             InitializeComponent();
+
+            PopulateCatergies();
         }
+
+        private void PopulateCatergies()
+        {
+            ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
+            LibraryCategories.ItemsSource = showLibraryService.Groups();
+        }
+
         public bool Apply { get; set; }
 
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
@@ -36,6 +34,5 @@ namespace eWolfPodcasterUI.Pages
             Apply = true;
             Close();
         }
-        
     }
 }

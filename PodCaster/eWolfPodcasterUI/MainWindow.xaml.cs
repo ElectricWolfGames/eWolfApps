@@ -121,7 +121,6 @@ namespace eWolfPodcasterUI
         {
             ShowLibrary addNewShow = new ShowLibrary { };
             addNewShow.ShowDialog();
-
         }
 
         private void ButtonSubShowClick(object sender, RoutedEventArgs e)
