@@ -6,12 +6,22 @@
         xmlns:local="clr-namespace:AudioWolfUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="685.976" Width="1023.171" Background="#FFA63030">
-    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,2,0" >
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,-171,-227" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="814" />
         </Grid.ColumnDefinitions>
-        <ListView Name="DisplayedItems" Grid.Column="2" Height="635"/>
+        <ListView Name="DisplayedItems" Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,267,0,0"/>
+        <StackPanel Grid.Column="2" HorizontalAlignment="Left" Height="231" Margin="9,11,0,0" VerticalAlignment="Top" Width="806" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+        <ListBox Name="Locations" HorizontalAlignment="Left" Height="227" Margin="11,15,0,0" VerticalAlignment="Top" Width="180"/>
+        <ListView Name="Tag" HorizontalAlignment="Left" Height="605" VerticalAlignment="Top" Width="181" Margin="12,267,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>
