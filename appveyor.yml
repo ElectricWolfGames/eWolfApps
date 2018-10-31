@@ -8,6 +8,7 @@ before_build:
     nuget restore
 
 build:
+  project: eWolfApps.sln
   publish_nuget: false
   publish_nuget_symbols: false
   include_nuget_references: false
