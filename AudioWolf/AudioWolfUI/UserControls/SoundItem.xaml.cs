@@ -35,7 +35,6 @@ namespace AudioWolfUI.UserControls
             {
                 return SoundItemData.Name;
             }
-
         }
 
         private IPeakProvider GetPeakProvider()
