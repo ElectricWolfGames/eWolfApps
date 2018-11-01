@@ -1,4 +1,6 @@
 ﻿using AudioWolfStandard.Options;
+using AudioWolfUI.Tags;
+using System;
 using System.Collections.Generic;
 
 namespace AudioWolfStandard.Services
@@ -7,13 +9,15 @@ namespace AudioWolfStandard.Services
     {
         private static ServiceLocator _instance = null;
 
-        private readonly IDictionary<object, object> services;
+        private readonly IDictionary<Type, object> _services;
 
         private ServiceLocator()
         {
-            services = new Dictionary<object, object>
+            _services = new Dictionary<Type, object>
             {
                 { typeof(OptionsHolder), new OptionsHolder() },
+                { typeof(TagOptionsService), new TagOptionsService() },
+                { typeof(GlobalTagStore), new GlobalTagStore() }
             };
         }
 
@@ -33,13 +37,19 @@ namespace AudioWolfStandard.Services
         {
             try
             {
-                return (T)services[typeof(T)];
+                return (T)_services[typeof(T)];
             }
             catch
             {
                 // Fail safe
             }
             return default(T);
+        }
+
+        public void InjectService<T>(object service)
+        {
+            Type t2 = typeof(T);
+            _services[t2] = service;
         }
     }
 }

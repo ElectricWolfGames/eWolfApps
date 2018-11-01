@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using AudioWolfStandard.Services;
 using System.Linq;
 
 namespace AudioWolfUI.Tags
 {
-    public class TagHolder
+    public class TagHolder : TagHolderBase
     {
         private readonly TagOptions _options;
         private string _orginalName = string.Empty;
@@ -14,9 +14,7 @@ namespace AudioWolfUI.Tags
             _options = options;
         }
 
-        public List<TagData> Tags { get; } = new List<TagData>();
-
-        public void Add(string name)
+        public override void Add(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
                 return;
@@ -31,12 +29,10 @@ namespace AudioWolfUI.Tags
                 Name = name
             };
 
-            Tags.Add(td);
-        }
+            GlobalTagStore gts = ServiceLocator.Instance.GetService<GlobalTagStore>();
 
-        public void ClearTags()
-        {
-            Tags.Clear();
+            Tags.Add(td);
+            gts.Add(td);
         }
 
         public string CreateNameFromTags()
@@ -74,16 +70,6 @@ namespace AudioWolfUI.Tags
         private string ClenseName(string name)
         {
             return name.Trim();
-        }
-
-        private TagData GetTagWithName(string name)
-        {
-            foreach (TagData td in Tags)
-            {
-                if (td.Name == name)
-                    return td;
-            }
-            return null;
         }
     }
 }

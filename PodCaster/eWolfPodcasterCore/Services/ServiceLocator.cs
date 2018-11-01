@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
+using System;
 using System.Collections.Generic;
 
 namespace eWolfPodcasterCore.Services
@@ -7,11 +8,11 @@ namespace eWolfPodcasterCore.Services
     {
         private static ServiceLocator _instance = null;
 
-        private readonly IDictionary<object, object> services;
+        private readonly IDictionary<Type, object> _services;
 
         private ServiceLocator()
         {
-            services = new Dictionary<object, object>
+            _services = new Dictionary<Type, object>
             {
                 { typeof(CategoryHolderService), new CategoryHolderService() },
                 { typeof(Shows), new Shows() },
@@ -35,13 +36,19 @@ namespace eWolfPodcasterCore.Services
         {
             try
             {
-                return (T)services[typeof(T)];
+                return (T)_services[typeof(T)];
             }
             catch
             {
                 // Fail safe
             }
             return default(T);
+        }
+
+        public void InjectService<T>(object service)
+        {
+            Type t2 = typeof(T);
+            _services[t2] = service;
         }
     }
 }

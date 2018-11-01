@@ -2,33 +2,33 @@
 
 namespace AudioWolfUI.Tags
 {
-    public class GlobalTagStore
+    public class GlobalTagStore : TagHolderBase
     {
-        // need to keepp a list of all the tags in the system.
-        // need to save out theis list
-        private static GlobalTagStore _globalTagStore = null;
-
-        private GlobalTagStore()
+        public GlobalTagStore()
         {
         }
 
-        public static GlobalTagStore Instance
+        public override void Add(string name)
         {
-            get
+            TagData td = new TagData
             {
-                if (_globalTagStore == null)
-                {
-                    _globalTagStore = new GlobalTagStore();
-                }
-                return _globalTagStore;
-            }
+                Name = name
+            };
+            Add(td);
         }
 
-        public List<TagData> Tags { get; } = new List<TagData>();
-
-        public void AddTag(TagData tag)
+        public void Add(TagData tag)
         {
+            TagData tdold = GetTagWithName(tag.Name);
+            if (tdold != null)
+                return;
+
             Tags.Add(tag);
+        }
+
+        public void AddTagRange(List<TagData> tags)
+        {
+            Tags.AddRange(tags);
         }
     }
 }
