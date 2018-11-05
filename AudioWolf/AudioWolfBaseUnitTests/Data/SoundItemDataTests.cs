@@ -3,11 +3,6 @@ using AudioWolfStandard.Services;
 using AudioWolfUI.Tags;
 using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AudioWolfStandardUnitTests.Data
 {
@@ -37,8 +32,8 @@ namespace AudioWolfStandardUnitTests.Data
             TagOptions tago = new TagOptions();
             tago.Seperator = '|';
             TagOptionsService tos = new TagOptionsService(tago);
-            
-            ServiceLocator.Instance.InjectService<TagOptionsService>(tos); 
+
+            ServiceLocator.Instance.InjectService<TagOptionsService>(tos);
             SoundItemData sid = new SoundItemData();
             sid.Name = "Tag|Tag2|Tag2|TagB";
 

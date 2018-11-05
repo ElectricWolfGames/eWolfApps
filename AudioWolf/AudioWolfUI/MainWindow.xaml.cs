@@ -19,11 +19,14 @@ namespace AudioWolfUI
 {
     public partial class MainWindow : Window
     {
+
+    
         private SoundHolder _soundHolder = new SoundHolder();
         private ObservableCollection<SoundItem> _soundItemsToShow = new ObservableCollection<SoundItem>();
 
         public MainWindow()
         {
+            
             List<string> files = FileSearchHelper.GetAllFiles();
 
             foreach (string name in files)
@@ -42,7 +45,7 @@ namespace AudioWolfUI
                 si.SoundItemData = s;
                 _soundItemsToShow.Add(si);
             }
-            DisplayedItems.ItemsSource = _soundItemsToShow;
+            DisplayedItemsGrid.ItemsSource = _soundItemsToShow;
         }
     }
 }

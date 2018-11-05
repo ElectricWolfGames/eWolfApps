@@ -3,11 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AudioWolfUI.UserControls"
              mc:Ignorable="d" Height="202.791" Width="343.076">
-    <Grid Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
-        <Label HorizontalAlignment="Left" Content="{Binding Name}" Height="33" Margin="4,5,0,0" VerticalAlignment="Top" Width="334"/>
-        <Image x:Name="SoundWave" HorizontalAlignment="Left" Height="165" Margin="0,38,0,0" VerticalAlignment="Top" Width="343">
+    <Grid Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+        <Label x:Name="_labelName" Content="{Binding Name}" Height="33" Margin="4,5,0,0" VerticalAlignment="Top" Width="334"/>
+        <Image x:Name="SoundWave" HorizontalAlignment="Left" Height="165" Margin="10,38,0,0" VerticalAlignment="Top" Width="323">
         </Image>
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using AudioWolfStandard.Data;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -27,6 +28,17 @@ namespace AudioWolfUI.UserControls
             InitializeComponent();
 
             RenderWaveform();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
 
         public string Name

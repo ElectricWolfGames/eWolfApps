@@ -1,4 +1,5 @@
-﻿using AudioWolfUI.Tags;
+﻿using AudioWolfStandard.Services;
+using AudioWolfUI.Tags;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -91,6 +92,22 @@ namespace AudioWolfStandardUnitTests.Tags
             th.Tags[0].Name.Should().Be("My");
             th.Tags[1].Name.Should().Be("First");
             th.Tags[2].Name.Should().Be("Tags");
+        }
+
+        [Test]
+        public void ShouldAddTagToGlobal()
+        {
+            GlobalTagStore gts = ServiceLocator.Instance.GetService<GlobalTagStore>();
+            gts.ClearTags();
+
+            TagOptions tagOptions = new TagOptions();
+            
+            TagHolder th = new TagHolder(tagOptions);
+            th.SplitName("TasgA TagB");
+
+            th.Tags.Should().HaveCount(2);
+            gts.Tags.Should().HaveCount(2);
+
         }
     }
 }
