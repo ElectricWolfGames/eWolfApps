@@ -1,6 +1,7 @@
 ﻿using eWolfCommon.Helpers;
 using eWolfPodcasterCore.Library;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace eWolfPodcasterCore.Services
 {
@@ -10,6 +11,11 @@ namespace eWolfPodcasterCore.Services
 
         public ShowLibraryService()
         {
+        }
+
+        public List<ShowLibraryData> GetList(string name)
+        {
+            return _library.Where(x => x.Catergery == name).ToList();
         }
 
         public List<ShowLibraryData> GetList()
@@ -25,12 +31,16 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
-        public List<string> Groups()
+        public List<CatergeryData> Groups()
         {
-            List<string> groups = new List<string>();
+            List<CatergeryData> groups = new List<CatergeryData>();
             foreach (ShowLibraryData showLibraryData in _library)
             {
-                groups.Add(showLibraryData.Catergery);
+                CatergeryData cd = new CatergeryData
+                {
+                    Name = showLibraryData.Catergery
+                };
+                groups.Add(cd);
             }
 
             return groups;
