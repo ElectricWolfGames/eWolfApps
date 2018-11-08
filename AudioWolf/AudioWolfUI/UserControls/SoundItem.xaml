@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Height="202.791" Width="343.076">
-    <Grid Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
-        <Label x:Name="_labelName" Content="{Binding Name}" Height="33" Margin="4,5,0,0" VerticalAlignment="Top" Width="334"/>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}">
+        <Label x:Name="_labelName" Content="{Binding Title}" Height="33" Margin="4,5,0,0" VerticalAlignment="Top" Width="334"/>
         <Image x:Name="SoundWave" HorizontalAlignment="Left" Height="165" Margin="10,38,0,0" VerticalAlignment="Top" Width="323">
         </Image>
     </Grid>

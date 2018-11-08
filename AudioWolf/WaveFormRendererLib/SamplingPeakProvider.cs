@@ -6,14 +6,14 @@ namespace WaveFormRendererLib
     {
         private readonly int sampleInterval;
 
-        public SamplingPeakProvider(int sampleInterval) 
+        public SamplingPeakProvider(int sampleInterval)
         {
             this.sampleInterval = sampleInterval;
         }
 
         public override PeakInfo GetNextPeak()
         {
-            var samplesRead = Provider.Read(ReadBuffer,0,ReadBuffer.Length);
+            var samplesRead = Provider.Read(ReadBuffer, 0, ReadBuffer.Length);
             var max = 0.0f;
             var min = 0.0f;
             for (int x = 0; x < samplesRead; x += sampleInterval)
@@ -22,7 +22,7 @@ namespace WaveFormRendererLib
                 min = Math.Min(min, ReadBuffer[x]);
             }
 
-            return new PeakInfo(min,max);
+            return new PeakInfo(min, max);
         }
     }
 }

@@ -23,12 +23,12 @@ namespace WaveFormRendererLib
                 {
                     total += ReadBuffer[x + y] * ReadBuffer[x + y];
                 }
-                var rms = (float) Math.Sqrt(total/blockSize);
+                var rms = (float)Math.Sqrt(total / blockSize);
 
                 max = Math.Max(max, rms);
             }
 
-            return new PeakInfo(0 -max, max);
+            return new PeakInfo(0 - max, max);
         }
     }
 }

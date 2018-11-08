@@ -1,9 +1,9 @@
-﻿using System;
-using NAudio.Wave;
+﻿using NAudio.Wave;
+using System;
 
 namespace WaveFormRendererLib
 {
-    class DecibelPeakProvider : IPeakProvider
+    internal class DecibelPeakProvider : IPeakProvider
     {
         private readonly IPeakProvider sourceProvider;
         private readonly double dynamicRange;

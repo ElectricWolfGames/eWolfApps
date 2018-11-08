@@ -5,7 +5,7 @@ namespace WaveFormRendererLib
 {
     public class WaveFormRendererSettings
     {
-        public  WaveFormRendererSettings()
+        public WaveFormRendererSettings()
         {
             Width = 800;
             TopHeight = 50;
@@ -31,11 +31,13 @@ namespace WaveFormRendererLib
         public bool DecibelScale { get; set; }
         public Color BackgroundColor { get; set; }
         public Image BackgroundImage { get; set; }
-        public Brush BackgroundBrush {
+
+        public Brush BackgroundBrush
+        {
             get
             {
                 if (BackgroundImage == null) return new SolidBrush(BackgroundColor);
-                return new TextureBrush(BackgroundImage,WrapMode.Clamp);
+                return new TextureBrush(BackgroundImage, WrapMode.Clamp);
             }
         }
 

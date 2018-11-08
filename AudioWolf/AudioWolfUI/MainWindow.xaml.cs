@@ -1,6 +1,8 @@
 ﻿using AudioWolfStandard;
 using AudioWolfStandard.Data;
 using AudioWolfStandard.Helpers;
+using AudioWolfStandard.Services;
+using AudioWolfUI.Tags;
 using AudioWolfUI.UserControls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,14 +21,12 @@ namespace AudioWolfUI
 {
     public partial class MainWindow : Window
     {
-
-    
         private SoundHolder _soundHolder = new SoundHolder();
         private ObservableCollection<SoundItem> _soundItemsToShow = new ObservableCollection<SoundItem>();
+        private ObservableCollection<string> _tags = new ObservableCollection<string>();
 
         public MainWindow()
         {
-            
             List<string> files = FileSearchHelper.GetAllFiles();
 
             foreach (string name in files)
@@ -45,7 +45,31 @@ namespace AudioWolfUI
                 si.SoundItemData = s;
                 _soundItemsToShow.Add(si);
             }
+
+            ConvertTagsToList();
+
             DisplayedItemsGrid.ItemsSource = _soundItemsToShow;
+            Tag.ItemsSource = _tags;
+        }
+
+        private void ConvertTagsToList()
+        {
+            _tags.Clear();
+
+            _tags.Add("ExtraTagTest");
+
+            // get the global list !
+            GlobalTagStore gts = ServiceLocator.Instance.GetService<GlobalTagStore>();
+            foreach (TagData td in gts.Tags)
+            {
+                _tags.Add(td.Name);
+            }
+        }
+
+        private void DisplayedItemsGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            int i = 0;
+            i++;
         }
     }
 }

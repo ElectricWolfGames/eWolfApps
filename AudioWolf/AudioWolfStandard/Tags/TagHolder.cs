@@ -53,6 +53,10 @@ namespace AudioWolfUI.Tags
             ClearTags();
 
             bool skipFirst = _options.KeepFirstPartOfName;
+            if (_options.TagInBoxs)
+            {
+                name = GetBoxContants(name);
+            }
 
             string[] parts = name.Split(_options.Seperator);
             foreach (string part in parts)
@@ -65,6 +69,19 @@ namespace AudioWolfUI.Tags
                 }
                 Add(part);
             }
+        }
+
+        public static string GetBoxContants(string name)
+        {
+            int pos = name.IndexOf('[');
+            int posEnd = name.IndexOf(']');
+
+            if (pos > -1)
+            {
+                name = name.Substring(pos + 1, posEnd - pos - 1);
+            }
+
+            return name;
         }
 
         private string ClenseName(string name)

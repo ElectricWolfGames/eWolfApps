@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
+﻿using eWolfCommon.Builders;
+using FluentAssertions;
 using NUnit.Framework;
-using eWolfCommon.Builders;
 
 namespace eWolfCommonUnitTests.Builders
 {

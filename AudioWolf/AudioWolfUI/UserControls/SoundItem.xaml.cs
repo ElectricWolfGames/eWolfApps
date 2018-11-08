@@ -41,7 +41,7 @@ namespace AudioWolfUI.UserControls
             }
         }
 
-        public string Name
+        public string Title
         {
             get
             {
@@ -114,16 +114,18 @@ namespace AudioWolfUI.UserControls
         private void RenderWaveform()
         {
             var settings = GetRendererSettings();
-            settings.BottomPeakPen = new System.Drawing.Pen(System.Drawing.Color.Yellow);
-            settings.BottomSpacerPen = new System.Drawing.Pen(System.Drawing.Color.Blue);
-            settings.TopPeakPen = new System.Drawing.Pen(System.Drawing.Color.Cyan);
+            // settings.BackgroundBrush = new System.Drawing.Brush(System.Drawing.Color.Black);
+            settings.BottomPeakPen = new System.Drawing.Pen(System.Drawing.Color.DarkSeaGreen);
+            settings.BottomSpacerPen = new System.Drawing.Pen(System.Drawing.Color.DarkSlateGray);
+            settings.TopPeakPen = new System.Drawing.Pen(System.Drawing.Color.Yellow);
 
             if (SoundItemData.FullPath != null)
             {
                 settings.BackgroundImage = new Bitmap(SoundItemData.FullPath);
             }
+
             settings.Width = 400;
-            settings.BottomHeight = 100;
+            settings.BottomHeight = 50;
             settings.TopHeight = 100;
             SoundWave.Source = null;
 

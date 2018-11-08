@@ -1,6 +1,7 @@
-﻿using System;
+﻿using NAudio.Wave;
+
+using System;
 using System.Drawing;
-using NAudio.Wave;
 
 namespace WaveFormRendererLib
 {
@@ -9,7 +10,7 @@ namespace WaveFormRendererLib
         public Image Render(string selectedFile, WaveFormRendererSettings settings)
         {
             return Render(selectedFile, new MaxPeakProvider(), settings);
-        }        
+        }
 
         public Image Render(string selectedFile, IPeakProvider peakProvider, WaveFormRendererSettings settings)
         {
@@ -36,7 +37,7 @@ namespace WaveFormRendererLib
             }
             using (var g = Graphics.FromImage(b))
             {
-                g.FillRectangle(settings.BackgroundBrush, 0,0,b.Width,b.Height);
+                g.FillRectangle(settings.BackgroundBrush, 0, 0, b.Width, b.Height);
                 var midPoint = settings.TopHeight;
 
                 int x = 0;
@@ -44,7 +45,7 @@ namespace WaveFormRendererLib
                 while (x < settings.Width)
                 {
                     var nextPeak = peakProvider.GetNextPeak();
-                    
+
                     for (int n = 0; n < settings.PixelsPerPeak; n++)
                     {
                         var lineHeight = settings.TopHeight * currentPeak.Max;
@@ -56,14 +57,14 @@ namespace WaveFormRendererLib
 
                     for (int n = 0; n < settings.SpacerPixels; n++)
                     {
-                        // spacer bars are always the lower of the 
+                        // spacer bars are always the lower of the
                         var max = Math.Min(currentPeak.Max, nextPeak.Max);
                         var min = Math.Max(currentPeak.Min, nextPeak.Min);
 
                         var lineHeight = settings.TopHeight * max;
                         g.DrawLine(settings.TopSpacerPen, x, midPoint, x, midPoint - lineHeight);
                         lineHeight = settings.BottomHeight * min;
-                        g.DrawLine(settings.BottomSpacerPen, x, midPoint, x, midPoint - lineHeight); 
+                        g.DrawLine(settings.BottomSpacerPen, x, midPoint, x, midPoint - lineHeight);
                         x++;
                     }
                     currentPeak = nextPeak;
@@ -71,7 +72,5 @@ namespace WaveFormRendererLib
             }
             return b;
         }
-
-
     }
 }

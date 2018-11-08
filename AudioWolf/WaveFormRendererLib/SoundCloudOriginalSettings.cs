@@ -30,8 +30,7 @@ namespace WaveFormRendererLib
             set { base.TopPeakPen = value; }
         }
 
-
-        public override Pen BottomPeakPen 
+        public override Pen BottomPeakPen
         {
             get
             {
@@ -46,7 +45,6 @@ namespace WaveFormRendererLib
             set { base.BottomPeakPen = value; }
         }
 
-
         public override Pen BottomSpacerPen
         {
             get { throw new InvalidOperationException("No spacer pen required"); }
@@ -54,7 +52,7 @@ namespace WaveFormRendererLib
 
         private Pen CreateSoundcloudBottomPen(int topHeight, int bottomHeight)
         {
-            var bottomGradient = new LinearGradientBrush(new Point(0, topHeight), new Point(0, topHeight + bottomHeight), 
+            var bottomGradient = new LinearGradientBrush(new Point(0, topHeight), new Point(0, topHeight + bottomHeight),
                 Color.FromArgb(16, 16, 16), Color.FromArgb(150, 150, 150));
             var colorBlend = new ColorBlend(3);
             colorBlend.Colors[0] = Color.FromArgb(16, 16, 16);

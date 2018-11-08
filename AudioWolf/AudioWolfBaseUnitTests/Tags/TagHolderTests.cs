@@ -1,5 +1,4 @@
-﻿using AudioWolfStandard.Services;
-using AudioWolfUI.Tags;
+﻿using AudioWolfUI.Tags;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -95,19 +94,24 @@ namespace AudioWolfStandardUnitTests.Tags
         }
 
         [Test]
-        public void ShouldAddTagToGlobal()
+        public void ShouldFindTagsInBoxes()
         {
-            GlobalTagStore gts = ServiceLocator.Instance.GetService<GlobalTagStore>();
-            gts.ClearTags();
-
             TagOptions tagOptions = new TagOptions();
-            
+            tagOptions.TagInBoxs = true;
+
             TagHolder th = new TagHolder(tagOptions);
-            th.SplitName("TasgA TagB");
+            th.SplitName("This is a file name [TAG tagB]");
 
             th.Tags.Should().HaveCount(2);
-            gts.Tags.Should().HaveCount(2);
+            th.Tags[0].Name.Should().Be("TAG");
+            th.Tags[1].Name.Should().Be("tagB");
+        }
 
+        [TestCase("[a]", "a")]
+        [TestCase("File name with [tags in boxes]", "tags in boxes")]
+        public void ShouldGetTextinBoxes(string name, string expected)
+        {
+            TagHolder.GetBoxContants(name).Should().Be(expected);
         }
     }
 }
