@@ -2,7 +2,7 @@
 using AudioWolfStandard.Data;
 using AudioWolfStandard.Helpers;
 using AudioWolfStandard.Services;
-using AudioWolfUI.Tags;
+using AudioWolfStandard.Tags;
 using AudioWolfUI.UserControls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

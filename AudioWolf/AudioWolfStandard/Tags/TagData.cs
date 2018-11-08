@@ -1,4 +1,4 @@
-﻿namespace AudioWolfUI.Tags
+﻿namespace AudioWolfStandard.Tags
 {
     public class TagData
     {

@@ -1,7 +1,7 @@
 ﻿using AudioWolfStandard.Services;
 using System.Linq;
 
-namespace AudioWolfUI.Tags
+namespace AudioWolfStandard.Tags
 {
     public class TagHolder : TagHolderBase
     {

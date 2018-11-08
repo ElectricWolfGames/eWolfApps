@@ -1,9 +1,11 @@
 ﻿using AudioWolfStandard.Services;
-using AudioWolfUI.Tags;
+using AudioWolfStandard.Tags;
+using System;
 using System.Collections.Generic;
 
 namespace AudioWolfStandard.Data
 {
+    [Serializable]
     public class SoundItemData
     {
         private TagHolder _tagHolder;

@@ -1,5 +1,5 @@
 ﻿using AudioWolfStandard.Options;
-using AudioWolfUI.Tags;
+using AudioWolfStandard.Tags;
 using System;
 using System.Collections.Generic;
 

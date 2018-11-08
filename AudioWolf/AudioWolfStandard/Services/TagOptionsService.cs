@@ -1,4 +1,4 @@
-﻿using AudioWolfUI.Tags;
+﻿using AudioWolfStandard.Tags;
 
 namespace AudioWolfStandard.Services
 {

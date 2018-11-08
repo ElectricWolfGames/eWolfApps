@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AudioWolfUI.Tags
+namespace AudioWolfStandard.Tags
 {
     public class GlobalTagStore : TagHolderBase
     {

@@ -1,10 +1,10 @@
 ﻿using AudioWolfStandard.Data;
 using AudioWolfStandard.Services;
-using AudioWolfUI.Tags;
+using AudioWolfStandard.Tags;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace AudioWolfStandardUnitTests.Data
+namespace AudioWolfBaseUnitTests.Data
 {
     public class SoundItemDataTests
     {

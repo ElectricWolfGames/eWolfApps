@@ -1,9 +1,9 @@
 ﻿using AudioWolfStandard.Services;
-using AudioWolfUI.Tags;
+using AudioWolfStandard.Tags;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace AudioWolfStandardUnitTests.Tags
+namespace AudioWolfBaseUnitTests.Tags
 {
     public class GlobalTagStoreTests
     {
