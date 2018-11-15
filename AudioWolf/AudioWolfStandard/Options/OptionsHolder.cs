@@ -4,6 +4,7 @@ namespace AudioWolfStandard.Options
 {
     public class OptionsHolder
     {
+        // create a path object that also has a name
         private readonly List<string> _pathsToSearch = new List<string>();
 
         public OptionsHolder()

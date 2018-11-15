@@ -13,8 +13,10 @@
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="814" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="2" Height="231" Margin="9,11,-42,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-        <Image Grid.Column="2" x:Name="SoundWaveEdit" HorizontalAlignment="Left" Height="165" Margin="10,38,0,0" VerticalAlignment="Top" Width="404">
+        <StackPanel Grid.Column="2" Height="231" Margin="9,11,-42,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}">
+            <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Height="46" Margin="24,0,0,0" Width="125" Click="Search_Click"/>
+        </StackPanel>
+        <Image Grid.Column="2" x:Name="SoundWaveEdit" HorizontalAlignment="Left" Height="165" Margin="196,47,0,0" VerticalAlignment="Top" Width="404">
         </Image>
         <ListBox Name="Locations" HorizontalAlignment="Left" Height="227" Margin="11,15,0,0" VerticalAlignment="Top" Width="180"/>
         <ListView Name="Tag" HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="181" Margin="12,267,0,0"/>
@@ -28,6 +30,7 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
+        <Button x:Name="TestButton" Content="Test" Grid.Column="2" HorizontalAlignment="Left" Height="50" Margin="197,10,0,0" VerticalAlignment="Top" Width="125" Click="TestButton_Click"/>
 
 
     </Grid>

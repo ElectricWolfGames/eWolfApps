@@ -1,6 +1,6 @@
 ﻿using AudioWolfStandard.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -17,9 +17,9 @@ namespace AudioWolfStandard.Helpers
             Directory.CreateDirectory(_outputFolder);
         }
 
-        public ObservableCollection<T> LoadData()
+        public List<T> LoadData()
         {
-            ObservableCollection<T> items = new ObservableCollection<T>();
+            List<T> items = new List<T>();
 
             string[] files = Directory.GetFiles(_outputFolder);
             foreach (string file in files)
@@ -42,7 +42,7 @@ namespace AudioWolfStandard.Helpers
 
                 return sd;
             }
-            catch
+            catch (Exception ex)
             {
                 if (stream != null)
                     stream.Close();

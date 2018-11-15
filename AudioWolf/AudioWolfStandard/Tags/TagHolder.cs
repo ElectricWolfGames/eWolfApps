@@ -1,8 +1,10 @@
 ﻿using AudioWolfStandard.Services;
+using System;
 using System.Linq;
 
 namespace AudioWolfStandard.Tags
 {
+    [Serializable]
     public class TagHolder : TagHolderBase
     {
         private readonly TagOptions _options;

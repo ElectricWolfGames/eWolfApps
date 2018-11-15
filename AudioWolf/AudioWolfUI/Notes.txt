@@ -1,4 +1,12 @@
-﻿https://www.wpf-tutorial.com/list-controls/itemscontrol/
+﻿
+To do list
+- Select an item and display it in the top section
+- Add tags to the item.
+- Make sure the item are saved and reloaded
+- 
+
+
+https://www.wpf-tutorial.com/list-controls/itemscontrol/
 
 The ItemsPanelTemplate property
 

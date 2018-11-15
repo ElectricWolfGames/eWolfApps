@@ -6,6 +6,7 @@ namespace AudioWolfStandard.Tags
     {
         public GlobalTagStore()
         {
+            // TODO : Need to load in the globel tag list.
         }
 
         public override void Add(string name)
