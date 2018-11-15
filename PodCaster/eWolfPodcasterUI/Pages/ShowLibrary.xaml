@@ -13,10 +13,10 @@
             <ColumnDefinition Width="814" />
         </Grid.ColumnDefinitions>
         <Button Content="Ok" Grid.Column="2" HorizontalAlignment="Left" Margin="437,389,0,0" VerticalAlignment="Top" Width="75" Click="ButtonOKClick" />
-        <ListView Name="LibraryCategories" HorizontalAlignment="Left" Height="379" Margin="10,30,0,0" VerticalAlignment="Top" Width="240">
+        <ListView Name="LibraryCategories" HorizontalAlignment="Left" Height="379" Margin="10,30,0,0" VerticalAlignment="Top" Width="240" MouseDoubleClick="LibraryCategories_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn Header="Category" Width="144" DisplayMemberBinding="{Binding Name}" />
                 </GridView>
             </ListView.View>
         </ListView>
