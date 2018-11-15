@@ -20,16 +20,8 @@
         </Image>
         <ListBox Name="Locations" HorizontalAlignment="Left" Height="227" Margin="11,15,0,0" VerticalAlignment="Top" Width="180"/>
         <ListView Name="Tag" HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="181" Margin="12,267,0,0"/>
-
-        <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,267,-42,10">
-            <ItemsControl Name="DisplayedItemsGrid"  Height="371" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" Width="857" RenderTransformOrigin="0.397,0.37" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseDoubleClick="DisplayedItemsGrid_MouseDoubleClick" >
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </ScrollViewer>
+        <ListView Grid.Column="2" Name="DisplayedItemsGrid" HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="588" Margin="12,267,0,0" SelectionChanged="DisplayedItemsGrid_SelectionChanged"/>
+       
         <Button x:Name="TestButton" Content="Test" Grid.Column="2" HorizontalAlignment="Left" Height="50" Margin="197,10,0,0" VerticalAlignment="Top" Width="125" Click="TestButton_Click"/>
 
 

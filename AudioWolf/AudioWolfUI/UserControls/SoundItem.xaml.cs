@@ -19,6 +19,8 @@ namespace AudioWolfUI.UserControls
     {
         public SoundItemData SoundItemData = new SoundItemData();
 
+        private System.Drawing.Image _image;
+
         private readonly WaveFormRendererSettings _standardSettings;
 
         private readonly WaveFormRenderer _waveFormRenderer = new WaveFormRenderer();
@@ -48,6 +50,8 @@ namespace AudioWolfUI.UserControls
                 return SoundItemData.Name;
             }
         }
+
+        public System.Drawing.Image Image { get => _image; set => _image = value; }
 
         private IPeakProvider GetPeakProvider()
         {
@@ -86,15 +90,15 @@ namespace AudioWolfUI.UserControls
 
         private void RenderThreadFunc(IPeakProvider peakProvider, WaveFormRendererSettings settings)
         {
-            System.Drawing.Image image = null;
+            Image = null;
             try
             {
-                image = _waveFormRenderer.Render(SoundItemData.FullPath, peakProvider, settings);
+                Image = _waveFormRenderer.Render(SoundItemData.FullPath, peakProvider, settings);
 
                 Dispatcher.Invoke(() =>
                 {
                     MemoryStream stream = new MemoryStream();
-                    image.Save(stream, ImageFormat.Png);
+                    Image.Save(stream, ImageFormat.Png);
 
                     BitmapImage tempBitmap = new BitmapImage();
                     tempBitmap.BeginInit();

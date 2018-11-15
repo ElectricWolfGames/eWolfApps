@@ -8,6 +8,8 @@ namespace AudioWolfStandard.Data
     [Serializable]
     public class SoundItemData
     {
+
+
         private TagHolder _tagHolder;
 
         private string _name;
