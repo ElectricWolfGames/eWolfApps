@@ -93,7 +93,7 @@ namespace AudioWolfStandard.Helpers
                 formatter.Serialize(stream, objectToSave);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
                 return false;
             }

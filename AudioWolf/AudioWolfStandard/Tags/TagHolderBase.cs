@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AudioWolfStandard.Tags
 {
+    [Serializable]
     public abstract class TagHolderBase
     {
         public List<TagData> Tags { get; } = new List<TagData>();

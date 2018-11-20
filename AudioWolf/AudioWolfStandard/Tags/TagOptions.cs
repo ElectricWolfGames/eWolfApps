@@ -1,5 +1,8 @@
-﻿namespace AudioWolfStandard.Tags
+﻿using System;
+
+namespace AudioWolfStandard.Tags
 {
+    [Serializable]
     public class TagOptions
     {
         public char Seperator { get; set; } = ' ';

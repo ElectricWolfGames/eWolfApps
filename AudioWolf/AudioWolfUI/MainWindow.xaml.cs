@@ -34,11 +34,10 @@ namespace AudioWolfUI
         {
             _soundHolder = new SoundHolder(GetOutputFolder());
 
-            // need to load in the file cahce
-
             InitializeComponent();
 
             ConvertTagsToList();
+            PopulateSoundItemList();
 
             DisplayedItemsGrid.ItemsSource = _soundItemsToShow;
             Tag.ItemsSource = _tags;
@@ -75,15 +74,19 @@ namespace AudioWolfUI
                 _soundHolder.Add(sid);
             }
             _soundHolder.SaveIfNeeded();
+            PopulateSoundItemList();
 
+            ConvertTagsToList();
+        }
+
+        private void PopulateSoundItemList()
+        {
             foreach (var s in _soundHolder.SoundItems)
             {
                 SoundItem si = new SoundItem();
                 si.SoundItemData = s;
                 _soundItemsToShow.Add(si);
             }
-
-            ConvertTagsToList();
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
