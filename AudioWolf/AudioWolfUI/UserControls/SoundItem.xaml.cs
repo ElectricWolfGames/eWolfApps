@@ -19,8 +19,6 @@ namespace AudioWolfUI.UserControls
     {
         public SoundItemData SoundItemData = new SoundItemData();
 
-        private System.Drawing.Image _image;
-
         private readonly WaveFormRendererSettings _standardSettings;
 
         private readonly WaveFormRenderer _waveFormRenderer = new WaveFormRenderer();
@@ -50,8 +48,6 @@ namespace AudioWolfUI.UserControls
                 return SoundItemData.Name;
             }
         }
-
-        public System.Drawing.Image Image { get => _image; set => _image = value; }
 
         private IPeakProvider GetPeakProvider()
         {
@@ -90,22 +86,21 @@ namespace AudioWolfUI.UserControls
 
         private void RenderThreadFunc(IPeakProvider peakProvider, WaveFormRendererSettings settings)
         {
-            Image = null;
             try
             {
-                Image = _waveFormRenderer.Render(SoundItemData.FullPath, peakProvider, settings);
+                System.Drawing.Image image = _waveFormRenderer.Render(SoundItemData.FullPath, peakProvider, settings);
 
                 Dispatcher.Invoke(() =>
                 {
                     MemoryStream stream = new MemoryStream();
-                    Image.Save(stream, ImageFormat.Png);
+                    image.Save(stream, ImageFormat.Png);
 
-                    BitmapImage tempBitmap = new BitmapImage();
-                    tempBitmap.BeginInit();
-                    tempBitmap.StreamSource = stream;
-                    tempBitmap.EndInit();
+                    SoundItemData.Image = new BitmapImage();
+                    SoundItemData.Image.BeginInit();
+                    SoundItemData.Image.StreamSource = stream;
+                    SoundItemData.Image.EndInit();
                     SoundWave.Stretch = Stretch.Fill;
-                    SoundWave.Source = tempBitmap;
+                    SoundWave.Source = SoundItemData.Image;
                 });
             }
             catch (Exception e)
@@ -117,6 +112,12 @@ namespace AudioWolfUI.UserControls
 
         private void RenderWaveform()
         {
+            if (SoundItemData.Image != null)
+            {
+                SoundWave.Source = SoundItemData.Image;
+                return;
+            }
+
             var settings = GetRendererSettings();
             // settings.BackgroundBrush = new System.Drawing.Brush(System.Drawing.Color.Black);
             settings.BottomPeakPen = new System.Drawing.Pen(System.Drawing.Color.DarkSeaGreen);

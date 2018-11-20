@@ -6,7 +6,6 @@
              mc:Ignorable="d" Height="202.791" Width="343.076">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}">
         <Label x:Name="_labelName" Content="{Binding Title}" Height="33" Margin="4,5,0,0" VerticalAlignment="Top" Width="334"/>
-        <Image x:Name="SoundWave" HorizontalAlignment="Left" Height="165" Margin="10,38,0,0" VerticalAlignment="Top" Width="323">
-        </Image>
+        <Image x:Name="SoundWave" HorizontalAlignment="Left" Height="165" Margin="10,38,0,0" VerticalAlignment="Top" Width="323"></Image>
     </Grid>
 </UserControl>

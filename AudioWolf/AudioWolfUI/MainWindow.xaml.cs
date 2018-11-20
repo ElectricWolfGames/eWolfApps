@@ -7,11 +7,9 @@ using AudioWolfUI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 // Need to create a custom sound object.
 // need to create a tag system that we can use in the Vidoe Tagger and the image tagger.
@@ -98,15 +96,8 @@ namespace AudioWolfUI
         {
             _currentSoundItemData = e.AddedItems[0] as SoundItem;
 
-            MemoryStream stream = new MemoryStream();
-            _currentSoundItemData.Image.Save(stream, ImageFormat.Png);
-
-            BitmapImage tempBitmap = new BitmapImage();
-            tempBitmap.BeginInit();
-            tempBitmap.StreamSource = stream;
-            tempBitmap.EndInit();
             SoundWaveEdit.Stretch = Stretch.Fill;
-            SoundWaveEdit.Source = tempBitmap;
+            SoundWaveEdit.Source = _currentSoundItemData.SoundItemData.Image;
         }
     }
 }
