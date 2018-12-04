@@ -9,6 +9,7 @@ namespace AudioWolfStandard.Data
     [Serializable]
     public class SoundItemData
     {
+        [NonSerialized]
         private BitmapImage _image = null;
 
         private string _name;

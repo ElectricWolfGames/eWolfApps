@@ -17,14 +17,13 @@ using System.Windows.Media;
 // need to save out the main options in C:\ docs \EWolf folders.
 // need to save out the list of all the sample in  the main serch folder for each one.
 // need to check for any other setting in  the sub folders, EG. Save to c:\Main\ but then we also add a c:\ path, need to pick up the setting in the c:\Main\ folder.
-//
 
 namespace AudioWolfUI
 {
     public partial class MainWindow : Window
     {
-        private SoundHolder _soundHolder;
         private SoundItem _currentSoundItemData = null;
+        private SoundHolder _soundHolder;
         private ObservableCollection<SoundItem> _soundItemsToShow = new ObservableCollection<SoundItem>();
         private ObservableCollection<string> _tags = new ObservableCollection<string>();
 
@@ -41,22 +40,43 @@ namespace AudioWolfUI
             Tag.ItemsSource = _tags;
         }
 
-        public string GetOutputFolder()
+        public static string GetOutputFolder()
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\AudioWolf");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GlobalTagStore.AddTag(NewTagName.Text);
+            ConvertTagsToList();
         }
 
         private void ConvertTagsToList()
         {
             _tags.Clear();
 
-            _tags.Add("ExtraTagTest");
-
-            // get the global list !
             GlobalTagStore gts = ServiceLocator.Instance.GetService<GlobalTagStore>();
             foreach (TagData td in gts.Tags)
             {
                 _tags.Add(td.Name);
+            }
+        }
+
+        private void DisplayedItemsGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            _currentSoundItemData = e.AddedItems[0] as SoundItem;
+
+            SoundWaveEdit.Stretch = Stretch.Fill;
+            SoundWaveEdit.Source = _currentSoundItemData.SoundItemData.Image;
+        }
+
+        private void PopulateSoundItemList()
+        {
+            foreach (var s in _soundHolder.SoundItems)
+            {
+                SoundItem si = new SoundItem();
+                si.SoundItemData = s;
+                _soundItemsToShow.Add(si);
             }
         }
 
@@ -77,27 +97,14 @@ namespace AudioWolfUI
             ConvertTagsToList();
         }
 
-        private void PopulateSoundItemList()
-        {
-            foreach (var s in _soundHolder.SoundItems)
-            {
-                SoundItem si = new SoundItem();
-                si.SoundItemData = s;
-                _soundItemsToShow.Add(si);
-            }
-        }
-
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             // test button to show the fist item.
         }
 
-        private void DisplayedItemsGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void Tag_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            _currentSoundItemData = e.AddedItems[0] as SoundItem;
-
-            SoundWaveEdit.Stretch = Stretch.Fill;
-            SoundWaveEdit.Source = _currentSoundItemData.SoundItemData.Image;
+            // Add the selected tag to the current item.
         }
     }
 }

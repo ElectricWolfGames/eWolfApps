@@ -1,5 +1,4 @@
-﻿using AudioWolfStandard.Services;
-using System;
+﻿using System;
 using System.Linq;
 
 namespace AudioWolfStandard.Tags
@@ -31,10 +30,8 @@ namespace AudioWolfStandard.Tags
                 Name = name
             };
 
-            GlobalTagStore gts = ServiceLocator.Instance.GetService<GlobalTagStore>();
-
+            GlobalTagStore.AddTag(name);
             Tags.Add(td);
-            gts.Add(td);
         }
 
         public string CreateNameFromTags()

@@ -19,10 +19,12 @@
         <Image Grid.Column="2" x:Name="SoundWaveEdit" HorizontalAlignment="Left" Height="165" Margin="196,47,0,0" VerticalAlignment="Top" Width="404">
         </Image>
         <ListBox Name="Locations" HorizontalAlignment="Left" Height="227" Margin="11,15,0,0" VerticalAlignment="Top" Width="180"/>
-        <ListView Name="Tag" HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="181" Margin="12,267,0,0"/>
+        <ListView Name="Tag" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="181" Margin="12,301,0,0" SelectionChanged="Tag_SelectionChanged"/>
         <ListView Grid.Column="2" Name="DisplayedItemsGrid" HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="588" Margin="12,267,0,0" SelectionChanged="DisplayedItemsGrid_SelectionChanged"/>
-       
+
         <Button x:Name="TestButton" Content="Test" Grid.Column="2" HorizontalAlignment="Left" Height="50" Margin="197,10,0,0" VerticalAlignment="Top" Width="125" Click="TestButton_Click"/>
+        <TextBox x:Name="NewTagName" HorizontalAlignment="Left" Height="20" Margin="11,267,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="144"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="160,267,0,0" VerticalAlignment="Top" Width="22" Click="Button_Click"/>
 
 
     </Grid>

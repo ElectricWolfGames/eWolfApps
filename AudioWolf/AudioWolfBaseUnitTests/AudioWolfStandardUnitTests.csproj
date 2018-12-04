@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\SoundItemDataTests.cs" />
+    <Compile Include="Helpers\TagHelperTests.cs" />
     <Compile Include="SoundHolderTests.cs" />
     <Compile Include="Tags\GlobalTagStoreTests.cs" />
     <Compile Include="Tags\TagHolderTests.cs" />

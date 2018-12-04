@@ -6,6 +6,9 @@ namespace AudioWolfStandard.Tags
     [Serializable]
     public abstract class TagHolderBase
     {
+        [NonSerialized]
+        private bool _modifed = false;
+
         public List<TagData> Tags { get; } = new List<TagData>();
 
         public abstract void Add(string name);
@@ -23,6 +26,19 @@ namespace AudioWolfStandard.Tags
                     return td;
             }
             return null;
+        }
+
+        protected void SetModifed()
+        {
+            _modifed = true;
+        }
+
+        protected bool Modifed
+        {
+            get
+            {
+                return _modifed;
+            }
         }
     }
 }
