@@ -15,15 +15,15 @@ namespace AudioWolfStandard.Tags
             _options = options;
         }
 
-        public override void Add(string name)
+        public override bool Add(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
-                return;
+                return false;
 
             name = ClenseName(name);
             TagData tdold = GetTagWithName(name);
             if (tdold != null)
-                return;
+                return false;
 
             TagData td = new TagData
             {
@@ -32,6 +32,7 @@ namespace AudioWolfStandard.Tags
 
             GlobalTagStore.AddTag(name);
             Tags.Add(td);
+            return true;
         }
 
         public string CreateNameFromTags()
@@ -49,8 +50,12 @@ namespace AudioWolfStandard.Tags
         public void SplitName(string name)
         {
             _orginalName = name;
-            ClearTags();
 
+            if (_options.TagNotStoredInFileName)
+                return;
+
+            ClearTags();
+            
             bool skipFirst = _options.KeepFirstPartOfName;
             if (_options.TagInBoxs)
             {
@@ -78,6 +83,10 @@ namespace AudioWolfStandard.Tags
             if (pos > -1)
             {
                 name = name.Substring(pos + 1, posEnd - pos - 1);
+            }
+            else
+            {
+                name = string.Empty;
             }
 
             return name;

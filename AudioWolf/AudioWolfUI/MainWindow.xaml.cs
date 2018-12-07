@@ -23,6 +23,7 @@ namespace AudioWolfUI
     public partial class MainWindow : Window
     {
         private SoundItem _currentSoundItemData = null;
+        private ObservableCollection<string> _itemTags = new ObservableCollection<string>();
         private SoundHolder _soundHolder;
         private ObservableCollection<SoundItem> _soundItemsToShow = new ObservableCollection<SoundItem>();
         private ObservableCollection<string> _tags = new ObservableCollection<string>();
@@ -51,6 +52,20 @@ namespace AudioWolfUI
             ConvertTagsToList();
         }
 
+        private void ConvertItemTagsToList()
+        {
+            _itemTags.Clear();
+
+            if (_currentSoundItemData == null)
+                return;
+
+            foreach (TagData td in _currentSoundItemData.SoundItemData.Tags)
+            {
+                _itemTags.Add(td.Name);
+            }
+            ItemTags.ItemsSource = _itemTags;
+        }
+
         private void ConvertTagsToList()
         {
             _tags.Clear();
@@ -65,9 +80,15 @@ namespace AudioWolfUI
         private void DisplayedItemsGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             _currentSoundItemData = e.AddedItems[0] as SoundItem;
+            PopulateSelectItem();
+        }
 
+        private void PopulateSelectItem()
+        {
+            SelectedName.Text = _currentSoundItemData.SoundItemData.Name;
             SoundWaveEdit.Stretch = Stretch.Fill;
             SoundWaveEdit.Source = _currentSoundItemData.SoundItemData.Image;
+            ConvertItemTagsToList();
         }
 
         private void PopulateSoundItemList()
@@ -97,14 +118,31 @@ namespace AudioWolfUI
             ConvertTagsToList();
         }
 
+        private void Tag_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            string tagName = e.AddedItems[0] as string;
+
+            if (_currentSoundItemData == null || string.IsNullOrWhiteSpace(tagName))
+                return;
+
+            _currentSoundItemData.SoundItemData.AddTag(tagName);
+            PopulateSelectItem();
+            _soundHolder.SaveIfNeeded(true);
+        }
+
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             // test button to show the fist item.
         }
 
-        private void Tag_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ClearList_Click(object sender, RoutedEventArgs e)
         {
-            // Add the selected tag to the current item.
+            if (_currentSoundItemData == null)
+                return;
+
+            _currentSoundItemData.SoundItemData.Clear();
+            PopulateSelectItem();
+            _soundHolder.SaveIfNeeded(true);
         }
     }
 }

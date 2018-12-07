@@ -11,7 +11,7 @@ namespace AudioWolfStandard.Tags
 
         public List<TagData> Tags { get; } = new List<TagData>();
 
-        public abstract void Add(string name);
+        public abstract bool Add(string name);
 
         public void ClearTags()
         {

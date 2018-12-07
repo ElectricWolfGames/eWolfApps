@@ -119,10 +119,11 @@ namespace AudioWolfUI.UserControls
             }
 
             var settings = GetRendererSettings();
-            // settings.BackgroundBrush = new System.Drawing.Brush(System.Drawing.Color.Black);
-            settings.BottomPeakPen = new System.Drawing.Pen(System.Drawing.Color.DarkSeaGreen);
-            settings.BottomSpacerPen = new System.Drawing.Pen(System.Drawing.Color.DarkSlateGray);
+            
+            settings.BottomPeakPen = new System.Drawing.Pen(System.Drawing.Color.White);
+            settings.BottomSpacerPen = new System.Drawing.Pen(System.Drawing.Color.Red);
             settings.TopPeakPen = new System.Drawing.Pen(System.Drawing.Color.Yellow);
+            settings.BackgroundColor = System.Drawing.Color.Black;
 
             if (SoundItemData.FullPath != null)
             {

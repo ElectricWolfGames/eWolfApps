@@ -37,6 +37,16 @@ namespace AudioWolfStandard.Data
             }
         }
 
+        public bool AddTag(string name)
+        {
+            return _tagHolder.Add(name);
+        }
+
+        public void Clear()
+        {
+            _tagHolder.ClearTags();
+        }
+
         public List<TagData> Tags
         {
             get

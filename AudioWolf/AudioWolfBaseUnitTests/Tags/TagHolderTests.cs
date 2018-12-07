@@ -31,6 +31,52 @@ namespace AudioWolfBaseUnitTests.Tags
         }
 
         [Test]
+        public void ShouldFindInName()
+        {
+            TagOptions tagOptions = new TagOptions();
+            tagOptions.TagNotStoredInFileName = true;
+
+            TagHolder th = new TagHolder(tagOptions);
+            th.SplitName("This is a file name [TAG tagB]");
+
+            th.Tags.Should().HaveCount(0);
+        }
+
+        [Test]
+        public void ShouldFindNoWhenTagInBoxsAndNoBoxes()
+        {
+            TagOptions tagOptions = new TagOptions();
+            tagOptions.TagInBoxs = true;
+
+            TagHolder th = new TagHolder(tagOptions);
+            th.SplitName("This is a file name");
+
+            th.Tags.Should().HaveCount(0);
+            th.Tags.Should().BeEmpty();
+        }
+
+        [Test]
+        public void ShouldFindTagsInBoxes()
+        {
+            TagOptions tagOptions = new TagOptions();
+            tagOptions.TagInBoxs = true;
+
+            TagHolder th = new TagHolder(tagOptions);
+            th.SplitName("This is a file name [TAG tagB]");
+
+            th.Tags.Should().HaveCount(2);
+            th.Tags[0].Name.Should().Be("TAG");
+            th.Tags[1].Name.Should().Be("tagB");
+        }
+
+        [TestCase("[a]", "a")]
+        [TestCase("File name with [tags in boxes]", "tags in boxes")]
+        public void ShouldGetTextinBoxes(string name, string expected)
+        {
+            TagHolder.GetBoxContants(name).Should().Be(expected);
+        }
+
+        [Test]
         public void ShouldKeepFirstPartOfName()
         {
             TagOptions tagOptions = new TagOptions();
@@ -91,27 +137,6 @@ namespace AudioWolfBaseUnitTests.Tags
             th.Tags[0].Name.Should().Be("My");
             th.Tags[1].Name.Should().Be("First");
             th.Tags[2].Name.Should().Be("Tags");
-        }
-
-        [Test]
-        public void ShouldFindTagsInBoxes()
-        {
-            TagOptions tagOptions = new TagOptions();
-            tagOptions.TagInBoxs = true;
-
-            TagHolder th = new TagHolder(tagOptions);
-            th.SplitName("This is a file name [TAG tagB]");
-
-            th.Tags.Should().HaveCount(2);
-            th.Tags[0].Name.Should().Be("TAG");
-            th.Tags[1].Name.Should().Be("tagB");
-        }
-
-        [TestCase("[a]", "a")]
-        [TestCase("File name with [tags in boxes]", "tags in boxes")]
-        public void ShouldGetTextinBoxes(string name, string expected)
-        {
-            TagHolder.GetBoxContants(name).Should().Be(expected);
         }
     }
 }

@@ -11,21 +11,20 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="814" />
+            <ColumnDefinition Width="850" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="2" Height="231" Margin="9,11,-42,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}">
-            <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Height="46" Margin="24,0,0,0" Width="125" Click="Search_Click"/>
+        <StackPanel Grid.Column="2"  Height="231" Margin="9,11,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}">
+            <TextBox Name="SelectedName" HorizontalAlignment="Left" Height="26" Margin="161,5,0,0" TextWrapping="Wrap" Text="Name of selected item" Width="492"/>
         </StackPanel>
-        <Image Grid.Column="2" x:Name="SoundWaveEdit" HorizontalAlignment="Left" Height="165" Margin="196,47,0,0" VerticalAlignment="Top" Width="404">
+        <Image Grid.Column="2" x:Name="SoundWaveEdit" HorizontalAlignment="Left" Height="165" Margin="173,67,0,0" VerticalAlignment="Top" Width="404" OpacityMask="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
         </Image>
-        <ListBox Name="Locations" HorizontalAlignment="Left" Height="227" Margin="11,15,0,0" VerticalAlignment="Top" Width="180"/>
+        <ListView Name="ItemTags" HorizontalAlignment="Left" Height="227" Margin="11,15,0,0" VerticalAlignment="Top" Width="180"/>
         <ListView Name="Tag" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="181" Margin="12,301,0,0" SelectionChanged="Tag_SelectionChanged"/>
-        <ListView Grid.Column="2" Name="DisplayedItemsGrid" HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="588" Margin="12,267,0,0" SelectionChanged="DisplayedItemsGrid_SelectionChanged"/>
-
-        <Button x:Name="TestButton" Content="Test" Grid.Column="2" HorizontalAlignment="Left" Height="50" Margin="197,10,0,0" VerticalAlignment="Top" Width="125" Click="TestButton_Click"/>
+        <ListView Grid.Column="2" Name="DisplayedItemsGrid" Margin="12,267,-42,0" SelectionChanged="DisplayedItemsGrid_SelectionChanged"/>
+        <Button x:Name="TestButton" Content="Test" Grid.Column="2" HorizontalAlignment="Left" Height="50" Margin="17,118,0,0" VerticalAlignment="Top" Width="137" Click="TestButton_Click"/>
         <TextBox x:Name="NewTagName" HorizontalAlignment="Left" Height="20" Margin="11,267,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="144"/>
         <Button Content="+" HorizontalAlignment="Left" Margin="160,267,0,0" VerticalAlignment="Top" Width="22" Click="Button_Click"/>
-
-
+        <Button x:Name="ClearList" Content="Clear tags" Grid.Column="2" HorizontalAlignment="Left" Height="22" Margin="17,210,0,0" VerticalAlignment="Top" Width="137" Click="ClearList_Click"/>
+        <Button x:Name="Search" Content="Search for new files" HorizontalAlignment="Left" Margin="17,16,0,600" Width="137" Click="Search_Click" Grid.Column="2" Height="32" VerticalAlignment="Top"/>
     </Grid>
 </Window>

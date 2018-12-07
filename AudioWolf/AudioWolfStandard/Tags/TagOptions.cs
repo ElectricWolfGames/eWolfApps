@@ -9,5 +9,7 @@ namespace AudioWolfStandard.Tags
         public bool TagInBoxs { get; set; }
         public bool RenameFileWithTags { get; set; }
         public bool KeepFirstPartOfName { get; set; }
+
+        public bool TagNotStoredInFileName { get; set; }
     }
 }

@@ -47,13 +47,14 @@ namespace AudioWolfStandard.Tags
             }
         }
 
-        public override void Add(string name)
+        public override bool Add(string name)
         {
             TagData td = new TagData
             {
                 Name = name
             };
             Add(td);
+            return true;
         }
 
         public bool Add(TagData tag)
