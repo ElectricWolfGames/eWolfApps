@@ -6,6 +6,6 @@
              xmlns:local="clr-namespace:eWolfPodcasterUI.UserControls"
              mc:Ignorable="d" Height="46.896" Width="635.366">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-        <Label x:Name="_labelName" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="316" Height="23" />
+        <Label x:Name="_labelName" Content="{Binding Title}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="316" Height="23" />
     </Grid>
 </UserControl>
