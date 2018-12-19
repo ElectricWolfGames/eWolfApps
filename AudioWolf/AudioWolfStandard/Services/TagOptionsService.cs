@@ -27,6 +27,5 @@ namespace AudioWolfStandard.Services
                 _tagOptions = value;
             }
         }
-        
     }
 }

@@ -119,7 +119,7 @@ namespace AudioWolfUI.UserControls
             }
 
             var settings = GetRendererSettings();
-            
+
             settings.BottomPeakPen = new System.Drawing.Pen(System.Drawing.Color.White);
             settings.BottomSpacerPen = new System.Drawing.Pen(System.Drawing.Color.Red);
             settings.TopPeakPen = new System.Drawing.Pen(System.Drawing.Color.Yellow);

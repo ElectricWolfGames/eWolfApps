@@ -2,6 +2,7 @@
 using AudioWolfStandard.Tags;
 using FluentAssertions;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace AudioWolfBaseUnitTests.Helpers
 {
@@ -33,6 +34,13 @@ namespace AudioWolfBaseUnitTests.Helpers
         public void ShouldReturnSameName(string input, string expected)
         {
             TagHelper.CleanseTagName(input).Should().Be(expected);
+        }
+
+        [Test]
+        public void Should()
+        {
+            List<TagData> tags = TagHelper.GetValidTags("Tag, tags");
+            tags.Should().HaveCount(2);
         }
     }
 }

@@ -144,5 +144,14 @@ namespace AudioWolfUI
             PopulateSelectItem();
             _soundHolder.SaveIfNeeded(true);
         }
+
+        private void TagFilter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            string filters = TagFilters.Text;
+
+            List<TagData> tags = 
+        }
     }
+
+   
 }

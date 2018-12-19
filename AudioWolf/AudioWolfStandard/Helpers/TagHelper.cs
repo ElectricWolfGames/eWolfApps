@@ -1,4 +1,5 @@
 ﻿using AudioWolfStandard.Tags;
+using System.Collections.Generic;
 using System.Text;
 
 namespace AudioWolfStandard.Helpers
@@ -34,6 +35,13 @@ namespace AudioWolfStandard.Helpers
             };
 
             return tagData;
+        }
+
+        public static List<TagData> GetValidTags(string tags)
+        {
+            List<TagData> tagDatas = new List<TagData>();
+
+            return tagDatas;
         }
     }
 }

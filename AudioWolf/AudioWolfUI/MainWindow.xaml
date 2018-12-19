@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:AudioWolfUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="676.976" Width="1089.171" Background="#FFA63030">
-
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,2,-2" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
@@ -20,11 +19,13 @@
         </Image>
         <ListView Name="ItemTags" HorizontalAlignment="Left" Height="227" Margin="11,15,0,0" VerticalAlignment="Top" Width="180"/>
         <ListView Name="Tag" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="181" Margin="12,301,0,0" SelectionChanged="Tag_SelectionChanged"/>
-        <ListView Grid.Column="2" Name="DisplayedItemsGrid" Margin="12,267,-42,0" SelectionChanged="DisplayedItemsGrid_SelectionChanged"/>
+        <ListView Grid.Column="2" Name="DisplayedItemsGrid" Margin="12,301,-42,0" SelectionChanged="DisplayedItemsGrid_SelectionChanged"/>
         <Button x:Name="TestButton" Content="Test" Grid.Column="2" HorizontalAlignment="Left" Height="50" Margin="17,118,0,0" VerticalAlignment="Top" Width="137" Click="TestButton_Click"/>
         <TextBox x:Name="NewTagName" HorizontalAlignment="Left" Height="20" Margin="11,267,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="144"/>
         <Button Content="+" HorizontalAlignment="Left" Margin="160,267,0,0" VerticalAlignment="Top" Width="22" Click="Button_Click"/>
         <Button x:Name="ClearList" Content="Clear tags" Grid.Column="2" HorizontalAlignment="Left" Height="22" Margin="17,210,0,0" VerticalAlignment="Top" Width="137" Click="ClearList_Click"/>
         <Button x:Name="Search" Content="Search for new files" HorizontalAlignment="Left" Margin="17,16,0,600" Width="137" Click="Search_Click" Grid.Column="2" Height="32" VerticalAlignment="Top"/>
+        <TextBox x:Name="TagFilters" HorizontalAlignment="Left" Height="20" Margin="12,267,0,0" TextWrapping="Wrap" Text="filer tags names, with commas" VerticalAlignment="Top" Width="784" Grid.Column="2" TextChanged="TagFilter_TextChanged"/>
     </Grid>
 </Window>
+    

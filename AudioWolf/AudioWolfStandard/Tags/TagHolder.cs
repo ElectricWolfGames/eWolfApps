@@ -55,7 +55,7 @@ namespace AudioWolfStandard.Tags
                 return;
 
             ClearTags();
-            
+
             bool skipFirst = _options.KeepFirstPartOfName;
             if (_options.TagInBoxs)
             {
