@@ -15,7 +15,7 @@ namespace eWolfPodcasterUI.UserControls
             InitializeComponent();
         }
 
-        public string Name
+        public string Title
         {
             get
             {
