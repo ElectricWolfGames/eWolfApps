@@ -15,11 +15,11 @@ namespace eWolfPodcasterUI.UserControls
             InitializeComponent();
         }
 
-        public string Title
+        public string Description
         {
             get
             {
-                return ShowLibraryData.Name;
+                return ShowLibraryData.Description;
             }
         }
 
@@ -32,6 +32,14 @@ namespace eWolfPodcasterUI.UserControls
             set
             {
                 _showLibraryData = value;
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                return ShowLibraryData.Name;
             }
         }
     }

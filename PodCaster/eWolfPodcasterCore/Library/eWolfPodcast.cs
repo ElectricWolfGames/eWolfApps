@@ -6,11 +6,11 @@
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class eWolfPodcast
     {
-        private eWolfPodcastShows[] showsField;
+        private eWolfPodcastShows showsField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Shows")]
-        public eWolfPodcastShows[] Shows
+        public eWolfPodcastShows Shows
         {
             get
             {

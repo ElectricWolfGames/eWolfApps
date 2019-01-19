@@ -36,11 +36,14 @@ namespace eWolfPodcasterCore.Services
             List<CatergeryData> groups = new List<CatergeryData>();
             foreach (ShowLibraryData showLibraryData in _library)
             {
-                CatergeryData cd = new CatergeryData
+                if (!groups.Any(x => x.Name == showLibraryData.Catergery))
                 {
-                    Name = showLibraryData.Catergery
-                };
-                groups.Add(cd);
+                    CatergeryData cd = new CatergeryData
+                    {
+                        Name = showLibraryData.Catergery
+                    };
+                    groups.Add(cd);
+                }
             }
 
             return groups;
@@ -63,16 +66,16 @@ namespace eWolfPodcasterCore.Services
         {
             _library.Clear();
 
-            foreach (eWolfPodcastShows podcast in eWolfPodcast.Shows)
+            foreach (eWolfPodcastShowsShow podcast in eWolfPodcast.Shows.Show)
             {
-                if (podcast != null && podcast.Show != null)
+                if (podcast != null)
                 {
                     ShowLibraryData sld = new ShowLibraryData
                     {
-                        Name = podcast.Show.Name,
-                        Description = podcast.Show.Description,
-                        Catergery = podcast.Show.Category,
-                        URL = podcast.Show.Url
+                        Name = podcast.Name,
+                        Description = podcast.Description,
+                        Catergery = podcast.Category,
+                        URL = podcast.Url
                     };
                     _library.Add(sld);
                 }
