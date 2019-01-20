@@ -13,7 +13,7 @@ namespace eWolfPodcasterCore.Data
     {
         private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();
 
-        public static Shows GetShows
+        public static Shows GetShowService
         {
             get
             {
@@ -40,18 +40,19 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public void Add(ShowControl show)
+        public bool Add(ShowControl show)
         {
             lock (_shows)
             {
-                if (_shows.Any((x) => x.RssFeed == show.RssFeed))
-                    return;
+                if (_shows.Any((x) => x != null && x.RssFeed == show.RssFeed))
+                    return false;
 
-                if (_shows.Any((x) => x.Title == show.Title))
-                    return;
+                if (_shows.Any((x) => x != null && x.Title == show.Title))
+                    return false;
 
                 _shows.Add(show);
             }
+            return true;
         }
 
         public void AddNewShow()

@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:eWolfPodcasterUI.UserControls"
-             mc:Ignorable="d" Height="96.896" Width="635.366">
+             mc:Ignorable="d" Height="96.896" Width="620">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
         <Label x:Name="_labelName" Content="{Binding Title}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="416" Height="31" />
         <AccessText x:Name="_labelDescription2" Text="{Binding Description}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="615" Height="66" Margin="10,31,0,0" />
+        <Button x:Name="_butAddShow" Content="+" HorizontalAlignment="Left" Margin="584,3,0,0" VerticalAlignment="Top" Width="26" Height="28" Click="butttonAddShow_Click" RenderTransformOrigin="0.148,0.524" BorderThickness="0" />
     </Grid>
 </UserControl>

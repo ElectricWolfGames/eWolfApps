@@ -83,7 +83,7 @@ namespace eWolfPodcasterUWP
             {
                 Title = "New show name",
                 RssFeed = "Rss Feed",
-                Shows = Shows.GetShows,
+                Shows = Shows.GetShowService,
                 SaveCall = () => SaveShowsAsync()
             };
 
@@ -94,7 +94,7 @@ namespace eWolfPodcasterUWP
         {
             if (_currentShow != null)
             {
-                Shows.GetShows.RemoveShow(_currentShow);
+                Shows.GetShowService.RemoveShow(_currentShow);
                 _currentShow = null;
                 SaveShowsAsync();
                 PopulateTree();
@@ -103,7 +103,7 @@ namespace eWolfPodcasterUWP
 
         private async void CreateRssBackGround()
         {
-            RssBackGround rbg = new RssBackGround(Shows.GetShows);
+            RssBackGround rbg = new RssBackGround(Shows.GetShowService);
             await Task.Run(() => rbg.Runner());
         }
 
@@ -134,7 +134,7 @@ namespace eWolfPodcasterUWP
                     return;
 
                 var stream = await sampleFile.OpenAsync(FileAccessMode.Read);
-                Shows.GetShows.ReplaceAllShows((Shows)formatter.Deserialize(stream.AsStream()));
+                Shows.GetShowService.ReplaceAllShows((Shows)formatter.Deserialize(stream.AsStream()));
             }
             catch
             {
@@ -166,7 +166,7 @@ namespace eWolfPodcasterUWP
 
         private void PopulateTree()
         {
-            var allCategorys = CategoryHelper.GetAllCategoriesFromShows(Shows.GetShows.ShowList);
+            var allCategorys = CategoryHelper.GetAllCategoriesFromShows(Shows.GetShowService.ShowList);
             IReadOnlyCollection<ShowControl> showsInCat;
             TreeViewNode categoryNode;
 
@@ -180,7 +180,7 @@ namespace eWolfPodcasterUWP
                 };
                 ShowsItemsTree.RootNodes.Add(categoryNode);
 
-                showsInCat = CategoryHelper.GetAllShowsForCategory(Shows.GetShows.ShowList, category);
+                showsInCat = CategoryHelper.GetAllShowsForCategory(Shows.GetShowService.ShowList, category);
                 foreach (ShowControl show in showsInCat)
                 {
                     TreeViewNode showNode = new TreeViewNode
@@ -198,7 +198,7 @@ namespace eWolfPodcasterUWP
 
             StorageFile sampleFile = await _localFolder.CreateFileAsync("Shows.list", CreationCollisionOption.ReplaceExisting);
             MemoryStream stream = new MemoryStream();
-            formatter.Serialize(stream, Shows.GetShows);
+            formatter.Serialize(stream, Shows.GetShowService);
 
             await FileIO.WriteBytesAsync(sampleFile, stream.ToArray());
             PopulateTree();
