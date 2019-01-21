@@ -15,20 +15,22 @@ namespace eWolfPodcasterCoreUnitTests.Services
 
             eWolfPodcast pods = new eWolfPodcast();
 
-            List<eWolfPodcastShows> shows = new List<eWolfPodcastShows>();
-            eWolfPodcastShows show = new eWolfPodcastShows
-            {
-                Show = new eWolfPodcastShowsShow
-                {
-                    Category = "DEV",
-                    Description = "My dev podcast",
-                    Name = "DEV one",
-                    Url = "WWW.Somewhere"
-                }
-            };
-            shows.Add(show);
+            List<eWolfPodcastShowsShow> shows = new List<eWolfPodcastShowsShow>();
+            eWolfPodcastShowsShow show =
+                    new eWolfPodcastShowsShow()
+                    {
+                        Category = "DEV",
+                        Description = "My dev podcast",
+                        Name = "DEV one",
+                        Url = "WWW.Somewhere"
+                    };
 
-            pods.Shows = shows.ToArray();
+            shows.Add(show);
+            eWolfPodcastShows showfile = new eWolfPodcastShows
+            {
+                Show = shows.ToArray()
+            };
+            pods.Shows = showfile;
 
             showLibraryService.ProcessFiles(pods);
             showLibraryService.GetList().Should().HaveCount(1);

@@ -29,9 +29,9 @@ namespace eWolfPodcasterUI
         {
             InitializeComponent();
 
-            Shows.GetShows.Load(GetOutputFolder());
-            Shows.GetShows.UpdateAllRSSFeeds();
-            Shows.GetShows.Save(GetOutputFolder());
+            Shows.GetShowService.Load(GetOutputFolder());
+            Shows.GetShowService.UpdateAllRSSFeeds();
+            Shows.GetShowService.Save(GetOutputFolder());
 
             ShowLibraryService.GetLibrary.Load(GetLibraryPath());
 
@@ -80,7 +80,7 @@ namespace eWolfPodcasterUI
 
         private void AddShowItems()
         {
-            ShowsItems.ItemsSource = Shows.GetShows.ShowList;
+            ShowsItems.ItemsSource = Shows.GetShowService.ShowList;
         }
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
@@ -113,7 +113,8 @@ namespace eWolfPodcasterUI
                     Title = addNewShow.ShowName,
                     RssFeed = addNewShow.RSSFeed
                 };
-                Shows.GetShows.Add(sc);
+                Shows.GetShowService.Add(sc);
+                Shows.GetShowService.Save(GetOutputFolder());
             }
         }
 
@@ -121,6 +122,7 @@ namespace eWolfPodcasterUI
         {
             ShowLibrary addNewShow = new ShowLibrary { };
             addNewShow.ShowDialog();
+            Shows.GetShowService.Save(GetOutputFolder());
         }
 
         private void ButtonSubShowClick(object sender, RoutedEventArgs e)
@@ -130,7 +132,8 @@ namespace eWolfPodcasterUI
                 return;
 
             ShowControl selectedItem = (ShowControl)selectedItems[0];
-            Shows.GetShows.RemoveShow(selectedItem);
+            Shows.GetShowService.RemoveShow(selectedItem);
+            Shows.GetShowService.Save(GetOutputFolder());
         }
 
         private void EpisodeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

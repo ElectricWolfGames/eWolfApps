@@ -6,10 +6,10 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class eWolfPodcastShows
     {
-        private eWolfPodcastShowsShow showField;
+        private eWolfPodcastShowsShow[] showField;
 
-        /// <remarks/>
-        public eWolfPodcastShowsShow Show
+        [System.Xml.Serialization.XmlElementAttribute("Show")]
+        public eWolfPodcastShowsShow[] Show
         {
             get
             {

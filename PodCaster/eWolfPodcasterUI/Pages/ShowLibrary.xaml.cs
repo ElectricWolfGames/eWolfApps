@@ -23,13 +23,6 @@ namespace eWolfPodcasterUI.Pages
             PopulateCatergies();
         }
 
-        private void PopulateCatergies()
-        {
-            ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
-            _groups = showLibraryService.Groups();
-            LibraryCategories.ItemsSource = _groups;
-        }
-
         public bool Apply { get; set; }
 
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
@@ -65,6 +58,13 @@ namespace eWolfPodcasterUI.Pages
                 }
             }
             LibraryShows.ItemsSource = _libraryItem;
+        }
+
+        private void PopulateCatergies()
+        {
+            ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
+            _groups = showLibraryService.Groups();
+            LibraryCategories.ItemsSource = _groups;
         }
     }
 }

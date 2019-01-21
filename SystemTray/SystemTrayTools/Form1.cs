@@ -26,8 +26,6 @@ namespace SystemTrayTools
             TimeClock.Tick += new EventHandler(Timer_Tick);
 
             PopulateMenuList();
-
-            Hide();
         }
 
         private Timer TimeClock { get; set; }
@@ -39,7 +37,6 @@ namespace SystemTrayTools
 
         private void NotifyIconsMouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Hide();
             WindowState = FormWindowState.Normal;
         }
 
@@ -75,6 +72,11 @@ namespace SystemTrayTools
                     _menuActionsHolder.UpdateClipboard(str);
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Hide();
         }
     }
 }
