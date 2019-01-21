@@ -1,5 +1,9 @@
 ﻿using AudioWolfStandard;
+using AudioWolfStandard.Data;
+using AudioWolfStandard.Helpers;
+using AudioWolfUI.UserControls;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using Path = System.IO.Path;
@@ -12,18 +16,16 @@ namespace AudioWolfUI
     public partial class SearchSamples : Window
     {
         private SoundHolder _soundHolder;
-        //private ObservableCollection<ListItem> _soundItemsToShow = new ObservableCollection<SoundItem>();
+        private ObservableCollection<SoundListItem> _soundItemsToShow = new ObservableCollection<SoundListItem>();
 
         public SearchSamples()
         {
             _soundHolder = new SoundHolder(GetOutputFolder());
             PopulateSoundItemList();
-
-
             InitializeComponent();
-
-            //MainItemsList.ItemsSource = 
+            MainItemsList.ItemsSource = _soundItemsToShow;
         }
+
         public static string GetOutputFolder()
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\AudioWolf");
@@ -33,12 +35,32 @@ namespace AudioWolfUI
         {
             foreach (var s in _soundHolder.SoundItems)
             {
-                //SoundItem si = new SoundItem();
-                //si.SoundItemData = s;
-                //_soundItemsToShow.Add(si);
+                SoundListItem si = new SoundListItem();
+                si.SoundItemData = s;
+                _soundItemsToShow.Add(si);
             }
         }
 
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> files = FileSearchHelper.GetAllFiles();
+
+            foreach (string name in files)
+            {
+                SoundItemData sid = new SoundItemData();
+                sid.Name = Path.GetFileNameWithoutExtension(name);
+                sid.FullPath = name;
+                _soundHolder.Add(sid);
+            }
+            _soundHolder.SaveIfNeeded();
+            PopulateSoundItemList();
+
+            // TODO NEXT ConvertTagsToList();
+        }
+
+        private void FilterTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            // the filter box has changed.
+        }
     }
-    
 }

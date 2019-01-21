@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:AudioWolfUI"
         mc:Ignorable="d"
         Title="SearchSamples" Height="750" Width="1032.895">
-    <Grid Background="#FF0B2E0F">
+    <Grid Background="#FFCEFFD3">
+        
         <ListView x:Name="MainItemsList" HorizontalAlignment="Left" Height="531" Margin="10,178,0,0" VerticalAlignment="Top" Width="1005" Background="#FF786F6F">
             <ListView.View>
                 <GridView>
@@ -14,6 +15,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBox Name="FilterTextBox" HorizontalAlignment="Left" Height="23" Margin="139,138,0,0" TextWrapping="Wrap" Text="tags" VerticalAlignment="Top" Width="679" TextChanged="FilterTextBox_TextChanged"/>
+        <Label Content="Filter Tags" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,134,0,0" Width="115"/>
 
     </Grid>
 </Window>

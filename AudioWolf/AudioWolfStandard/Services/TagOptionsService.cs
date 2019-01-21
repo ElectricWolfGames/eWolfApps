@@ -13,7 +13,7 @@ namespace AudioWolfStandard.Services
 
         public TagOptionsService()
         {
-            _tagOptions.TagInBoxs = true;
+            _tagOptions.TagInBoxs = false;
         }
 
         public TagOptions TagOptions

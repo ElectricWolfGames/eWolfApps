@@ -63,6 +63,9 @@
     <Compile Include="UserControls\SoundItem.xaml.cs">
       <DependentUpon>SoundItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SoundListItem.xaml.cs">
+      <DependentUpon>SoundListItem.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SoundItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SoundListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
