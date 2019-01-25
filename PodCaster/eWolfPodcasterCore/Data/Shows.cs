@@ -44,12 +44,10 @@ namespace eWolfPodcasterCore.Data
         {
             lock (_shows)
             {
-                if (_shows.Any((x) => x != null && x.RssFeed == show.RssFeed))
+                if (Contains(show))
+                {
                     return false;
-
-                if (_shows.Any((x) => x != null && x.Title == show.Title))
-                    return false;
-
+                }
                 _shows.Add(show);
             }
             return true;
@@ -61,6 +59,17 @@ namespace eWolfPodcasterCore.Data
             sc.Title = "New Show";
             sc.RssFeed = "feed";
             Add(sc);
+        }
+
+        public bool Contains(ShowControl show)
+        {
+            if (_shows.Any((x) => x != null && x.RssFeed == show.RssFeed))
+                return true;
+
+            if (_shows.Any((x) => x != null && x.Title == show.Title))
+                return true;
+
+            return false;
         }
 
         public void CreateFakeList()
@@ -90,6 +99,16 @@ namespace eWolfPodcasterCore.Data
             lock (_shows)
             {
                 _shows.Remove(itemToRemove);
+            }
+        }
+
+        public void ReplaceAllShows(Shows shows)
+        {
+            _shows.Clear();
+
+            foreach (ShowControl sc in shows.ShowList)
+            {
+                _shows.Add(sc);
             }
         }
 
@@ -158,16 +177,6 @@ namespace eWolfPodcasterCore.Data
             sc.Episodes = new List<EpisodeControl>();
 
             return sc;
-        }
-
-        public void ReplaceAllShows(Shows shows)
-        {
-            _shows.Clear();
-
-            foreach (ShowControl sc in shows.ShowList)
-            {
-                _shows.Add(sc);
-            }
         }
     }
 }

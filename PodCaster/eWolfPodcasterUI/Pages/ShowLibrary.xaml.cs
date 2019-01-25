@@ -1,4 +1,5 @@
-﻿using eWolfPodcasterCore.Library;
+﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Library;
 using eWolfPodcasterCore.Services;
 using eWolfPodcasterUI.UserControls;
 using System.Collections.Generic;
@@ -37,6 +38,17 @@ namespace eWolfPodcasterUI.Pages
             Close();
         }
 
+        private bool IsShowAllReadyAdded(ShowLibraryData it)
+        {
+            ShowControl sc = new ShowControl()
+            {
+                Title = it.Name,
+                RssFeed = it.URL,
+            };
+
+            return Shows.GetShowService.Contains(sc);
+        }
+
         private void LibraryCategories_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var item = (sender as ListView).SelectedItem;
@@ -46,15 +58,17 @@ namespace eWolfPodcasterUI.Pages
             {
                 _libraryItem.Clear();
 
-                // _libraryItem
                 ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
                 _groups = showLibraryService.Groups();
 
                 foreach (var it in showLibraryService.GetList(sc.Name))
                 {
-                    LibraryItem li = new LibraryItem();
-                    li.ShowLibraryData = it;
-                    _libraryItem.Add(li);
+                    if (!IsShowAllReadyAdded(it))
+                    {
+                        LibraryItem li = new LibraryItem();
+                        li.ShowLibraryData = it;
+                        _libraryItem.Add(li);
+                    }
                 }
             }
             LibraryShows.ItemsSource = _libraryItem;
