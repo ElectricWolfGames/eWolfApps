@@ -202,7 +202,7 @@
       <Version>6.2.0-preview1-26926-04</Version>
     </PackageReference>
     <PackageReference Include="SonarAnalyzer.CSharp">
-      <Version>7.8.0.7320</Version>
+      <Version>7.10.0.7896</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
