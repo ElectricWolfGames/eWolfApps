@@ -22,6 +22,8 @@ namespace AudioWolfStandard.Data
 
         public string ImagePath { get; set; }
 
+        public float Length { get; set; }
+        
         public string Name
         {
             get
@@ -34,6 +36,7 @@ namespace AudioWolfStandard.Data
                 TagOptionsService tos = ServiceLocator.Instance.GetService<TagOptionsService>();
                 _tagHolder = new TagHolder(tos.TagOptions);
                 _tagHolder.SplitName(_name);
+                // tood need to update the length
             }
         }
 
