@@ -6,7 +6,7 @@
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="MainWindowPods" Height="622.772" Width="950">
+        Title="MainWindowPods" Height="746.772" Width="1181">
     <Window.Resources>
         <Style x:Key="MyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -43,16 +43,10 @@
             </xcad:DockingManager.DocumentHeaderTemplate>
             <xcad:LayoutRoot x:Name="_layoutRoot">
                 <xcad:LayoutPanel Orientation="Horizontal">
-                    <xcad:LayoutAnchorablePane DockWidth="250">
+                    <xcad:LayoutAnchorablePane DockWidth="300">
                         <xcad:LayoutAnchorable ContentId="Shows" Title="Shows" CanHide="False" CanClose="False" AutoHideWidth="240">
-                            <ListView Margin="10,44,10,10" Name="ShowsItems" MouseDoubleClick="ShowsItems_MouseDoubleClick">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Title" Width="144" DisplayMemberBinding="{Binding TitleCount}" />
-                                        <GridViewColumn Header="Count" Width="32" DisplayMemberBinding="{Binding Count}" />
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+
+                            <TreeView Name="ShowsItemsTree" MouseDoubleClick="ShowsItemsTree_MouseDoubleClick" HorizontalAlignment="Left" Height="641" Margin="6,42,0,0" VerticalAlignment="Top" Width="283" />
                         </xcad:LayoutAnchorable>
                     </xcad:LayoutAnchorablePane>
                     <xcad:LayoutDocumentPaneGroup DockWidth="675" Orientation="Vertical">
@@ -87,7 +81,7 @@
                                             <ImageBrush ImageSource="Images/Stop.png" />
                                         </Button.Background>
                                     </Button>
-                                    <TextBox x:Name="_currentPodCastDescription" Margin="3,0,13,0" VerticalAlignment="Bottom" Height="156" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
+                                    <TextBox x:Name="_currentPodCastDescription" Margin="10,45,13,10" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
                                 </Grid>
                             </xcad:LayoutDocument>
                         </xcad:LayoutDocumentPane>

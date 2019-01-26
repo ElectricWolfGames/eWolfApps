@@ -31,11 +31,11 @@ namespace eWolfPodcasterUI
 
             Shows.GetShowService.Load(GetOutputFolder());
             Shows.GetShowService.UpdateAllRSSFeeds();
-            Shows.GetShowService.Save(GetOutputFolder());
+            Shows.GetShowService.Save();
 
             ShowLibraryService.GetLibrary.Load(GetLibraryPath());
 
-            AddShowItems();
+            PopulateTree();
 
             DispatcherTimer timer = new DispatcherTimer
             {
@@ -63,24 +63,19 @@ namespace eWolfPodcasterUI
             }
         }
 
-        public string GetOutputFolder()
-        {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
-        }
-
         public string GetLibraryPath()
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp\\PodcastList.xml");
         }
 
+        public string GetOutputFolder()
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
+        }
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        private void AddShowItems()
-        {
-            ShowsItems.ItemsSource = Shows.GetShowService.ShowList;
         }
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
@@ -114,7 +109,7 @@ namespace eWolfPodcasterUI
                     RssFeed = addNewShow.RSSFeed
                 };
                 Shows.GetShowService.Add(sc);
-                Shows.GetShowService.Save(GetOutputFolder());
+                Shows.GetShowService.Save();
             }
         }
 
@@ -122,18 +117,21 @@ namespace eWolfPodcasterUI
         {
             ShowLibrary addNewShow = new ShowLibrary { };
             addNewShow.ShowDialog();
-            Shows.GetShowService.Save(GetOutputFolder());
+            Shows.GetShowService.Save();
+            PopulateTree();
         }
 
         private void ButtonSubShowClick(object sender, RoutedEventArgs e)
         {
-            var selectedItems = ShowsItems.SelectedItems;
-            if (selectedItems.Count == 0)
+            TreeViewItem item = (TreeViewItem)ShowsItemsTree.SelectedItem;
+            if (item == null)
                 return;
 
-            ShowControl selectedItem = (ShowControl)selectedItems[0];
+            ShowControl selectedItem = item.Tag as ShowControl;
             Shows.GetShowService.RemoveShow(selectedItem);
-            Shows.GetShowService.Save(GetOutputFolder());
+            Shows.GetShowService.Save();
+
+            PopulateTree();
         }
 
         private void EpisodeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -149,11 +147,39 @@ namespace eWolfPodcasterUI
             OnPropertyChanged("PodcastDescription");
         }
 
-        private void ShowsItems_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void PopulateTree()
         {
-            var item = (sender as ListView).SelectedItem;
-            ShowControl sc = item as ShowControl;
+            ShowsItemsTree.Items.Clear();
 
+            Shows shows = Shows.GetShowService;
+            List<string> groups = shows.Groups;
+            groups.Add("Ungrouped");
+
+            foreach (string groupName in groups)
+            {
+                List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
+                if (!showsInCat.Any())
+                    continue;
+
+                TreeViewItem categoryNode = new TreeViewItem();
+                categoryNode.Header = groupName;
+
+                ShowsItemsTree.Items.Add(categoryNode);
+
+                foreach (ShowControl show in showsInCat)
+                {
+                    TreeViewItem showNode = new TreeViewItem();
+                    showNode.Header = show.Title;
+                    showNode.Tag = show;
+                    categoryNode.Items.Add(showNode);
+                }
+            }
+        }
+
+        private void ShowsItemsTree_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            TreeViewItem item = (TreeViewItem)(sender as TreeView).SelectedItem;
+            ShowControl sc = item.Tag as ShowControl;
             if (sc != null)
             {
                 _podcasts.Clear();

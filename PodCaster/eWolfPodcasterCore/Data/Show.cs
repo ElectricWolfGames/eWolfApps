@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eWolfPodcasterCore.Library;
+using System;
 using System.Collections.Generic;
 
 namespace eWolfPodcasterCore.Data
@@ -13,6 +14,8 @@ namespace eWolfPodcasterCore.Data
         public ShowOptions ShowOption { get; set; } = new ShowOptions();
 
         public string Title { get; set; }
+
+        public CatergeryData Catergery { get; set; } = new CatergeryData("None");
 
         public int Count
         {

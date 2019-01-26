@@ -40,10 +40,12 @@ namespace eWolfPodcasterUI.Pages
 
         private bool IsShowAllReadyAdded(ShowLibraryData it)
         {
+            CatergeryData cd = new CatergeryData(it.Catergery);
             ShowControl sc = new ShowControl()
             {
                 Title = it.Name,
                 RssFeed = it.URL,
+                Catergery = cd
             };
 
             return Shows.GetShowService.Contains(sc);

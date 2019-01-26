@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Helpers;
+using eWolfPodcasterCore.Library;
 using eWolfPodcasterCore.Services;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace eWolfPodcasterCore.Data
     public class Shows
     {
         private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();
+        private string _outputFolder;
 
         public static Shows GetShowService
         {
@@ -37,6 +39,23 @@ namespace eWolfPodcasterCore.Data
                 {
                     return _shows;
                 }
+            }
+        }
+
+        public List<string> Groups
+        {
+            get
+            {
+                List<string> groups = new List<string>();
+                foreach (var show in _shows)
+                {
+                    if (show?.Catergery == null)
+                        continue;
+
+                    groups.Add(show.Catergery.Name);
+                }
+
+                return groups.Distinct().ToList();
             }
         }
 
@@ -81,8 +100,29 @@ namespace eWolfPodcasterCore.Data
             _shows.Add(sc);
         }
 
+        public List<ShowControl> ShowInGroup(string groupName)
+        {
+            if (groupName == "Ungrouped")
+            {
+                var list = new List<ShowControl>();
+                foreach (var show in _shows)
+                {
+                    if (show == null)
+                        continue;
+                    if (show.Catergery == null || show.Catergery.Name == "None")
+                    {
+                        list.Add(show);
+                    }
+                }
+                return list;
+            }
+            return _shows.Where(x => x?.Catergery?.Name == groupName).ToList();
+        }
+
         public void Load(string outputFolder)
         {
+            _outputFolder = outputFolder;
+
             PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
             _shows = ph.LoadData();
 
@@ -112,11 +152,11 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public void Save(string outputFolder)
+        public void Save()
         {
             lock (_shows)
             {
-                PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
+                PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(_outputFolder);
                 ph.SaveData(_shows);
             }
         }
@@ -152,7 +192,8 @@ namespace eWolfPodcasterCore.Data
             ShowControl sc = new ShowControl
             {
                 Title = "CodingBlocks",
-                RssFeed = "http://www.codingblocks.net/feed/podcast"
+                RssFeed = "http://www.codingblocks.net/feed/podcast",
+                Catergery = new CatergeryData("None")
             };
 
             sc.ShowOption.AudoDownloadEpisodes = false;
@@ -168,7 +209,8 @@ namespace eWolfPodcasterCore.Data
             ShowControl sc = new ShowControl
             {
                 Title = "Other",
-                RssFeed = "http://www.codingblocks.net"
+                RssFeed = "http://www.codingblocks.net",
+                Catergery = new CatergeryData("None")
             };
 
             sc.ShowOption.AudoDownloadEpisodes = false;

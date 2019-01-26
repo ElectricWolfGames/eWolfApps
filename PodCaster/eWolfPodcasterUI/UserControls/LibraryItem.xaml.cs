@@ -2,7 +2,6 @@
 using eWolfPodcasterCore.Library;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace eWolfPodcasterUI.UserControls
 {
@@ -48,14 +47,18 @@ namespace eWolfPodcasterUI.UserControls
 
         public void butttonAddShow_Click(object sender, RoutedEventArgs e)
         {
+            CatergeryData cd = new CatergeryData(_showLibraryData.Catergery);
             ShowControl sc = new ShowControl()
             {
                 Title = _showLibraryData.Name,
                 RssFeed = _showLibraryData.URL,
+                Catergery = cd
             };
+
             if (Shows.GetShowService.Add(sc))
             {
                 System.Console.WriteLine($"Add {_showLibraryData.Name} to main list");
+                Shows.GetShowService.Save();
             }
             else
             {

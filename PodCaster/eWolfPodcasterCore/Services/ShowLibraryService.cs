@@ -38,10 +38,7 @@ namespace eWolfPodcasterCore.Services
             {
                 if (!groups.Any(x => x.Name == showLibraryData.Catergery))
                 {
-                    CatergeryData cd = new CatergeryData
-                    {
-                        Name = showLibraryData.Catergery
-                    };
+                    CatergeryData cd = new CatergeryData(showLibraryData.Catergery);
                     groups.Add(cd);
                 }
             }
