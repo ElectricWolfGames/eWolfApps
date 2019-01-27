@@ -113,6 +113,10 @@
     <EmbeddedResource Include="Examples\4Episodes.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\eWolfCommon\eWolfCommon.csproj">
+      <Project>{bbfaec0a-f7dd-4667-bf9a-3de2246402db}</Project>
+      <Name>eWolfCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eWolfPodcasterCore\eWolfPodcasterCore.csproj">
       <Project>{53da1140-1af7-4832-a764-767ad6124a8b}</Project>
       <Name>eWolfPodcasterCore</Name>

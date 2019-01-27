@@ -1,15 +1,12 @@
-﻿using eWolfPodcasterCore.Data;
+﻿using eWolfCommon.Services;
+using eWolfPodcasterCore.Data;
 using System;
 using System.Collections.Generic;
 
 namespace eWolfPodcasterCore.Services
 {
-    public class ServiceLocator
+    public class ServiceLocator : ServiceLocatorBase
     {
-        private static ServiceLocator _instance = null;
-
-        private readonly IDictionary<Type, object> _services;
-
         private ServiceLocator()
         {
             _services = new Dictionary<Type, object>
@@ -20,7 +17,7 @@ namespace eWolfPodcasterCore.Services
             };
         }
 
-        public static ServiceLocator Instance
+        public static ServiceLocatorBase Instance
         {
             get
             {
@@ -30,25 +27,6 @@ namespace eWolfPodcasterCore.Services
                 }
                 return _instance;
             }
-        }
-
-        public T GetService<T>()
-        {
-            try
-            {
-                return (T)_services[typeof(T)];
-            }
-            catch
-            {
-                // Fail safe
-            }
-            return default(T);
-        }
-
-        public void InjectService<T>(object service)
-        {
-            Type t2 = typeof(T);
-            _services[t2] = service;
         }
     }
 }
