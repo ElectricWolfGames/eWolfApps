@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using SystemTrayTools.Interfaces;
 
-// TODO : BUG not showing the list of stored clipboard itmes !
 namespace SystemTrayTools.Actions
 {
     public class LastTenClipboards : IMenuAction, IUpdateWithClipBoard

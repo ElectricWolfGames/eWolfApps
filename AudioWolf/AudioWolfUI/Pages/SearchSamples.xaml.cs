@@ -31,6 +31,11 @@ namespace AudioWolfUI
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\AudioWolf");
         }
 
+        private void FilterTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            // the filter box has changed.
+        }
+
         private void PopulateSoundItemList()
         {
             foreach (var s in _soundHolder.SoundItems)
@@ -56,11 +61,6 @@ namespace AudioWolfUI
             PopulateSoundItemList();
 
             // TODO NEXT ConvertTagsToList();
-        }
-
-        private void FilterTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            // the filter box has changed.
         }
     }
 }

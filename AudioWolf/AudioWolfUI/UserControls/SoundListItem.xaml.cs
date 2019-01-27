@@ -10,12 +10,12 @@ namespace AudioWolfUI.UserControls
     /// </summary>
     public partial class SoundListItem : UserControl
     {
-        private SoundItemData _soundItemData = new SoundItemData();
-
         public SoundListItem()
         {
             InitializeComponent();
         }
+
+        public SoundItemData SoundItemData { get; set; } = new SoundItemData();
 
         public string Title
         {
@@ -24,8 +24,6 @@ namespace AudioWolfUI.UserControls
                 return $"{SoundItemData.Name} {string.Join("-", SoundItemData.Tags)}";
             }
         }
-
-        public SoundItemData SoundItemData { get => _soundItemData; set => _soundItemData = value; }
 
         private void Button_Click_Play(object sender, RoutedEventArgs e)
         {

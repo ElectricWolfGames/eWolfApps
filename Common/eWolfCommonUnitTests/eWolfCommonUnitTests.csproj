@@ -54,6 +54,7 @@
     <Compile Include="Builders\HtmlBuilderTests.cs" />
     <Compile Include="Builders\HtmlStringExtensionsTests.cs" />
     <Compile Include="Collections\StoreUniqueListTests.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

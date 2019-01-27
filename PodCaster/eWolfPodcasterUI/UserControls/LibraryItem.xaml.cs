@@ -10,8 +10,6 @@ namespace eWolfPodcasterUI.UserControls
     /// </summary>
     public partial class LibraryItem : UserControl
     {
-        private ShowLibraryData _showLibraryData = new ShowLibraryData();
-
         public LibraryItem()
         {
             InitializeComponent();
@@ -25,17 +23,7 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
-        public ShowLibraryData ShowLibraryData
-        {
-            get
-            {
-                return _showLibraryData;
-            }
-            set
-            {
-                _showLibraryData = value;
-            }
-        }
+        public ShowLibraryData ShowLibraryData { get; set; } = new ShowLibraryData();
 
         public string Title
         {
@@ -47,22 +35,22 @@ namespace eWolfPodcasterUI.UserControls
 
         public void butttonAddShow_Click(object sender, RoutedEventArgs e)
         {
-            CatergeryData cd = new CatergeryData(_showLibraryData.Catergery);
+            CatergeryData cd = new CatergeryData(ShowLibraryData.Catergery);
             ShowControl sc = new ShowControl()
             {
-                Title = _showLibraryData.Name,
-                RssFeed = _showLibraryData.URL,
+                Title = ShowLibraryData.Name,
+                RssFeed = ShowLibraryData.URL,
                 Catergery = cd
             };
 
             if (Shows.GetShowService.Add(sc))
             {
-                System.Console.WriteLine($"Add {_showLibraryData.Name} to main list");
+                System.Console.WriteLine($"Add {ShowLibraryData.Name} to main list");
                 Shows.GetShowService.Save();
             }
             else
             {
-                System.Console.WriteLine($"{_showLibraryData.Name} All ready in list");
+                System.Console.WriteLine($"{ShowLibraryData.Name} All ready in list");
             }
         }
     }

@@ -17,8 +17,6 @@ namespace AudioWolfUI.UserControls
     /// </summary>
     public partial class SoundItem : UserControl
     {
-        private SoundItemData _soundItemData = new SoundItemData();
-
         private readonly WaveFormRendererSettings _standardSettings;
 
         private readonly WaveFormRenderer _waveFormRenderer = new WaveFormRenderer();
@@ -32,14 +30,7 @@ namespace AudioWolfUI.UserControls
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
+        public SoundItemData SoundItemData { get; set; } = new SoundItemData();
 
         public string Title
         {
@@ -49,7 +40,14 @@ namespace AudioWolfUI.UserControls
             }
         }
 
-        public SoundItemData SoundItemData { get => _soundItemData; set => _soundItemData = value; }
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
 
         private IPeakProvider GetPeakProvider()
         {
