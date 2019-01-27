@@ -6,20 +6,7 @@
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class eWolfPodcast
     {
-        private eWolfPodcastShows showsField;
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Shows")]
-        public eWolfPodcastShows Shows
-        {
-            get
-            {
-                return this.showsField;
-            }
-            set
-            {
-                this.showsField = value;
-            }
-        }
+        public eWolfPodcastShows Shows { get; set; }
     }
 }

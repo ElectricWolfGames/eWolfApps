@@ -17,7 +17,7 @@ namespace AudioWolfUI.UserControls
     /// </summary>
     public partial class SoundItem : UserControl
     {
-        public SoundItemData SoundItemData = new SoundItemData();
+        private SoundItemData _soundItemData = new SoundItemData();
 
         private readonly WaveFormRendererSettings _standardSettings;
 
@@ -48,6 +48,8 @@ namespace AudioWolfUI.UserControls
                 return SoundItemData.Name;
             }
         }
+
+        public SoundItemData SoundItemData { get => _soundItemData; set => _soundItemData = value; }
 
         private IPeakProvider GetPeakProvider()
         {
