@@ -17,7 +17,7 @@ namespace SystemTrayTools.Actions
 
         public MenuItem GetMeunItem()
         {
-            return new MenuItem("Exit version 1.0.0", new EventHandler(ExitApplication));
+            return new MenuItem("Exit version 1.0.1", new EventHandler(ExitApplication));
         }
 
         private void ExitApplication(object sender, EventArgs e)
