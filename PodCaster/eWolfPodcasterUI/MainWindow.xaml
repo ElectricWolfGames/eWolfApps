@@ -6,7 +6,7 @@
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="MainWindowPods" Height="746.772" Width="1181">
+        Title="MainWindowPods" Height="746.772" Width="1181" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}">
     <Window.Resources>
         <Style x:Key="MyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -52,7 +52,7 @@
                     <xcad:LayoutDocumentPaneGroup DockWidth="675" Orientation="Vertical">
                         <xcad:LayoutDocumentPane DockHeight="100">
                             <xcad:LayoutDocument ContentId="PlayControls" Title="PlayControls">
-                                <Grid Margin="0,0,0,0">
+                                <Grid Margin="0,0,0,0" Background="{DynamicResource CheckBoxFillNormal}">
                                     <Button x:Name="btnPlay" VerticalAlignment="Top"
                                         Click="BtnPlay_Click"
                                         Margin="260,10,0,0"
