@@ -4,6 +4,7 @@ using eWolfPodcasterCore.Services;
 using eWolfPodcasterUI.UserControls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,6 +16,7 @@ namespace eWolfPodcasterUI.Pages
     public partial class ShowLibrary : Window
     {
         private List<CatergeryData> _groups;
+        private List<string> _groupNames;
         private ObservableCollection<LibraryItem> _libraryItem = new ObservableCollection<LibraryItem>();
 
         public ShowLibrary()
@@ -54,16 +56,16 @@ namespace eWolfPodcasterUI.Pages
         private void LibraryCategories_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var item = (sender as ListView).SelectedItem;
-            CatergeryData sc = item as CatergeryData;
+            string groupName = item as string;
 
-            if (sc != null)
+            if (groupName != null)
             {
                 _libraryItem.Clear();
 
                 ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
                 _groups = showLibraryService.Groups();
 
-                foreach (var it in showLibraryService.GetList(sc.Name))
+                foreach (var it in showLibraryService.GetList(groupName))
                 {
                     if (!IsShowAllReadyAdded(it))
                     {
@@ -79,8 +81,9 @@ namespace eWolfPodcasterUI.Pages
         private void PopulateCatergies()
         {
             ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
-            _groups = showLibraryService.Groups();
-            LibraryCategories.ItemsSource = _groups;
+
+            _groupNames = showLibraryService.Groups().Select(x => x.Name).ToList();
+            LibraryCategories.ItemsSource = _groupNames;
         }
     }
 }

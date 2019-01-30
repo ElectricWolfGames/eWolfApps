@@ -56,9 +56,10 @@ namespace eWolfPodcasterCore.Data
             {
                 reader = XmlReader.Create(RssFeed, settings);
             }
-            catch
+            catch (Exception ex)
             {
-                // can't read rss
+                Console.WriteLine("UpdateRSSFile: Error");
+                Console.WriteLine(ex.Message);
             }
 
             return reader;
