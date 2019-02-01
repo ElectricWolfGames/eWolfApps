@@ -175,12 +175,16 @@ namespace eWolfPodcasterCore.Data
                         try
                         {
                             XmlReader RSSFeed = sc.UpdateRSSFile();
+                            if (RSSFeed == null)
+                                continue;
+
                             List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
                             sc.UpdateEpisode(episodes);
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            // can't read Feed
+                            Console.WriteLine("UpdateAllRSSFeeds: Error");
+                            Console.WriteLine(ex.Message);
                         }
                     }
                 }
