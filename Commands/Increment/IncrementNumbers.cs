@@ -11,13 +11,14 @@
                 index = pos;
                 char a = text[pos + 2];
                 char b = text[pos + 3];
-                string val = a.ToString() + b.ToString();
-                if (int.TryParse(val, out int nunmber))
+                string stringAfterKey = a.ToString() + b.ToString();
+                if (int.TryParse(stringAfterKey, out int nunmber))
                 {
-                    System.Console.Write($"Found {key}{nunmber},");
                     nunmber++;
                     string backToStr = nunmber.ToString("00");
                     text = text.Substring(0, pos + 2) + backToStr + text.Substring(pos + 4);
+
+                    System.Console.Write($"Found {key}{stringAfterKey} > {backToStr} , ");
                 }
                 pos = text.IndexOf(key, index + key.Length);
             }
