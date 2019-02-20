@@ -6,15 +6,16 @@
         xmlns:local="clr-namespace:eWolfPodcasterUI"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="AddNewShow" Height="450" Width="800">
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="AddNewShow" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}">
     <Grid>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="101,69,0,0" VerticalAlignment="Top" />
+        <Label Content="Name" HorizontalAlignment="Left" Margin="101,69,0,0" VerticalAlignment="Top" Foreground="Black" />
         <TextBox Text="{Binding ShowName, Mode=TwoWay}" x:Name="textbox" HorizontalAlignment="Left" Height="23" Margin="148,72,0,0" VerticalAlignment="Top" Width="386" />
-        <Label Content="Rss Feed" HorizontalAlignment="Left" Margin="87,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.487" />
+        <Label Content="Rss Feed" HorizontalAlignment="Left" Margin="87,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.487" Foreground="Black" />
         <TextBox Text="{Binding RSSFeed, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="148,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="564" />
         <Button Content="Ok" HorizontalAlignment="Left" Margin="637,341,0,0" VerticalAlignment="Top" Width="75" Click="ButtonOKClick" />
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="101,341,0,0" VerticalAlignment="Top" Width="75" Click="ButtonCancelClick" />
-        <TextBlock Text="Category" HorizontalAlignment="Left" Margin="79,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.487" />
-        <ComboBox x:Name="CategoryList" HorizontalAlignment="Left" Height="32" Margin="148,173,0,0" VerticalAlignment="Top" Width="386" />
+        <ComboBox x:Name="CategoryList" HorizontalAlignment="Left" Height="32" Margin="148,155,0,0" VerticalAlignment="Top" Width="386" />
+        <Label Content="Category" HorizontalAlignment="Left" Margin="85,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.179,1.846" Foreground="Black" />
     </Grid>
 </Window>
