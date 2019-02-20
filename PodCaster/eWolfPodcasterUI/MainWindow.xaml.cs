@@ -3,6 +3,7 @@ using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Services;
 using eWolfPodcasterUI.Pages;
 using eWolfPodcasterUI.UserControls;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,9 +44,24 @@ namespace eWolfPodcasterUI
             };
             timer.Tick += TimerTick;
             timer.Start();
+
+            Microsoft.Win32.SystemEvents.SessionSwitch += new Microsoft.Win32.SessionSwitchEventHandler(SystemEvents_SessionSwitch);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                Console.WriteLine("Audio is now paused");
+                _mediaPlayer?.Pause();
+            }
+            else if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {
+                Console.WriteLine("Welcome back - you will need to manual start the audio.");
+            }
+        }
 
         public string PodcastDescription
         {
