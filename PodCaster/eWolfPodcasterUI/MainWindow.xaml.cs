@@ -122,8 +122,10 @@ namespace eWolfPodcasterUI
                 ShowControl sc = new ShowControl()
                 {
                     Title = addNewShow.ShowName,
-                    RssFeed = addNewShow.RSSFeed
+                    RssFeed = addNewShow.RSSFeed,
+                    LocalFiles = addNewShow.LocalFiles.IsChecked.Value
                 };
+
                 Shows.GetShowService.Add(sc);
                 Shows.GetShowService.Save();
             }

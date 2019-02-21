@@ -174,12 +174,19 @@ namespace eWolfPodcasterCore.Data
                     {
                         try
                         {
-                            XmlReader RSSFeed = sc.UpdateRSSFile();
-                            if (RSSFeed == null)
-                                continue;
+                            if (sc.LocalFiles)
+                            {
+                                sc.ScanLocalFilesOnly();
+                            }
+                            else
+                            {
+                                XmlReader RSSFeed = sc.UpdateRSSFile();
+                                if (RSSFeed == null)
+                                    continue;
 
-                            List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
-                            sc.UpdateEpisode(episodes);
+                                List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
+                                sc.UpdateEpisode(episodes);
+                            }
                         }
                         catch (Exception ex)
                         {

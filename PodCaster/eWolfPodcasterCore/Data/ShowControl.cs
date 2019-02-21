@@ -8,6 +8,8 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class ShowControl : Show, ISaveable
     {
+        public bool LocalFiles { get; set; }
+
         public string TitleCount
         {
             get
@@ -63,6 +65,13 @@ namespace eWolfPodcasterCore.Data
             }
 
             return reader;
+        }
+
+        internal void ScanLocalFilesOnly()
+        {
+            // check for local files only.
+            int i = 0;
+            i++;
         }
     }
 }
