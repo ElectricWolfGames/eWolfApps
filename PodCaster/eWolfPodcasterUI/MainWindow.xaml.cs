@@ -203,7 +203,14 @@ namespace eWolfPodcasterUI
                 _podcasts.Clear();
 
                 List<EpisodeControl> orderedByDateList = null;
-                orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+                if (sc.LocalFiles)
+                {
+                    orderedByDateList = sc.Episodes.OrderBy(x => x.PodcastURL).ToList();
+                }
+                else
+                {
+                    orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+                }
 
                 foreach (EpisodeControl x in orderedByDateList)
                 {

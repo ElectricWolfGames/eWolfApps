@@ -1,6 +1,7 @@
 ﻿using eWolfPodcasterCore.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 
 namespace eWolfPodcasterCore.Data
@@ -69,9 +70,34 @@ namespace eWolfPodcasterCore.Data
 
         internal void ScanLocalFilesOnly()
         {
-            // check for local files only.
-            int i = 0;
-            i++;
+            List<EpisodeControl> episodes = new List<EpisodeControl>();
+
+            string folderLocation = RssFeed;
+            try
+            {
+                string[] files = Directory.GetFiles(folderLocation, "*.*", SearchOption.AllDirectories);
+                string showName = new DirectoryInfo(folderLocation).Name;
+                foreach (string filename in files)
+                {
+                    string fileNameUpper = filename.ToUpper();
+                    string exp = Path.GetExtension(fileNameUpper);
+                    if (exp != ".MP3" && exp != ".MP4")
+                        continue;
+
+                    EpisodeControl ep = new EpisodeControl();
+                    ep.Description = showName + " : " + filename;
+                    ep.Hidden = false;
+                    ep.PodcastURL = filename;
+                    ep.PublishedDate = DateTime.Now;
+                    ep.Title = Path.GetFileNameWithoutExtension(filename);
+
+                    episodes.Add(ep);
+                }
+            }
+            catch
+            {
+            }
+            UpdateEpisode(episodes);
         }
     }
 }
