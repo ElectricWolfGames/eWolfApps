@@ -8,6 +8,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -46,7 +47,9 @@ namespace eWolfPodcasterUI
             timer.Tick += TimerTick;
             timer.Start();
 
-            Microsoft.Win32.SystemEvents.SessionSwitch += new Microsoft.Win32.SessionSwitchEventHandler(SystemEvents_SessionSwitch);
+            ServiceLocator.Instance.GetService<LoggerService>().Logs.CollectionChanged += new NotifyCollectionChangedEventHandler(LogListUpdated);
+
+            SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -151,6 +154,11 @@ namespace eWolfPodcasterUI
             _mediaPlayer.Position = new TimeSpan(_currentPodcast.PlayedLength);
             _mediaPlayer.Play();
             OnPropertyChanged("PodcastDescription");
+        }
+
+        private void LogListUpdated(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            PopulateLogPage();
         }
 
         private void PopulateLogPage()
