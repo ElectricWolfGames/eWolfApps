@@ -1,4 +1,6 @@
 ﻿using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Logger;
+using eWolfPodcasterCore.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +11,11 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class ShowControl : Show, ISaveable
     {
+        public string GetFileName
+        {
+            get { return Title + ".Show"; }
+        }
+
         public bool LocalFiles { get; set; }
 
         public string TitleCount
@@ -19,53 +26,9 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public string GetFileName
-        {
-            get { return Title + ".Show"; }
-        }
-
         public override string ToString()
         {
             return TitleCount;
-        }
-
-        internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
-        {
-            foreach (EpisodeControl newEpisode in newEpisodes)
-            {
-                bool orignalEpisode = true;
-                foreach (EpisodeControl episode in Episodes)
-                {
-                    if (episode.SameAs(newEpisode))
-                    {
-                        orignalEpisode = false;
-                    }
-                }
-                if (orignalEpisode)
-                    Episodes.Add(newEpisode);
-            }
-        }
-
-        internal XmlReader UpdateRSSFile()
-        {
-            XmlReader reader = null;
-
-            XmlReaderSettings settings = new XmlReaderSettings
-            {
-                DtdProcessing = DtdProcessing.Parse
-            };
-
-            try
-            {
-                reader = XmlReader.Create(RssFeed, settings);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("UpdateRSSFile: Error");
-                Console.WriteLine(ex.Message);
-            }
-
-            return reader;
         }
 
         internal void ScanLocalFilesOnly()
@@ -98,6 +61,56 @@ namespace eWolfPodcasterCore.Data
             {
             }
             UpdateEpisode(episodes);
+        }
+
+        internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
+        {
+            bool addedNew = false;
+            foreach (EpisodeControl newEpisode in newEpisodes)
+            {
+                bool newEpisodeFlag = true;
+                foreach (EpisodeControl episode in Episodes)
+                {
+                    if (episode.SameAs(newEpisode))
+                    {
+                        newEpisodeFlag = false;
+                    }
+                }
+
+                if (newEpisodeFlag)
+                {
+                    Episodes.Add(newEpisode);
+                    addedNew = true;
+                }
+            }
+
+            if (addedNew)
+            {
+                DebugLog.LogInfo($"Added episodes to {Title}");
+            }
+        }
+
+        internal XmlReader UpdateRSSFile()
+        {
+            XmlReader reader = null;
+
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
+
+            try
+            {
+                reader = XmlReader.Create(RssFeed, settings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("UpdateRSSFile: Error");
+                DebugLog.LogError($"UpdateRSSFile: Failed with {ex.Message}");
+                Console.WriteLine(ex.Message);
+            }
+
+            return reader;
         }
     }
 }

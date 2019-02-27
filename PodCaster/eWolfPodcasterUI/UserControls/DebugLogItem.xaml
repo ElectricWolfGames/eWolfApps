@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="eWolfPodcasterUI.UserControls.DebugLogItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:eWolfPodcasterUI.UserControls"
+             mc:Ignorable="d" Height="63.277" Width="780">
+    <Grid Background="{DynamicResource BackgroundKey}">
+        <Rectangle x:Name="box" HorizontalAlignment="Left" Height="56" Stroke="Black" VerticalAlignment="Top" Width="781" Fill="{DynamicResource ButtonNormalBackground}" />
+        <Button x:Name="_butRemove" Content="X" HorizontalAlignment="Left" Margin="754,5,0,0" VerticalAlignment="Top" Width="22" Height="23" RenderTransformOrigin="0.148,0.524" BorderThickness="0" />
+        <Label x:Name="_labelName" Content="{Binding MessageType}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="564" />
+        <Label x:Name="_labelTime" Content="{Binding MessageTimeDisplay}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="171" Margin="574,0,0,0" />
+        <Label x:Name="_labelDescription" Content="{Binding Message}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="735" Margin="10,15,0,0" Height="43" />
+    </Grid>
+
+</UserControl>

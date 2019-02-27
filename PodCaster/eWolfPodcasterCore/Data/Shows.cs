@@ -1,5 +1,6 @@
 ﻿using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Library;
+using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
 using System;
 using System.Collections.Generic;
@@ -154,6 +155,8 @@ namespace eWolfPodcasterCore.Data
 
         public void Save()
         {
+            DebugLog.LogInfo("Saving data");
+
             lock (_shows)
             {
                 PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(_outputFolder);
@@ -163,6 +166,8 @@ namespace eWolfPodcasterCore.Data
 
         public void UpdateAllRSSFeeds()
         {
+            DebugLog.LogInfo("Updating RSS");
+
             lock (_shows)
             {
                 foreach (ShowControl sc in _shows)
@@ -190,6 +195,8 @@ namespace eWolfPodcasterCore.Data
                         }
                         catch (Exception ex)
                         {
+                            ServiceLocator.Instance.GetService<LoggerService>().AddError($"UpdateAllRSSFeeds: Error {ex.Message}");
+
                             Console.WriteLine("UpdateAllRSSFeeds: Error");
                             Console.WriteLine(ex.Message);
                         }

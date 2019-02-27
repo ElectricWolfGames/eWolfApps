@@ -19,7 +19,10 @@ namespace eWolfPodcasterUI.UserControls
 
         public string Description
         {
-            get { return _episodeData.Description; }
+            get
+            {
+                return _episodeData.Description;
+            }
         }
 
         public IPodCastInfo EpisodeData

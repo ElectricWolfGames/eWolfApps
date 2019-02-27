@@ -124,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControls\DebugLogItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\LibraryItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,6 +152,9 @@
     </Compile>
     <Compile Include="Themes\LeftMarginMultiplierConverter.cs" />
     <Compile Include="Themes\TreeViewItemExtensions.cs" />
+    <Compile Include="UserControls\DebugLogItem.xaml.cs">
+      <DependentUpon>DebugLogItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LibraryItem.xaml.cs">
       <DependentUpon>LibraryItem.xaml</DependentUpon>
     </Compile>
@@ -187,6 +194,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\eWolfCommon\eWolfCommon.csproj">
+      <Project>{93BA44BF-142F-4B94-9C30-5A51C0A90766}</Project>
+      <Name>eWolfCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eWolfPodcasterCore\eWolfPodcasterCore.csproj">
       <Project>{53da1140-1af7-4832-a764-767ad6124a8b}</Project>
       <Name>eWolfPodcasterCore</Name>

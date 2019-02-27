@@ -1,5 +1,6 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
 using eWolfPodcasterUI.Pages;
 using eWolfPodcasterUI.UserControls;
@@ -17,18 +18,17 @@ using System.Windows.Threading;
 
 namespace eWolfPodcasterUI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private readonly MediaPlayer _mediaPlayer = new MediaPlayer();
         private PodcastEpisode _currentPodcast = null;
+        private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
 
         public MainWindow()
         {
             InitializeComponent();
+            DebugLog.LogInfo("App started");
 
             Shows.GetShowService.Load(GetOutputFolder());
             Shows.GetShowService.UpdateAllRSSFeeds();
@@ -37,6 +37,7 @@ namespace eWolfPodcasterUI
             ShowLibraryService.GetLibrary.Load(GetLibraryPath());
 
             PopulateTree();
+            PopulateLogPage();
 
             DispatcherTimer timer = new DispatcherTimer
             {
@@ -49,19 +50,6 @@ namespace eWolfPodcasterUI
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
-        {
-            if (e.Reason == SessionSwitchReason.SessionLock)
-            {
-                Console.WriteLine("Audio is now paused");
-                _mediaPlayer?.Pause();
-            }
-            else if (e.Reason == SessionSwitchReason.SessionUnlock)
-            {
-                Console.WriteLine("Welcome back - you will need to manual start the audio.");
-            }
-        }
 
         public string PodcastDescription
         {
@@ -165,6 +153,25 @@ namespace eWolfPodcasterUI
             OnPropertyChanged("PodcastDescription");
         }
 
+        private void PopulateLogPage()
+        {
+            List<LoggerData> orderedByDateList = null;
+
+            orderedByDateList = ServiceLocator.Instance.GetService<LoggerService>().Logs.ToList();
+
+            foreach (LoggerData x in orderedByDateList)
+            {
+                IDebugLoggerData pce = new DebugLogItem
+                {
+                    _loggerData = x
+                };
+
+                _errorLog.Add(pce);
+            }
+
+            LogItems.ItemsSource = _errorLog;
+        }
+
         private void PopulateTree()
         {
             ShowsItemsTree.Items.Clear();
@@ -225,6 +232,19 @@ namespace eWolfPodcasterUI
                 }
 
                 EpisodesItems.ItemsSource = _podcasts;
+            }
+        }
+
+        private void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                DebugLog.LogInfo("Computer locked: Pausing playback");
+                _mediaPlayer?.Pause();
+            }
+            else if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {
+                Console.WriteLine("Welcome back - you will need to manual start the audio.");
             }
         }
 

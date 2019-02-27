@@ -1,5 +1,6 @@
 ﻿using eWolfCommon.Services;
 using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Logger;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +14,8 @@ namespace eWolfPodcasterCore.Services
             {
                 { typeof(CategoryHolderService), new CategoryHolderService() },
                 { typeof(Shows), new Shows() },
-                { typeof(ShowLibraryService), new ShowLibraryService() }
+                { typeof(ShowLibraryService), new ShowLibraryService() },
+                { typeof(LoggerService), new LoggerService() }
             };
         }
 

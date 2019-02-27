@@ -45,7 +45,6 @@
                 <xcad:LayoutPanel Orientation="Horizontal">
                     <xcad:LayoutAnchorablePane DockWidth="300">
                         <xcad:LayoutAnchorable ContentId="Shows" Title="Shows" CanHide="False" CanClose="False" AutoHideWidth="240">
-
                             <TreeView Name="ShowsItemsTree" MouseDoubleClick="ShowsItemsTree_MouseDoubleClick" HorizontalAlignment="Left" Height="641" Margin="6,42,0,0" VerticalAlignment="Top" Width="283" />
                         </xcad:LayoutAnchorable>
                     </xcad:LayoutAnchorablePane>
@@ -87,11 +86,10 @@
                         </xcad:LayoutDocumentPane>
                         <xcad:LayoutDocumentPane DockHeight="400">
                             <xcad:LayoutDocument ContentId="Episodes" Title="Episodes">
-                                <ListBox Margin="0,7,0,0" Name="EpisodesItems" SelectionChanged="EpisodeListBox_SelectionChanged">
-                                </ListBox>
+                                <ListBox Margin="0,7,0,0" Name="EpisodesItems" SelectionChanged="EpisodeListBox_SelectionChanged"></ListBox>
                             </xcad:LayoutDocument>
                             <xcad:LayoutDocument ContentId="Logs" Title="Logs">
-                                <Button Content="Document 2 Content" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <ListBox Margin="0,7,0,0" Name="LogItems"></ListBox>
                             </xcad:LayoutDocument>
                         </xcad:LayoutDocumentPane>
                     </xcad:LayoutDocumentPaneGroup>
