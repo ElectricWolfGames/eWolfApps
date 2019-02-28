@@ -32,20 +32,14 @@ namespace eWolfPodcasterUI
             DebugLog.LogInfo("App started");
 
             Shows.GetShowService.Load(GetOutputFolder());
-            Shows.GetShowService.UpdateAllRSSFeeds();
             Shows.GetShowService.Save();
 
             ShowLibraryService.GetLibrary.Load(GetLibraryPath());
 
             PopulateTree();
             PopulateLogPage();
-
-            DispatcherTimer timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(100)
-            };
-            timer.Tick += TimerTick;
-            timer.Start();
+            CreatePayerTimer();
+            CreateRSSTimer();
 
             ServiceLocator.Instance.GetService<LoggerService>().Logs.CollectionChanged += new NotifyCollectionChangedEventHandler(LogListUpdated);
 
@@ -141,6 +135,26 @@ namespace eWolfPodcasterUI
             Shows.GetShowService.Save();
 
             PopulateTree();
+        }
+
+        private void CreatePayerTimer()
+        {
+            DispatcherTimer timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(100)
+            };
+            timer.Tick += TimerTick;
+            timer.Start();
+        }
+
+        private void CreateRSSTimer()
+        {
+            DispatcherTimer timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMinutes(5)
+            };
+            timer.Tick += UpdateRssFeedTimer;
+            timer.Start();
         }
 
         private void EpisodeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -268,6 +282,16 @@ namespace eWolfPodcasterUI
                 totalWidth *= _mediaPlayer.Position.TotalMilliseconds;
                 _currentPodcast.PlayedLengthScaled = (float)totalWidth;
             }
+        }
+
+        private void UpdateRssFeedTimer(object sender, EventArgs e)
+        {
+            DebugLog.LogInfo("RSS timer - update the episode from the feed.");
+            // start a new process for this!
+            Shows.GetShowService.UpdateAllRSSFeeds();
+
+            // update the RSS
+            // check for files to auto download
         }
     }
 }

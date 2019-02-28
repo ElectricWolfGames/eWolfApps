@@ -1,5 +1,4 @@
 ﻿using eWolfPodcasterCore.Helpers;
-using eWolfPodcasterCore.Library;
 using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
 using System;
@@ -73,14 +72,6 @@ namespace eWolfPodcasterCore.Data
             return true;
         }
 
-        public void AddNewShow()
-        {
-            ShowControl sc = CreateFakeShow();
-            sc.Title = "New Show";
-            sc.RssFeed = "feed";
-            Add(sc);
-        }
-
         public bool Contains(ShowControl show)
         {
             if (_shows.Any((x) => x != null && x.RssFeed == show.RssFeed))
@@ -90,15 +81,6 @@ namespace eWolfPodcasterCore.Data
                 return true;
 
             return false;
-        }
-
-        public void CreateFakeList()
-        {
-            ShowControl sc = CreateFakeShow();
-            _shows.Add(sc);
-
-            sc = CreateFakeShowB();
-            _shows.Add(sc);
         }
 
         public List<ShowControl> ShowInGroup(string groupName)
@@ -126,13 +108,6 @@ namespace eWolfPodcasterCore.Data
 
             PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
             _shows = ph.LoadData();
-
-            if (_shows.Count == 0)
-            {
-                ShowControl sc = CreateFakeShow();
-                _shows.Add(sc);
-                ph.SaveData(_shows);
-            }
         }
 
         public void RemoveShow(ShowControl itemToRemove)
@@ -203,40 +178,6 @@ namespace eWolfPodcasterCore.Data
                     }
                 }
             }
-        }
-
-        private ShowControl CreateFakeShow()
-        {
-            ShowControl sc = new ShowControl
-            {
-                Title = "CodingBlocks",
-                RssFeed = "http://www.codingblocks.net/feed/podcast",
-                Catergery = new CatergeryData("None")
-            };
-
-            sc.ShowOption.AudoDownloadEpisodes = false;
-            sc.ShowOption.Category = "Dev";
-            sc.ShowOption.CheckforUpdates = true;
-            sc.Episodes = new List<EpisodeControl>();
-
-            return sc;
-        }
-
-        private ShowControl CreateFakeShowB()
-        {
-            ShowControl sc = new ShowControl
-            {
-                Title = "Other",
-                RssFeed = "http://www.codingblocks.net",
-                Catergery = new CatergeryData("None")
-            };
-
-            sc.ShowOption.AudoDownloadEpisodes = false;
-            sc.ShowOption.Category = "Music";
-            sc.ShowOption.CheckforUpdates = true;
-            sc.Episodes = new List<EpisodeControl>();
-
-            return sc;
         }
     }
 }
