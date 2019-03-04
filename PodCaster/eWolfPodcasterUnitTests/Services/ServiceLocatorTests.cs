@@ -1,4 +1,5 @@
-﻿using eWolfPodcasterCore.Services;
+﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Services;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -7,10 +8,10 @@ namespace eWolfPodcasterCoreUnitTests.Services
     public class ServiceLocatorTests
     {
         [Test]
-        public void ShouldReturnSameTypeWhenRequestedCategoryHolderService()
+        public void ShouldReturnSameTypeWhenRequestedShows()
         {
-            var ch = ServiceLocator.Instance.GetService<CategoryHolderService>();
-            ch.Should().BeOfType(typeof(CategoryHolderService));
+            var ch = ServiceLocator.Instance.GetService<Shows>();
+            ch.Should().BeOfType(typeof(Shows));
         }
 
         [Test]

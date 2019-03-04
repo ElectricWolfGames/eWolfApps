@@ -69,9 +69,12 @@ namespace eWolfPodcasterUI.Pages
 
         private void PopulateCategory()
         {
-            foreach (string category in CategoryHolderService.GetAllCategories)
+            CategoryList.Items.Clear();
+
+            var groups = ShowLibraryService.GetLibrary.Groups();
+            foreach (var group in groups)
             {
-                CategoryList.Items.Add(category);
+                CategoryList.Items.Add(group.Name);
             }
         }
     }
