@@ -26,6 +26,7 @@ namespace eWolfPodcasterUI
         private PodcastEpisode _currentPodcast = null;
         private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
         private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
+        private DispatcherTimer _rssTimer;
 
         public MainWindow()
         {
@@ -138,6 +139,24 @@ namespace eWolfPodcasterUI
             PopulateTree();
         }
 
+        private async void CheckNextShow()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    if (Shows.GetShowService.UpdateNextRSSFeeds())
+                    {
+                        _rssTimer.Interval = TimeSpan.FromSeconds(_rssTimer.Interval.Seconds * 20);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                DebugLog.LogInfo($"Check Next Show Failed with {ex.Message}");
+            }
+        }
+
         private void CreatePayerTimer()
         {
             DispatcherTimer timer = new DispatcherTimer
@@ -150,12 +169,12 @@ namespace eWolfPodcasterUI
 
         private void CreateRSSTimer()
         {
-            DispatcherTimer timer = new DispatcherTimer
+            _rssTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromSeconds(1)
+                Interval = TimeSpan.FromSeconds(5)
             };
-            timer.Tick += UpdateRssFeedTimer;
-            timer.Start();
+            _rssTimer.Tick += UpdateRssFeedTimer;
+            _rssTimer.Start();
         }
 
         private void EpisodeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -290,19 +309,9 @@ namespace eWolfPodcasterUI
             CheckNextShow();
         }
 
-        private async void CheckNextShow()
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            try
-            {
-                await Task.Run(() =>
-                {
-                    Shows.GetShowService.UpdateNextRSSFeeds();
-                });
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            _rssTimer.Stop();
         }
     }
 }

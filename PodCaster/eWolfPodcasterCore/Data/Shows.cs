@@ -137,7 +137,7 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public void UpdateNextRSSFeeds()
+        public bool UpdateNextRSSFeeds()
         {
             Console.WriteLine("UpdateNextRSSFeeds ");
 
@@ -151,7 +151,7 @@ namespace eWolfPodcasterCore.Data
 
                 UpdateShow(nextShow);
 
-                return;
+                return false;
             }
 
             Console.WriteLine("ReStaet all ");
@@ -159,11 +159,12 @@ namespace eWolfPodcasterCore.Data
             {
                 foreach (ShowControl show in _shows)
                 {
-                    if (_shows != null)
+                    if (show != null)
                     {
                         show.UpdatedRss = false;
                     }
                 }
+                return true;
             }
         }
 
