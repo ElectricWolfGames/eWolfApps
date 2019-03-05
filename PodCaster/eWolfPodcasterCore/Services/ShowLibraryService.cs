@@ -1,7 +1,11 @@
 ﻿using eWolfCommon.Helpers;
+using eWolfCommon.Reflection;
 using eWolfPodcasterCore.Library;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace eWolfPodcasterCore.Services
 {
@@ -13,6 +17,14 @@ namespace eWolfPodcasterCore.Services
         {
         }
 
+        public static ShowLibraryService GetLibrary
+        {
+            get
+            {
+                return ServiceLocator.Instance.GetService<ShowLibraryService>();
+            }
+        }
+
         public List<ShowLibraryData> GetList(string name)
         {
             return _library.Where(x => x.Catergery == name).ToList();
@@ -21,14 +33,6 @@ namespace eWolfPodcasterCore.Services
         public List<ShowLibraryData> GetList()
         {
             return _library;
-        }
-
-        public static ShowLibraryService GetLibrary
-        {
-            get
-            {
-                return ServiceLocator.Instance.GetService<ShowLibraryService>();
-            }
         }
 
         public List<CatergeryData> Groups()
@@ -46,16 +50,21 @@ namespace eWolfPodcasterCore.Services
             return groups;
         }
 
-        public void Load(string file)
+        public void Load(string fileName)
         {
+            if (!File.Exists(fileName))
+            {
+                CreateLibraryFileFromProject(fileName);
+            }
+
             try
             {
-                eWolfPodcast eWolfPodcast = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(file);
+                eWolfPodcast eWolfPodcast = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(fileName);
                 ProcessFiles(eWolfPodcast);
             }
             catch
             {
-                // Can't find or load library file
+                // fail safe
             }
         }
 
@@ -77,6 +86,12 @@ namespace eWolfPodcasterCore.Services
                     _library.Add(sld);
                 }
             }
+        }
+
+        private void CreateLibraryFileFromProject(string fileName)
+        {
+            string file = ProjectItems.LoadFile("eWolfPodcasterCore.RawData.PodcastList.xml");
+            File.WriteAllText(fileName, file);
         }
     }
 }

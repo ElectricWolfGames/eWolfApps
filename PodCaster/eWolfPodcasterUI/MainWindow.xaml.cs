@@ -66,14 +66,19 @@ namespace eWolfPodcasterUI
             }
         }
 
+        private string GetBaseFolder()
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf", "PodCaster");
+        }
+
         public string GetLibraryPath()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp\\PodcastList.xml");
+            return Path.Combine(GetBaseFolder(), "PodcastList.xml");
         }
 
         public string GetOutputFolder()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf\\eWolfTestApp");
+            return GetBaseFolder();
         }
 
         protected void OnPropertyChanged(string name)
