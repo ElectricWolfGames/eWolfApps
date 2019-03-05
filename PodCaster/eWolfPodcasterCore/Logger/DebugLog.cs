@@ -1,4 +1,6 @@
 ﻿using eWolfPodcasterCore.Services;
+using System;
+using System.Threading;
 
 namespace eWolfPodcasterCore.Logger
 {
@@ -6,7 +8,7 @@ namespace eWolfPodcasterCore.Logger
     {
         public static void LogInfo(string message)
         {
-            ServiceLocator.Instance.GetService<LoggerService>().AddInfo(message);
+            // TODO Need to fid a why to log out the message on the mai UI process
         }
 
         public static void LogError(string message)

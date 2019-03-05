@@ -130,12 +130,65 @@ namespace eWolfPodcasterCore.Data
 
         public void Save()
         {
-            DebugLog.LogInfo("Saving data");
-
             lock (_shows)
             {
                 PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(_outputFolder);
                 ph.SaveData(_shows);
+            }
+        }
+
+        public void UpdateNextRSSFeeds()
+        {
+            Console.WriteLine("UpdateNextRSSFeeds ");
+
+            if (_shows.Any(x => x != null && !x.UpdatedRss && x.ShowOption.CheckforUpdates))
+            {
+                ShowControl nextShow = _shows.First(x => x != null && !x.UpdatedRss && x.ShowOption.CheckforUpdates);
+                lock (_shows)
+                {
+                    nextShow.UpdatedRss = true;
+                }
+
+                UpdateShow(nextShow);
+
+                return;
+            }
+
+            Console.WriteLine("ReStaet all ");
+            lock (_shows)
+            {
+                foreach (ShowControl show in _shows)
+                {
+                    if (_shows != null)
+                    {
+                        show.UpdatedRss = false;
+                    }
+                }
+            }
+        }
+
+        public void UpdateShow(ShowControl sc)
+        {
+            DebugLog.LogInfo("Updating RSS for " + sc.Title);
+            Console.WriteLine("Updating RSS for " + sc.Title);
+            if (sc.LocalFiles)
+            {
+                lock (_shows)
+                {
+                    sc.ScanLocalFilesOnly();
+                }
+            }
+            else
+            {
+                XmlReader RSSFeed = sc.UpdateRSSFile();
+                if (RSSFeed == null)
+                    return;
+
+                List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
+                lock (_shows)
+                {
+                    sc.UpdateEpisode(episodes);
+                }
             }
         }
 
@@ -154,19 +207,7 @@ namespace eWolfPodcasterCore.Data
                     {
                         try
                         {
-                            if (sc.LocalFiles)
-                            {
-                                sc.ScanLocalFilesOnly();
-                            }
-                            else
-                            {
-                                XmlReader RSSFeed = sc.UpdateRSSFile();
-                                if (RSSFeed == null)
-                                    continue;
-
-                                List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
-                                sc.UpdateEpisode(episodes);
-                            }
+                            UpdateShow(sc);
                         }
                         catch (Exception ex)
                         {

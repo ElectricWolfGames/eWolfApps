@@ -11,6 +11,9 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class ShowControl : Show, ISaveable
     {
+        [NonSerialized]
+        private bool _updatedRss = false;
+
         public string GetFileName
         {
             get { return Title + ".Show"; }
@@ -25,6 +28,9 @@ namespace eWolfPodcasterCore.Data
                 return Title + $" {Count}";
             }
         }
+
+        public bool UpdatedRss1 { get => _updatedRss; set => _updatedRss = value; }
+        public bool UpdatedRss { get; internal set; }
 
         public override string ToString()
         {
@@ -106,7 +112,7 @@ namespace eWolfPodcasterCore.Data
             catch (Exception ex)
             {
                 Console.WriteLine("UpdateRSSFile: Error");
-                DebugLog.LogError($"UpdateRSSFile: Failed with {ex.Message}");
+                //DebugLog.LogError($"UpdateRSSFile: Failed with {ex.Message}");
                 Console.WriteLine(ex.Message);
             }
 

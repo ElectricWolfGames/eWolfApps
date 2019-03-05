@@ -12,6 +12,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -151,7 +152,7 @@ namespace eWolfPodcasterUI
         {
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMinutes(5)
+                Interval = TimeSpan.FromSeconds(1)
             };
             timer.Tick += UpdateRssFeedTimer;
             timer.Start();
@@ -286,12 +287,22 @@ namespace eWolfPodcasterUI
 
         private void UpdateRssFeedTimer(object sender, EventArgs e)
         {
-            DebugLog.LogInfo("RSS timer - update the episode from the feed.");
-            // start a new process for this!
-            Shows.GetShowService.UpdateAllRSSFeeds();
+            CheckNextShow();
+        }
 
-            // update the RSS
-            // check for files to auto download
+        private async void CheckNextShow()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    Shows.GetShowService.UpdateNextRSSFeeds();
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
