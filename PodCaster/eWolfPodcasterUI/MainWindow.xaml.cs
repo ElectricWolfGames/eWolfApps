@@ -210,7 +210,7 @@ namespace eWolfPodcasterUI
             {
                 IDebugLoggerData pce = new DebugLogItem
                 {
-                    _loggerData = x
+                    LoggerData = x
                 };
 
                 _errorLog.Add(pce);
@@ -224,7 +224,7 @@ namespace eWolfPodcasterUI
             ShowsItemsTree.Items.Clear();
 
             Shows shows = Shows.GetShowService;
-            List<string> groups = shows.Groups;
+            List<string> groups = shows.Groups();
             groups.Add("Ungrouped");
 
             foreach (string groupName in groups)

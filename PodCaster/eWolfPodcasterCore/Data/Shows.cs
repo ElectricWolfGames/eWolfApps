@@ -12,8 +12,8 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class Shows
     {
-        private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();
         private string _outputFolder;
+        private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();
 
         public static Shows GetShowService
         {
@@ -42,23 +42,6 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public List<string> Groups
-        {
-            get
-            {
-                List<string> groups = new List<string>();
-                foreach (var show in _shows)
-                {
-                    if (show?.Catergery == null)
-                        continue;
-
-                    groups.Add(show.Catergery.Name);
-                }
-
-                return groups.Distinct().ToList();
-            }
-        }
-
         public bool Add(ShowControl show)
         {
             lock (_shows)
@@ -83,23 +66,18 @@ namespace eWolfPodcasterCore.Data
             return false;
         }
 
-        public List<ShowControl> ShowInGroup(string groupName)
+        public List<string> Groups()
         {
-            if (groupName == "Ungrouped")
+            List<string> groups = new List<string>();
+            foreach (var show in _shows)
             {
-                var list = new List<ShowControl>();
-                foreach (var show in _shows)
-                {
-                    if (show == null)
-                        continue;
-                    if (show.Catergery == null || show.Catergery.Name == "None")
-                    {
-                        list.Add(show);
-                    }
-                }
-                return list;
+                if (show?.Catergery == null)
+                    continue;
+
+                groups.Add(show.Catergery.Name);
             }
-            return _shows.Where(x => x?.Catergery?.Name == groupName).ToList();
+
+            return groups.Distinct().ToList();
         }
 
         public void Load(string outputFolder)
@@ -134,6 +112,54 @@ namespace eWolfPodcasterCore.Data
             {
                 PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(_outputFolder);
                 ph.SaveData(_shows);
+            }
+        }
+
+        public List<ShowControl> ShowInGroup(string groupName)
+        {
+            if (groupName == "Ungrouped")
+            {
+                var list = new List<ShowControl>();
+                foreach (var show in _shows)
+                {
+                    if (show == null)
+                        continue;
+                    if (show.Catergery == null || show.Catergery.Name == "None")
+                    {
+                        list.Add(show);
+                    }
+                }
+                return list;
+            }
+            return _shows.Where(x => x?.Catergery?.Name == groupName).ToList();
+        }
+
+        public void UpdateAllRSSFeeds()
+        {
+            DebugLog.LogInfo("Updating RSS");
+
+            lock (_shows)
+            {
+                foreach (ShowControl sc in _shows)
+                {
+                    if (sc == null)
+                        continue;
+
+                    if (sc.ShowOption.CheckforUpdates)
+                    {
+                        try
+                        {
+                            UpdateShow(sc);
+                        }
+                        catch (Exception ex)
+                        {
+                            ServiceLocator.Instance.GetService<LoggerService>().AddError($"UpdateAllRSSFeeds: Error {ex.Message}");
+
+                            Console.WriteLine("UpdateAllRSSFeeds: Error");
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                }
             }
         }
 
@@ -189,35 +215,6 @@ namespace eWolfPodcasterCore.Data
                 lock (_shows)
                 {
                     sc.UpdateEpisode(episodes);
-                }
-            }
-        }
-
-        public void UpdateAllRSSFeeds()
-        {
-            DebugLog.LogInfo("Updating RSS");
-
-            lock (_shows)
-            {
-                foreach (ShowControl sc in _shows)
-                {
-                    if (sc == null)
-                        continue;
-
-                    if (sc.ShowOption.CheckforUpdates)
-                    {
-                        try
-                        {
-                            UpdateShow(sc);
-                        }
-                        catch (Exception ex)
-                        {
-                            ServiceLocator.Instance.GetService<LoggerService>().AddError($"UpdateAllRSSFeeds: Error {ex.Message}");
-
-                            Console.WriteLine("UpdateAllRSSFeeds: Error");
-                            Console.WriteLine(ex.Message);
-                        }
-                    }
                 }
             }
         }

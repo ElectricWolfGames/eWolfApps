@@ -7,18 +7,26 @@ namespace eWolfPodcasterUI.UserControls
 {
     public partial class DebugLogItem : UserControl, IDebugLoggerData
     {
-        public IDebugLoggerData _loggerData;
-
         public DebugLogItem()
         {
             InitializeComponent();
+        }
+
+        public IDebugLoggerData LoggerData { get; set; }
+
+        public string Message
+        {
+            get
+            {
+                return LoggerData.Message;
+            }
         }
 
         public DateTime MessageTime
         {
             get
             {
-                return _loggerData.MessageTime;
+                return LoggerData.MessageTime;
             }
         }
 
@@ -26,7 +34,7 @@ namespace eWolfPodcasterUI.UserControls
         {
             get
             {
-                return _loggerData.MessageType;
+                return LoggerData.MessageType;
             }
         }
 
@@ -34,15 +42,7 @@ namespace eWolfPodcasterUI.UserControls
         {
             get
             {
-                return _loggerData.MessageType.ToString();
-            }
-        }
-
-        public string Message
-        {
-            get
-            {
-                return _loggerData.Message;
+                return LoggerData.MessageType.ToString();
             }
         }
     }

@@ -123,15 +123,9 @@ namespace eWolfPodcasterUI.UserControls
 
         private void _butRemove_Click(object sender, RoutedEventArgs e)
         {
-            int i = 0;
-            i++;
+            // TODO: remove the eposode from the list
         }
 
-        /// <summary>
-        /// User has click on the download button
-        /// </summary>
-        /// <param name="sender">The send of the event</param>
-        /// <param name="e">The event data</param>
         private void _buttonDownloadShow_Click(object sender, RoutedEventArgs e)
         {
             _episodeData.DownloadAsMp3();

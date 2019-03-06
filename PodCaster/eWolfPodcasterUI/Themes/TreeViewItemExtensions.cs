@@ -16,7 +16,7 @@ namespace DarkBlendTheme
         public static int GetDepth(this TreeViewItem item)
         {
             TreeViewItem parent;
-            while ((parent = GetParent(item)) != null)
+            if ((parent = GetParent(item)) != null)
             {
                 return GetDepth(parent) + 1;
             }
@@ -26,10 +26,10 @@ namespace DarkBlendTheme
         private static TreeViewItem GetParent(TreeViewItem item)
         {
             var parent = VisualTreeHelper.GetParent(item);
-				
+
             while (!(parent is TreeViewItem || parent is TreeView))
             {
-				if (parent == null) return null;
+                if (parent == null) return null;
                 parent = VisualTreeHelper.GetParent(parent);
             }
             return parent as TreeViewItem;

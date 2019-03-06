@@ -65,6 +65,7 @@ namespace eWolfPodcasterCore.Data
             }
             catch
             {
+                // safty catch
             }
             UpdateEpisode(episodes);
         }

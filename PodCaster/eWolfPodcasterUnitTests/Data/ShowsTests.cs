@@ -46,9 +46,9 @@ namespace eWolfPodcasterCoreUnitTests.Data
             shows.Add(CreateShowControl("Show2", "RSSA", "GroupA"));
             shows.Add(CreateShowControl("Show3", "RSSB", "GroupB"));
 
-            shows.Groups.Should().HaveCount(2);
-            shows.Groups.Contains("GroupA").Should().BeTrue();
-            shows.Groups.Contains("GroupB").Should().BeTrue();
+            shows.Groups().Should().HaveCount(2);
+            shows.Groups().Contains("GroupA").Should().BeTrue();
+            shows.Groups().Contains("GroupB").Should().BeTrue();
         }
 
         [Test]
