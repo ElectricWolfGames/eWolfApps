@@ -115,7 +115,9 @@ namespace eWolfPodcasterUI
                 {
                     Title = addNewShow.ShowName,
                     RssFeed = addNewShow.RSSFeed,
-                    LocalFiles = addNewShow.LocalFiles.IsChecked.Value
+                    LocalFiles = addNewShow.LocalFiles.IsChecked.Value,
+                    CheckForUpdated = addNewShow.CheckForUpdates.IsChecked.Value,
+                    AutoDownloadEpisodes = addNewShow.AutoDownload.IsChecked.Value
                 };
 
                 Shows.GetShowService.Add(sc);

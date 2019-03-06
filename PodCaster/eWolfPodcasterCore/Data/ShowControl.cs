@@ -20,6 +20,8 @@ namespace eWolfPodcasterCore.Data
         }
 
         public bool LocalFiles { get; set; }
+        public bool AutoDownloadEpisodes { get; set; }
+        public bool CheckForUpdated { get; set; }
 
         public string TitleCount
         {

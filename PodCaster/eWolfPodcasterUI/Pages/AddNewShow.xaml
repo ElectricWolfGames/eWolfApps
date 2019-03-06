@@ -17,6 +17,8 @@
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="101,341,0,0" VerticalAlignment="Top" Width="75" Click="ButtonCancelClick" />
         <ComboBox x:Name="CategoryList" HorizontalAlignment="Left" Height="32" Margin="148,155,0,0" VerticalAlignment="Top" Width="386" />
         <Label Content="Category" HorizontalAlignment="Left" Margin="85,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.179,1.846" Foreground="Black" />
-        <CheckBox x:Name="LocalFiles" Content="Files only on Local mahcine" HorizontalAlignment="Left" Margin="148,209,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="LocalFiles"  Content="Files only on Local mahcine" HorizontalAlignment="Left" Margin="148,209,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CheckForUpdates" Content="Check for new episodes" HorizontalAlignment="Left" Margin="148,236,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="AutoDownload" Content="Auto download episodes" HorizontalAlignment="Left" Margin="148,263,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
