@@ -12,7 +12,7 @@ namespace eWolfPodcasterCore.Data
     public class ShowControl : Show, ISaveable
     {
         [NonSerialized]
-        private bool _updatedRss = false;
+        private readonly bool _updatedRss = false;
 
         public string GetFileName
         {
@@ -31,8 +31,8 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public bool UpdatedRss1 { get => _updatedRss; set => _updatedRss = value; }
-        public bool UpdatedRss { get; internal set; }
+        public bool UpdatedRssTurn { get; internal set; }
+        public bool AutoDownloadTurn { get; internal set; }
 
         public override string ToString()
         {

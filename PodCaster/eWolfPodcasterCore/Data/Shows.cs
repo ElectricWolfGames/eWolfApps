@@ -167,27 +167,38 @@ namespace eWolfPodcasterCore.Data
         {
             Console.WriteLine("UpdateNextRSSFeeds ");
 
-            if (_shows.Any(x => x != null && !x.UpdatedRss && x.ShowOption.CheckforUpdates))
+            ShowControl nextShow = _shows.FirstOrDefault(x => x != null && !x.UpdatedRssTurn && x.ShowOption.CheckforUpdates);
+            if (nextShow != null)
             {
-                ShowControl nextShow = _shows.First(x => x != null && !x.UpdatedRss && x.ShowOption.CheckforUpdates);
                 lock (_shows)
                 {
-                    nextShow.UpdatedRss = true;
+                    nextShow.UpdatedRssTurn = true;
                 }
 
                 UpdateShow(nextShow);
-
                 return false;
             }
 
-            Console.WriteLine("ReStaet all ");
+            var nextShowDownload = _shows.FirstOrDefault(x => x != null && !x.UpdatedRssTurn && x.ShowOption.AudoDownloadEpisodes);
+            if (nextShowDownload != null)
+            {
+                lock (_shows)
+                {
+                    nextShowDownload.AutoDownloadTurn = true;
+                    Console.WriteLine("Auto down load an episode");
+                }
+            }
+
+            // now download an eispode or two
+            Console.WriteLine("ReStaet all");
             lock (_shows)
             {
                 foreach (ShowControl show in _shows)
                 {
                     if (show != null)
                     {
-                        show.UpdatedRss = false;
+                        show.UpdatedRssTurn = false;
+                        show.AutoDownloadTurn = false;
                     }
                 }
                 return true;
