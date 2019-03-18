@@ -186,6 +186,7 @@ namespace eWolfPodcasterCore.Data
                 {
                     nextShowDownload.AutoDownloadTurn = true;
                     Console.WriteLine("Auto down load an episode");
+                    nextShowDownload.Download();
                 }
             }
 

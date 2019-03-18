@@ -3,6 +3,7 @@ using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
 using eWolfPodcasterUI.Pages;
+using eWolfPodcasterUI.Project;
 using eWolfPodcasterUI.UserControls;
 using Microsoft.Win32;
 using System;
@@ -10,7 +11,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,10 +33,13 @@ namespace eWolfPodcasterUI
             InitializeComponent();
             DebugLog.LogInfo("App started");
 
-            Shows.GetShowService.Load(GetOutputFolder());
+            ProjectDetails projectDetails = new ProjectDetails();
+            ServiceLocator.Instance.InjectService<IProjectDetails>(projectDetails);
+
+            Shows.GetShowService.Load(projectDetails.GetOutputFolder());
             Shows.GetShowService.Save();
 
-            ShowLibraryService.GetLibrary.Load(GetLibraryPath());
+            ShowLibraryService.GetLibrary.Load(projectDetails.GetLibraryPath());
 
             PopulateTree();
             PopulateLogPage();
@@ -64,21 +67,6 @@ namespace eWolfPodcasterUI
             {
                 return _currentPodcast?.Title;
             }
-        }
-
-        private string GetBaseFolder()
-        {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf", "PodCaster");
-        }
-
-        public string GetLibraryPath()
-        {
-            return Path.Combine(GetBaseFolder(), "PodcastList.xml");
-        }
-
-        public string GetOutputFolder()
-        {
-            return GetBaseFolder();
         }
 
         protected void OnPropertyChanged(string name)

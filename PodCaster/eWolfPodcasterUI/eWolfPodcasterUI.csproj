@@ -151,6 +151,7 @@
     <Compile Include="Pages\ShowLibrary.xaml.cs">
       <DependentUpon>ShowLibrary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Project\ProjectDetails.cs" />
     <Compile Include="Themes\LeftMarginMultiplierConverter.cs" />
     <Compile Include="Themes\TreeViewItemExtensions.cs" />
     <Compile Include="UserControls\DebugLogItem.xaml.cs">

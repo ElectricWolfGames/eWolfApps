@@ -14,14 +14,18 @@ namespace eWolfPodcasterCore.Data
         [NonSerialized]
         private readonly bool _updatedRss = false;
 
+        public bool AutoDownloadEpisodes { get; set; }
+
+        public bool AutoDownloadTurn { get; internal set; }
+
+        public bool CheckForUpdated { get; set; }
+
         public string GetFileName
         {
             get { return Title + ".Show"; }
         }
 
         public bool LocalFiles { get; set; }
-        public bool AutoDownloadEpisodes { get; set; }
-        public bool CheckForUpdated { get; set; }
 
         public string TitleCount
         {
@@ -32,11 +36,17 @@ namespace eWolfPodcasterCore.Data
         }
 
         public bool UpdatedRssTurn { get; internal set; }
-        public bool AutoDownloadTurn { get; internal set; }
 
         public override string ToString()
         {
             return TitleCount;
+        }
+
+        internal void Download()
+        {
+            string path = GetBaseFolder();
+            path = Path.Combine(path, "Downloads", Title);
+            Directory.CreateDirectory(path);
         }
 
         internal void ScanLocalFilesOnly()
@@ -120,6 +130,11 @@ namespace eWolfPodcasterCore.Data
             }
 
             return reader;
+        }
+
+        private string GetBaseFolder()
+        {
+            return ServiceLocator.Instance.GetService<IProjectDetails>().GetBaseFolder();
         }
     }
 }
