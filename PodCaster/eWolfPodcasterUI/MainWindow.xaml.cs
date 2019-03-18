@@ -245,6 +245,11 @@ namespace eWolfPodcasterUI
             if (sc != null)
             {
                 _podcasts.Clear();
+                if (e.RightButton == System.Windows.Input.MouseButtonState.Pressed)
+                {
+                    EditSelectedItem(sc);
+                    return;
+                }
 
                 List<EpisodeControl> orderedByDateList = null;
                 if (sc.LocalFiles)
@@ -269,6 +274,30 @@ namespace eWolfPodcasterUI
                 }
 
                 EpisodesItems.ItemsSource = _podcasts;
+            }
+        }
+
+        private void EditSelectedItem(ShowControl sc)
+        {
+            AddNewShow addNewShow = new AddNewShow
+            {
+                ShowName = sc.Title,
+                RSSFeed = sc.RssFeed,
+            };
+            addNewShow.LocalFiles.IsChecked = sc.LocalFiles;
+            addNewShow.CheckForUpdates.IsChecked = sc.CheckForUpdated;
+            addNewShow.AutoDownload.IsChecked = sc.AutoDownloadEpisodes;
+
+            addNewShow.ShowDialog();
+
+            if (addNewShow.Apply)
+            {
+                sc.Title = addNewShow.ShowName;
+                sc.RssFeed = addNewShow.RSSFeed;
+                sc.LocalFiles = addNewShow.LocalFiles.IsChecked.Value;
+                sc.CheckForUpdated = addNewShow.CheckForUpdates.IsChecked.Value;
+                sc.AutoDownloadEpisodes = addNewShow.AutoDownload.IsChecked.Value;
+                Shows.GetShowService.Save();
             }
         }
 
