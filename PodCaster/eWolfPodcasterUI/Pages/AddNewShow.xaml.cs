@@ -1,4 +1,5 @@
-﻿using eWolfPodcasterCore.Services;
+﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Services;
 using System.ComponentModel;
 using System.Windows;
 
@@ -17,6 +18,19 @@ namespace eWolfPodcasterUI.Pages
             InitializeComponent();
             DataContext = this;
             PopulateCategory();
+        }
+
+        public AddNewShow(ShowControl sc)
+        {
+            InitializeComponent();
+            DataContext = this;
+            PopulateCategory();
+
+            _showName = sc.Title;
+            _rssFeed = sc.RssFeed;
+            LocalFiles.IsChecked = (sc.ShowOption.ShowStorage == ShowStorageType.LocalStorage);
+            CheckForUpdates.IsChecked = sc.ShowOption.CheckforUpdates;
+            AutoDownload.IsChecked = sc.ShowOption.AudoDownloadEpisodes;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -14,18 +14,20 @@ namespace eWolfPodcasterCore.Data
         [NonSerialized]
         private readonly bool _updatedRss = false;
 
-        public bool AutoDownloadEpisodes { get; set; }
-
         public bool AutoDownloadTurn { get; internal set; }
-
-        public bool CheckForUpdated { get; set; }
 
         public string GetFileName
         {
             get { return Title + ".Show"; }
         }
 
-        public bool LocalFiles { get; set; }
+        public bool LocalFiles
+        {
+            get
+            {
+                return ShowOption.ShowStorage == ShowStorageType.LocalStorage;
+            }
+        }
 
         public string TitleCount
         {

@@ -99,14 +99,9 @@ namespace eWolfPodcasterUI
 
             if (addNewShow.Apply)
             {
-                ShowControl sc = new ShowControl()
-                {
-                    Title = addNewShow.ShowName,
-                    RssFeed = addNewShow.RSSFeed,
-                    LocalFiles = addNewShow.LocalFiles.IsChecked.Value,
-                    CheckForUpdated = addNewShow.CheckForUpdates.IsChecked.Value,
-                    AutoDownloadEpisodes = addNewShow.AutoDownload.IsChecked.Value
-                };
+                ShowControl sc = new ShowControl();
+
+                UpdateShowDetails(sc, addNewShow);
 
                 Shows.GetShowService.Add(sc);
                 Shows.GetShowService.Save();
@@ -170,6 +165,18 @@ namespace eWolfPodcasterUI
             };
             _rssTimer.Tick += UpdateRssFeedTimer;
             _rssTimer.Start();
+        }
+
+        private void EditSelectedItem(ShowControl sc)
+        {
+            AddNewShow addNewShow = new AddNewShow(sc);
+            addNewShow.ShowDialog();
+
+            if (addNewShow.Apply)
+            {
+                UpdateShowDetails(sc, addNewShow);
+                Shows.GetShowService.Save();
+            }
         }
 
         private void EpisodeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -277,30 +284,6 @@ namespace eWolfPodcasterUI
             }
         }
 
-        private void EditSelectedItem(ShowControl sc)
-        {
-            AddNewShow addNewShow = new AddNewShow
-            {
-                ShowName = sc.Title,
-                RSSFeed = sc.RssFeed,
-            };
-            addNewShow.LocalFiles.IsChecked = sc.LocalFiles;
-            addNewShow.CheckForUpdates.IsChecked = sc.CheckForUpdated;
-            addNewShow.AutoDownload.IsChecked = sc.AutoDownloadEpisodes;
-
-            addNewShow.ShowDialog();
-
-            if (addNewShow.Apply)
-            {
-                sc.Title = addNewShow.ShowName;
-                sc.RssFeed = addNewShow.RSSFeed;
-                sc.LocalFiles = addNewShow.LocalFiles.IsChecked.Value;
-                sc.CheckForUpdated = addNewShow.CheckForUpdates.IsChecked.Value;
-                sc.AutoDownloadEpisodes = addNewShow.AutoDownload.IsChecked.Value;
-                Shows.GetShowService.Save();
-            }
-        }
-
         private void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
         {
             if (e.Reason == SessionSwitchReason.SessionLock)
@@ -331,6 +314,18 @@ namespace eWolfPodcasterUI
         private void UpdateRssFeedTimer(object sender, EventArgs e)
         {
             CheckNextShow();
+        }
+
+        private void UpdateShowDetails(ShowControl sc, AddNewShow addNewShow)
+        {
+            sc.Title = addNewShow.ShowName;
+            sc.RssFeed = addNewShow.RSSFeed;
+            if (addNewShow.LocalFiles.IsChecked.Value)
+            {
+                sc.ShowOption.ShowStorage = ShowStorageType.LocalStorage;
+            }
+            sc.ShowOption.CheckforUpdates = addNewShow.CheckForUpdates.IsChecked.Value;
+            sc.ShowOption.AudoDownloadEpisodes = addNewShow.AutoDownload.IsChecked.Value;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
