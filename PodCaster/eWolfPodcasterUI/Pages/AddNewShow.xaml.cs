@@ -26,8 +26,10 @@ namespace eWolfPodcasterUI.Pages
             DataContext = this;
             PopulateCategory();
 
-            _showName = sc.Title;
-            _rssFeed = sc.RssFeed;
+            ShowName = sc.Title;
+            RSSFeed = sc.RssFeed;
+            CategoryList.SelectedItem = sc.Catergery.Name;
+
             LocalFiles.IsChecked = (sc.ShowOption.ShowStorage == ShowStorageType.LocalStorage);
             CheckForUpdates.IsChecked = sc.ShowOption.CheckforUpdates;
             AutoDownload.IsChecked = sc.ShowOption.AudoDownloadEpisodes;

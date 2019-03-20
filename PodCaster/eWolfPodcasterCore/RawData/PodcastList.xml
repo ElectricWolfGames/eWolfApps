@@ -31,37 +31,37 @@
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>BBC Click* [120]</Name>
+			<Name>BBC Click</Name>
 			<Url>http://downloads.bbc.co.uk/podcasts/worldservice/digitalp/rss.xml</Url>
 			<Category>Tech</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>BBC Computing Britain [10]</Name>
+			<Name>BBC Computing Britain</Name>
 			<Url>http://www.bbc.co.uk/programmes/b06bq6j1/episodes/downloads.rss</Url>
 			<Category>Science</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>BBC Crowd Science* [61]</Name>
+			<Name>BBC Crowd Science</Name>
 			<Url>http://www.bbc.co.uk/programmes/p04d42rc/episodes/downloads.rss</Url>
 			<Category>Science</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>BBC Discovery* [415]</Name>
+			<Name>BBC Discovery</Name>
 			<Url>http://www.bbc.co.uk/programmes/p002w557/episodes/downloads.rss</Url>
 			<Category>Science</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>BBC Drama of the Week* [85]</Name>
+			<Name>BBC Drama of the Week</Name>
 			<Url>http://podcasts.files.bbci.co.uk/p02nrv5m.rss</Url>
 			<Category>Drama</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>BBC Elements* [65]</Name>
+			<Name>BBC Elements</Name>
 			<Url>http://www.bbc.co.uk/programmes/p01rcrn6/episodes/downloads.rss</Url>
 			<Category>Science</Category>
 			<Description></Description>
@@ -265,25 +265,25 @@
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>The History Of Rome [192]</Name>
+			<Name>The History Of Rome</Name>
 			<Url>http://feeds.feedburner.com/TheHistoryOfRome?format=xml</Url>
 			<Category>History</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>The Horror! (Old Time Radio)* [139]</Name>
+			<Name>The Horror! (Old Time Radio)</Name>
 			<Url>http://feeds.feedburner.com/horror</Url>
 			<Category>Drama</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>The SoundTrack Show [31]</Name>
+			<Name>The SoundTrack Show</Name>
 			<Url>https://feeds.megaphone.fm/HSW2193473754</Url>
 			<Category>Music</Category>
 			<Description></Description>
 		 </Show>
 		<Show>
-			<Name>WWII Podcast [469]</Name>
+			<Name>WWII Podcast</Name>
 			<Url>http://wwiipodcast.libsyn.com/rss</Url>
 			<Category>History</Category>
 			<Description></Description>

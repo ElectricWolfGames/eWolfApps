@@ -105,6 +105,7 @@ namespace eWolfPodcasterUI
 
                 Shows.GetShowService.Add(sc);
                 Shows.GetShowService.Save();
+                PopulateTree();
             }
         }
 
@@ -174,8 +175,12 @@ namespace eWolfPodcasterUI
 
             if (addNewShow.Apply)
             {
-                UpdateShowDetails(sc, addNewShow);
+                bool refresh = UpdateShowDetails(sc, addNewShow);
                 Shows.GetShowService.Save();
+                if (refresh)
+                {
+                    PopulateTree();
+                }
             }
         }
 
@@ -316,7 +321,7 @@ namespace eWolfPodcasterUI
             CheckNextShow();
         }
 
-        private void UpdateShowDetails(ShowControl sc, AddNewShow addNewShow)
+        private bool UpdateShowDetails(ShowControl sc, AddNewShow addNewShow)
         {
             sc.Title = addNewShow.ShowName;
             sc.RssFeed = addNewShow.RSSFeed;
@@ -326,6 +331,14 @@ namespace eWolfPodcasterUI
             }
             sc.ShowOption.CheckforUpdates = addNewShow.CheckForUpdates.IsChecked.Value;
             sc.ShowOption.AudoDownloadEpisodes = addNewShow.AutoDownload.IsChecked.Value;
+            bool refresh = false;
+
+            if (sc.Catergery.Name != addNewShow.CategoryList.SelectedItem.ToString())
+            {
+                sc.Catergery = new eWolfPodcasterCore.Library.CatergeryData(addNewShow.CategoryList.SelectedItem.ToString());
+                refresh = true;
+            }
+            return refresh;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
