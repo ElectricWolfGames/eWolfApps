@@ -165,8 +165,6 @@ namespace eWolfPodcasterCore.Data
 
         public bool UpdateNextRSSFeeds()
         {
-            Console.WriteLine("UpdateNextRSSFeeds ");
-
             ShowControl nextShow = _shows.FirstOrDefault(x => x != null && !x.UpdatedRssTurn && x.ShowOption.CheckforUpdates);
             if (nextShow != null)
             {
@@ -179,14 +177,15 @@ namespace eWolfPodcasterCore.Data
                 return false;
             }
 
-            var nextShowDownload = _shows.FirstOrDefault(x => x != null && !x.UpdatedRssTurn && x.ShowOption.AudoDownloadEpisodes);
+            var nextShowDownload = _shows.FirstOrDefault(x => x != null && !x.AutoDownloadTurn && x.ShowOption.AudoDownloadEpisodes);
             if (nextShowDownload != null)
             {
                 lock (_shows)
                 {
                     nextShowDownload.AutoDownloadTurn = true;
-                    Console.WriteLine("Auto down load an episode");
+                    Console.WriteLine($"Auto download {nextShowDownload.Title}");
                     nextShowDownload.Download();
+                    return false;
                 }
             }
 
