@@ -4,6 +4,7 @@ using eWolfPodcasterCore.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace eWolfPodcasterCore.Data
@@ -46,9 +47,20 @@ namespace eWolfPodcasterCore.Data
 
         internal void Download()
         {
-            string path = GetBaseFolder();
-            path = Path.Combine(path, "Downloads", Title);
-            Directory.CreateDirectory(path);
+            string downloadFolder = GetDownloadFolder();
+            downloadFolder = Path.Combine(downloadFolder, Title);
+            Directory.CreateDirectory(downloadFolder);
+
+            for (int i = 0; i < 3; i++)
+            {
+                List<EpisodeControl> orderedEpisodes = Episodes.OrderBy(x => x.DownloadRetryCount).ToList();
+                if (orderedEpisodes.Count == 0)
+                    return;
+
+                EpisodeControl ep = orderedEpisodes.First();
+                ep.ShowName = Title;
+                ep.DownloadAsMp3();
+            }
         }
 
         internal void ScanLocalFilesOnly()
@@ -134,9 +146,9 @@ namespace eWolfPodcasterCore.Data
             return reader;
         }
 
-        private string GetBaseFolder()
+        private string GetDownloadFolder()
         {
-            return ServiceLocator.Instance.GetService<IProjectDetails>().GetBaseFolder();
+            return ServiceLocator.Instance.GetService<IProjectDetails>().GetDownloadFolder();
         }
     }
 }

@@ -138,7 +138,7 @@ namespace eWolfPodcasterUI
                 {
                     if (Shows.GetShowService.UpdateNextRSSFeeds())
                     {
-                        _rssTimer.Interval = TimeSpan.FromMinutes(10);
+                        _rssTimer.Interval = _rssTimer.Interval + TimeSpan.FromMinutes(1);
                     }
                 });
             }

@@ -11,6 +11,11 @@ namespace eWolfPodcasterUI.Project
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "eWolf", "PodCaster");
         }
 
+        public string GetDownloadFolder()
+        {
+            return Path.Combine(GetBaseFolder(), "Downloads");
+        }
+
         public string GetLibraryPath()
         {
             return Path.Combine(GetBaseFolder(), "PodcastList.xml");

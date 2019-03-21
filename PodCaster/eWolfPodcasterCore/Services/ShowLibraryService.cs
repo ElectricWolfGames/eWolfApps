@@ -1,11 +1,9 @@
 ﻿using eWolfCommon.Helpers;
 using eWolfCommon.Reflection;
 using eWolfPodcasterCore.Library;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace eWolfPodcasterCore.Services
 {

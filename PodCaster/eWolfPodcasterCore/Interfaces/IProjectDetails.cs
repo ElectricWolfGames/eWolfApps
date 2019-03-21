@@ -4,9 +4,10 @@
     {
         string GetBaseFolder();
 
+        string GetDownloadFolder();
+
         string GetLibraryPath();
 
         string GetOutputFolder();
     }
-
 }

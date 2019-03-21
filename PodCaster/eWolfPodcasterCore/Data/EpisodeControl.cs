@@ -1,12 +1,18 @@
 ﻿using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Services;
 using System;
+using System.IO;
+using System.Net;
+using System.Threading;
 
 namespace eWolfPodcasterCore.Data
 {
     [Serializable]
     public class EpisodeControl : Episode, IPodCastInfo
     {
+        public int DownloadRetryCount { get; set; }
+
         public IPodCastInfo EpisodeData
         {
             get; set;
@@ -36,9 +42,14 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public string ShowName { get; set; }
+
         public void DownloadAsMp3()
         {
-            // will do this soon.
+            Thread newThread = new Thread(Downloading);
+            DownloadRetryCount++;
+            newThread.Start();
+            Console.WriteLine("Started Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
         }
 
         public string GetOffLineFileName()
@@ -101,6 +112,28 @@ namespace eWolfPodcasterCore.Data
 
                     break;
             }
+        }
+
+        private void Downloading()
+        {
+            try
+            {
+                string downloadFolder = GetBaseFolder();
+                string downloadFile = $"{GetBaseFolder()}\\{ShowName}\\{Title}.mp3";
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile(PodcastURL, Path.Combine(downloadFolder, Title + "mp3"));
+                Console.WriteLine("Finished Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed podcast Downloaded File " + ex);
+            }
+        }
+
+        private string GetBaseFolder()
+        {
+            return ServiceLocator.Instance.GetService<IProjectDetails>().GetDownloadFolder();
         }
     }
 }
