@@ -122,7 +122,7 @@ namespace eWolfPodcasterCore.Data
                 string downloadFile = $"{GetBaseFolder()}\\{ShowName}\\{Title}.mp3";
 
                 WebClient webClient = new WebClient();
-                webClient.DownloadFile(PodcastURL, Path.Combine(downloadFolder, Title + "mp3"));
+                webClient.DownloadFile(PodcastURL, downloadFile);
                 Console.WriteLine("Finished Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
             }
             catch (Exception ex)
