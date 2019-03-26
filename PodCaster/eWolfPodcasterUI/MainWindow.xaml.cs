@@ -25,7 +25,7 @@ namespace eWolfPodcasterUI
         private readonly MediaPlayer _mediaPlayer = new MediaPlayer();
         private PodcastEpisode _currentPodcast = null;
         private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
-        private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
+        private ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
         private DispatcherTimer _rssTimer;
 
         public MainWindow()
@@ -278,10 +278,12 @@ namespace eWolfPodcasterUI
                     if (x.Hidden)
                         continue;
 
-                    IPodCastInfo pce = new PodcastEpisode
+                    PodcastEpisode pce = new PodcastEpisode
                     {
-                        EpisodeData = x
+                        // EpisodeData = x,
                     };
+                    pce.EpisodeControlData = x;
+                    pce.ShowName = sc.Title;
                     _podcasts.Add(pce);
                 }
 

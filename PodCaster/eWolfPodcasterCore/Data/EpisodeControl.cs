@@ -13,9 +13,18 @@ namespace eWolfPodcasterCore.Data
     {
         public int DownloadRetryCount { get; set; }
 
-        public IPodCastInfo EpisodeData
+        public IEpisode EpisodeData
         {
             get; set;
+        }
+
+        public bool IsOffLine
+        {
+            get
+            {
+                string offLineFileName = GetOffLineFileName();
+                return File.Exists(offLineFileName);
+            }
         }
 
         public long PlayedLength
@@ -42,7 +51,17 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public string ShowName { get; set; }
+        public string ShowName
+        {
+            get
+            {
+                return Show;
+            }
+            set
+            {
+                Show = value;
+            }
+        }
 
         public void DownloadAsMp3()
         {
@@ -54,12 +73,10 @@ namespace eWolfPodcasterCore.Data
 
         public string GetOffLineFileName()
         {
-            return "filename";
-        }
+            string show = DataCleansing.FileSafeFileName(ShowName);
+            string title = DataCleansing.FileSafeFileName(Title);
 
-        public bool IsOffLine()
-        {
-            return false;
+            return $"{GetDownloadFolder()}\\{show}\\{title}.mp3";
         }
 
         public bool SameAs(EpisodeControl newEpisode)
@@ -118,9 +135,7 @@ namespace eWolfPodcasterCore.Data
         {
             try
             {
-                string downloadFolder = GetBaseFolder();
-                string downloadFile = $"{GetBaseFolder()}\\{ShowName}\\{Title}.mp3";
-
+                string downloadFile = GetOffLineFileName();
                 WebClient webClient = new WebClient();
                 webClient.DownloadFile(PodcastURL, downloadFile);
                 Console.WriteLine("Finished Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
@@ -131,7 +146,7 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        private string GetBaseFolder()
+        private string GetDownloadFolder()
         {
             return ServiceLocator.Instance.GetService<IProjectDetails>().GetDownloadFolder();
         }

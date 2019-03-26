@@ -1,9 +1,10 @@
-﻿using System;
+﻿using eWolfPodcasterCore.Interfaces;
+using System;
 
 namespace eWolfPodcasterCore.Data
 {
     [Serializable]
-    public class Episode
+    public class Episode : IEpisode
     {
         public string Description { get; set; }
 

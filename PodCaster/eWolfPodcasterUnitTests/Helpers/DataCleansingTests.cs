@@ -33,5 +33,15 @@ namespace eWolfPodcasterCoreUnitTests.Helpers
 
             str.Should().Be("All    Everything ");
         }
+
+        [TestCase("", "")]
+        [TestCase(":", "-")]
+        [TestCase("a?b", "a-b")]
+        [TestCase("a:?:b", "a---b")]
+        [TestCase("a:\\:b", "a---b")]
+        public void ShouldMakeFilenameSafe(string text, string expected)
+        {
+            DataCleansing.FileSafeFileName(text).Should().Be(expected);
+        }
     }
 }

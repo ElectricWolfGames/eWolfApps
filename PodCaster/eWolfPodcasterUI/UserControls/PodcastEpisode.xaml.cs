@@ -1,4 +1,4 @@
-﻿using eWolfPodcasterCore.Interfaces;
+﻿using eWolfPodcasterCore.Data;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -6,9 +6,9 @@ using System.Windows.Controls;
 
 namespace eWolfPodcasterUI.UserControls
 {
-    public partial class PodcastEpisode : UserControl, IPodCastInfo
+    public partial class PodcastEpisode : UserControl
     {
-        private IPodCastInfo _episodeData;
+        private EpisodeControl _episodeData;
 
         public PodcastEpisode()
         {
@@ -25,7 +25,7 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
-        public IPodCastInfo EpisodeData
+        public EpisodeControl EpisodeControlData
         {
             get
             {
@@ -36,6 +36,23 @@ namespace eWolfPodcasterUI.UserControls
             {
                 _episodeData = value;
                 _showplayed.Height = _episodeData.PlayedLengthScaled;
+            }
+        }
+
+        public bool IsOffLine
+        {
+            get
+            {
+                return EpisodeControlData.IsOffLine;
+            }
+        }
+
+        public string IsOffLineDisplay
+        {
+            get
+            {
+                Console.WriteLine("IsOffLineDisplay : " + IsOffLine);
+                return IsOffLine ? "-" : "D";
             }
         }
 
@@ -73,7 +90,19 @@ namespace eWolfPodcasterUI.UserControls
         {
             get
             {
-                return EpisodeData.PublishedDate;
+                return EpisodeControlData.PublishedDate;
+            }
+        }
+
+        public string ShowName
+        {
+            get
+            {
+                return _episodeData.ShowName;
+            }
+            set
+            {
+                _episodeData.ShowName = value;
             }
         }
 
@@ -89,7 +118,7 @@ namespace eWolfPodcasterUI.UserControls
         {
             get
             {
-                if (IsOffLine())
+                if (IsOffLine)
                 {
                     return GetOffLineFileName();
                 }
@@ -104,12 +133,7 @@ namespace eWolfPodcasterUI.UserControls
 
         public string GetOffLineFileName()
         {
-            return EpisodeData.GetOffLineFileName();
-        }
-
-        public bool IsOffLine()
-        {
-            return EpisodeData.IsOffLine();
+            return EpisodeControlData.GetOffLineFileName();
         }
 
         protected void OnPropertyChanged(string name)
@@ -129,11 +153,6 @@ namespace eWolfPodcasterUI.UserControls
         private void _buttonDownloadShow_Click(object sender, RoutedEventArgs e)
         {
             _episodeData.DownloadAsMp3();
-        }
-
-        private string IsOffLineDisplay()
-        {
-            return IsOffLine() ? "D" : "-";
         }
     }
 }

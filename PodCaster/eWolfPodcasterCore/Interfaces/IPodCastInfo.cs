@@ -6,8 +6,9 @@ namespace eWolfPodcasterCore.Interfaces
     {
         string Description { get; }
 
-        IPodCastInfo EpisodeData { get; set; }
+        IEpisode EpisodeData { get; set; }
 
+        bool IsOffLine { get; }
         long PlayedLength { get; set; }
 
         double PlayedLengthScaled { get; set; }
@@ -16,12 +17,11 @@ namespace eWolfPodcasterCore.Interfaces
 
         DateTime PublishedDate { get; }
 
+        string ShowName { get; set; }
         string Title { get; }
 
         void DownloadAsMp3();
 
         string GetOffLineFileName();
-
-        bool IsOffLine();
     }
 }
