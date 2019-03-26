@@ -162,7 +162,7 @@ namespace eWolfPodcasterUI
         {
             _rssTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromSeconds(10)
+                Interval = TimeSpan.FromSeconds(1)
             };
             _rssTimer.Tick += UpdateRssFeedTimer;
             _rssTimer.Start();

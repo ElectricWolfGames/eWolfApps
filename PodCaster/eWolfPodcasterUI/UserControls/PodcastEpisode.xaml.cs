@@ -51,7 +51,6 @@ namespace eWolfPodcasterUI.UserControls
         {
             get
             {
-                Console.WriteLine("IsOffLineDisplay : " + IsOffLine);
                 return IsOffLine ? "-" : "D";
             }
         }
