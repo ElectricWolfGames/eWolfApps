@@ -1,6 +1,7 @@
 ﻿using eWolfCommon.Helpers;
 using eWolfCommon.Reflection;
 using eWolfPodcasterCore.Library;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,6 +37,9 @@ namespace eWolfPodcasterCore.Services
         public List<CatergeryData> Groups()
         {
             List<CatergeryData> groups = new List<CatergeryData>();
+
+            groups.AddRange(DefaultGroups());
+
             foreach (ShowLibraryData showLibraryData in _library)
             {
                 if (!groups.Any(x => x.Name == showLibraryData.Catergery))
@@ -46,6 +50,14 @@ namespace eWolfPodcasterCore.Services
             }
 
             return groups;
+        }
+
+        private IEnumerable<CatergeryData> DefaultGroups()
+        {
+            List<CatergeryData> catergerys = new List<CatergeryData>();
+            
+            catergerys.AddRange(CategoryHolderService.GetAllCategories);
+            return catergerys.OrderBy(x => x.Name);
         }
 
         public void Load(string fileName)

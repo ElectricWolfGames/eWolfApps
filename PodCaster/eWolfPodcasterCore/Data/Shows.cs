@@ -165,7 +165,10 @@ namespace eWolfPodcasterCore.Data
 
         public bool UpdateNextRSSFeeds()
         {
-            ShowControl nextShow = _shows.FirstOrDefault(x => x != null && !x.UpdatedRssTurn && x.ShowOption.CheckforUpdates);
+            ShowControl nextShow = _shows.FirstOrDefault(x => x != null
+                && !x.UpdatedRssTurn
+                && (x.ShowOption.CheckforUpdates || x.ShowOption.ShowStorage == ShowStorageType.LocalStorage));
+
             if (nextShow != null)
             {
                 lock (_shows)

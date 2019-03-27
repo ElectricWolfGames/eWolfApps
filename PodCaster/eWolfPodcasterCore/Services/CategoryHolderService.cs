@@ -1,32 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using eWolfPodcasterCore.Library;
+using System.Collections.Generic;
 
 namespace eWolfPodcasterCore.Services
 {
-    // TODO: Need to load and save the categorys as we can add new ones.
-    // TODO: Maybe get the starting list from the web site and check for new ones
     public class CategoryHolderService
     {
         public CategoryHolderService()
         {
-            Categories.AddRange(new List<string>()
-            {
-                "Music",
-                "Developer",
-                "Science",
-                "Space",
-                "History",
-                "Tech",
-                "Drama",
-                "Nature",
-                "Food",
-                "SciFi",
-                "Gaming",
-                "Others",
-                "Misc"}
-            );
+            Categories = new List<CatergeryData>();
+            Categories.Add(new CatergeryData("Music"));
+            Categories.Add(new CatergeryData("Music Podcasts"));
+            Categories.Add(new CatergeryData("Developer"));
+            Categories.Add(new CatergeryData("Science"));
+            Categories.Add(new CatergeryData("Other"));
+            Categories.Add(new CatergeryData("Misc"));
         }
 
-        public static IEnumerable<string> GetAllCategories
+        public static List<CatergeryData> GetAllCategories
         {
             get
             {
@@ -34,6 +24,7 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
-        public List<string> Categories { get; } = new List<string>();
+        public List<CatergeryData> Categories { get; } 
+        
     }
 }
