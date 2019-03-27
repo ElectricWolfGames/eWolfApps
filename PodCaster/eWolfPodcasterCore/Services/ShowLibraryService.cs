@@ -1,7 +1,6 @@
 ﻿using eWolfCommon.Helpers;
 using eWolfCommon.Reflection;
 using eWolfPodcasterCore.Library;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -55,7 +54,7 @@ namespace eWolfPodcasterCore.Services
         private IEnumerable<CatergeryData> DefaultGroups()
         {
             List<CatergeryData> catergerys = new List<CatergeryData>();
-            
+
             catergerys.AddRange(CategoryHolderService.GetAllCategories);
             return catergerys.OrderBy(x => x.Name);
         }

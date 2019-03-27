@@ -24,7 +24,6 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
-        public List<CatergeryData> Categories { get; } 
-        
+        public List<CatergeryData> Categories { get; }
     }
 }
