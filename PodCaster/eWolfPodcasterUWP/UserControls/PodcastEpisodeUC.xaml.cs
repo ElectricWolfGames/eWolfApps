@@ -1,17 +1,15 @@
-﻿using eWolfPodcasterCore.Interfaces;
+﻿using eWolfPodcasterCore.Data;
 using System;
 using System.ComponentModel;
 using Windows.UI.Xaml.Controls;
 
 namespace eWolfPodcasterUWP.UserControls
 {
-    public sealed partial class PodcastEpisodeUC : UserControl, IPodCastInfo, INotifyPropertyChanged
+    public sealed partial class PodcastEpisodeUC : UserControl, INotifyPropertyChanged
     {
-        public PodcastEpisodeUC(IPodCastInfo item)
+        public PodcastEpisodeUC()
         {
-            EpisodeData = item;
             DataContext = this;
-
             this.InitializeComponent();
         }
 
@@ -22,7 +20,34 @@ namespace eWolfPodcasterUWP.UserControls
             get { return EpisodeData.Description; }
         }
 
-        public IPodCastInfo EpisodeData { get; set; }
+        public EpisodeControl EpisodeData { get; set; }
+
+        public string ShowName
+        {
+            get
+            {
+                return EpisodeData.ShowName;
+            }
+            set
+            {
+                EpisodeData.ShowName = value;
+            }
+        }
+
+        public EpisodeControl EpisodeControlData
+        {
+            get
+            {
+                return EpisodeData;
+            }
+
+            set
+            {
+                EpisodeData = value;
+                // TODO: Add the played effect to the episode
+                // _showplayed.Height = EpisodeData.PlayedLengthScaled;
+            }
+        }
 
         public long PlayedLength
         {
@@ -54,7 +79,7 @@ namespace eWolfPodcasterUWP.UserControls
         {
             get
             {
-                if (EpisodeData.IsOffLine())
+                if (EpisodeData.IsOffLine)
                     return "-";
                 else
                     return "D";
@@ -111,10 +136,10 @@ namespace eWolfPodcasterUWP.UserControls
 
         public bool IsOffLine()
         {
-            return EpisodeData.IsOffLine();
+            return EpisodeData.IsOffLine;
         }
 
-        protected void OnPropertyChanged(string propertyName)
+        public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }

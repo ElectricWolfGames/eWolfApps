@@ -1,6 +1,7 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Services;
 using eWolfPodcasterUWP.BackGround;
 using eWolfPodcasterUWP.Data;
 using eWolfPodcasterUWP.Pages;
@@ -27,7 +28,7 @@ namespace eWolfPodcasterUWP
         private ShowControl _currentShow = null;
         private StorageFolder _localFolder;
         private ApplicationDataContainer _localSettings;
-        private ObservableCollection<IPodCastInfo> _podcasts = new ObservableCollection<IPodCastInfo>();
+        private ObservableCollection<PodcastEpisodeUC> _podcasts = new ObservableCollection<PodcastEpisodeUC>();
         private long _setPlayBackTime = -1;
 
         public MainPage()
@@ -36,15 +37,16 @@ namespace eWolfPodcasterUWP
             DataContext = this;
             Application.Current.Suspending += new SuspendingEventHandler(OnSuspending);
 
+            ProjectDetails projectDetails = new ProjectDetails();
+            ServiceLocator.Instance.InjectService<IProjectDetails>(projectDetails);
+
             _localSettings = ApplicationData.Current.LocalSettings;
             _localFolder = ApplicationData.Current.LocalFolder;
 
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
             LoadShowsAsync();
-
             CreateRssBackGround();
-
             PopulateTree();
 
             DispatcherTimer timer = new DispatcherTimer
@@ -156,7 +158,9 @@ namespace eWolfPodcasterUWP
                     if (x.Hidden)
                         continue;
 
-                    IPodCastInfo pce = new PodcastEpisodeUC(x);
+                    PodcastEpisodeUC pce = new PodcastEpisodeUC();
+                    pce.EpisodeControlData = x;
+                    pce.ShowName = sc.Title;
                     _podcasts.Add(pce);
                 }
 
