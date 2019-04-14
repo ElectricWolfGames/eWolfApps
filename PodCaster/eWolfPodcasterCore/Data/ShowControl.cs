@@ -120,6 +120,7 @@ namespace eWolfPodcasterCore.Data
             if (addedNew)
             {
                 DebugLog.LogInfo($"Added episodes to {Title}");
+                Shows.GetShowService.Save();
             }
         }
 

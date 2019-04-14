@@ -43,7 +43,7 @@ namespace eWolfPodcasterUI
 
             PopulateTree();
             PopulateLogPage();
-            CreatePayerTimer();
+            CreatePlayerTimer();
             CreateRSSTimer();
 
             ServiceLocator.Instance.GetService<LoggerService>().Logs.CollectionChanged += new NotifyCollectionChangedEventHandler(LogListUpdated);
@@ -148,13 +148,13 @@ namespace eWolfPodcasterUI
             }
         }
 
-        private void CreatePayerTimer()
+        private void CreatePlayerTimer()
         {
             DispatcherTimer timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(100)
             };
-            timer.Tick += TimerTick;
+            timer.Tick += MediaPlayerIntervalUpdate;
             timer.Start();
         }
 
@@ -301,7 +301,7 @@ namespace eWolfPodcasterUI
             }
         }
 
-        private void TimerTick(object sender, EventArgs e)
+        private void MediaPlayerIntervalUpdate(object sender, EventArgs e)
         {
             if (_mediaPlayer.Source != null && _mediaPlayer.NaturalDuration.HasTimeSpan)
             {
@@ -312,6 +312,7 @@ namespace eWolfPodcasterUI
                 totalWidth /= _mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
                 totalWidth *= _mediaPlayer.Position.TotalMilliseconds;
                 _currentPodcast.PlayedLengthScaled = (float)totalWidth;
+                Shows.GetShowService.Save();
             }
         }
 
