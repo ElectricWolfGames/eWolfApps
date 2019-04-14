@@ -85,7 +85,7 @@ namespace eWolfPodcasterUWP
             {
                 Title = "New show name",
                 RssFeed = "Rss Feed",
-                Shows = Shows.GetShowService,
+                Shows = (Shows)Shows.GetShowService,
                 SaveCall = () => SaveShowsAsync()
             };
 
@@ -105,7 +105,7 @@ namespace eWolfPodcasterUWP
 
         private async void CreateRssBackGround()
         {
-            RssBackGround rbg = new RssBackGround(Shows.GetShowService);
+            RssBackGround rbg = new RssBackGround((Shows)Shows.GetShowService);
             await Task.Run(() => rbg.Runner());
         }
 

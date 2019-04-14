@@ -1,5 +1,6 @@
-﻿using eWolfPodcasterCore.Data;
+﻿using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Services;
+using eWolfPodcasterCoreUnitTests.Data;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -10,8 +11,8 @@ namespace eWolfPodcasterCoreUnitTests.Services
         [Test]
         public void ShouldReturnSameTypeWhenRequestedShows()
         {
-            var ch = ServiceLocator.Instance.GetService<Shows>();
-            ch.Should().BeOfType(typeof(Shows));
+            var ch = ServiceLocator.Instance.GetService<IShows>();
+            ch.Should().BeOfType(typeof(FakeShows));
         }
 
         [Test]

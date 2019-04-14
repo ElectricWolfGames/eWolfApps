@@ -1,4 +1,6 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Services;
 using FluentAssertions;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -7,6 +9,12 @@ namespace eWolfPodcasterCoreUnitTests.Data
 {
     public class ShowControlTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            ServiceLocator.Instance.InjectService<IShows>(new FakeShows());
+        }
+
         [Test]
         public void ShouldUpdateNewEpisodes()
         {

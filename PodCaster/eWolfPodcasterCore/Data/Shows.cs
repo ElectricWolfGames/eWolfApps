@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Helpers;
+using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
 using System;
@@ -10,16 +11,16 @@ using System.Xml;
 namespace eWolfPodcasterCore.Data
 {
     [Serializable]
-    public class Shows
+    public class Shows : IShows
     {
         private string _outputFolder;
         private ObservableCollection<ShowControl> _shows = new ObservableCollection<ShowControl>();
 
-        public static Shows GetShowService
+        public static IShows GetShowService
         {
             get
             {
-                return ServiceLocator.Instance.GetService<Shows>();
+                return ServiceLocator.Instance.GetService<IShows>();
             }
         }
 

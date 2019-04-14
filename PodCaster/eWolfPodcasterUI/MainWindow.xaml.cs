@@ -225,7 +225,7 @@ namespace eWolfPodcasterUI
         {
             ShowsItemsTree.Items.Clear();
 
-            Shows shows = Shows.GetShowService;
+            Shows shows = (Shows)Shows.GetShowService;
             List<string> groups = shows.Groups();
             groups.Add("Ungrouped");
 

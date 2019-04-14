@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Data\EpisodeControlTests.cs" />
     <Compile Include="Data\EpisodeTests.cs" />
+    <Compile Include="Data\FakeShows.cs" />
     <Compile Include="Data\ShowControlTests.cs" />
     <Compile Include="Data\ShowsTests.cs" />
     <Compile Include="Helpers\CategoryHelperTests.cs" />
