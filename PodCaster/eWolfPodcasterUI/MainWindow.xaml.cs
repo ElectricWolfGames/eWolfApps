@@ -24,6 +24,7 @@ namespace eWolfPodcasterUI
     {
         private readonly MediaPlayer _mediaPlayer = new MediaPlayer();
         private PodcastEpisode _currentPodcast = null;
+        private ShowControl _currentShow = null;
         private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
         private ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
         private DispatcherTimer _rssTimer;
@@ -189,7 +190,39 @@ namespace eWolfPodcasterUI
             if (e.AddedItems.Count == 0)
                 return;
 
-            _currentPodcast = e.AddedItems[0] as PodcastEpisode;
+            PlayEpisode(e.AddedItems[0] as PodcastEpisode);
+        }
+
+        private void LogListUpdated(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            PopulateLogPage();
+        }
+
+        private void MediaPlayerIntervalUpdate(object sender, EventArgs e)
+        {
+            if (_mediaPlayer.Source != null && _mediaPlayer.NaturalDuration.HasTimeSpan)
+            {
+                _currentPodcast.PlayedLength = _mediaPlayer.Position.Ticks;
+
+                double MaxLength = 781;
+
+                double totalWidth = MaxLength;
+
+                totalWidth /= _mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
+                totalWidth *= _mediaPlayer.Position.TotalMilliseconds;
+                _currentPodcast.PlayedLengthScaled = (float)totalWidth;
+                Shows.GetShowService.Save();
+
+                if (_currentPodcast.PlayedLengthScaled >= MaxLength - 2)
+                {
+                    PlayNextEpisode();
+                }
+            }
+        }
+
+        private void PlayEpisode(PodcastEpisode episode)
+        {
+            _currentPodcast = episode;
 
             _mediaPlayer.Open(new Uri(_currentPodcast.UrlToPlay));
             _mediaPlayer.Position = new TimeSpan(_currentPodcast.PlayedLength);
@@ -197,9 +230,25 @@ namespace eWolfPodcasterUI
             OnPropertyChanged("PodcastDescription");
         }
 
-        private void LogListUpdated(object sender, NotifyCollectionChangedEventArgs e)
+        private void PlayNextEpisode()
         {
-            PopulateLogPage();
+            Console.WriteLine("Play next show now!");
+            for (int i = 0; i < _podcasts.Count - 1; i++)
+            {
+                var ep = _podcasts[i];
+                if (ep.Title == _currentPodcast.Title)
+                {
+                    string nextPodCastName = _podcasts[i + 1].Title;
+                    foreach (PodcastEpisode c in _podcasts)
+                    {
+                        if (c.Title == nextPodCastName)
+                        {
+                            PlayEpisode(c);
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         private void PopulateLogPage()
@@ -256,6 +305,7 @@ namespace eWolfPodcasterUI
             ShowControl sc = item.Tag as ShowControl;
             if (sc != null)
             {
+                _currentShow = sc;
                 _podcasts.Clear();
                 if (e.RightButton == System.Windows.Input.MouseButtonState.Pressed)
                 {
@@ -298,21 +348,6 @@ namespace eWolfPodcasterUI
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
             {
                 Console.WriteLine("Welcome back - you will need to manual start the audio.");
-            }
-        }
-
-        private void MediaPlayerIntervalUpdate(object sender, EventArgs e)
-        {
-            if (_mediaPlayer.Source != null && _mediaPlayer.NaturalDuration.HasTimeSpan)
-            {
-                _currentPodcast.PlayedLength = _mediaPlayer.Position.Ticks;
-
-                double totalWidth = 781;
-
-                totalWidth /= _mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
-                totalWidth *= _mediaPlayer.Position.TotalMilliseconds;
-                _currentPodcast.PlayedLengthScaled = (float)totalWidth;
-                Shows.GetShowService.Save();
             }
         }
 
