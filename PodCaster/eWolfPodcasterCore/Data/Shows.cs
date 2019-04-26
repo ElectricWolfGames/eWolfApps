@@ -1,4 +1,5 @@
-﻿using eWolfPodcasterCore.Helpers;
+﻿using eWolfPodcasterCore.Helper;
+using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
@@ -47,6 +48,7 @@ namespace eWolfPodcasterCore.Data
         {
             lock (_shows)
             {
+                show.Modifyed = true;
                 if (Contains(show))
                 {
                     return false;
@@ -65,6 +67,11 @@ namespace eWolfPodcasterCore.Data
                 return true;
 
             return false;
+        }
+
+        public ShowControl GetShowFromName(string showName)
+        {
+            return _shows.FirstOrDefault(x => x != null && x.Title == showName);
         }
 
         public List<string> Groups()

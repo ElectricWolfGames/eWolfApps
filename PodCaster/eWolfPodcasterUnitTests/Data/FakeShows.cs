@@ -42,5 +42,10 @@ namespace eWolfPodcasterCoreUnitTests.Data
         {
             // Fake do nothing service.
         }
+
+        public ShowControl GetShowFromName(string showName)
+        {
+            return null;
+        }
     }
 }

@@ -153,7 +153,7 @@ namespace eWolfPodcasterUI
         {
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(100)
+                Interval = TimeSpan.FromMilliseconds(1000)
             };
             timer.Tick += MediaPlayerIntervalUpdate;
             timer.Start();
@@ -388,6 +388,7 @@ namespace eWolfPodcasterUI
 
         private bool UpdateShowDetails(ShowControl sc, AddNewShow addNewShow)
         {
+            sc.Modifyed = true;
             sc.Title = addNewShow.ShowName;
             sc.RssFeed = addNewShow.RSSFeed;
             if (addNewShow.LocalFiles.IsChecked.Value)
