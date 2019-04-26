@@ -6,7 +6,7 @@
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="MainWindowPods" Height="746.772" Width="1181" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}" Closing="Window_Closing">
+        Title="MainWindowPods" Height="746.772" Width="1145" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}" Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="MyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True" />

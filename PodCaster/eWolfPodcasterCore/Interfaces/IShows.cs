@@ -20,5 +20,7 @@ namespace eWolfPodcasterCore.Interfaces
         void ReplaceAllShows(Shows shows);
 
         ObservableCollection<ShowControl> ShowList { get; }
+
+        ShowControl GetShowFromName(string showName);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore;
+using eWolfPodcasterCore.Helper;
 using eWolfPodcasterCore.Interfaces;
 using FluentAssertions;
 using NUnit.Framework;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 
-namespace eWolfPodcasterCoreUnitTests
+namespace eWolfPodcasterCoreUnitTests.Helper
 {
     public class PersistenceHelperTests
     {
@@ -92,12 +93,16 @@ namespace eWolfPodcasterCoreUnitTests
             public string Name { get; set; }
 
             public string OtherData { get; set; }
+
+            public bool Modifyed { get; set; }
         }
 
         [Serializable]
         public class TempSaveableAnotherName : ISaveable
         {
             public string GetFileName => "TestSave2.data";
+
+            public bool Modifyed { get; set; }
         }
     }
 }

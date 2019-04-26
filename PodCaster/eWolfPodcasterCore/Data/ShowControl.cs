@@ -30,6 +30,8 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public bool Modifyed { get; set; }
+
         public string TitleCount
         {
             get
@@ -120,6 +122,7 @@ namespace eWolfPodcasterCore.Data
             if (addedNew)
             {
                 DebugLog.LogInfo($"Added episodes to {Title}");
+                Modifyed = true;
                 Shows.GetShowService.Save();
             }
         }

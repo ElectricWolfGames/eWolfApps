@@ -99,7 +99,7 @@
     <Compile Include="Helpers\DataCleansingTests.cs" />
     <Compile Include="Helpers\DateTimeHelperTests.cs" />
     <Compile Include="Helpers\ReadEpisodesTests.cs" />
-    <Compile Include="PersistenceHelperTests.cs" />
+    <Compile Include="Helpers\PersistenceHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceLocatorTests.cs" />
     <Compile Include="Services\ShowLibraryServiceTests.cs" />

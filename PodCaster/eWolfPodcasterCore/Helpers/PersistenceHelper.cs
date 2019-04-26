@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace eWolfPodcasterCore
+namespace eWolfPodcasterCore.Helper
 {
     public class PersistenceHelper<T>
     {
@@ -56,6 +56,9 @@ namespace eWolfPodcasterCore
             foreach (ISaveable saveable in saveableItems)
             {
                 if (saveable == null)
+                    continue;
+
+                if (!saveable.Modifyed)
                     continue;
 
                 allSaved &= SaveDataSingle(saveable);

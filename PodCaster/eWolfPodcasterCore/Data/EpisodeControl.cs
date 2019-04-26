@@ -63,6 +63,15 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public bool Modifyed
+        {
+            set
+            {
+                var show = Shows.GetShowService.GetShowFromName(ShowName);
+                show.Modifyed = value;
+            }
+        }
+
         public void DownloadAsMp3()
         {
             Thread newThread = new Thread(Downloading);

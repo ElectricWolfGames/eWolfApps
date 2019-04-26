@@ -24,6 +24,7 @@ namespace eWolfPodcasterUI
     {
         private readonly MediaPlayer _mediaPlayer = new MediaPlayer();
         private PodcastEpisode _currentPodcast = null;
+        private ShowControl _currentShow = null;
         private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
         private ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
         private DispatcherTimer _rssTimer;
@@ -152,7 +153,7 @@ namespace eWolfPodcasterUI
         {
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(100)
+                Interval = TimeSpan.FromMilliseconds(1000)
             };
             timer.Tick += MediaPlayerIntervalUpdate;
             timer.Start();
@@ -189,7 +190,39 @@ namespace eWolfPodcasterUI
             if (e.AddedItems.Count == 0)
                 return;
 
-            _currentPodcast = e.AddedItems[0] as PodcastEpisode;
+            PlayEpisode(e.AddedItems[0] as PodcastEpisode);
+        }
+
+        private void LogListUpdated(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            PopulateLogPage();
+        }
+
+        private void MediaPlayerIntervalUpdate(object sender, EventArgs e)
+        {
+            if (_mediaPlayer.Source != null && _mediaPlayer.NaturalDuration.HasTimeSpan)
+            {
+                _currentPodcast.PlayedLength = _mediaPlayer.Position.Ticks;
+
+                double MaxLength = 781;
+
+                double totalWidth = MaxLength;
+
+                totalWidth /= _mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
+                totalWidth *= _mediaPlayer.Position.TotalMilliseconds;
+                _currentPodcast.PlayedLengthScaled = (float)totalWidth;
+                Shows.GetShowService.Save();
+
+                if (_currentPodcast.PlayedLengthScaled >= MaxLength - 2)
+                {
+                    PlayNextEpisode();
+                }
+            }
+        }
+
+        private void PlayEpisode(PodcastEpisode episode)
+        {
+            _currentPodcast = episode;
 
             _mediaPlayer.Open(new Uri(_currentPodcast.UrlToPlay));
             _mediaPlayer.Position = new TimeSpan(_currentPodcast.PlayedLength);
@@ -197,9 +230,25 @@ namespace eWolfPodcasterUI
             OnPropertyChanged("PodcastDescription");
         }
 
-        private void LogListUpdated(object sender, NotifyCollectionChangedEventArgs e)
+        private void PlayNextEpisode()
         {
-            PopulateLogPage();
+            Console.WriteLine("Play next show now!");
+            for (int i = 0; i < _podcasts.Count - 1; i++)
+            {
+                var ep = _podcasts[i];
+                if (ep.Title == _currentPodcast.Title)
+                {
+                    string nextPodCastName = _podcasts[i + 1].Title;
+                    foreach (PodcastEpisode c in _podcasts)
+                    {
+                        if (c.Title == nextPodCastName)
+                        {
+                            PlayEpisode(c);
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         private void PopulateLogPage()
@@ -250,18 +299,56 @@ namespace eWolfPodcasterUI
             }
         }
 
+        private void ShowAllEpisodesForGroup(string groupName)
+        {
+            Shows shows = (Shows)Shows.GetShowService;
+
+            List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
+            _podcasts.Clear();
+
+            List<EpisodeControl> orderedByDateList = new List<EpisodeControl>();
+            foreach (var show in showsInCat)
+            {
+                show.Episodes.ForEach(x => x.ShowName = show.Title);
+                orderedByDateList.AddRange(show.Episodes);
+            }
+
+            orderedByDateList = orderedByDateList.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+
+            ShowEpisodes(orderedByDateList);
+        }
+
+        private void ShowEpisodes(List<EpisodeControl> orderedByDateList)
+        {
+            foreach (EpisodeControl x in orderedByDateList)
+            {
+                if (x.Hidden)
+                    continue;
+
+                PodcastEpisode pce = new PodcastEpisode();
+                pce.EpisodeControlData = x;
+                pce.ShowName = x.ShowName;
+                _podcasts.Add(pce);
+            }
+
+            EpisodesItems.ItemsSource = _podcasts;
+        }
+
         private void ShowsItemsTree_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             TreeViewItem item = (TreeViewItem)(sender as TreeView).SelectedItem;
             ShowControl sc = item.Tag as ShowControl;
             if (sc != null)
             {
+                _currentShow = sc;
                 _podcasts.Clear();
                 if (e.RightButton == System.Windows.Input.MouseButtonState.Pressed)
                 {
                     EditSelectedItem(sc);
                     return;
                 }
+
+                sc.Episodes.ForEach(x => x.ShowName = sc.Title);
 
                 List<EpisodeControl> orderedByDateList = null;
                 if (sc.LocalFiles)
@@ -273,18 +360,11 @@ namespace eWolfPodcasterUI
                     orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
                 }
 
-                foreach (EpisodeControl x in orderedByDateList)
-                {
-                    if (x.Hidden)
-                        continue;
-
-                    PodcastEpisode pce = new PodcastEpisode();
-                    pce.EpisodeControlData = x;
-                    pce.ShowName = sc.Title;
-                    _podcasts.Add(pce);
-                }
-
-                EpisodesItems.ItemsSource = _podcasts;
+                ShowEpisodes(orderedByDateList);
+            }
+            else
+            {
+                ShowAllEpisodesForGroup(item.Header.ToString());
             }
         }
 
@@ -301,21 +381,6 @@ namespace eWolfPodcasterUI
             }
         }
 
-        private void MediaPlayerIntervalUpdate(object sender, EventArgs e)
-        {
-            if (_mediaPlayer.Source != null && _mediaPlayer.NaturalDuration.HasTimeSpan)
-            {
-                _currentPodcast.PlayedLength = _mediaPlayer.Position.Ticks;
-
-                double totalWidth = 781;
-
-                totalWidth /= _mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
-                totalWidth *= _mediaPlayer.Position.TotalMilliseconds;
-                _currentPodcast.PlayedLengthScaled = (float)totalWidth;
-                Shows.GetShowService.Save();
-            }
-        }
-
         private void UpdateRssFeedTimer(object sender, EventArgs e)
         {
             CheckNextShow();
@@ -323,6 +388,7 @@ namespace eWolfPodcasterUI
 
         private bool UpdateShowDetails(ShowControl sc, AddNewShow addNewShow)
         {
+            sc.Modifyed = true;
             sc.Title = addNewShow.ShowName;
             sc.RssFeed = addNewShow.RSSFeed;
             if (addNewShow.LocalFiles.IsChecked.Value)
