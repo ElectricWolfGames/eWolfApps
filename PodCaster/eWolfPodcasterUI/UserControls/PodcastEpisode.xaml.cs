@@ -109,7 +109,7 @@ namespace eWolfPodcasterUI.UserControls
         {
             get
             {
-                return _episodeData.Title;
+                return $"{_episodeData.ShowName}: {_episodeData.Title}";
             }
         }
 

@@ -299,6 +299,41 @@ namespace eWolfPodcasterUI
             }
         }
 
+        private void ShowAllEpisodesForGroup(string groupName)
+        {
+            Shows shows = (Shows)Shows.GetShowService;
+
+            List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
+            _podcasts.Clear();
+
+            List<EpisodeControl> orderedByDateList = new List<EpisodeControl>();
+            foreach (var show in showsInCat)
+            {
+                show.Episodes.ForEach(x => x.ShowName = show.Title);
+                orderedByDateList.AddRange(show.Episodes);
+            }
+
+            orderedByDateList = orderedByDateList.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+
+            ShowEpisodes(orderedByDateList);
+        }
+
+        private void ShowEpisodes(List<EpisodeControl> orderedByDateList)
+        {
+            foreach (EpisodeControl x in orderedByDateList)
+            {
+                if (x.Hidden)
+                    continue;
+
+                PodcastEpisode pce = new PodcastEpisode();
+                pce.EpisodeControlData = x;
+                pce.ShowName = x.ShowName;
+                _podcasts.Add(pce);
+            }
+
+            EpisodesItems.ItemsSource = _podcasts;
+        }
+
         private void ShowsItemsTree_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             TreeViewItem item = (TreeViewItem)(sender as TreeView).SelectedItem;
@@ -313,6 +348,8 @@ namespace eWolfPodcasterUI
                     return;
                 }
 
+                sc.Episodes.ForEach(x => x.ShowName = sc.Title);
+
                 List<EpisodeControl> orderedByDateList = null;
                 if (sc.LocalFiles)
                 {
@@ -323,18 +360,11 @@ namespace eWolfPodcasterUI
                     orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
                 }
 
-                foreach (EpisodeControl x in orderedByDateList)
-                {
-                    if (x.Hidden)
-                        continue;
-
-                    PodcastEpisode pce = new PodcastEpisode();
-                    pce.EpisodeControlData = x;
-                    pce.ShowName = sc.Title;
-                    _podcasts.Add(pce);
-                }
-
-                EpisodesItems.ItemsSource = _podcasts;
+                ShowEpisodes(orderedByDateList);
+            }
+            else
+            {
+                ShowAllEpisodesForGroup(item.Header.ToString());
             }
         }
 
