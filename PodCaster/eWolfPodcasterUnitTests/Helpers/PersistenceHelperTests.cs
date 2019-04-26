@@ -17,7 +17,10 @@ namespace eWolfPodcasterCoreUnitTests.Helper
         {
             RemoveTempFolder();
 
-            TempSaveable tempSaveable = new TempSaveable();
+            TempSaveable tempSaveable = new TempSaveable()
+            {
+                Modifyed = true
+            };
             PersistenceHelper<ISaveable> ph = new PersistenceHelper<ISaveable>(GetOutputFolder());
             ph.SaveData(new List<ISaveable>() { tempSaveable });
 
@@ -30,8 +33,14 @@ namespace eWolfPodcasterCoreUnitTests.Helper
         {
             RemoveTempFolder();
 
-            TempSaveable tempSaveable = new TempSaveable();
-            TempSaveableAnotherName tempSaveableB = new TempSaveableAnotherName();
+            TempSaveable tempSaveable = new TempSaveable()
+            {
+                Modifyed = true
+            };
+            TempSaveableAnotherName tempSaveableB = new TempSaveableAnotherName()
+            {
+                Modifyed = true
+            };
             PersistenceHelper<ISaveable> ph = new PersistenceHelper<ISaveable>(GetOutputFolder());
             bool results = ph.SaveData(new List<ISaveable>() { tempSaveable, tempSaveableB });
 
@@ -51,7 +60,8 @@ namespace eWolfPodcasterCoreUnitTests.Helper
             TempSaveable tempSaveable = new TempSaveable
             {
                 Name = "MyName",
-                OtherData = "OtherData"
+                OtherData = "OtherData",
+                Modifyed = true
             };
             PersistenceHelper<TempSaveable> ph = new PersistenceHelper<TempSaveable>(GetOutputFolder());
             ph.SaveData(new List<ISaveable>() { tempSaveable });
