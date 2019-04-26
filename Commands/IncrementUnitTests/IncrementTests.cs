@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
 using Increment;
-using FluentAssertions;
+using NUnit.Framework;
 
 namespace IncrementUnitTests
 {

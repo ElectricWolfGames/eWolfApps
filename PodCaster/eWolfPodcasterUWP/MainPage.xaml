@@ -74,6 +74,13 @@
                         <Image Source="Images/SubItem.png" />
                     </StackPanel>
                 </Button>
+                <Button Click="ButtonLibraryClick"
+                        Margin="148,27,0,0"
+                        Height="64" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Images/Library.png" />
+                    </StackPanel>
+                </Button>
                 <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" />
             </Grid>
         </SplitView.Pane>
