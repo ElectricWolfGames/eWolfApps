@@ -223,5 +223,9 @@
     <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.7.10.0.7896\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.7.10.0.7896\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\EmptyGreen.png" />
+    <Resource Include="Images\Library.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

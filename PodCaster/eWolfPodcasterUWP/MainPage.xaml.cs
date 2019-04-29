@@ -103,6 +103,11 @@ namespace eWolfPodcasterUWP
             }
         }
 
+        private void ButtonLibraryClick(object sender, RoutedEventArgs e)
+        {
+            // TODO show the library
+        }
+
         private async void CreateRssBackGround()
         {
             RssBackGround rbg = new RssBackGround((Shows)Shows.GetShowService);

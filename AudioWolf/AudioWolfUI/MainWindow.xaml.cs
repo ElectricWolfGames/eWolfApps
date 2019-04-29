@@ -149,9 +149,7 @@ namespace AudioWolfUI
         {
             string filters = TagFilters.Text;
 
-            // List<TagData> tags = 
+            // List<TagData> tags =
         }
     }
-
-   
 }
