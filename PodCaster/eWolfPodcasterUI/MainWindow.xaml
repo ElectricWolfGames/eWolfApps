@@ -80,6 +80,13 @@
                                             <ImageBrush ImageSource="Images/Stop.png" />
                                         </Button.Background>
                                     </Button>
+                                    <Button x:Name="btnClearWatch" VerticalAlignment="Top"
+                                        Click="BtnClearWatch_Click"
+                                        Margin="420,10,0,0"
+                                        Width="120" Height="30" HorizontalAlignment="Left"
+                                        Content="Un watched" Grid.Column="2">
+                                        
+                                    </Button>
                                     <TextBox x:Name="_currentPodCastDescription" Margin="10,45,13,10" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
                                 </Grid>
                             </xcad:LayoutDocument>

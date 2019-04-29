@@ -57,8 +57,15 @@ namespace eWolfPodcasterUI.UserControls
 
         public long PlayedLength
         {
-            get { return _episodeData.PlayedLength; }
-            set { _episodeData.PlayedLength = value; }
+            get
+            {
+                return _episodeData.PlayedLength;
+            }
+            set
+            {
+                _episodeData.PlayedLength = value;
+                _episodeData.Modifyed = true;
+            }
         }
 
         public double PlayedLengthScaled

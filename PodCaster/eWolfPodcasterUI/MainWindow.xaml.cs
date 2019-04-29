@@ -90,6 +90,20 @@ namespace eWolfPodcasterUI
             _mediaPlayer.Stop();
         }
 
+        private void BtnClearWatch_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentShow == null)
+                return;
+
+            _currentShow.Episodes.ForEach(x => x.PlayedLength = 0);
+
+            _currentShow.Episodes.ForEach(x => x.PlayedLengthScaled = 0);
+            _currentShow.Modifyed = true;
+
+            ShowAllEpisodesFromShow(_currentShow);
+            Shows.GetShowService.Save();
+        }
+
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
         {
             AddNewShow addNewShow = new AddNewShow
@@ -301,6 +315,7 @@ namespace eWolfPodcasterUI
 
         private void ShowAllEpisodesForGroup(string groupName)
         {
+            _currentShow = null;
             Shows shows = (Shows)Shows.GetShowService;
 
             List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
@@ -348,24 +363,29 @@ namespace eWolfPodcasterUI
                     return;
                 }
 
-                sc.Episodes.ForEach(x => x.ShowName = sc.Title);
-
-                List<EpisodeControl> orderedByDateList = null;
-                if (sc.LocalFiles)
-                {
-                    orderedByDateList = sc.Episodes.OrderBy(x => x.PodcastURL).ToList();
-                }
-                else
-                {
-                    orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
-                }
-
-                ShowEpisodes(orderedByDateList);
+                ShowAllEpisodesFromShow(sc);
             }
             else
             {
                 ShowAllEpisodesForGroup(item.Header.ToString());
             }
+        }
+
+        private void ShowAllEpisodesFromShow(ShowControl sc)
+        {
+            sc.Episodes.ForEach(x => x.ShowName = sc.Title);
+
+            List<EpisodeControl> orderedByDateList = null;
+            if (sc.LocalFiles)
+            {
+                orderedByDateList = sc.Episodes.OrderBy(x => x.PodcastURL).ToList();
+            }
+            else
+            {
+                orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+            }
+
+            ShowEpisodes(orderedByDateList);
         }
 
         private void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
