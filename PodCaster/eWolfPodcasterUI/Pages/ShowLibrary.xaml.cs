@@ -65,7 +65,7 @@ namespace eWolfPodcasterUI.Pages
                 ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
                 _groups = showLibraryService.Groups();
 
-                foreach (var it in showLibraryService.GetList(groupName))
+                foreach (ShowLibraryData it in showLibraryService.GetList(groupName))
                 {
                     if (!IsShowAllReadyAdded(it))
                     {
@@ -82,7 +82,17 @@ namespace eWolfPodcasterUI.Pages
         {
             ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
 
-            _groupNames = showLibraryService.Groups().Select(x => x.Name).ToList();
+            List<string> allGroups = showLibraryService.Groups().Select(x => x.Name).ToList();
+            _groupNames = new List<string>();
+
+            foreach (string group in allGroups)
+            {
+                List<ShowLibraryData> shows = showLibraryService.GetList(group);
+                if (shows.Any(x => !IsShowAllReadyAdded(x)))
+                {
+                    _groupNames.Add(group);
+                }
+            }
             LibraryCategories.ItemsSource = _groupNames;
         }
     }
