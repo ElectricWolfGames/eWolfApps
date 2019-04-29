@@ -373,6 +373,7 @@ namespace eWolfPodcasterUI
 
         private void ShowAllEpisodesFromShow(ShowControl sc)
         {
+            _podcasts.Clear();
             sc.Episodes.ForEach(x => x.ShowName = sc.Title);
 
             List<EpisodeControl> orderedByDateList = null;
