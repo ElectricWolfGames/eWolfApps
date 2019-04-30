@@ -66,7 +66,7 @@ namespace eWolfPodcasterUI.UserControls
             set
             {
                 _episodeData.PlayedLength = value;
-                _episodeData.Modifyed = true;
+                _episodeData.SetModifed();
             }
         }
 
@@ -81,7 +81,7 @@ namespace eWolfPodcasterUI.UserControls
             {
                 _episodeData.PlayedLengthScaled = value;
                 _showplayed.Height = value;
-                _episodeData.Modifyed = true;
+                _episodeData.SetModifed();
             }
         }
 
