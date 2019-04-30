@@ -20,11 +20,11 @@ using System.Windows.Threading;
 
 namespace eWolfPodcasterUI
 {
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged, IMainBase
     {
         private readonly MediaPlayer _mediaPlayer = new MediaPlayer();
         private PodcastEpisode _currentPodcast = null;
-        private ShowControl _currentShow = null;
+        private List<ShowControl> _currentShows = new List<ShowControl>();
         private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
         private ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
         private DispatcherTimer _rssTimer;
@@ -36,6 +36,7 @@ namespace eWolfPodcasterUI
 
             ProjectDetails projectDetails = new ProjectDetails();
             ServiceLocator.Instance.InjectService<IProjectDetails>(projectDetails);
+            ServiceLocator.Instance.InjectService<IMainBase>(this);
 
             Shows.GetShowService.Load(projectDetails.GetOutputFolder());
             Shows.GetShowService.Save();
@@ -70,9 +71,28 @@ namespace eWolfPodcasterUI
             }
         }
 
+        public void PopulateEpisodes()
+        {
+            ShowAllEpisodesFromShows();
+        }
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void BtnClearWatch_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (ShowControl show in _currentShows)
+            {
+                show.Episodes.ForEach(x => x.PlayedLength = 0);
+                show.Episodes.ForEach(x => x.Hidden = false);
+                show.Episodes.ForEach(x => x.PlayedLengthScaled = 0);
+                show.Modifyed = true;
+            }
+            ShowAllEpisodesFromShows();
+
+            Shows.GetShowService.Save();
         }
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
@@ -88,20 +108,6 @@ namespace eWolfPodcasterUI
         private void BtnStop_Click(object sender, RoutedEventArgs e)
         {
             _mediaPlayer.Stop();
-        }
-
-        private void BtnClearWatch_Click(object sender, RoutedEventArgs e)
-        {
-            if (_currentShow == null)
-                return;
-
-            _currentShow.Episodes.ForEach(x => x.PlayedLength = 0);
-            _currentShow.Episodes.ForEach(x => x.Hidden = false);
-            _currentShow.Episodes.ForEach(x => x.PlayedLengthScaled = 0);
-            _currentShow.Modifyed = true;
-
-            ShowAllEpisodesFromShow(_currentShow);
-            Shows.GetShowService.Save();
         }
 
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
@@ -315,14 +321,24 @@ namespace eWolfPodcasterUI
 
         private void ShowAllEpisodesForGroup(string groupName)
         {
-            _currentShow = null;
+            _currentShows.Clear();
             Shows shows = (Shows)Shows.GetShowService;
 
             List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
+
+            foreach (ShowControl show in showsInCat)
+            {
+                _currentShows.Add(show);
+            }
+            ShowAllEpisodesFromShows();
+        }
+
+        private void ShowAllEpisodesFromShows()
+        {
             _podcasts.Clear();
 
             List<EpisodeControl> orderedByDateList = new List<EpisodeControl>();
-            foreach (var show in showsInCat)
+            foreach (ShowControl show in _currentShows)
             {
                 show.Episodes.ForEach(x => x.ShowName = show.Title);
                 orderedByDateList.AddRange(show.Episodes);
@@ -355,7 +371,8 @@ namespace eWolfPodcasterUI
             ShowControl sc = item.Tag as ShowControl;
             if (sc != null)
             {
-                _currentShow = sc;
+                _currentShows.Clear();
+                _currentShows.Add(sc);
                 _podcasts.Clear();
                 if (e.RightButton == System.Windows.Input.MouseButtonState.Pressed)
                 {
@@ -363,30 +380,12 @@ namespace eWolfPodcasterUI
                     return;
                 }
 
-                ShowAllEpisodesFromShow(sc);
+                ShowAllEpisodesFromShows();
             }
             else
             {
                 ShowAllEpisodesForGroup(item.Header.ToString());
             }
-        }
-
-        private void ShowAllEpisodesFromShow(ShowControl sc)
-        {
-            _podcasts.Clear();
-            sc.Episodes.ForEach(x => x.ShowName = sc.Title);
-
-            List<EpisodeControl> orderedByDateList = null;
-            if (sc.LocalFiles)
-            {
-                orderedByDateList = sc.Episodes.OrderBy(x => x.PodcastURL).ToList();
-            }
-            else
-            {
-                orderedByDateList = sc.Episodes.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
-            }
-
-            ShowEpisodes(orderedByDateList);
         }
 
         private void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)

@@ -1,4 +1,6 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Services;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -152,6 +154,7 @@ namespace eWolfPodcasterUI.UserControls
             string episodeName = _episodeData.Title;
             string showName = _episodeData.Show;
             Shows.GetShowService.RemoveEpisodeFromShow(showName, episodeName);
+            ServiceLocator.Instance.GetService<IMainBase>().PopulateEpisodes();
         }
 
         private void _buttonDownloadShow_Click(object sender, RoutedEventArgs e)

@@ -22,7 +22,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace eWolfPodcasterUWP
 {
-    public partial class MainPage : Page, INotifyPropertyChanged
+    public partial class MainPage : Page, INotifyPropertyChanged, IMainBase
     {
         private PodcastEpisodeUC _currentPodcast = null;
         private ShowControl _currentShow = null;
@@ -39,6 +39,7 @@ namespace eWolfPodcasterUWP
 
             ProjectDetails projectDetails = new ProjectDetails();
             ServiceLocator.Instance.InjectService<IProjectDetails>(projectDetails);
+            ServiceLocator.Instance.InjectService<IMainBase>(this);
 
             _localSettings = ApplicationData.Current.LocalSettings;
             _localFolder = ApplicationData.Current.LocalFolder;
@@ -56,6 +57,8 @@ namespace eWolfPodcasterUWP
             timer.Tick += TimerTick;
             timer.Start();
         }
+
+        z
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -262,6 +265,11 @@ namespace eWolfPodcasterUWP
                 totalWidth *= MediaPlayer.Position.TotalMilliseconds;
                 _currentPodcast.PlayedLengthScaled = (float)totalWidth;
             }
+        }
+
+        public void PopulateEpisodes()
+        {
+            throw new NotImplementedException();
         }
     }
 }
