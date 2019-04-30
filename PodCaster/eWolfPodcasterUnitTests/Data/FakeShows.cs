@@ -47,5 +47,10 @@ namespace eWolfPodcasterCoreUnitTests.Data
         {
             return null;
         }
+
+        public void RemoveEpisodeFromShow(string showName, string episodeName)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

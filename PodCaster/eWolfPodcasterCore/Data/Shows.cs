@@ -96,6 +96,21 @@ namespace eWolfPodcasterCore.Data
             _shows = ph.LoadData();
         }
 
+        public void RemoveEpisodeFromShow(string showName, string episodeName)
+        {
+            var show = GetShowFromName(showName);
+            if (show == null)
+            {
+                return;
+            }
+
+            IEnumerable<EpisodeControl> episode = show.Episodes.Where(x => x.Title == episodeName);
+            if (episode.Count() == 1)
+            {
+                episode.First().Hidden = true;
+            }
+        }
+
         public void RemoveShow(ShowControl itemToRemove)
         {
             lock (_shows)

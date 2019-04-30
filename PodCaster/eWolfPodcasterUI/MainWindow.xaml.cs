@@ -96,7 +96,7 @@ namespace eWolfPodcasterUI
                 return;
 
             _currentShow.Episodes.ForEach(x => x.PlayedLength = 0);
-
+            _currentShow.Episodes.ForEach(x => x.Hidden = false);
             _currentShow.Episodes.ForEach(x => x.PlayedLengthScaled = 0);
             _currentShow.Modifyed = true;
 

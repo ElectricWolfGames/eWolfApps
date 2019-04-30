@@ -133,11 +133,6 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
-        public void DownloadAsMp3()
-        {
-            throw new NotImplementedException();
-        }
-
         public string GetOffLineFileName()
         {
             return EpisodeControlData.GetOffLineFileName();
@@ -154,7 +149,9 @@ namespace eWolfPodcasterUI.UserControls
 
         private void _butRemove_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: remove the eposode from the list
+            string episodeName = _episodeData.Title;
+            string showName = _episodeData.Show;
+            Shows.GetShowService.RemoveEpisodeFromShow(showName, episodeName);
         }
 
         private void _buttonDownloadShow_Click(object sender, RoutedEventArgs e)

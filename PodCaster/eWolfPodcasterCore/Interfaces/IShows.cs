@@ -22,5 +22,7 @@ namespace eWolfPodcasterCore.Interfaces
         ObservableCollection<ShowControl> ShowList { get; }
 
         ShowControl GetShowFromName(string showName);
+
+        void RemoveEpisodeFromShow(string showName, string episodeName);
     }
 }
