@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" Height="63.277" Width="780">
+             mc:Ignorable="d" Height="60" Width="780">
     <UserControl.Resources>
     </UserControl.Resources>
     <Grid Background="{DynamicResource BackgroundKey}">
         <Rectangle x:Name="box" HorizontalAlignment="Left" Height="56" Stroke="Black" VerticalAlignment="Top" Width="781" Fill="{DynamicResource ButtonNormalBackground}" />
-        <Rectangle x:Name="_showplayed" HorizontalAlignment="Left" Height="780" Stroke="Black" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0,0" Margin="0,55,0,-772">
+        <Rectangle x:Name="_showplayed" HorizontalAlignment="Left" Height="78" Stroke="Black" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0,0" Margin="0,55,0,-772">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
