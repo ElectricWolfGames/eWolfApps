@@ -98,6 +98,14 @@ namespace eWolfPodcasterCore.Data
             UpdateEpisode(episodes);
         }
 
+        public void UnwatchAll()
+        {
+            Episodes.ForEach(x => x.PlayedLength = 0);
+            Episodes.ForEach(x => x.Hidden = false);
+            Episodes.ForEach(x => x.PlayedLengthScaled = 0);
+            Modifyed = true;
+        }
+
         internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
         {
             bool addedNew = false;

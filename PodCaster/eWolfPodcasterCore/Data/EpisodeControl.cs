@@ -152,6 +152,16 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public void ClearDownload()
+        {
+            string downloadFile = GetOffLineFileName();
+            if (File.Exists(downloadFile))
+            {
+                Console.WriteLine("Deleted downloaded file " + downloadFile);
+                File.Delete(downloadFile);
+            }
+        }
+
         private string GetDownloadFolder()
         {
             return ServiceLocator.Instance.GetService<IProjectDetails>().GetDownloadFolder();

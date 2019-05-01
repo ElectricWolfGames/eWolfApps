@@ -153,6 +153,7 @@ namespace eWolfPodcasterUI.UserControls
         {
             string episodeName = _episodeData.Title;
             string showName = _episodeData.Show;
+            _episodeData.ClearDownload();
             Shows.GetShowService.RemoveEpisodeFromShow(showName, episodeName);
             ServiceLocator.Instance.GetService<IMainBase>().PopulateEpisodes();
         }

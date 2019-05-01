@@ -85,14 +85,10 @@ namespace eWolfPodcasterUI
         {
             foreach (ShowControl show in _currentShows)
             {
-                show.Episodes.ForEach(x => x.PlayedLength = 0);
-                show.Episodes.ForEach(x => x.Hidden = false);
-                show.Episodes.ForEach(x => x.PlayedLengthScaled = 0);
-                show.Modifyed = true;
+                show.UnwatchAll();
             }
-            ShowAllEpisodesFromShows();
-
             Shows.GetShowService.Save();
+            ShowAllEpisodesFromShows();
         }
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
