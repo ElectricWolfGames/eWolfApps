@@ -273,7 +273,7 @@ namespace eWolfPodcasterUI
 
             orderedByDateList = ServiceLocator.Instance.GetService<LoggerService>().Logs.ToList();
 
-            foreach (LoggerData x in orderedByDateList)
+            /*foreach (LoggerData x in orderedByDateList)
             {
                 IDebugLoggerData pce = new DebugLogItem
                 {
@@ -281,9 +281,9 @@ namespace eWolfPodcasterUI
                 };
 
                 _errorLog.Add(pce);
-            }
+            }*/
 
-            LogItems.ItemsSource = _errorLog;
+            // LogItems.ItemsSource = _errorLog;
         }
 
         private void PopulateTree()
@@ -334,13 +334,22 @@ namespace eWolfPodcasterUI
             _podcasts.Clear();
 
             List<EpisodeControl> orderedByDateList = new List<EpisodeControl>();
+            ShowStorageType stype = ShowStorageType.RssFeed;
             foreach (ShowControl show in _currentShows)
             {
+                stype = show.ShowOption.ShowStorage;
                 show.Episodes.ForEach(x => x.ShowName = show.Title);
                 orderedByDateList.AddRange(show.Episodes);
             }
 
-            orderedByDateList = orderedByDateList.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+            if (stype == ShowStorageType.RssFeed)
+            {
+                orderedByDateList = orderedByDateList.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
+            }
+            else
+            {
+                orderedByDateList = orderedByDateList.OrderBy(x => x.PodcastURL).ToList();
+            }
 
             ShowEpisodes(orderedByDateList);
         }

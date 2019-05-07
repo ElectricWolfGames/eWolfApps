@@ -1,9 +1,13 @@
 ﻿using eWolfPodcasterCore.Services;
+using System;
+using System.IO;
 
 namespace eWolfPodcasterCore.Logger
 {
     public static class DebugLog
     {
+        private static readonly object _locakable = false;
+
         public static void LogError(string message)
         {
             ServiceLocator.Instance.GetService<LoggerService>().AddError(message);
@@ -11,7 +15,17 @@ namespace eWolfPodcasterCore.Logger
 
         public static void LogInfo(string message)
         {
-            // TODO Need to fid a why to log out the message on the mai UI process
+            string fileName = @"D:\OffLine\Log.log";
+
+            DateTime currentTime = DateTime.Now;
+            message = $"{currentTime.ToShortDateString()} {currentTime.ToShortTimeString()}: {message}";
+
+            lock (_locakable)
+            {
+                string rawFile = File.ReadAllText(fileName);
+                rawFile += "\n" + message;
+                File.WriteAllText(fileName, rawFile);
+            }
         }
 
         public static void LogWarning(string message)

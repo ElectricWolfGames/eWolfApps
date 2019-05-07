@@ -210,6 +210,8 @@ namespace eWolfPodcasterCore.Data
                 {
                     nextShowDownload.AutoDownloadTurn = true;
                     Console.WriteLine($"Auto download {nextShowDownload.Title}");
+                    ServiceLocator.Instance.GetService<LoggerService>().AddError($"Auto download {nextShowDownload.Title}");
+
                     nextShowDownload.Download();
                     return false;
                 }
@@ -233,7 +235,6 @@ namespace eWolfPodcasterCore.Data
 
         public void UpdateShow(ShowControl sc)
         {
-            DebugLog.LogInfo("Updating RSS for " + sc.Title);
             Console.WriteLine("Updating RSS for " + sc.Title);
             if (sc.LocalFiles)
             {
