@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
@@ -83,10 +84,8 @@ namespace eWolfPodcasterUI
 
         private void BtnClearWatch_Click(object sender, RoutedEventArgs e)
         {
-            foreach (ShowControl show in _currentShows)
-            {
-                show.UnwatchAll();
-            }
+            ShowHelper.ClearWatched(_currentShows);
+
             Shows.GetShowService.Save();
             ShowAllEpisodesFromShows();
         }
@@ -332,26 +331,7 @@ namespace eWolfPodcasterUI
         private void ShowAllEpisodesFromShows()
         {
             _podcasts.Clear();
-
-            List<EpisodeControl> orderedByDateList = new List<EpisodeControl>();
-            ShowStorageType stype = ShowStorageType.RssFeed;
-            foreach (ShowControl show in _currentShows)
-            {
-                stype = show.ShowOption.ShowStorage;
-                show.Episodes.ForEach(x => x.ShowName = show.Title);
-                orderedByDateList.AddRange(show.Episodes);
-            }
-
-            if (stype == ShowStorageType.RssFeed)
-            {
-                orderedByDateList = orderedByDateList.OrderByDescending(x => x.PublishedDate.Ticks).ToList();
-            }
-            else
-            {
-                orderedByDateList = orderedByDateList.OrderBy(x => x.PodcastURL).ToList();
-            }
-
-            ShowEpisodes(orderedByDateList);
+            ShowEpisodes(ShowHelper.GetOrderEpisodes(_currentShows));
         }
 
         private void ShowEpisodes(List<EpisodeControl> orderedByDateList)
