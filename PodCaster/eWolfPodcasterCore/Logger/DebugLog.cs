@@ -15,7 +15,7 @@ namespace eWolfPodcasterCore.Logger
 
         public static void LogInfo(string message)
         {
-            string fileName = @"D:\OffLine\Log.log";
+            /*string fileName = @"D:\OffLine\Log.log";
 
             DateTime currentTime = DateTime.Now;
             message = $"{currentTime.ToShortDateString()} {currentTime.ToShortTimeString()}: {message}";
@@ -25,7 +25,7 @@ namespace eWolfPodcasterCore.Logger
                 string rawFile = File.ReadAllText(fileName);
                 rawFile += "\n" + message;
                 File.WriteAllText(fileName, rawFile);
-            }
+            }*/
         }
 
         public static void LogWarning(string message)
