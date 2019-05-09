@@ -5,9 +5,6 @@ using System.Windows.Controls;
 
 namespace eWolfPodcasterUI.UserControls
 {
-    /// <summary>
-    /// Interaction logic for LibraryItem.xaml
-    /// </summary>
     public partial class LibraryItem : UserControl
     {
         public LibraryItem()
