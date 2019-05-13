@@ -12,9 +12,6 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class ShowControl : Show, ISaveable
     {
-        [NonSerialized]
-        private readonly bool _updatedRss = false;
-
         public bool AutoDownloadTurn { get; internal set; }
 
         public string GetFileName

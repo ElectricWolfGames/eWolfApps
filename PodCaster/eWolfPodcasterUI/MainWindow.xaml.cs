@@ -316,15 +316,8 @@ namespace eWolfPodcasterUI
 
         private void ShowAllEpisodesForGroup(string groupName)
         {
-            _currentShows.Clear();
-            Shows shows = (Shows)Shows.GetShowService;
+            _currentShows = ShowHelper.GetAllShowsFromGroup(groupName);
 
-            List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
-
-            foreach (ShowControl show in showsInCat)
-            {
-                _currentShows.Add(show);
-            }
             ShowAllEpisodesFromShows();
         }
 
@@ -414,6 +407,7 @@ namespace eWolfPodcasterUI
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            _mediaPlayer.Stop();
             _rssTimer.Stop();
         }
     }

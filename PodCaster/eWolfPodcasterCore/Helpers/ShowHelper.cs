@@ -36,5 +36,18 @@ namespace eWolfPodcasterCore.Helpers
                 show.UnwatchAll();
             }
         }
+
+        public static List<ShowControl> GetAllShowsFromGroup(string groupName)
+        {
+            List<ShowControl> groupedShows = new List<ShowControl>();
+            Shows shows = (Shows)Shows.GetShowService;
+
+            List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
+            foreach (ShowControl show in showsInCat)
+            {
+                groupedShows.Add(show);
+            }
+            return groupedShows;
+        }
     }
 }
