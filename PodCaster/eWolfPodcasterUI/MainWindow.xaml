@@ -6,7 +6,8 @@
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="MainWindowPods" Height="750" Width="1142" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}" Closing="Window_Closing">
+        Title="MainWindowPods" Height="750" Width="1142" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}" Closing="Window_Closing"
+        Icon="Images/podcast.png">
     <Window.Resources>
         <Style x:Key="MyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -85,7 +86,6 @@
                                         Margin="420,10,0,0"
                                         Width="120" Height="30" HorizontalAlignment="Left"
                                         Content="Un watched" Grid.Column="2">
-                                        
                                     </Button>
                                     <TextBox x:Name="_currentPodCastDescription" Margin="10,45,13,10" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
                                 </Grid>

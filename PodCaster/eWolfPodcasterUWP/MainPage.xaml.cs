@@ -58,8 +58,6 @@ namespace eWolfPodcasterUWP
             timer.Start();
         }
 
-        z
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string PodcastDescription
