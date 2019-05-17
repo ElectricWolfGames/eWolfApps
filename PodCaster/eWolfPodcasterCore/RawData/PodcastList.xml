@@ -11,8 +11,8 @@
       <Url>http://www.bbc.co.uk/programmes/b00srz5b/episodes/downloads.rss</Url>
       <Category>Maths</Category>
       <Description></Description>
-      <Show>
-      </Show>
+    <Show>
+    </Show>
       <Name>BBC A History of Britain in Numbers</Name>
       <Url>http://www.bbc.co.uk/programmes/b03k5dvd/episodes/downloads.rss</Url>
       <Category>Maths</Category>
@@ -299,6 +299,12 @@
       <Url>https://live-scienceupdate.pantheonsite.io/category/daily-show/feed/</Url>
       <Category>Science</Category>
       <Description></Description>
+    </Show>
+  <Show>
+      <Name>classical-music.com</Name>
+      <Url>http://feeds.feedburner.com/bbcmusicmagazine</Url>
+      <Category>Music Podcasts</Category>
+      <Description>The official website of BBC Music Magazine</Description>
     </Show>
   </Shows>
 </eWolfPodcast>
