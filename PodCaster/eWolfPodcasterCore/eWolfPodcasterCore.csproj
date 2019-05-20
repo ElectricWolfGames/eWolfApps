@@ -24,4 +24,16 @@
     <ProjectReference Include="..\..\Common\eWolfCommon\eWolfCommon.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Library\eWolfPodcast.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library\eWolfPodcastShows.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library\eWolfPodcastShowsShow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
