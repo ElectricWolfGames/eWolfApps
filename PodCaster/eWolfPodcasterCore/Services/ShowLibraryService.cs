@@ -61,10 +61,7 @@ namespace eWolfPodcasterCore.Services
 
         public void Load(string fileName)
         {
-            if (!File.Exists(fileName))
-            {
-                CreateLibraryFileFromProject(fileName);
-            }
+            CreateLibraryFileFromProject(fileName);
 
             try
             {
