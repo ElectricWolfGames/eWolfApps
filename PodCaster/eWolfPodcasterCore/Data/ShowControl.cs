@@ -12,7 +12,22 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class ShowControl : Show, ISaveable
     {
+        [NonSerialized]
+        private int _failedCount = 0;
+
         public bool AutoDownloadTurn { get; internal set; }
+
+        public int FailedCount
+        {
+            get
+            {
+                return _failedCount;
+            }
+            set
+            {
+                _failedCount = value;
+            }
+        }
 
         public string GetFileName
         {
@@ -42,6 +57,14 @@ namespace eWolfPodcasterCore.Data
         public override string ToString()
         {
             return TitleCount;
+        }
+
+        public void UnwatchAll()
+        {
+            Episodes.ForEach(x => x.PlayedLength = 0);
+            Episodes.ForEach(x => x.Hidden = false);
+            Episodes.ForEach(x => x.PlayedLengthScaled = 0);
+            Modifyed = true;
         }
 
         internal void Download()
@@ -93,14 +116,6 @@ namespace eWolfPodcasterCore.Data
                 // safty catch
             }
             UpdateEpisode(episodes);
-        }
-
-        public void UnwatchAll()
-        {
-            Episodes.ForEach(x => x.PlayedLength = 0);
-            Episodes.ForEach(x => x.Hidden = false);
-            Episodes.ForEach(x => x.PlayedLengthScaled = 0);
-            Modifyed = true;
         }
 
         internal void UpdateEpisode(List<EpisodeControl> newEpisodes)

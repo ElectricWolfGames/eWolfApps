@@ -217,16 +217,18 @@ namespace eWolfPodcasterCore.Data
                 }
             }
 
-            // now download an eispode or two
-            Console.WriteLine("ReStaet all");
+            Console.WriteLine("re set all shows to check for download");
             lock (_shows)
             {
                 foreach (ShowControl show in _shows)
                 {
                     if (show != null)
                     {
-                        show.UpdatedRssTurn = false;
-                        show.AutoDownloadTurn = false;
+                        if (show.FailedCount < 2)
+                        {
+                            show.UpdatedRssTurn = false;
+                            show.AutoDownloadTurn = false;
+                        }
                     }
                 }
                 return true;
@@ -247,7 +249,11 @@ namespace eWolfPodcasterCore.Data
             {
                 XmlReader RSSFeed = sc.UpdateRSSFile();
                 if (RSSFeed == null)
+                {
+                    Console.WriteLine("Failed to download rss feed");
+                    sc.FailedCount++;
                     return;
+                }
 
                 List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
                 lock (_shows)
