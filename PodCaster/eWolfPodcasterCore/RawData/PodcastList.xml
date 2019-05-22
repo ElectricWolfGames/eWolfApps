@@ -428,5 +428,29 @@
       <Category>Drama</Category>
       <Description>Journey Into Space was a BBC Radio science fiction program. In the UK it was the last radio program to attract a bigger evening audience than television. It went on to be translated into 17 languages and broadcast worldwide. Each half-hour episode would usually end with a dramatic cliffhanger, to increase the audience's incentive to tune in to the next episode. The original magnetic recordings of the show were erased shortly after broadcast, and for several decades, it was believed that no recordings of the show still survived. However, in 1986, a set of mis-filed Transcription Service discs were discovered, containing complete copies of the three original series.</Description>
     </Show>
+	  <Show>
+		  <Name>Strange Tales (Old Time Radio)</Name>
+		  <Url>https://feeds.feedburner.com/relicradiostrangetales</Url>
+		  <Category>Drama</Category>
+		  <Description>Tales of the strange and bizarre, the weird and the wicked. Stories not necessarily of the supernatural, but of the unnatural. Join us Sunday's for radio drama at its most mysterious and unusual.</Description>
+	  </Show>
+	  <Show>
+		  <Name>The Horror! (Old Time Radio)</Name>
+		  <Url>http://feeds.feedburner.com/horror</Url>
+		  <Category>Drama</Category>
+		  <Description>Ghost stories, monsters, creatures who walk the earth, and other tales of the unexplained. Join me Saturday's as we explore these stories. But leave those lights on!</Description>
+	  </Show>
+	  <Show>
+		  <Name>Case Closed! (old time radio)</Name>
+		  <Url>https://feeds.feedburner.com/caseclosed</Url>
+		  <Category>Drama</Category>
+		  <Description>Crime stories from the golden age. Old Time Radio is filled with cops, robbers, and private investigators...Lets reopen the cases and hear these great stories again! A new hour every Wednesday.</Description>
+	  </Show>
+	  <Show>
+		  <Name>A Legacy Of Laughs (old time radio)</Name>
+		  <Url>https://feeds.feedburner.com/alegacyoflaughs</Url>
+		  <Category>Drama</Category>
+		  <Description>A Legacy Of Laughs features comedians from the golden age of radio. Hear Bob Hope, Red Skelton, Stan Freberg, Fred Allen, and Jack Benny among many others. New shows twice a week.</Description>
+	  </Show>
   </Shows>
 </eWolfPodcast>

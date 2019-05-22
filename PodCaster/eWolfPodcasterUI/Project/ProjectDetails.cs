@@ -13,7 +13,7 @@ namespace eWolfPodcasterUI.Project
 
         public string GetDownloadFolder()
         {
-            return @"C:\Personal\PodCastData\";
+            return @"C:\Personal\PodCastData\Downloads\";
         }
 
         public string GetLibraryPath()
