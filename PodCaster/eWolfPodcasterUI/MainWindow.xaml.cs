@@ -346,6 +346,9 @@ namespace eWolfPodcasterUI
         private void ShowsItemsTree_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             TreeViewItem item = (TreeViewItem)(sender as TreeView).SelectedItem;
+            if (item == null)
+                return;
+
             ShowControl sc = item.Tag as ShowControl;
             if (sc != null)
             {
