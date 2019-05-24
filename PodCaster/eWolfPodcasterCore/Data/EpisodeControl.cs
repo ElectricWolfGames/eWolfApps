@@ -171,5 +171,17 @@ namespace eWolfPodcasterCore.Data
         {
             return ServiceLocator.Instance.GetService<IProjectDetails>().GetDownloadFolder();
         }
+
+        public string UrlToPlay
+        {
+            get
+            {
+                if (IsOffLine)
+                {
+                    return GetOffLineFileName();
+                }
+                return PodcastURL.Replace("https", "http");
+            }
+        }
     }
 }
