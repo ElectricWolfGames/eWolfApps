@@ -221,6 +221,7 @@ namespace eWolfPodcasterUI
 
             bool playNextEpsoide;
             _mediaPlayerWrapper.UpDateInterval(_currentPodcast.EpisodeControlData, out playNextEpsoide);
+            _currentPodcast.PlayedLengthScaled = _currentPodcast.EpisodeControlData.PlayedLengthScaled;
 
             Shows.GetShowService.Save();
 
