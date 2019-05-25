@@ -321,7 +321,7 @@
 
     <Show>
       <Name>Abbott And Costello</Name>
-      <Url>http://feeds.feedburner.com/RetroRadioPodcastScienceFiction</Url>
+      <Url>http://www.botar.us/abbottcostello.xml</Url>
       <Category>Drama</Category>
       <Description>Starring Bud Abbott and Lou Costello, the zany comedy of The Abbott and Costello Show graced the airwaves from 1942 until 1948, after a short stint as summer replacement for The Fred Allen Show in 1941. There were often tongue twisting or otherwise confusing dialogs Who' on First is the most famous and Costello was always getting into trouble. The vaudeville style repartee kept the live audience in stitches. In the tradition of the day, there was always a song, courtesy of Connie Haines or Marilyn Maxwell.</Description>
     </Show>
@@ -428,29 +428,47 @@
       <Category>Drama</Category>
       <Description>Journey Into Space was a BBC Radio science fiction program. In the UK it was the last radio program to attract a bigger evening audience than television. It went on to be translated into 17 languages and broadcast worldwide. Each half-hour episode would usually end with a dramatic cliffhanger, to increase the audience's incentive to tune in to the next episode. The original magnetic recordings of the show were erased shortly after broadcast, and for several decades, it was believed that no recordings of the show still survived. However, in 1986, a set of mis-filed Transcription Service discs were discovered, containing complete copies of the three original series.</Description>
     </Show>
-	  <Show>
-		  <Name>Strange Tales (Old Time Radio)</Name>
-		  <Url>https://feeds.feedburner.com/relicradiostrangetales</Url>
-		  <Category>Drama</Category>
-		  <Description>Tales of the strange and bizarre, the weird and the wicked. Stories not necessarily of the supernatural, but of the unnatural. Join us Sunday's for radio drama at its most mysterious and unusual.</Description>
-	  </Show>
-	  <Show>
-		  <Name>The Horror! (Old Time Radio)</Name>
-		  <Url>http://feeds.feedburner.com/horror</Url>
-		  <Category>Drama</Category>
-		  <Description>Ghost stories, monsters, creatures who walk the earth, and other tales of the unexplained. Join me Saturday's as we explore these stories. But leave those lights on!</Description>
-	  </Show>
-	  <Show>
-		  <Name>Case Closed! (old time radio)</Name>
-		  <Url>https://feeds.feedburner.com/caseclosed</Url>
-		  <Category>Drama</Category>
-		  <Description>Crime stories from the golden age. Old Time Radio is filled with cops, robbers, and private investigators...Lets reopen the cases and hear these great stories again! A new hour every Wednesday.</Description>
-	  </Show>
-	  <Show>
-		  <Name>A Legacy Of Laughs (old time radio)</Name>
-		  <Url>https://feeds.feedburner.com/alegacyoflaughs</Url>
-		  <Category>Drama</Category>
-		  <Description>A Legacy Of Laughs features comedians from the golden age of radio. Hear Bob Hope, Red Skelton, Stan Freberg, Fred Allen, and Jack Benny among many others. New shows twice a week.</Description>
-	  </Show>
+    <Show>
+      <Name>Strange Tales (Old Time Radio)</Name>
+      <Url>https://feeds.feedburner.com/relicradiostrangetales</Url>
+      <Category>Drama</Category>
+      <Description>Tales of the strange and bizarre, the weird and the wicked. Stories not necessarily of the supernatural, but of the unnatural. Join us Sunday's for radio drama at its most mysterious and unusual.</Description>
+    </Show>
+    <Show>
+      <Name>The Horror! (Old Time Radio)</Name>
+      <Url>http://feeds.feedburner.com/horror</Url>
+      <Category>Drama</Category>
+      <Description>Ghost stories, monsters, creatures who walk the earth, and other tales of the unexplained. Join me Saturday's as we explore these stories. But leave those lights on!</Description>
+    </Show>
+    <Show>
+      <Name>Case Closed! (old time radio)</Name>
+      <Url>https://feeds.feedburner.com/caseclosed</Url>
+      <Category>Drama</Category>
+      <Description>Crime stories from the golden age. Old Time Radio is filled with cops, robbers, and private investigators...Lets reopen the cases and hear these great stories again! A new hour every Wednesday.</Description>
+    </Show>
+    <Show>
+      <Name>A Legacy Of Laughs (old time radio)</Name>
+      <Url>https://feeds.feedburner.com/alegacyoflaughs</Url>
+      <Category>Drama</Category>
+      <Description>A Legacy Of Laughs features comedians from the golden age of radio. Hear Bob Hope, Red Skelton, Stan Freberg, Fred Allen, and Jack Benny among many others. New shows twice a week.</Description>
+    </Show>
+    <Show>
+      <Name>Crime Classics</Name>
+      <Url>http://www.botar.us/crimeclassics.xml</Url>
+      <Category>Drama</Category>
+      <Description>Crime Classics aired on CBS September 30, 1953 and was a series of true crime stories from the records and newpapers of every land, from every time. Your host each week, was Mr. Thomas Hyland a connoisseur of crime, student of violence, and teller of murders.</Description>
+    </Show>
+    <Show>
+      <Name>Mercury theatre on air</Name>
+      <Url>http://www.botar.us/mercurytheatre.xml</Url>
+      <Category>Drama</Category>
+      <Description>The Mercury Theatre was a theatre company founded in New York City by Orson Welles and John Houseman. They had initial success in the theatre, then went to radio, and one of the most notable radio broadcasts of all time, The War of the Worlds. The Mercury Theatre on the Air was an hour-long dramatic radio program which began in the summer of 1938 on the CBS radio network. Most episodes dramatized many works of classic and contemporary literature.</Description>
+    </Show>
+    <Show>
+      <Name>The NEOZAZ Internet Entertainment Main Feed</Name>
+      <Url>http://neozaz.libsyn.com/rss</Url>
+      <Category>Entertainment</Category>
+      <Description>The NEOZAZ Internet Entertainment Main Feed - all the episodes from all our shows in one place! Star Wars In Character, The Best of Fives, Catacombs of Halloween Horror Nights, Dial Up Movies, RPG Real Players Gaming, You Pick It I&#039;ll Watch it, Phillies Full Count, Trailer Pod Boys, Pass the Popcorn, all the Specials, and much, much more from all the great shows at NEOZAZ.com!</Description>
+    </Show>
   </Shows>
 </eWolfPodcast>
