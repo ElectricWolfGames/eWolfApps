@@ -16,15 +16,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Threading;
+using eWolfPodcasterUI.Media;
 
 namespace eWolfPodcasterUI
 {
     public partial class MainWindow : Window, INotifyPropertyChanged, IMainBase
     {
-        private readonly MediaPlayer _mediaPlayer = new MediaPlayer();
+        private IMediaPlayer _mediaPlayerWrapper = new MediaPlayerWrapper();
         private PodcastEpisode _currentPodcast = null;
+
         private List<ShowControl> _currentShows = new List<ShowControl>();
         private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
         private ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
@@ -92,17 +93,17 @@ namespace eWolfPodcasterUI
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
         {
-            _mediaPlayer.Pause();
+            _mediaPlayerWrapper.Pause();
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-            _mediaPlayer.Play();
+            _mediaPlayerWrapper.Play();
         }
 
         private void BtnStop_Click(object sender, RoutedEventArgs e)
         {
-            _mediaPlayer.Stop();
+            _mediaPlayerWrapper.Stop();
         }
 
         private void ButtonAddShowClick(object sender, RoutedEventArgs e)
@@ -154,7 +155,7 @@ namespace eWolfPodcasterUI
                 {
                     if (Shows.GetShowService.UpdateNextRSSFeeds())
                     {
-                        _rssTimer.Interval = _rssTimer.Interval + TimeSpan.FromSeconds(1);
+                        _rssTimer.Interval = _rssTimer.Interval + TimeSpan.FromMinutes(10);
                     }
                 });
             }
@@ -215,33 +216,24 @@ namespace eWolfPodcasterUI
 
         private void MediaPlayerIntervalUpdate(object sender, EventArgs e)
         {
-            if (_mediaPlayer.Source != null && _mediaPlayer.NaturalDuration.HasTimeSpan)
+            if (_currentPodcast == null)
+                return;
+
+            bool playNextEpsoide;
+            _mediaPlayerWrapper.UpDateInterval(_currentPodcast.EpisodeControlData, out playNextEpsoide);
+
+            Shows.GetShowService.Save();
+
+            if (playNextEpsoide)
             {
-                _currentPodcast.PlayedLength = _mediaPlayer.Position.Ticks;
-
-                double MaxLength = 781;
-
-                double totalWidth = MaxLength;
-
-                totalWidth /= _mediaPlayer.NaturalDuration.TimeSpan.TotalMilliseconds;
-                totalWidth *= _mediaPlayer.Position.TotalMilliseconds;
-                _currentPodcast.PlayedLengthScaled = (float)totalWidth;
-                Shows.GetShowService.Save();
-
-                if (_currentPodcast.PlayedLengthScaled >= MaxLength - 2)
-                {
-                    PlayNextEpisode();
-                }
+                PlayNextEpisode();
             }
         }
 
         private void PlayEpisode(PodcastEpisode episode)
         {
             _currentPodcast = episode;
-
-            _mediaPlayer.Open(new Uri(_currentPodcast.UrlToPlay));
-            _mediaPlayer.Position = new TimeSpan(_currentPodcast.PlayedLength);
-            _mediaPlayer.Play();
+            _mediaPlayerWrapper.PlayEpisode(_currentPodcast.EpisodeControlData);
             OnPropertyChanged("PodcastDescription");
         }
 
@@ -371,7 +363,7 @@ namespace eWolfPodcasterUI
             if (e.Reason == SessionSwitchReason.SessionLock)
             {
                 DebugLog.LogInfo("Computer locked: Pausing playback");
-                _mediaPlayer?.Pause();
+                _mediaPlayerWrapper.Pause();
             }
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
             {
@@ -407,7 +399,7 @@ namespace eWolfPodcasterUI
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            _mediaPlayer.Stop();
+            _mediaPlayerWrapper.Stop();
             _rssTimer.Stop();
         }
     }
