@@ -15,6 +15,8 @@ namespace eWolfPodcasterUI.Pages
     /// </summary>
     public partial class ShowLibrary : Window
     {
+        private string _currentGroupName;
+
         private List<CatergeryData> _groups;
         private List<string> _groupNames;
         private ObservableCollection<LibraryItem> _libraryItem = new ObservableCollection<LibraryItem>();
@@ -27,6 +29,11 @@ namespace eWolfPodcasterUI.Pages
         }
 
         public bool Apply { get; set; }
+
+        public void RedrawList()
+        {
+            PopulateGroup();
+        }
 
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
@@ -58,19 +65,26 @@ namespace eWolfPodcasterUI.Pages
             var item = (sender as ListView).SelectedItem;
             string groupName = item as string;
 
-            if (groupName != null)
+            _currentGroupName = groupName;
+            PopulateGroup();
+        }
+
+        private void PopulateGroup()
+        {
+            if (_currentGroupName != null)
             {
                 _libraryItem.Clear();
 
                 ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
                 _groups = showLibraryService.Groups();
 
-                foreach (ShowLibraryData it in showLibraryService.GetList(groupName))
+                foreach (ShowLibraryData it in showLibraryService.GetList(_currentGroupName))
                 {
                     if (!IsShowAllReadyAdded(it))
                     {
                         LibraryItem li = new LibraryItem();
                         li.ShowLibraryData = it;
+                        li.LibraryMain = this;
                         _libraryItem.Add(li);
                     }
                 }

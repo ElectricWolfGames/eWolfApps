@@ -1,5 +1,6 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Library;
+using eWolfPodcasterUI.Pages;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,6 +8,8 @@ namespace eWolfPodcasterUI.UserControls
 {
     public partial class LibraryItem : UserControl
     {
+        public ShowLibrary LibraryMain = null;
+
         public LibraryItem()
         {
             InitializeComponent();
@@ -49,6 +52,7 @@ namespace eWolfPodcasterUI.UserControls
             {
                 System.Console.WriteLine($"{ShowLibraryData.Name} All ready in list");
             }
+            LibraryMain.RedrawList();
         }
     }
 }
