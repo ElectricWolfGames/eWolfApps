@@ -116,6 +116,9 @@ namespace eWolfPodcasterCore.Data
             lock (_shows)
             {
                 _shows.Remove(itemToRemove);
+
+                PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(_outputFolder);
+                ph.DeleteFile(itemToRemove);
             }
         }
 

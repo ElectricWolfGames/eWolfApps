@@ -1,4 +1,6 @@
-﻿using eWolfPodcasterCore.Interfaces;
+﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -100,6 +102,12 @@ namespace eWolfPodcasterCore.Helper
             {
                 return false;
             }
+        }
+
+        internal void DeleteFile(ISaveable saveable)
+        {
+            string outputFileName = Path.Combine(_outputFolder, saveable.GetFileName);
+            File.Delete(outputFileName);
         }
     }
 }
