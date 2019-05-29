@@ -23,11 +23,10 @@ namespace eWolfPodcasterUI
 {
     public partial class MainWindow : Window, INotifyPropertyChanged, IMainBase
     {
-        private IMediaPlayer _mediaPlayerWrapper = new MediaPlayerWrapper();
         private PodcastEpisode _currentPodcast = null;
-
         private List<ShowControl> _currentShows = new List<ShowControl>();
         private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
+        private IMediaPlayer _mediaPlayerWrapper = new MediaPlayerWrapper();
         private ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
         private DispatcherTimer _rssTimer;
 
@@ -91,6 +90,11 @@ namespace eWolfPodcasterUI
             ShowAllEpisodesFromShows();
         }
 
+        private void BtnForwardMinute_Click(object sender, RoutedEventArgs e)
+        {
+            _mediaPlayerWrapper.Forward(1);
+        }
+
         private void BtnPause_Click(object sender, RoutedEventArgs e)
         {
             _mediaPlayerWrapper.Pause();
@@ -99,6 +103,11 @@ namespace eWolfPodcasterUI
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
             _mediaPlayerWrapper.Play();
+        }
+
+        private void BtnRewindMinute_Click(object sender, RoutedEventArgs e)
+        {
+            _mediaPlayerWrapper.Rewind(1);
         }
 
         private void BtnStop_Click(object sender, RoutedEventArgs e)

@@ -83,10 +83,19 @@
                                     </Button>
                                     <Button x:Name="btnClearWatch" VerticalAlignment="Top"
                                         Click="BtnClearWatch_Click"
-                                        Margin="420,10,0,0"
+                                        Margin="528,10,0,0"
                                         Width="120" Height="30" HorizontalAlignment="Left"
-                                        Content="Un watched" Grid.Column="2">
-                                    </Button>
+                                        Content="Un watched" />
+                                    <Button x:Name="btnBackMinute" VerticalAlignment="Top"
+                                        Click="BtnRewindMinute_Click"
+                                        Margin="10,10,0,0"
+                                        Width="62" Height="30" HorizontalAlignment="Left"
+                                        Content="Rewind" />
+                                    <Button x:Name="btnFowardMinute" VerticalAlignment="Top"
+                                        Click="BtnForwardMinute_Click"
+                                        Margin="77,10,0,0"
+                                        Width="62" Height="30" HorizontalAlignment="Left"
+                                        Content="Forward" />
                                     <TextBox x:Name="_currentPodCastDescription" Margin="10,45,13,10" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
                                 </Grid>
                             </xcad:LayoutDocument>

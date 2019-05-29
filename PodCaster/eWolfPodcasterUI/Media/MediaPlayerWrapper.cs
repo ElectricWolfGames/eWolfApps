@@ -15,6 +15,11 @@ namespace eWolfPodcasterUI.Media
             _mediaPlayer = new MediaPlayer();
         }
 
+        public void Forward(int minutes)
+        {
+            _mediaPlayer.Position += new TimeSpan(0, minutes, 0);
+        }
+
         public void Pause()
         {
             _mediaPlayer.Pause();
@@ -25,16 +30,21 @@ namespace eWolfPodcasterUI.Media
             _mediaPlayer.Play();
         }
 
-        public void Stop()
-        {
-            _mediaPlayer.Stop();
-        }
-
         public void PlayEpisode(EpisodeControl episode)
         {
             _mediaPlayer.Open(new Uri(episode.UrlToPlay));
             _mediaPlayer.Position = new TimeSpan(episode.PlayedLength);
             _mediaPlayer.Play();
+        }
+
+        public void Rewind(int minutes)
+        {
+            _mediaPlayer.Position -= new TimeSpan(0, minutes, 0);
+        }
+
+        public void Stop()
+        {
+            _mediaPlayer.Stop();
         }
 
         public void UpDateInterval(EpisodeControl episode, out bool playNextEpsoide)
