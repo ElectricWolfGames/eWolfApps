@@ -286,12 +286,15 @@ namespace eWolfPodcasterUI
             List<string> groups = shows.Groups();
             groups.Add("Ungrouped");
 
+            groups = groups.OrderBy(x => x).ToList();
+
             foreach (string groupName in groups)
             {
                 List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
                 if (!showsInCat.Any())
                     continue;
 
+                showsInCat = showsInCat.OrderBy(x => x.Title).ToList();
                 TreeViewItem categoryNode = new TreeViewItem();
                 categoryNode.Header = groupName;
 
