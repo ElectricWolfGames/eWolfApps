@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:eWolfPodcasterUI.Pages"
         mc:Ignorable="d"
-        Title="ShowLibrary" Height="450" Width="937.983">
-    <Grid Margin="0,0,0,0">
+        Title="ShowLibrary" Height="670" Width="937.983">
+    <Grid Margin="0,0,-8,0" Background="{DynamicResource CheckBoxDisabledForeground}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260" />
             <ColumnDefinition Width="10" />
