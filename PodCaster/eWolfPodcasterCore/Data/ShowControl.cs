@@ -17,6 +17,14 @@ namespace eWolfPodcasterCore.Data
 
         public bool AutoDownloadTurn { get; internal set; }
 
+        public int EpisodesWatched
+        {
+            get
+            {
+                return Episodes.Count(x => x.Watched);
+            }
+        }
+
         public int FailedCount
         {
             get

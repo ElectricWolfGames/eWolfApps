@@ -44,9 +44,9 @@
             </xcad:DockingManager.DocumentHeaderTemplate>
             <xcad:LayoutRoot x:Name="_layoutRoot">
                 <xcad:LayoutPanel Orientation="Horizontal">
-                    <xcad:LayoutAnchorablePane DockWidth="300">
+                    <xcad:LayoutAnchorablePane DockWidth="316">
                         <xcad:LayoutAnchorable ContentId="Shows" Title="Shows" CanHide="False" CanClose="False" AutoHideWidth="240">
-                            <TreeView Name="ShowsItemsTree" MouseDoubleClick="ShowsItemsTree_MouseDoubleClick" HorizontalAlignment="Left" Height="641" Margin="6,42,0,0" VerticalAlignment="Top" Width="283" />
+                            <TreeView Name="ShowsItemsTree" MouseDoubleClick="ShowsItemsTree_MouseDoubleClick" HorizontalAlignment="Left" Height="646" Margin="4,41,0,0" VerticalAlignment="Top" Width="302" />
                         </xcad:LayoutAnchorable>
                     </xcad:LayoutAnchorablePane>
                     <xcad:LayoutDocumentPaneGroup DockWidth="675" Orientation="Vertical">
@@ -125,6 +125,11 @@
         <Button Content="" HorizontalAlignment="Left" Margin="94,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonLibraryShowClick" Style="{StaticResource MyButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Images/Library.png" />
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="133,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonRefreshShowClick" Style="{StaticResource MyButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/Refresh.png" />
             </Button.Background>
         </Button>
     </Grid>

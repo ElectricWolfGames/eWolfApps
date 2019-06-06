@@ -3,6 +3,7 @@ using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
+using eWolfPodcasterUI.Media;
 using eWolfPodcasterUI.Pages;
 using eWolfPodcasterUI.Project;
 using eWolfPodcasterUI.UserControls;
@@ -17,17 +18,17 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using eWolfPodcasterUI.Media;
 
 namespace eWolfPodcasterUI
 {
     public partial class MainWindow : Window, INotifyPropertyChanged, IMainBase
     {
+        private readonly ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
+        private readonly IMediaPlayer _mediaPlayerWrapper = new MediaPlayerWrapper();
+        private readonly ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
+        private readonly ObservableCollection<PodcastEpisode> _shows = new ObservableCollection<PodcastEpisode>();
         private PodcastEpisode _currentPodcast = null;
         private List<ShowControl> _currentShows = new List<ShowControl>();
-        private ObservableCollection<IDebugLoggerData> _errorLog = new ObservableCollection<IDebugLoggerData>();
-        private IMediaPlayer _mediaPlayerWrapper = new MediaPlayerWrapper();
-        private ObservableCollection<PodcastEpisode> _podcasts = new ObservableCollection<PodcastEpisode>();
         private DispatcherTimer _rssTimer;
 
         public MainWindow()
@@ -140,6 +141,11 @@ namespace eWolfPodcasterUI
             ShowLibrary addNewShow = new ShowLibrary { };
             addNewShow.ShowDialog();
             Shows.GetShowService.Save();
+            PopulateTree();
+        }
+
+        private void ButtonRefreshShowClick(object sender, RoutedEventArgs e)
+        {
             PopulateTree();
         }
 
@@ -290,7 +296,6 @@ namespace eWolfPodcasterUI
         private void PopulateTree()
         {
             ShowsItemsTree.Items.Clear();
-
             Shows shows = (Shows)Shows.GetShowService;
             List<string> groups = shows.Groups();
             groups.Add("Ungrouped");
@@ -304,16 +309,20 @@ namespace eWolfPodcasterUI
                     continue;
 
                 showsInCat = showsInCat.OrderBy(x => x.Title).ToList();
-                TreeViewItem categoryNode = new TreeViewItem();
-                categoryNode.Header = groupName;
+                TreeViewItem categoryNode = new TreeViewItem
+                {
+                    Header = groupName
+                };
 
                 ShowsItemsTree.Items.Add(categoryNode);
 
                 foreach (ShowControl show in showsInCat)
                 {
-                    TreeViewItem showNode = new TreeViewItem();
-                    showNode.Header = show.Title;
-                    showNode.Tag = show;
+                    TreeViewItem showNode = new TreeViewItem
+                    {
+                        Header = show.Title + $" [ {show.EpisodesWatched}/{show.Episodes.Count} ]",
+                        Tag = show
+                    };
                     categoryNode.Items.Add(showNode);
                 }
             }

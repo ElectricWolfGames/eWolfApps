@@ -63,10 +63,45 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public void SetModifed()
+        public string UrlToPlay
         {
-            var show = Shows.GetShowService.GetShowFromName(ShowName);
-            show.Modifyed = true;
+            get
+            {
+                if (IsOffLine)
+                {
+                    return GetOffLineFileName();
+                }
+                return PodcastURL.Replace("https", "http");
+            }
+        }
+
+        public bool Watched
+        {
+            get
+            {
+                if (Hidden)
+                    return true;
+
+                if (PlayedDetails.Watched)
+                    return true;
+
+                double maxLength = 781;
+
+                if (PlayedDetails.PlayedLengthScaled > maxLength - 50)
+                    return true;
+
+                return false;
+            }
+        }
+
+        public void ClearDownload()
+        {
+            string downloadFile = GetOffLineFileName();
+            if (File.Exists(downloadFile))
+            {
+                Console.WriteLine("Deleted downloaded file " + downloadFile);
+                File.Delete(downloadFile);
+            }
         }
 
         public void DownloadAsMp3()
@@ -99,6 +134,12 @@ namespace eWolfPodcasterCore.Data
                 return true;
 
             return false;
+        }
+
+        public void SetModifed()
+        {
+            var show = Shows.GetShowService.GetShowFromName(ShowName);
+            show.Modifyed = true;
         }
 
         public void SetPublishDate(string publisedData)
@@ -157,31 +198,9 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
-        public void ClearDownload()
-        {
-            string downloadFile = GetOffLineFileName();
-            if (File.Exists(downloadFile))
-            {
-                Console.WriteLine("Deleted downloaded file " + downloadFile);
-                File.Delete(downloadFile);
-            }
-        }
-
         private string GetDownloadFolder()
         {
             return ServiceLocator.Instance.GetService<IProjectDetails>().GetDownloadFolder();
-        }
-
-        public string UrlToPlay
-        {
-            get
-            {
-                if (IsOffLine)
-                {
-                    return GetOffLineFileName();
-                }
-                return PodcastURL.Replace("https", "http");
-            }
         }
     }
 }
