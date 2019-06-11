@@ -6,7 +6,7 @@
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="MainWindowPods" Height="750" Width="1005" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}" Closing="Window_Closing"
+        Title="MainWindowPods" Height="750" Width="1088" WindowStyle="ThreeDBorderWindow" Background="{DynamicResource CheckBoxFillNormal}" Closing="Window_Closing"
         Icon="Images/podcast.png">
     <Window.Resources>
         <Style x:Key="MyButton" TargetType="Button">
@@ -28,106 +28,80 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
-        <xcad:DockingManager Grid.Row="1" MaxHeight="850"
-                           AllowMixedOrientation="True"
-                           BorderBrush="Black"
-                           BorderThickness="1"
-                           Theme="{Binding ElementName=_themeCombo, Path=SelectedItem.Tag}">
-            <xcad:DockingManager.DocumentHeaderTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding IconSource}" Margin="0,0,4,0" />
-                        <TextBlock Text="{Binding Title}" />
-                    </StackPanel>
-                </DataTemplate>
-            </xcad:DockingManager.DocumentHeaderTemplate>
-            <xcad:LayoutRoot x:Name="_layoutRoot">
-                <xcad:LayoutPanel Orientation="Horizontal">
-                    <xcad:LayoutAnchorablePane DockWidth="316">
-                        <xcad:LayoutAnchorable ContentId="Shows" Title="Shows" CanHide="False" CanClose="False" AutoHideWidth="240">
-                            <TreeView Name="ShowsItemsTree" MouseDoubleClick="ShowsItemsTree_MouseDoubleClick" HorizontalAlignment="Left" Height="646" Margin="4,41,0,0" VerticalAlignment="Top" Width="302" />
-                        </xcad:LayoutAnchorable>
-                    </xcad:LayoutAnchorablePane>
-                    <xcad:LayoutDocumentPaneGroup DockWidth="675" Orientation="Vertical">
-                        <xcad:LayoutDocumentPane DockHeight="100">
-                            <xcad:LayoutDocument ContentId="PlayControls" Title="PlayControls">
-                                <Grid Margin="0,0,0,0" Background="{DynamicResource CheckBoxFillNormal}">
-                                    <Button x:Name="btnPlay" VerticalAlignment="Top"
+    <Grid Margin="0,0,-6.4,-0.2" Background="{DynamicResource CheckBoxDisabledForeground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="814" />
+        </Grid.ColumnDefinitions>
+        <TreeView Name="ShowsItemsTree" MouseDoubleClick="ShowsItemsTree_MouseDoubleClick" HorizontalAlignment="Left" Height="670" Margin="10,41,0,0" VerticalAlignment="Top" Width="251" Grid.ColumnSpan="2" />
+        <Grid Grid.Column="2"  Margin="0,0,0,0" Background="{DynamicResource CheckBoxFillNormal}">
+            <!--<Image Source="{Binding IconSource}" Margin="0,0,4,0" />
+            <TextBlock Text="{Binding Title}" Margin="0,0,0,0" />-->
+            <Button x:Name="btnPlay" VerticalAlignment="Top"
                                         Click="BtnPlay_Click"
                                         Margin="260,10,0,0"
                                         Width="30" Height="30" HorizontalAlignment="Left"
                                         Content=""
                                         RenderTransformOrigin="-0.008,0.478" Grid.Column="2">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Images/Play.png" />
-                                        </Button.Background>
-                                    </Button>
-                                    <Button x:Name="btnPause" VerticalAlignment="Top"
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/Play.png" />
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnPause" VerticalAlignment="Top"
                                         Click="BtnPause_Click"
                                         Margin="302,10,0,0"
                                         Width="30" Height="30" HorizontalAlignment="Left"
                                         Content="" Grid.Column="2">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Images/Pause.png" />
-                                        </Button.Background>
-                                    </Button>
-                                    <Button x:Name="btnStop" VerticalAlignment="Top"
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/Pause.png" />
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnStop" VerticalAlignment="Top"
                                         Click="BtnStop_Click"
                                         Margin="346,10,0,0"
                                         Width="32" Height="30" HorizontalAlignment="Left"
                                         Content="" Grid.Column="2">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Images/Stop.png" />
-                                        </Button.Background>
-                                    </Button>
-                                    <Button x:Name="btnClearWatch" VerticalAlignment="Top"
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/Stop.png" />
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnClearWatch" VerticalAlignment="Top"
                                         Click="BtnClearWatch_Click"
                                         Margin="528,10,0,0"
                                         Width="120" Height="30" HorizontalAlignment="Left"
                                         Content="Un watched" />
-                                    <Button x:Name="btnBackMinute" VerticalAlignment="Top"
+            <Button x:Name="btnBackMinute" VerticalAlignment="Top"
                                         Click="BtnRewindMinute_Click"
                                         Margin="10,10,0,0"
                                         Width="62" Height="30" HorizontalAlignment="Left"
                                         Content="Rewind" />
-                                    <Button x:Name="btnFowardMinute" VerticalAlignment="Top"
+            <Button x:Name="btnFowardMinute" VerticalAlignment="Top"
                                         Click="BtnForwardMinute_Click"
                                         Margin="77,10,0,0"
                                         Width="62" Height="30" HorizontalAlignment="Left"
                                         Content="Forward" />
-                                    <TextBox x:Name="_currentPodCastDescription" Margin="10,45,13,10" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
-                                </Grid>
-                            </xcad:LayoutDocument>
-                        </xcad:LayoutDocumentPane>
-                        <xcad:LayoutDocumentPane DockHeight="400">
-                            <xcad:LayoutDocument ContentId="Episodes" Title="Episodes">
-                                <ListBox Margin="0,7,0,0" Name="EpisodesItems" SelectionChanged="EpisodeListBox_SelectionChanged"></ListBox>
-                            </xcad:LayoutDocument>
-                            <xcad:LayoutDocument ContentId="Logs" Title="Logs">
-                                <ListBox Margin="0,7,0,0" Name="LogItems"></ListBox>
-                            </xcad:LayoutDocument>
-                        </xcad:LayoutDocumentPane>
-                    </xcad:LayoutDocumentPaneGroup>
-                </xcad:LayoutPanel>
-            </xcad:LayoutRoot>
-        </xcad:DockingManager>
-        <Button Content="" HorizontalAlignment="Left" Margin="16,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonAddShowClick" Style="{StaticResource MyButton}">
+            <TextBox x:Name="_currentPodCastDescription" Margin="0,45,10.2,583.8" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
+            <ListBox Margin="0.4,142,0,9.8" Name="EpisodesItems" SelectionChanged="EpisodeListBox_SelectionChanged"></ListBox>
+
+        </Grid>
+
+        <Button Content="" HorizontalAlignment="Left" Margin="16,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonAddShowClick" Style="{StaticResource MyButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Images/AddItem.png" />
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Margin="55,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonSubShowClick" Style="{StaticResource MyButton}">
+        <Button Content="" HorizontalAlignment="Left" Margin="55,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonSubShowClick" Style="{StaticResource MyButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Images/SubItem.png" />
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Margin="94,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonLibraryShowClick" Style="{StaticResource MyButton}">
+        <Button Content="" HorizontalAlignment="Left" Margin="94,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonLibraryShowClick" Style="{StaticResource MyButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Images/Library.png" />
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Margin="133,27,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonRefreshShowClick" Style="{StaticResource MyButton}">
+        <Button Content="" HorizontalAlignment="Left" Margin="133,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonRefreshShowClick" Style="{StaticResource MyButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Images/Refresh.png" />
             </Button.Background>
