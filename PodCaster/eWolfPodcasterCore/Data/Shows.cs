@@ -225,14 +225,15 @@ namespace eWolfPodcasterCore.Data
             {
                 foreach (ShowControl show in _shows)
                 {
-                    if (show != null)
+                    if (show == null)
+                        continue;
+                    
+                    if (show.FailedCount < 2)
                     {
-                        if (show.FailedCount < 2)
-                        {
-                            show.UpdatedRssTurn = false;
-                            show.AutoDownloadTurn = false;
-                        }
+                        show.UpdatedRssTurn = false;
+                        show.AutoDownloadTurn = false;
                     }
+                    
                 }
                 return true;
             }

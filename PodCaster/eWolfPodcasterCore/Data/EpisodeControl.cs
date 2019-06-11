@@ -188,9 +188,11 @@ namespace eWolfPodcasterCore.Data
             try
             {
                 string downloadFile = GetOffLineFileName();
-                WebClient webClient = new WebClient();
-                webClient.DownloadFile(PodcastURL, downloadFile);
-                Console.WriteLine("Finished Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
+                using (WebClient webClient = new WebClient())
+                {
+                    webClient.DownloadFile(PodcastURL, downloadFile);
+                    Console.WriteLine("Finished Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
+                }
             }
             catch (Exception ex)
             {
