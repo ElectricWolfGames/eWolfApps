@@ -81,9 +81,8 @@
                                         Margin="77,10,0,0"
                                         Width="62" Height="30" HorizontalAlignment="Left"
                                         Content="Forward" />
-            <TextBox x:Name="_currentPodCastDescription" Margin="0,45,10.2,583.8" Text="{Binding PodcastDescription, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" />
             <ListBox Margin="0.4,142,0,9.8" Name="EpisodesItems" SelectionChanged="EpisodeListBox_SelectionChanged"></ListBox>
-
+            <ListBox Name="Description" HorizontalAlignment="Left" Height="92" Margin="10,45,0,0" VerticalAlignment="Top" Width="795"/>
         </Grid>
 
         <Button Content="" HorizontalAlignment="Left" Margin="16,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonAddShowClick" Style="{StaticResource MyButton}">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace eWolfPodcasterCore.Helpers
 {
+
     public static class CategoryHelper
     {
         public static IReadOnlyCollection<string> GetAllCategoriesFromShows(IList<ShowControl> shows)

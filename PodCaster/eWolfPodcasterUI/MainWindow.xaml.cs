@@ -251,6 +251,21 @@ namespace eWolfPodcasterUI
             _currentPodcast = episode;
             _mediaPlayerWrapper.PlayEpisode(_currentPodcast.EpisodeControlData);
             OnPropertyChanged("PodcastDescription");
+
+            UpdateDescription();
+        }
+
+        private void UpdateDescription()
+        {
+            Description.Items.Clear();
+
+            Description.Items.Add(_currentPodcast.Title);
+
+            string[] items = WordParseHelper.GetWordsPerLine(_currentPodcast.Description, 130);
+            foreach (string item in items)
+            {
+                Description.Items.Add(item);
+            }
         }
 
         private void PlayNextEpisode()
