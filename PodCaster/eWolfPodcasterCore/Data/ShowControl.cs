@@ -109,8 +109,10 @@ namespace eWolfPodcasterCore.Data
                     if (exp != ".MP3" && exp != ".MP4")
                         continue;
 
+                    string shortFileName = GetLastFolder(filename);
+
                     EpisodeControl ep = new EpisodeControl();
-                    ep.Description = showName + " : " + filename;
+                    ep.Description = showName + " : " + shortFileName;
                     ep.Hidden = false;
                     ep.PodcastURL = filename;
                     ep.PublishedDate = DateTime.Now;
@@ -124,6 +126,12 @@ namespace eWolfPodcasterCore.Data
                 // safty catch
             }
             UpdateEpisode(episodes);
+        }
+
+        private string GetLastFolder(string filename)
+        {
+            string[] part = filename.Split('\\');
+            return part[part.Length - 2];
         }
 
         internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
@@ -173,6 +181,7 @@ namespace eWolfPodcasterCore.Data
                 Console.WriteLine("UpdateRSSFile: Error");
                 //DebugLog.LogError($"UpdateRSSFile: Failed with {ex.Message}");
                 Console.WriteLine(ex.Message);
+                reader = null;
             }
 
             return reader;

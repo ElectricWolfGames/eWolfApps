@@ -227,13 +227,12 @@ namespace eWolfPodcasterCore.Data
                 {
                     if (show == null)
                         continue;
-                    
+
                     if (show.FailedCount < 2)
                     {
                         show.UpdatedRssTurn = false;
                         show.AutoDownloadTurn = false;
                     }
-                    
                 }
                 return true;
             }
@@ -259,11 +258,15 @@ namespace eWolfPodcasterCore.Data
                     return;
                 }
 
-                List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
-                lock (_shows)
+                try
                 {
-                    sc.UpdateEpisode(episodes);
+                    List<EpisodeControl> episodes = RSSHelper.ReadEpisodes(RSSFeed);
+                    lock (_shows)
+                    {
+                        sc.UpdateEpisode(episodes);
+                    }
                 }
+                catch { }
             }
         }
     }
