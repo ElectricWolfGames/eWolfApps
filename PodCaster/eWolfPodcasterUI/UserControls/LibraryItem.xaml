@@ -9,7 +9,8 @@
         <Rectangle x:Name="box" HorizontalAlignment="Left" Height="87" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="{DynamicResource ButtonNormalBorder}" Margin="0,5,0,0" />
 
         <Label x:Name="_labelName" Content="{Binding Title}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="416" Height="26" />
+        <Label x:Name="_labelEpisodeCount" Content="{Binding EpisodeCount}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="141" Height="26" Margin="443,0,0,0" />
         <AccessText x:Name="_labelDescription2" Text="{Binding Description}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="569" Height="61" Margin="10,26,0,0" />
-        <Button x:Name="_butAddShow" Content="+" HorizontalAlignment="Left" Margin="584,10,0,0" VerticalAlignment="Top" Width="26" Height="28" Click="butttonAddShow_Click" RenderTransformOrigin="0.148,0.524" BorderThickness="0" />
+        <Button x:Name="_butAddShow" Content="+" HorizontalAlignment="Left" Margin="591,6,0,0" VerticalAlignment="Top" Width="26" Height="28" Click="butttonAddShow_Click" RenderTransformOrigin="0.148,0.524" BorderThickness="0" />
     </Grid>
 </UserControl>

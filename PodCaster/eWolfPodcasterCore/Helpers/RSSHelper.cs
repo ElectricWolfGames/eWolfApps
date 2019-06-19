@@ -9,7 +9,7 @@ namespace eWolfPodcasterCore.Helpers
 {
     public static class RSSHelper
     {
-        internal static List<EpisodeControl> ReadEpisodes(XmlReader reader)
+        public static List<EpisodeControl> ReadEpisodes(XmlReader reader)
         {
             List<EpisodeControl> episodes = new List<EpisodeControl>();
             EpisodeControl showData = new EpisodeControl();

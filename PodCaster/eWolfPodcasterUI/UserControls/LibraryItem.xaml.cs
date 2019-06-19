@@ -1,8 +1,11 @@
 ﻿using eWolfPodcasterCore.Data;
+using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Library;
 using eWolfPodcasterUI.Pages;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml;
 
 namespace eWolfPodcasterUI.UserControls
 {
@@ -24,6 +27,55 @@ namespace eWolfPodcasterUI.UserControls
         }
 
         public ShowLibraryData ShowLibraryData { get; set; } = new ShowLibraryData();
+
+        public string EpisodeCount
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(ShowLibraryData.LastDownloadMessage))
+                {
+                    GetEpisodeCount();
+                }
+                return ShowLibraryData.LastDownloadMessage;
+            }
+        }
+
+        private void GetEpisodeCount()
+        {
+            XmlReader downloadRSS = DownloadRSSFile();
+            if (downloadRSS == null)
+                return;
+
+            CountEpisodes(downloadRSS);
+        }
+
+        private void CountEpisodes(XmlReader downloadRSS)
+        {
+            var items = RSSHelper.ReadEpisodes(downloadRSS);
+            ShowLibraryData.LastDownloadMessage = $"{items.Count} Episodes";
+        }
+
+        internal XmlReader DownloadRSSFile()
+        {
+            XmlReader reader = null;
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
+
+            try
+            {
+                reader = XmlReader.Create(ShowLibraryData.URL, settings);
+                ShowLibraryData.LastDownloadMessage = "Downloaded";
+            }
+            catch
+            {
+                ShowLibraryData.LastDownloadMessage = "Failed";
+                reader = null;
+            }
+
+            return reader;
+        }
 
         public string Title
         {
