@@ -82,7 +82,22 @@
                                         Width="62" Height="30" HorizontalAlignment="Left"
                                         Content="Forward" />
             <ListBox Margin="0.4,142,0,9.8" Name="EpisodesItems" SelectionChanged="EpisodeListBox_SelectionChanged"></ListBox>
-            <ListBox Name="Description" HorizontalAlignment="Left" Height="92" Margin="10,45,0,0" VerticalAlignment="Top" Width="795"/>
+            <ListBox Name="Description" HorizontalAlignment="Left" Height="92" Margin="10,45,0,0" VerticalAlignment="Top" Width="795" />
+            <Button x:Name="btnSpeedX1" VerticalAlignment="Top"
+                Click="BtnSpeedX1_Click"
+                Margin="144,10,0,0"
+                Width="26" Height="30" HorizontalAlignment="Left"
+                Content="x1" />
+            <Button x:Name="btnSpeedX15" VerticalAlignment="Top"
+                Click="BtnSpeedX1dot5_Click"
+                Margin="175,10,0,0"
+                Width="26" Height="30" HorizontalAlignment="Left"
+                Content="x1.5" />
+            <Button x:Name="btnSpeedX2" VerticalAlignment="Top"
+                Click="BtnSpeedX2_Click"
+                Margin="206,10,0,0"
+                Width="26" Height="30" HorizontalAlignment="Left"
+                Content="x2" />
         </Grid>
 
         <Button Content="" HorizontalAlignment="Left" Margin="16,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonAddShowClick" Style="{StaticResource MyButton}">

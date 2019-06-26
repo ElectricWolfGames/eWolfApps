@@ -14,6 +14,8 @@ namespace eWolfPodcasterCore.Interfaces
 
         void Rewind(int minutes);
 
+        void SetSpeed(float speed);
+
         void Stop();
 
         void UpDateInterval(EpisodeControl episode, out bool playNextEpsoide);

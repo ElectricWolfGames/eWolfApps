@@ -42,6 +42,11 @@ namespace eWolfPodcasterUI.Media
             _mediaPlayer.Position -= new TimeSpan(0, minutes, 0);
         }
 
+        public void SetSpeed(float speed)
+        {
+            _mediaPlayer.SpeedRatio = speed;
+        }
+
         public void Stop()
         {
             _mediaPlayer.Stop();

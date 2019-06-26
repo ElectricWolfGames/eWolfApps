@@ -111,6 +111,21 @@ namespace eWolfPodcasterUI
             _mediaPlayerWrapper.Rewind(1);
         }
 
+        private void BtnSpeedX1_Click(object sender, RoutedEventArgs e)
+        {
+            _mediaPlayerWrapper.SetSpeed(1);
+        }
+
+        private void BtnSpeedX1dot5_Click(object sender, RoutedEventArgs e)
+        {
+            _mediaPlayerWrapper.SetSpeed(1.5f);
+        }
+
+        private void BtnSpeedX2_Click(object sender, RoutedEventArgs e)
+        {
+            _mediaPlayerWrapper.SetSpeed(2);
+        }
+
         private void BtnStop_Click(object sender, RoutedEventArgs e)
         {
             _mediaPlayerWrapper.Stop();
@@ -255,19 +270,6 @@ namespace eWolfPodcasterUI
             UpdateDescription();
         }
 
-        private void UpdateDescription()
-        {
-            Description.Items.Clear();
-
-            Description.Items.Add(_currentPodcast.Title);
-
-            string[] items = WordParseHelper.GetWordsPerLine(_currentPodcast.Description, 130);
-            foreach (string item in items)
-            {
-                Description.Items.Add(item);
-            }
-        }
-
         private void PlayNextEpisode()
         {
             Console.WriteLine("Play next show now!");
@@ -408,6 +410,19 @@ namespace eWolfPodcasterUI
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
             {
                 Console.WriteLine("Welcome back - you will need to manual start the audio.");
+            }
+        }
+
+        private void UpdateDescription()
+        {
+            Description.Items.Clear();
+
+            Description.Items.Add(_currentPodcast.Title);
+
+            string[] items = WordParseHelper.GetWordsPerLine(_currentPodcast.Description, 130);
+            foreach (string item in items)
+            {
+                Description.Items.Add(item);
             }
         }
 
