@@ -1,5 +1,6 @@
 ﻿using AudioWolfStandard.Data;
 using AudioWolfStandard.Services;
+using AudioWolfUI.Data;
 using AudioWolfUI.Services;
 using System;
 using System.Windows;
@@ -15,6 +16,7 @@ namespace AudioWolfUI.UserControls
         public SoundListItem()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         public SoundDetails SoundItemData { get; set; } = new SoundDetails();
@@ -23,7 +25,12 @@ namespace AudioWolfUI.UserControls
         {
             get
             {
-                return $"{SoundItemData.Name}";// {string.Join("-", SoundItemData.Tags)}";
+                return SoundItemData.Name;
+            }
+            set
+            {
+                SoundItemData.Name = value;
+                Console.WriteLine($"Update: {value}");
             }
         }
 
@@ -40,11 +47,5 @@ namespace AudioWolfUI.UserControls
             // play the current sound effect
             Console.WriteLine("TODO: Remove from the list :" + Title);
         }
-    }
-
-    public class SoundDetails
-    {
-        public string Name { get; set; }
-        public string FullPath { get; set; }
     }
 }
