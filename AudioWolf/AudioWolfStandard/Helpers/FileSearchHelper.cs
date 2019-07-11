@@ -10,7 +10,7 @@ namespace AudioWolfStandard.Helpers
         public static List<string> GetAllFiles()
         {
             OptionsHolder optionsHolder = ServiceLocator.Instance.GetService<OptionsHolder>();
-            string serach = "*.mp3";
+            string serach = "*.wav";
             List<string> files = new List<string>();
 
             foreach (string path in optionsHolder.PathsToSearch)

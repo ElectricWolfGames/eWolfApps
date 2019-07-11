@@ -38,11 +38,15 @@ namespace AudioWolfUI
 
         private void PopulateSoundItemList()
         {
-            foreach (var s in _soundHolder.SoundItems)
+            SoundItemData sid = new SoundItemData();
+            sid.Name = "Test";
+            _soundHolder.SoundItems.Add(sid);
+
+            foreach (SoundItemData s in _soundHolder.SoundItems)
             {
-                SoundListItem si = new SoundListItem();
-                si.SoundItemData = s;
-                _soundItemsToShow.Add(si);
+                //SoundListItem si = new SoundListItem();
+                //si.SoundItemData = s;
+                //_soundItemsToShow.Add(si);
             }
         }
 

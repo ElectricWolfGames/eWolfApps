@@ -15,13 +15,13 @@ namespace AudioWolfUI.UserControls
             InitializeComponent();
         }
 
-        public SoundItemData SoundItemData { get; set; } = new SoundItemData();
+        public SoundDetails SoundItemData { get; set; } = new SoundDetails();
 
         public string Title
         {
             get
             {
-                return $"{SoundItemData.Name} {string.Join("-", SoundItemData.Tags)}";
+                return $"{SoundItemData.Name}";// {string.Join("-", SoundItemData.Tags)}";
             }
         }
 
@@ -36,5 +36,10 @@ namespace AudioWolfUI.UserControls
             // play the current sound effect
             Console.WriteLine("TODO: Remove from the list :" + Title);
         }
+    }
+
+    public class SoundDetails
+    {
+        public string Name { get; set; }
     }
 }
