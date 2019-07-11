@@ -1,5 +1,4 @@
-﻿using AudioWolfStandard.Data;
-using AudioWolfStandard.Services;
+﻿using AudioWolfStandard.Services;
 using AudioWolfUI.Services;
 using System;
 using System.Windows;

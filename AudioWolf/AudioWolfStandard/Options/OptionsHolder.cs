@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AudioWolfStandard.Options
+﻿namespace AudioWolfStandard.Options
 {
     public class OptionsHolder
     {

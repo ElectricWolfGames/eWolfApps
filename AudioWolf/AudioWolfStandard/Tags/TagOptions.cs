@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AudioWolfStandard.Tags
+﻿namespace AudioWolfStandard.Tags
 {
     [Serializable]
     public class TagOptions

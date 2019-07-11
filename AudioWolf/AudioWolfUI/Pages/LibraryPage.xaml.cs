@@ -1,5 +1,4 @@
-﻿using AudioWolfStandard;
-using AudioWolfStandard.Helpers;
+﻿using AudioWolfStandard.Helpers;
 using AudioWolfStandard.Services;
 using AudioWolfUI.Services;
 using AudioWolfUI.UserControls;

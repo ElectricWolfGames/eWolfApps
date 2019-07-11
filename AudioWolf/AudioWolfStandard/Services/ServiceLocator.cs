@@ -1,7 +1,5 @@
 ﻿using AudioWolfStandard.Options;
 using AudioWolfStandard.Tags;
-using System;
-using System.Collections.Generic;
 
 namespace AudioWolfStandard.Services
 {

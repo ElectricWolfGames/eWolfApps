@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace AudioWolfStandard.Helpers
+﻿namespace AudioWolfStandard.Helpers
 {
     public static class StreamFactory
     {
