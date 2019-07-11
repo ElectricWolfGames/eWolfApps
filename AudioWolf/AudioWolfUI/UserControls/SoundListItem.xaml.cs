@@ -1,4 +1,6 @@
 ﻿using AudioWolfStandard.Data;
+using AudioWolfStandard.Services;
+using AudioWolfUI.Services;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,6 +31,8 @@ namespace AudioWolfUI.UserControls
         {
             // play the current sound effect
             Console.WriteLine("TODO: Start playing :" + Title);
+            MediaPlayerService mps = ServiceLocator.Instance.GetService<MediaPlayerService>();
+            mps.PlayEpisode(SoundItemData);
         }
 
         private void Button_Click_Remove(object sender, RoutedEventArgs e)
@@ -41,5 +45,6 @@ namespace AudioWolfUI.UserControls
     public class SoundDetails
     {
         public string Name { get; set; }
+        public string FullPath { get; set; }
     }
 }

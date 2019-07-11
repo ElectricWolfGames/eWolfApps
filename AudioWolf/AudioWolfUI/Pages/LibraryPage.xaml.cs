@@ -1,5 +1,7 @@
 ﻿using AudioWolfStandard;
 using AudioWolfStandard.Helpers;
+using AudioWolfStandard.Services;
+using AudioWolfUI.Services;
 using AudioWolfUI.UserControls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +20,8 @@ namespace AudioWolfUI.Pages
         public LibraryPage()
         {
             InitializeComponent();
+
+            ServiceLocator.Instance.InjectService<MediaPlayerService>(new MediaPlayerService());
         }
 
         private void ButSearch_Click(object sender, RoutedEventArgs e)
@@ -36,7 +40,8 @@ namespace AudioWolfUI.Pages
             {
                 SoundDetails sd = new SoundDetails()
                 {
-                    Name = Path.GetFileNameWithoutExtension(name)
+                    Name = Path.GetFileNameWithoutExtension(name),
+                    FullPath = name
                 };
 
                 SoundListItem sli = new SoundListItem();
