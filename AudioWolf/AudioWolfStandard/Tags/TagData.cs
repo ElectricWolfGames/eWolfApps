@@ -1,4 +1,6 @@
-﻿namespace AudioWolfStandard.Tags
+﻿using System;
+
+namespace AudioWolfStandard.Tags
 {
     [Serializable]
     public class TagData

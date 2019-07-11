@@ -1,5 +1,8 @@
 ﻿using AudioWolfStandard.Services;
 using AudioWolfStandard.Tags;
+using System;
+using System.Collections.Generic;
+using System.Windows.Media.Imaging;
 
 namespace AudioWolfStandard.Data
 {
@@ -20,7 +23,7 @@ namespace AudioWolfStandard.Data
         public string ImagePath { get; set; }
 
         public float Length { get; set; }
-
+        
         public string Name
         {
             get

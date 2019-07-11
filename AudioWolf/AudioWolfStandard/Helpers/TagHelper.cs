@@ -1,4 +1,6 @@
 ﻿using AudioWolfStandard.Tags;
+using System.Collections.Generic;
+using System.Text;
 
 namespace AudioWolfStandard.Helpers
 {
