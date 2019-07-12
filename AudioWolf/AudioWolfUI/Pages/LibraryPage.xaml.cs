@@ -1,12 +1,10 @@
 ﻿using AudioWolfStandard;
-using AudioWolfStandard.Helpers;
+using AudioWolfStandard.Interfaces;
 using AudioWolfStandard.Services;
-using AudioWolfUI.Data;
 using AudioWolfUI.Services;
 using AudioWolfUI.UserControls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Windows;
 
 namespace AudioWolfUI.Pages
@@ -16,11 +14,14 @@ namespace AudioWolfUI.Pages
     /// </summary>
     public partial class LibraryPage : Window
     {
+        private SoundEffectHolder _soundEffectHolder = new SoundEffectHolder();
+
         private ObservableCollection<SoundListItem> _soundItemsToShow = new ObservableCollection<SoundListItem>();
 
         public LibraryPage()
         {
             InitializeComponent();
+            _soundEffectHolder.Populate();
 
             ServiceLocator.Instance.InjectService<MediaPlayerService>(new MediaPlayerService());
         }
@@ -36,21 +37,19 @@ namespace AudioWolfUI.Pages
         {
             ObservableCollection<SoundListItem> items = new ObservableCollection<SoundListItem>();
 
-            List<string> list = FileSearchHelper.GetAllFiles();
-            foreach (string name in list)
+            List<ISoundDetails> sounds = _soundEffectHolder.Sounds;
+            foreach (ISoundDetails sound in sounds)
             {
-                SoundDetails sd = new SoundDetails()
-                {
-                    Name = Path.GetFileNameWithoutExtension(name),
-                    FullPath = name
-                };
-
                 SoundListItem sli = new SoundListItem();
-                sli.SoundItemData = sd;
+                sli.SoundItemData = sound;
                 items.Add(sli);
             }
 
             return items;
+        }
+
+        private void ButSave_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

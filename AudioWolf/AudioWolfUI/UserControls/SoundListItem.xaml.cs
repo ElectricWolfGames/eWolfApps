@@ -1,6 +1,6 @@
 ﻿using AudioWolfStandard.Data;
+using AudioWolfStandard.Interfaces;
 using AudioWolfStandard.Services;
-using AudioWolfUI.Data;
 using AudioWolfUI.Services;
 using System;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace AudioWolfUI.UserControls
             DataContext = this;
         }
 
-        public SoundDetails SoundItemData { get; set; } = new SoundDetails();
+        public ISoundDetails SoundItemData { get; set; } = new SoundDetails();
 
         public string Title
         {

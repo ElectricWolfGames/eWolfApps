@@ -1,4 +1,4 @@
-﻿using AudioWolfUI.Data;
+﻿using AudioWolfStandard.Interfaces;
 using AudioWolfUI.UserControls;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace AudioWolfUI.Services
             _mediaPlayer.Play();
         }
 
-        public void PlayEpisode(SoundDetails soundDetails)
+        public void PlayEpisode(ISoundDetails soundDetails)
         {
             _mediaPlayer.Open(new Uri(soundDetails.FullPath));
             _mediaPlayer.Position = new TimeSpan(0);

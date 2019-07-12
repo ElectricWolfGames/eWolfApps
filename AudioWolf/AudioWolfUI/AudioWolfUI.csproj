@@ -64,7 +64,6 @@
       <DependentUpon>SearchSamples.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\MediaPlayerService.cs" />
-    <Compile Include="Data\SoundDetails.cs" />
     <Compile Include="UserControls\SoundItem.xaml.cs">
       <DependentUpon>SoundItem.xaml</DependentUpon>
     </Compile>
@@ -139,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
