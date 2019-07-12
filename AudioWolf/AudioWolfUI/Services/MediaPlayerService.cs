@@ -26,7 +26,7 @@ namespace AudioWolfUI.Services
 
         public void PlayEpisode(ISoundDetails soundDetails)
         {
-            _mediaPlayer.Open(new Uri(soundDetails.FullPath));
+            _mediaPlayer.Open(new Uri(soundDetails.OrginalName));
             _mediaPlayer.Position = new TimeSpan(0);
             _mediaPlayer.Play();
         }

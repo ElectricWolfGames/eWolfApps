@@ -50,6 +50,7 @@ namespace AudioWolfUI.Pages
 
         private void ButSave_Click(object sender, RoutedEventArgs e)
         {
+            _soundEffectHolder.RenameFiles();
         }
     }
 }

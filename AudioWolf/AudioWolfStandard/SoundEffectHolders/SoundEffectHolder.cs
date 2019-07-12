@@ -1,7 +1,9 @@
 ﻿using AudioWolfStandard.Data;
 using AudioWolfStandard.Helpers;
 using AudioWolfStandard.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AudioWolfStandard
 {
@@ -31,6 +33,23 @@ namespace AudioWolfStandard
             get
             {
                 return _sounds;
+            }
+        }
+
+        public void RenameFiles()
+        {
+            foreach (ISoundDetails sound in _sounds)
+            {
+                if (sound.IsModified)
+                {
+                    string oldPath = sound.OrginalName;
+                    string newPath = sound.FullPath;
+                    if (oldPath != newPath)
+                    {
+                        File.Move(oldPath, newPath);
+                        sound.FullPath = newPath;
+                    }
+                }
             }
         }
     }

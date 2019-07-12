@@ -5,11 +5,45 @@ namespace AudioWolfStandard.Data
 {
     public class SoundDetails : ISoundDetails
     {
+        private bool _modified;
+
         private string _name;
 
         private string _path;
+        private string _orginalName;
+        private string _extension;
 
-        private bool _modified { get; set; }
+        public string FullPath
+        {
+            get
+            {
+                return $"{_path}{_name}{_extension}";
+            }
+            set
+            {
+                _orginalName = value;
+                _extension = Path.GetExtension(value);
+                _name = Path.GetFileNameWithoutExtension(value);
+                _path = value.Replace(Path.GetFileName(value), string.Empty);
+                _modified = false;
+            }
+        }
+
+        public string OrginalName
+        {
+            get
+            {
+                return _orginalName;
+            }
+        }
+
+        public bool IsModified
+        {
+            get
+            {
+                return _modified;
+            }
+        }
 
         public string Name
         {
@@ -21,19 +55,6 @@ namespace AudioWolfStandard.Data
             {
                 _name = value;
                 _modified = true;
-            }
-        }
-
-        public string FullPath
-        {
-            get
-            {
-                return $"{_path}//{_name}";
-            }
-            set
-            {
-                _name = Path.GetFileNameWithoutExtension(value);
-                _path = value.Replace(Path.GetFileName(value), string.Empty);
             }
         }
     }

@@ -2,8 +2,10 @@
 {
     public interface ISoundDetails
     {
+        string FullPath { get; set; }
+        bool IsModified { get; }
         string Name { get; set; }
 
-        string FullPath { get; set; }
+        string OrginalName { get; }
     }
 }
