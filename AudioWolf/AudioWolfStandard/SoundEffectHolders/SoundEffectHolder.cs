@@ -4,6 +4,7 @@ using AudioWolfStandard.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace AudioWolfStandard
 {
@@ -13,6 +14,11 @@ namespace AudioWolfStandard
 
         public SoundEffectHolder()
         {
+        }
+
+        public void Add(SoundDetails soundDetail)
+        {
+            _sounds.Add(soundDetail);
         }
 
         public void Populate()
@@ -59,6 +65,34 @@ namespace AudioWolfStandard
                     }
                 }
             }
+        }
+
+        public void FixNames()
+        {
+            foreach (ISoundDetails sound in _sounds)
+            {
+                sound.Name = FixName(sound.Name);
+            }
+        }
+
+        public static string FixName(string name)
+        {
+            List<string> allParts = name.Split(new char[1] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            for (int i = 0; i < allParts.Count; i++)
+            {
+                string firstLetter = allParts[i][0].ToString();
+                firstLetter = firstLetter.ToUpper();
+
+                string partNew = $"{firstLetter}{allParts[i].Substring(1)}";
+                allParts[i] = partNew;
+            }
+
+            allParts = allParts.Distinct().ToList();
+
+            string fullName = string.Join(" ", allParts);
+
+            return fullName;
         }
     }
 }

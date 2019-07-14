@@ -53,8 +53,11 @@ namespace AudioWolfStandard.Data
             }
             set
             {
-                _name = value;
-                _modified = true;
+                if (_name != value)
+                {
+                    _name = value;
+                    _modified = true;
+                }
             }
         }
     }

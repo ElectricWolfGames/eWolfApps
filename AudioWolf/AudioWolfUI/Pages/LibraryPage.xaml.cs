@@ -71,8 +71,11 @@ namespace AudioWolfUI.Pages
             MainItemsList.ItemsSource = items;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButFixNames_Click(object sender, RoutedEventArgs e)
         {
+            _soundEffectHolder.FixNames();
+
+            MainItemsList.ItemsSource = GetSoundList();
         }
     }
 }
