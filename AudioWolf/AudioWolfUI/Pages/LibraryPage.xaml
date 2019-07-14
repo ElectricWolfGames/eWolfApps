@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="LibraryPage" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="MainItemsList" HorizontalAlignment="Left" Height="359" Margin="10,50,0,0" VerticalAlignment="Top" Width="772">
+        <ListView x:Name="MainItemsList" HorizontalAlignment="Left" Height="336" Margin="10,73,0,0" VerticalAlignment="Top" Width="772">
             <ListView.View>
                 <GridView>
                     <GridViewColumn />
@@ -16,5 +16,8 @@
         </ListView>
         <Button x:Name="butSearch" Content="Search" HorizontalAlignment="Left" Height="21" Margin="10,10,0,0" VerticalAlignment="Top" Width="107" Click="ButSearch_Click" />
         <Button x:Name="butSave" Content="Save" HorizontalAlignment="Left" Margin="707,10,0,0" VerticalAlignment="Top" Width="75" Click="ButSave_Click" />
+        <TextBox x:Name="FilterText" HorizontalAlignment="Left" Height="26" Margin="108,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="505" TextChanged="FilterText_TextChanged" />
+        <Label Content="Filter" HorizontalAlignment="Left" Margin="55,42,0,0" VerticalAlignment="Top" Width="48" />
+        <Button Content="Fix Names" HorizontalAlignment="Left" Height="20" Margin="213,10,0,0" VerticalAlignment="Top" Width="111" Click="Button_Click" />
     </Grid>
 </Window>

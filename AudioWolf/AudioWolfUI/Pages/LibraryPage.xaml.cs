@@ -17,6 +17,7 @@ namespace AudioWolfUI.Pages
         private SoundEffectHolder _soundEffectHolder = new SoundEffectHolder();
 
         private ObservableCollection<SoundListItem> _soundItemsToShow = new ObservableCollection<SoundListItem>();
+        private ObservableCollection<SoundListItem> _fullList = new ObservableCollection<SoundListItem>();
 
         public LibraryPage()
         {
@@ -40,17 +41,38 @@ namespace AudioWolfUI.Pages
             List<ISoundDetails> sounds = _soundEffectHolder.Sounds;
             foreach (ISoundDetails sound in sounds)
             {
-                SoundListItem sli = new SoundListItem();
-                sli.SoundItemData = sound;
+                SoundListItem sli = new SoundListItem
+                {
+                    SoundDetails = sound
+                };
                 items.Add(sli);
             }
-
+            _fullList = items;
             return items;
         }
 
         private void ButSave_Click(object sender, RoutedEventArgs e)
         {
             _soundEffectHolder.RenameFiles();
+        }
+
+        private void FilterText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            string filter = FilterText.Text.ToUpper();
+
+            ObservableCollection<SoundListItem> items = new ObservableCollection<SoundListItem>();
+            foreach (SoundListItem item in _fullList)
+            {
+                if (item.Title.ToUpper().Contains(filter))
+                {
+                    items.Add(item);
+                }
+            }
+            MainItemsList.ItemsSource = items;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

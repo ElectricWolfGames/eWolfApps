@@ -19,27 +19,33 @@ namespace AudioWolfUI.UserControls
             DataContext = this;
         }
 
-        public ISoundDetails SoundItemData { get; set; } = new SoundDetails();
+        public ISoundDetails SoundDetails { get; set; } = new SoundDetails();
 
         public string Title
         {
             get
             {
-                return SoundItemData.Name;
+                return SoundDetails.Name;
             }
             set
             {
-                SoundItemData.Name = value;
-                Console.WriteLine($"Update: {value}");
+                SoundDetails.Name = value;
+            }
+        }
+
+        public string Path
+        {
+            get
+            {
+                return SoundDetails.FullPath;
             }
         }
 
         private void Button_Click_Play(object sender, RoutedEventArgs e)
         {
-            // play the current sound effect
             Console.WriteLine("TODO: Start playing :" + Title);
             MediaPlayerService mps = ServiceLocator.Instance.GetService<MediaPlayerService>();
-            mps.PlayEpisode(SoundItemData);
+            mps.PlayEpisode(SoundDetails);
         }
 
         private void Button_Click_Remove(object sender, RoutedEventArgs e)

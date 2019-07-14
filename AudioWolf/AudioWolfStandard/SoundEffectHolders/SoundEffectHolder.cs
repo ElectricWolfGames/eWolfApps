@@ -44,10 +44,18 @@ namespace AudioWolfStandard
                 {
                     string oldPath = sound.OrginalName;
                     string newPath = sound.FullPath;
+
                     if (oldPath != newPath)
                     {
-                        File.Move(oldPath, newPath);
-                        sound.FullPath = newPath;
+                        try
+                        {
+                            File.Move(oldPath, newPath);
+                            sound.FullPath = newPath;
+                        }
+                        catch
+                        {
+                            Console.WriteLine($"FAILED TO RENAME {oldPath}");
+                        }
                     }
                 }
             }

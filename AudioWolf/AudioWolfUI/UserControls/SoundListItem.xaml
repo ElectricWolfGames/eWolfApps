@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AudioWolfUI.UserControls"
-             mc:Ignorable="d" d:DesignWidth="800" Height="32" Background="#FFCDBEBE">
+             mc:Ignorable="d" Height="40.664" Background="#FFCDBEBE" Width="619.495">
     <Grid>
         <TextBox x:Name="_labelName" Text="{Binding Title,
                         Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged}" Height="33" Margin="0,2,186,-3" VerticalAlignment="Top" />
-        <Button Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Margin="515,2,0,0" Click="Button_Click_Play" />
-        <Button Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Margin="571,0,0,0" Click="Button_Click_Remove" />
+                        UpdateSourceTrigger=PropertyChanged}" Height="18" Margin="10,0,53,0" VerticalAlignment="Top" />
+        <Label x:Name="_labelPath" Content="{Binding Path}" Height="20" Margin="10,20,53,-9" VerticalAlignment="Top" FontSize="9" />
+        <Button Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Margin="571,2,0,0" Click="Button_Click_Play" />
+        <Button Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Margin="571,20,0,-9" Click="Button_Click_Remove" />
     </Grid>
 </UserControl>
