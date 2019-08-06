@@ -1,492 +1,528 @@
 <eWolfPodcast>
-  <Shows>
-    <Show>
-      <Name>5 Live Science</Name>
-      <Url>http://www.bbc.co.uk/programmes/p02pc9ny/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC A Brief History of Mathematics</Name>
-      <Url>http://www.bbc.co.uk/programmes/b00srz5b/episodes/downloads.rss</Url>
-      <Category>Maths</Category>
-      <Description></Description>
-      <Show>
-      </Show>
-      <Name>BBC A History of Britain in Numbers</Name>
-      <Url>http://www.bbc.co.uk/programmes/b03k5dvd/episodes/downloads.rss</Url>
-      <Category>Maths</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Brainwaves</Name>
-      <Url>http://www.bbc.co.uk/programmes/b04ws68y/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Britain at Sea</Name>
-      <Url>http://www.bbc.co.uk/programmes/b046czzn/episodes/downloads.rss</Url>
-      <Category>History</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Digital Planet</Name>
-      <Url>http://downloads.bbc.co.uk/podcasts/worldservice/digitalp/rss.xml</Url>
-      <Category>Tech</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Computing Britain</Name>
-      <Url>http://www.bbc.co.uk/programmes/b06bq6j1/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Crowd Science</Name>
-      <Url>http://www.bbc.co.uk/programmes/p04d42rc/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Discovery</Name>
-      <Url>http://www.bbc.co.uk/programmes/p002w557/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Drama of the Week</Name>
-      <Url>http://podcasts.files.bbci.co.uk/p02nrv5m.rss</Url>
-      <Category>Drama</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Elements</Name>
-      <Url>http://www.bbc.co.uk/programmes/p01rcrn6/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Frontiers</Name>
-      <Url>http://www.bbc.co.uk/programmes/b006qy5p/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Gardeners Question Time</Name>
-      <Url>http://podcasts.files.bbci.co.uk/b006qp2f.rss</Url>
-      <Category>Gardening</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Inside Science</Name>
-      <Url>http://www.bbc.co.uk/programmes/b036f7w2/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Lets Talk About Tech</Name>
-      <Url>http://www.bbc.co.uk/programmes/p02nrxgq/episodes/downloads.rss</Url>
-      <Category>Tech</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Making History</Name>
-      <Url>http://podcasts.files.bbci.co.uk/b006qxrc.rss</Url>
-      <Category>History</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Mars</Name>
-      <Url>http://www.bbc.co.uk/programmes/p04vk80r/episodes/downloads.rss</Url>
-      <Category>Space</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Napolean The Man and the Myths</Name>
-      <Url>http://www.bbc.co.uk/programmes/b05zzlb4/episodes/downloads.rss</Url>
-      <Category>History</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Nathistory</Name>
-      <Url>http://downloads.bbc.co.uk/podcasts/radio4/nathistory/rss.xml</Url>
-      <Category>Nature</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Natural Histories</Name>
-      <Url>http://www.bbc.co.uk/programmes/p02s8ykn/episodes/downloads.rss</Url>
-      <Category>Nature</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Plants: From Roots to Riches</Name>
-      <Url>http://downloads.bbc.co.uk/podcasts/radio4/plantsfrtr/rss.xml</Url>
-      <Category>Gardening</Category>
-      <Description>Show Description</Description>
-    </Show>
-    <Show>
-      <Name>BBC Science in Action</Name>
-      <Url>http://downloads.bbc.co.uk/podcasts/worldservice/scia/rss.xml</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Science Stories</Name>
-      <Url>http://www.bbc.co.uk/programmes/b06vy2jd/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Sound of Cinema</Name>
-      <Url>http://www.bbc.co.uk/programmes/b03bzf92/episodes/downloads.rss</Url>
-      <Category>Films</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Space</Name>
-      <Url>http://www.bbc.co.uk/programmes/p03bv899/episodes/downloads.rss</Url>
-      <Category>Space</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Tech Tent</Name>
-      <Url>http://www.bbc.co.uk/programmes/p01plr2p/episodes/downloads.rss</Url>
-      <Category>Tech</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC The Film Programme</Name>
-      <Url>http://podcasts.files.bbci.co.uk/b006r5jt.rss</Url>
-      <Category>Films</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC The Infinite Monkey Cage</Name>
-      <Url>http://downloads.bbc.co.uk/podcasts/radio4/timc/rss.xml</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC The Life Scientific</Name>
-      <Url>http://www.bbc.co.uk/programmes/b015sqc7/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC The Reith Lectures</Name>
-      <Url>http://podcasts.files.bbci.co.uk/b00729d9.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC The Science Hour</Name>
-      <Url>http://www.bbc.co.uk/programmes/p016tmt2/episodes/downloads.rss</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>BBC Trends</Name>
-      <Url>http://downloads.bbc.co.uk/podcasts/worldservice/trends/rss.xml</Url>
-      <Category>Tech</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Behind The Tech</Name>
-      <Url>http://behindthetech.mpsn.libsynpro.com/rss</Url>
-      <Category>DEV</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Cinematic Sound</Name>
-      <Url>http://www.cinematicsound.net/feed/</Url>
-      <Category>Music Podcasts</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Coding Blocks</Name>
-      <Url>https://www.codingblocks.net/podcast-feed.xml</Url>
-      <Category>DEV</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Developer On Fire</Name>
-      <Url>http://developeronfire.com/rss.xml</Url>
-      <Category>DEV</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Dot Net Rocks</Name>
-      <Url>http://www.pwop.com/feed.aspx?show=dotnetrocks</Url>
-      <Category>DEV</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Hooked On Score</Name>
-      <Url>https://benjamin-moy.podomatic.com/rss2.xml</Url>
-      <Category>Music Podcasts</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Into The West (old time radio)</Name>
-      <Url>http://feeds.feedburner.com/intothewestotr</Url>
-      <Category>Drama</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Nature's Voice</Name>
-      <Url>http://naturesvoice.rspb.libsynpro.com/rss</Url>
-      <Category>Nature</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Nintendo World Report</Name>
-      <Url>http://www.nintendoworldreport.com/rss/radiotriviamp3</Url>
-      <Category>Gaming</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Relic Radio Sci-Fi (old time radio)</Name>
-      <Url>http://feeds.feedburner.com/relicradiosciencefiction</Url>
-      <Category>Drama</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Run As Radio</Name>
-      <Url>http://www.pwop.com/feed.aspx?show=runasradio</Url>
-      <Category>DEV</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>star-wars-oxygen</Name>
-      <Url>http://www.rebelforceradio.com/star-wars-oxygen</Url>
-      <Category>Music Podcasts</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>The History Of Rome</Name>
-      <Url>http://feeds.feedburner.com/TheHistoryOfRome?format=xml</Url>
-      <Category>History</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>The Horror! (Old Time Radio)</Name>
-      <Url>http://feeds.feedburner.com/horror</Url>
-      <Category>Drama</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>The SoundTrack Show</Name>
-      <Url>https://feeds.megaphone.fm/HSW2193473754</Url>
-      <Category>Music Podcasts</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>WWII Podcast</Name>
-      <Url>http://wwiipodcast.libsyn.com/rss</Url>
-      <Category>History</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Science Update Weekly edition</Name>
-      <Url>https://live-scienceupdate.pantheonsite.io/category/weekly-show/feed/</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>Science Update Daily Edition</Name>
-      <Url>https://live-scienceupdate.pantheonsite.io/category/daily-show/feed/</Url>
-      <Category>Science</Category>
-      <Description></Description>
-    </Show>
-    <Show>
-      <Name>classical-music.com</Name>
-      <Url>http://feeds.feedburner.com/bbcmusicmagazine</Url>
-      <Category>Music Podcasts</Category>
-      <Description>The official website of BBC Music Magazine</Description>
-    </Show>
-    <Show>
-      <Name>Old Time Radio Fans Podcast</Name>
-      <Url>http://www.oldtimeradiofans.com/radio/wimpy_podcast.php</Url>
-      <Category>Drama</Category>
-      <Description>Old time radio</Description>
-    </Show>
-    <Show>
-      <Name>Science Fiction – Retro Radio Podcast</Name>
-      <Url>http://feeds.feedburner.com/RetroRadioPodcastScienceFiction</Url>
-      <Category>Drama</Category>
-      <Description>Science Fiction – Retro Radio Podcast</Description>
-    </Show>
+	<Shows>
+		<Show>
+			<Name>RAILWAY MANIA</Name>
+			<Url>https://audioboom.com/channels/4994219.rss</Url>
+			<Category>Trains</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>The National Archives Podcast Series</Name>
+			<Url>http://nationalarchives.gov.uk/rss/podcasts.xml</Url>
+			<Category>History</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Bench Time - Model Railroading Podcast</Name>
+			<Url>https://pbcdn1.podbean.com/hoscalecustoms/feed.xml</Url>
+			<Category>Trains</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Model Railroad Hobbyist</Name>
+			<Url>https://model-railroad-hobbyist.com/sites/default/files/podcast/mrh.xml</Url>
+			<Category>Trains</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>The Roundhouse</Name>
+			<Url>http://theroundhousepodcast.com/feed/podcast</Url>
+			<Category>Trains</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Lets Talk Trains</Name>
+			<Url>http://www.blogtalkradio.com/letstalktrains/podcast</Url>
+			<Category>Trains</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>5 Live Science</Name>
+			<Url>http://www.bbc.co.uk/programmes/p02pc9ny/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC A Brief History of Mathematics</Name>
+			<Url>http://www.bbc.co.uk/programmes/b00srz5b/episodes/downloads.rss</Url>
+			<Category>Maths</Category>
+			<Description></Description>
+			<Show>
+			</Show>
+			<Name>BBC A History of Britain in Numbers</Name>
+			<Url>http://www.bbc.co.uk/programmes/b03k5dvd/episodes/downloads.rss</Url>
+			<Category>Maths</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Brainwaves</Name>
+			<Url>http://www.bbc.co.uk/programmes/b04ws68y/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Britain at Sea</Name>
+			<Url>http://www.bbc.co.uk/programmes/b046czzn/episodes/downloads.rss</Url>
+			<Category>History</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Digital Planet</Name>
+			<Url>http://downloads.bbc.co.uk/podcasts/worldservice/digitalp/rss.xml</Url>
+			<Category>Tech</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Computing Britain</Name>
+			<Url>http://www.bbc.co.uk/programmes/b06bq6j1/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Crowd Science</Name>
+			<Url>http://www.bbc.co.uk/programmes/p04d42rc/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Discovery</Name>
+			<Url>http://www.bbc.co.uk/programmes/p002w557/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Drama of the Week</Name>
+			<Url>http://podcasts.files.bbci.co.uk/p02nrv5m.rss</Url>
+			<Category>Drama</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Elements</Name>
+			<Url>http://www.bbc.co.uk/programmes/p01rcrn6/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Frontiers</Name>
+			<Url>http://www.bbc.co.uk/programmes/b006qy5p/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Gardeners Question Time</Name>
+			<Url>http://podcasts.files.bbci.co.uk/b006qp2f.rss</Url>
+			<Category>Gardening</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Inside Science</Name>
+			<Url>http://www.bbc.co.uk/programmes/b036f7w2/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Lets Talk About Tech</Name>
+			<Url>http://www.bbc.co.uk/programmes/p02nrxgq/episodes/downloads.rss</Url>
+			<Category>Tech</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Making History</Name>
+			<Url>http://podcasts.files.bbci.co.uk/b006qxrc.rss</Url>
+			<Category>History</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Mars</Name>
+			<Url>http://www.bbc.co.uk/programmes/p04vk80r/episodes/downloads.rss</Url>
+			<Category>Space</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Napolean The Man and the Myths</Name>
+			<Url>http://www.bbc.co.uk/programmes/b05zzlb4/episodes/downloads.rss</Url>
+			<Category>History</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Nathistory</Name>
+			<Url>http://downloads.bbc.co.uk/podcasts/radio4/nathistory/rss.xml</Url>
+			<Category>Nature</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Natural Histories</Name>
+			<Url>http://www.bbc.co.uk/programmes/p02s8ykn/episodes/downloads.rss</Url>
+			<Category>Nature</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Plants: From Roots to Riches</Name>
+			<Url>http://downloads.bbc.co.uk/podcasts/radio4/plantsfrtr/rss.xml</Url>
+			<Category>Gardening</Category>
+			<Description>Show Description</Description>
+		</Show>
+		<Show>
+			<Name>BBC Science in Action</Name>
+			<Url>http://downloads.bbc.co.uk/podcasts/worldservice/scia/rss.xml</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Science Stories</Name>
+			<Url>http://www.bbc.co.uk/programmes/b06vy2jd/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Sound of Cinema</Name>
+			<Url>http://www.bbc.co.uk/programmes/b03bzf92/episodes/downloads.rss</Url>
+			<Category>Films</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Space</Name>
+			<Url>http://www.bbc.co.uk/programmes/p03bv899/episodes/downloads.rss</Url>
+			<Category>Space</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Tech Tent</Name>
+			<Url>http://www.bbc.co.uk/programmes/p01plr2p/episodes/downloads.rss</Url>
+			<Category>Tech</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC The Film Programme</Name>
+			<Url>http://podcasts.files.bbci.co.uk/b006r5jt.rss</Url>
+			<Category>Films</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC The Infinite Monkey Cage</Name>
+			<Url>http://downloads.bbc.co.uk/podcasts/radio4/timc/rss.xml</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC The Life Scientific</Name>
+			<Url>http://www.bbc.co.uk/programmes/b015sqc7/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC The Reith Lectures</Name>
+			<Url>http://podcasts.files.bbci.co.uk/b00729d9.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC The Science Hour</Name>
+			<Url>http://www.bbc.co.uk/programmes/p016tmt2/episodes/downloads.rss</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>BBC Trends</Name>
+			<Url>http://downloads.bbc.co.uk/podcasts/worldservice/trends/rss.xml</Url>
+			<Category>Tech</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Behind The Tech</Name>
+			<Url>http://behindthetech.mpsn.libsynpro.com/rss</Url>
+			<Category>DEV</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Cinematic Sound</Name>
+			<Url>http://www.cinematicsound.net/feed/</Url>
+			<Category>Music Podcasts</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Coding Blocks</Name>
+			<Url>https://www.codingblocks.net/podcast-feed.xml</Url>
+			<Category>DEV</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Developer On Fire</Name>
+			<Url>http://developeronfire.com/rss.xml</Url>
+			<Category>DEV</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Dot Net Rocks</Name>
+			<Url>http://www.pwop.com/feed.aspx?show=dotnetrocks</Url>
+			<Category>DEV</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Hooked On Score</Name>
+			<Url>https://benjamin-moy.podomatic.com/rss2.xml</Url>
+			<Category>Music Podcasts</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Into The West (old time radio)</Name>
+			<Url>http://feeds.feedburner.com/intothewestotr</Url>
+			<Category>Drama</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Nature's Voice</Name>
+			<Url>http://naturesvoice.rspb.libsynpro.com/rss</Url>
+			<Category>Nature</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Nintendo World Report</Name>
+			<Url>http://www.nintendoworldreport.com/rss/radiotriviamp3</Url>
+			<Category>Gaming</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Relic Radio Sci-Fi (old time radio)</Name>
+			<Url>http://feeds.feedburner.com/relicradiosciencefiction</Url>
+			<Category>Drama</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Run As Radio</Name>
+			<Url>http://www.pwop.com/feed.aspx?show=runasradio</Url>
+			<Category>DEV</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>star-wars-oxygen</Name>
+			<Url>http://www.rebelforceradio.com/star-wars-oxygen</Url>
+			<Category>Music Podcasts</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>The History Of Rome</Name>
+			<Url>http://feeds.feedburner.com/TheHistoryOfRome?format=xml</Url>
+			<Category>History</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>The Horror! (Old Time Radio)</Name>
+			<Url>http://feeds.feedburner.com/horror</Url>
+			<Category>Drama</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>The SoundTrack Show</Name>
+			<Url>https://feeds.megaphone.fm/HSW2193473754</Url>
+			<Category>Music Podcasts</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>WWII Podcast</Name>
+			<Url>http://wwiipodcast.libsyn.com/rss</Url>
+			<Category>History</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Science Update Weekly edition</Name>
+			<Url>https://live-scienceupdate.pantheonsite.io/category/weekly-show/feed/</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>Science Update Daily Edition</Name>
+			<Url>https://live-scienceupdate.pantheonsite.io/category/daily-show/feed/</Url>
+			<Category>Science</Category>
+			<Description></Description>
+		</Show>
+		<Show>
+			<Name>classical-music.com</Name>
+			<Url>http://feeds.feedburner.com/bbcmusicmagazine</Url>
+			<Category>Music Podcasts</Category>
+			<Description>The official website of BBC Music Magazine</Description>
+		</Show>
+		<Show>
+			<Name>Old Time Radio Fans Podcast</Name>
+			<Url>http://www.oldtimeradiofans.com/radio/wimpy_podcast.php</Url>
+			<Category>Drama</Category>
+			<Description>Old time radio</Description>
+		</Show>
+		<Show>
+			<Name>Science Fiction – Retro Radio Podcast</Name>
+			<Url>http://feeds.feedburner.com/RetroRadioPodcastScienceFiction</Url>
+			<Category>Drama</Category>
+			<Description>Science Fiction – Retro Radio Podcast</Description>
+		</Show>
 
-    <Show>
-      <Name>Abbott And Costello</Name>
-      <Url>http://www.botar.us/abbottcostello.xml</Url>
-      <Category>Drama</Category>
-      <Description>Starring Bud Abbott and Lou Costello, the zany comedy of The Abbott and Costello Show graced the airwaves from 1942 until 1948, after a short stint as summer replacement for The Fred Allen Show in 1941. There were often tongue twisting or otherwise confusing dialogs Who' on First is the most famous and Costello was always getting into trouble. The vaudeville style repartee kept the live audience in stitches. In the tradition of the day, there was always a song, courtesy of Connie Haines or Marilyn Maxwell.</Description>
-    </Show>
-    <Show>
-      <Name>2000 Plus</Name>
-      <Url>http://www.botar.us/2000plus.xml</Url>
-      <Category>Drama</Category>
-      <Description>2000 Plus was an American old time radio series that ran on the Mutual Broadcasting System from March 15, 1950 to January 2, 1952 in various 30-minute time slots. It was the first adult science fiction series on radio, airing one month prior to the better known Dimension X. Unlike X Mius One, 2000 Plus used all new material rather than adapting exixting published stories. Aside from offering an exciting plots, the stories focus on that generation's contemporary anxieties about the changing world, and the effects and dangers of technology to humankind.</Description>
-    </Show>
-    <Show>
-      <Name>Cinnamon Bear</Name>
-      <Url>http://www.botar.us/cinnamonbear.xml</Url>
-      <Category>Drama</Category>
-      <Description>Cinnamon Bear is the beloved 1937 radio series featuring Paddy OCinnamon, the Cinnamon Bear. It is a delightful six hour adventure story of twins Judy and Jimmy Barton and their search for the silver star that goes on top of their Christmas tree.</Description>
-    </Show>
-    <Show>
-      <Name>Challenge of the yukon</Name>
-      <Url>http://www.botar.us/yukon.xml</Url>
-      <Category>Drama</Category>
-      <Description>Challenge of the Yukon was a radio series that began on Detroits station WXYZ. The series was first heard on February 3, 1938. The program was an adventure series about Sergeant William Preston of the NorthWest Mounted Police and his lead alaskan husky sled dog, Yukon King, as they fought evildoers in the Northern wilderness during the Gold Rush of the 1890s.</Description>
-    </Show>
-    <Show>
-      <Name>Inner Sanctum</Name>
-      <Url>http://www.botar.us/innersanctum.xml</Url>
-      <Category>Drama</Category>
-      <Description>Taking its name from a popular series of mystery novels, Inner Sanctum Mysteries debuted over NBC's Blue Network in January 1941. Last broadcast October 5, 1952. Inner Sanctum Mysteries featured one of the most memorable and atmospheric openings in radio history: an organist hit a dissonant chord, a doorknob turned and the famous "creaking door" slowly began to open. Every week, Inner Sanctum Mysteries told stories of ghosts, murderers and lunatics. Produced in New York, the cast usually consisted of veteran radio actors, with occasional guest appearances by such Hollywood stars Boris Karloff, Frank Sinatra, Orson Welles and Peter Lorre.</Description>
-    </Show>
-    <Show>
-      <Name>X minus one</Name>
-      <Url>http://www.botar.us/xminusone.xml</Url>
-      <Category>Drama</Category>
-      <Description>X Minus One was a science fiction radio series on NBC that aired April 1955 through January 1958. The show featured stories written by some of the big names in 1950's science fiction like Ray Bradbury, Robert Heinlein, and Issac Asimov. X Minus One followed another great science fiction series called Dimension X that was broadcast in 1950-51. Some of the X-1 shows were rebroadcasts of Dimension X. X Minus One holds the record for the longest running science fiction radio series ever produced, airing on NBC for three years and spanning 125 episodes.</Description>
-    </Show>
+		<Show>
+			<Name>Abbott And Costello</Name>
+			<Url>http://www.botar.us/abbottcostello.xml</Url>
+			<Category>Drama</Category>
+			<Description>Starring Bud Abbott and Lou Costello, the zany comedy of The Abbott and Costello Show graced the airwaves from 1942 until 1948, after a short stint as summer replacement for The Fred Allen Show in 1941. There were often tongue twisting or otherwise confusing dialogs Who' on First is the most famous and Costello was always getting into trouble. The vaudeville style repartee kept the live audience in stitches. In the tradition of the day, there was always a song, courtesy of Connie Haines or Marilyn Maxwell.</Description>
+		</Show>
+		<Show>
+			<Name>2000 Plus</Name>
+			<Url>http://www.botar.us/2000plus.xml</Url>
+			<Category>Drama</Category>
+			<Description>2000 Plus was an American old time radio series that ran on the Mutual Broadcasting System from March 15, 1950 to January 2, 1952 in various 30-minute time slots. It was the first adult science fiction series on radio, airing one month prior to the better known Dimension X. Unlike X Mius One, 2000 Plus used all new material rather than adapting exixting published stories. Aside from offering an exciting plots, the stories focus on that generation's contemporary anxieties about the changing world, and the effects and dangers of technology to humankind.</Description>
+		</Show>
+		<Show>
+			<Name>Cinnamon Bear</Name>
+			<Url>http://www.botar.us/cinnamonbear.xml</Url>
+			<Category>Drama</Category>
+			<Description>Cinnamon Bear is the beloved 1937 radio series featuring Paddy OCinnamon, the Cinnamon Bear. It is a delightful six hour adventure story of twins Judy and Jimmy Barton and their search for the silver star that goes on top of their Christmas tree.</Description>
+		</Show>
+		<Show>
+			<Name>Challenge of the yukon</Name>
+			<Url>http://www.botar.us/yukon.xml</Url>
+			<Category>Drama</Category>
+			<Description>Challenge of the Yukon was a radio series that began on Detroits station WXYZ. The series was first heard on February 3, 1938. The program was an adventure series about Sergeant William Preston of the NorthWest Mounted Police and his lead alaskan husky sled dog, Yukon King, as they fought evildoers in the Northern wilderness during the Gold Rush of the 1890s.</Description>
+		</Show>
+		<Show>
+			<Name>Inner Sanctum</Name>
+			<Url>http://www.botar.us/innersanctum.xml</Url>
+			<Category>Drama</Category>
+			<Description>Taking its name from a popular series of mystery novels, Inner Sanctum Mysteries debuted over NBC's Blue Network in January 1941. Last broadcast October 5, 1952. Inner Sanctum Mysteries featured one of the most memorable and atmospheric openings in radio history: an organist hit a dissonant chord, a doorknob turned and the famous "creaking door" slowly began to open. Every week, Inner Sanctum Mysteries told stories of ghosts, murderers and lunatics. Produced in New York, the cast usually consisted of veteran radio actors, with occasional guest appearances by such Hollywood stars Boris Karloff, Frank Sinatra, Orson Welles and Peter Lorre.</Description>
+		</Show>
+		<Show>
+			<Name>X minus one</Name>
+			<Url>http://www.botar.us/xminusone.xml</Url>
+			<Category>Drama</Category>
+			<Description>X Minus One was a science fiction radio series on NBC that aired April 1955 through January 1958. The show featured stories written by some of the big names in 1950's science fiction like Ray Bradbury, Robert Heinlein, and Issac Asimov. X Minus One followed another great science fiction series called Dimension X that was broadcast in 1950-51. Some of the X-1 shows were rebroadcasts of Dimension X. X Minus One holds the record for the longest running science fiction radio series ever produced, airing on NBC for three years and spanning 125 episodes.</Description>
+		</Show>
 
-    <Show>
-      <Name>Horatio Hornblower</Name>
-      <Url>http://www.botar.us/horatiohornblower.xml</Url>
-      <Category>Drama</Category>
-      <Description>Adventures of Horatio Hornblower was a half hour action and adventure radio show that first aired in 1952. It starred Michael Redgrave as Horatio Hornblower, a captain in the British Royal Navy during the Napoleon era. The radio show was based on the twelve Horatio Hornblower novels by C.S. Forester, they are well loved due to the realism and historical accuracy in reciting the stories of Naval life in the late 1700s to the mid 1800s. C.S. Forester.</Description>
-    </Show>
-    <Show>
-      <Name>Captain Midnight</Name>
-      <Url>http://www.botar.us/captainmidnight.xml</Url>
-      <Category>Drama</Category>
-      <Description>Captain Midnight was a U.S. radio serial broadcast from 1938 to 1949. Created by radio scripters Wilfred G. Moore and Robert M. Burtt, the program was developed at WGN in Chicago. Sponsored by the Skelly Oil Company, it began as a syndicated show in the fall of 1938, airing on a few midwest stations through the spring of 1940. In the fall of 1940, Ovaltine took over sponsorship, and the series was then heard nationally on the Mutual Radio Network where it remained until December, 1949.</Description>
-    </Show>
-    <Show>
-      <Name>Have Gun Will Travel</Name>
-      <Url>http://www.botar.us/hgwt.xml</Url>
-      <Category>Drama</Category>
-      <Description>Have Gun Will Travel radio show broadcast 106 episodes on CBS between November 23, 1958, and November 22, 1960. During the fifties, many radio programs made the transition to the ever-growing medium called television. Some more successful than others. John Dehner was cast as Paladin. Dehner was the same man who many years before, originally didn't want to play Matt Dillon because he didn't want to be typecast in a western. The first thirty-some radio scripts were adaptations from the television series. After more than twenty episodes, they realized the show was not as successful for radio as it was for television. Some changes needed to be made, so the radio productions would differ from the television. After two years and 106 broadcasts, Have Gun Will Travel slowly faded away. John Dehner died on February 4, 1992, in Santa Barbara, California, from complications of emphysema and diabetes. He was 76.</Description>
-    </Show>
-    <Show>
-      <Name>War of the Worlds</Name>
-      <Url>http://www.botar.us/waroftheworlds.xml</Url>
-      <Category>Drama</Category>
-      <Description>This radio drama was presented by Orson Welles in the guise of news broadcasts so realistic that many people believed that the Earth was under attack from Mars.</Description>
-    </Show>
-    <Show>
-      <Name>Gunsmoke</Name>
-      <Url>http://www.botar.us/gunsmoke.xml</Url>
-      <Category>Drama</Category>
-      <Description>Airing on the CBS network on April 26, 1952, Gunsmoke was the first and greatest adult Western, it told the story of the violence that moved west with young America, and the story of a man who moved with it. That man was Matt Dillon, U.S. Marshal of Dodge City, Kansas. In Dodge, Dillon was surrounded by hardened, but heartfelt, townsfolk, including his deputy, Chester Wesley Proudfoot; the town physician and mortician, Dr. Charles Adams and, the owner of the Long Branch Saloon, Miss Kitty Russell. Gunsmoke aired for over 9 years and 480 episodes, starred William Conrad, Parley Baer, Georgia Ellis and Howard McNear.</Description>
-    </Show>
-    <Show>
-      <Name>Green Hornet</Name>
-      <Url>http://www.botar.us/greenhornet.xml</Url>
-      <Category>Drama</Category>
-      <Description>On January 31, 1936, the Green Hornet radio program aired on WXYZ in Detroit, Michigan. Al Hodge played the part of the Green Hornet from 1936 through January of 1943.</Description>
-    </Show>
-    <Show>
-      <Name>Tales of the Texas rangers</Name>
-      <Url>http://www.botar.us/talesofthetexasrangers.xml</Url>
-      <Category>Drama</Category>
-      <Description>Joel McCrea stars as Texas Ranger Jace Pearson in this thirty minute western adventure series. The shows are all reenactments of incidents from Texas Ranger history. The Texas lawman and his trusty steed, Charcoal, would track a criminal, often a killer, throughout the vast 260,000 square miles of Texas. With Joel McCrea lending star power, Tales of the Texas Rangers debuted over the NBC radio network on July 8, 1950. The thirty-minute show, sponsored by Wheaties, ran on Saturday nights at 930 for three months. In October, the show switched to Sunday evenings, eventually settling into the six oclock time slot. The weekly adventures were set during the past two decades in order that the show have a modern slant. Ranger Jace Pearson drove an automobile, but he had a horse trailer and often galloped astride his horse Charcoal into the backcountry in pursuit of lawbreakers. First Broadcast date July 8, 1950. Last Broadcast date September 14th 1952</Description>
-    </Show>
-    <Show>
-      <Name>Adventures of Superman</Name>
-      <Url>http://www.botar.us/superman.xml</Url>
-      <Category>Drama</Category>
-      <Description>Faster than a speeding bullet. More powerful than a locomotive. Able to leap tall buildings at a single bound. Look. Up in the sky. Its a bird. Its a plane. Its Superman. Superman strange visitor from another planet who came to Earth with powers and abilities far beyond those of mortal men. Superman defender of law and order, champion of equal rights, valiant, courageous fighter against the forces of hate and prejudice, who disguised as Clark Kent, mild mannered reporter for a great metropolitan newspaper, fights a never ending battle for truth, justice and the American way.</Description>
-    </Show>
-    <Show>
-      <Name>Space Patrol</Name>
-      <Url>http://www.botar.us/spacepatrol.xml</Url>
-      <Category>Drama</Category>
-      <Description>Space Patrol was a science fiction adventure, aimed at juvenile audiences of the early 1950s via television, radio, and comic books. It was the brainchild of creator Mike Moser, an ex U.S. Navy Air force veteran in WW II. The stories followed the 30th century adventures of Commander Buzz Corry of the United Planets Space Patrol and his young sidekick Cadet Happy as they faced nefarious interplanetary villains with diabolical schemes.</Description>
-    </Show>
-    <Show>
-      <Name>Sherlock Holmes</Name>
-      <Url>http://www.botar.us/sherlockholmes.xml</Url>
-      <Category>Drama</Category>
-      <Description>Throughout the early 1940's on American Radio, Basil Rathbone and Nigel Bruce performed as Holmes and Watson, respectively, in several series of canonical and original Sherlock Holmes stories.</Description>
-    </Show>
-    <Show>
-      <Name>Flash Gordon</Name>
-      <Url>http://www.botar.us/flashgordon.xml</Url>
-      <Category>Drama</Category>
-      <Description>Flash Gordon is the hero of a science fiction comic strip originally drawn by Alex Raymond, which was first published on January 7, 1934. Starting April 22, 1935, the strip was adapted into The Amazing Interplanetary Adventures of Flash Gordon, a 26 episode weekly radio serial. The series followed the strip very closely, amounting to a week-by-week adaptation of the Sunday strip for most of its run.</Description>
-    </Show>
-    <Show>
-      <Name>Journey into space</Name>
-      <Url>http://www.botar.us/journeyintospace.xml</Url>
-      <Category>Drama</Category>
-      <Description>Journey Into Space was a BBC Radio science fiction program. In the UK it was the last radio program to attract a bigger evening audience than television. It went on to be translated into 17 languages and broadcast worldwide. Each half-hour episode would usually end with a dramatic cliffhanger, to increase the audience's incentive to tune in to the next episode. The original magnetic recordings of the show were erased shortly after broadcast, and for several decades, it was believed that no recordings of the show still survived. However, in 1986, a set of mis-filed Transcription Service discs were discovered, containing complete copies of the three original series.</Description>
-    </Show>
-    <Show>
-      <Name>Strange Tales (Old Time Radio)</Name>
-      <Url>https://feeds.feedburner.com/relicradiostrangetales</Url>
-      <Category>Drama</Category>
-      <Description>Tales of the strange and bizarre, the weird and the wicked. Stories not necessarily of the supernatural, but of the unnatural. Join us Sunday's for radio drama at its most mysterious and unusual.</Description>
-    </Show>
-    <Show>
-      <Name>The Horror! (Old Time Radio)</Name>
-      <Url>http://feeds.feedburner.com/horror</Url>
-      <Category>Drama</Category>
-      <Description>Ghost stories, monsters, creatures who walk the earth, and other tales of the unexplained. Join me Saturday's as we explore these stories. But leave those lights on!</Description>
-    </Show>
-    <Show>
-      <Name>Case Closed! (old time radio)</Name>
-      <Url>https://feeds.feedburner.com/caseclosed</Url>
-      <Category>Drama</Category>
-      <Description>Crime stories from the golden age. Old Time Radio is filled with cops, robbers, and private investigators...Lets reopen the cases and hear these great stories again! A new hour every Wednesday.</Description>
-    </Show>
-    <Show>
-      <Name>A Legacy Of Laughs (old time radio)</Name>
-      <Url>https://feeds.feedburner.com/alegacyoflaughs</Url>
-      <Category>Drama</Category>
-      <Description>A Legacy Of Laughs features comedians from the golden age of radio. Hear Bob Hope, Red Skelton, Stan Freberg, Fred Allen, and Jack Benny among many others. New shows twice a week.</Description>
-    </Show>
-    <Show>
-      <Name>Crime Classics</Name>
-      <Url>http://www.botar.us/crimeclassics.xml</Url>
-      <Category>Drama</Category>
-      <Description>Crime Classics aired on CBS September 30, 1953 and was a series of true crime stories from the records and newpapers of every land, from every time. Your host each week, was Mr. Thomas Hyland a connoisseur of crime, student of violence, and teller of murders.</Description>
-    </Show>
-    <Show>
-      <Name>Mercury theatre on air</Name>
-      <Url>http://www.botar.us/mercurytheatre.xml</Url>
-      <Category>Drama</Category>
-      <Description>The Mercury Theatre was a theatre company founded in New York City by Orson Welles and John Houseman. They had initial success in the theatre, then went to radio, and one of the most notable radio broadcasts of all time, The War of the Worlds. The Mercury Theatre on the Air was an hour-long dramatic radio program which began in the summer of 1938 on the CBS radio network. Most episodes dramatized many works of classic and contemporary literature.</Description>
-    </Show>
-    <Show>
-      <Name>The NEOZAZ Internet Entertainment Main Feed</Name>
-      <Url>http://neozaz.libsyn.com/rss</Url>
-      <Category>Entertainment</Category>
-      <Description>The NEOZAZ Internet Entertainment Main Feed - all the episodes from all our shows in one place! Star Wars In Character, The Best of Fives, Catacombs of Halloween Horror Nights, Dial Up Movies, RPG Real Players Gaming, You Pick It I&#039;ll Watch it, Phillies Full Count, Trailer Pod Boys, Pass the Popcorn, all the Specials, and much, much more from all the great shows at NEOZAZ.com!</Description>
-    </Show>
-    <Show>
-      <Name>Creature Feature</Name>
-      <Url>https://feeds.megaphone.fm/HSW2071140295</Url>
-      <Category>Nature</Category>
-      <Description>Are we really better than animals?\nWe ask comedians to put themselves in the mindset of other creatures, so we can give listeners an in-depth look at the natural world, discussing the amusing ways in which animal behavior resembles human psychology.\nLearn about evolutionary biology with our quirky homosapien guests.</Description>
-    </Show>
-    <Show>
-      <Name>StarTalk Radio</Name>
-      <Url>https://rss.art19.com/startalk-radio</Url>
-      <Category>Science</Category>
-      <Description>Science, pop culture and comedy collide on StarTalk Radio! Astrophysicist and Hayden Planetarium director Neil deGrasse Tyson, his comic co-hosts, guest celebrities and scientists discuss astronomy, physics, and everything else about life in the universe. Keep Looking Up! New episodes premiere Friday nights at 7pm ET.</Description>
-    </Show>
-    <Show>
-      <Name>BBC Six O'Clock News</Name>
-      <Url>https://podcasts.files.bbci.co.uk/b006qjxt.rss</Url>
-      <Category>News</Category>
-      <Description>The latest national and international news from BBC Radio 4</Description>
-    </Show>
-  </Shows>
+		<Show>
+			<Name>Horatio Hornblower</Name>
+			<Url>http://www.botar.us/horatiohornblower.xml</Url>
+			<Category>Drama</Category>
+			<Description>Adventures of Horatio Hornblower was a half hour action and adventure radio show that first aired in 1952. It starred Michael Redgrave as Horatio Hornblower, a captain in the British Royal Navy during the Napoleon era. The radio show was based on the twelve Horatio Hornblower novels by C.S. Forester, they are well loved due to the realism and historical accuracy in reciting the stories of Naval life in the late 1700s to the mid 1800s. C.S. Forester.</Description>
+		</Show>
+		<Show>
+			<Name>Captain Midnight</Name>
+			<Url>http://www.botar.us/captainmidnight.xml</Url>
+			<Category>Drama</Category>
+			<Description>Captain Midnight was a U.S. radio serial broadcast from 1938 to 1949. Created by radio scripters Wilfred G. Moore and Robert M. Burtt, the program was developed at WGN in Chicago. Sponsored by the Skelly Oil Company, it began as a syndicated show in the fall of 1938, airing on a few midwest stations through the spring of 1940. In the fall of 1940, Ovaltine took over sponsorship, and the series was then heard nationally on the Mutual Radio Network where it remained until December, 1949.</Description>
+		</Show>
+		<Show>
+			<Name>Have Gun Will Travel</Name>
+			<Url>http://www.botar.us/hgwt.xml</Url>
+			<Category>Drama</Category>
+			<Description>Have Gun Will Travel radio show broadcast 106 episodes on CBS between November 23, 1958, and November 22, 1960. During the fifties, many radio programs made the transition to the ever-growing medium called television. Some more successful than others. John Dehner was cast as Paladin. Dehner was the same man who many years before, originally didn't want to play Matt Dillon because he didn't want to be typecast in a western. The first thirty-some radio scripts were adaptations from the television series. After more than twenty episodes, they realized the show was not as successful for radio as it was for television. Some changes needed to be made, so the radio productions would differ from the television. After two years and 106 broadcasts, Have Gun Will Travel slowly faded away. John Dehner died on February 4, 1992, in Santa Barbara, California, from complications of emphysema and diabetes. He was 76.</Description>
+		</Show>
+		<Show>
+			<Name>War of the Worlds</Name>
+			<Url>http://www.botar.us/waroftheworlds.xml</Url>
+			<Category>Drama</Category>
+			<Description>This radio drama was presented by Orson Welles in the guise of news broadcasts so realistic that many people believed that the Earth was under attack from Mars.</Description>
+		</Show>
+		<Show>
+			<Name>Gunsmoke</Name>
+			<Url>http://www.botar.us/gunsmoke.xml</Url>
+			<Category>Drama</Category>
+			<Description>Airing on the CBS network on April 26, 1952, Gunsmoke was the first and greatest adult Western, it told the story of the violence that moved west with young America, and the story of a man who moved with it. That man was Matt Dillon, U.S. Marshal of Dodge City, Kansas. In Dodge, Dillon was surrounded by hardened, but heartfelt, townsfolk, including his deputy, Chester Wesley Proudfoot; the town physician and mortician, Dr. Charles Adams and, the owner of the Long Branch Saloon, Miss Kitty Russell. Gunsmoke aired for over 9 years and 480 episodes, starred William Conrad, Parley Baer, Georgia Ellis and Howard McNear.</Description>
+		</Show>
+		<Show>
+			<Name>Green Hornet</Name>
+			<Url>http://www.botar.us/greenhornet.xml</Url>
+			<Category>Drama</Category>
+			<Description>On January 31, 1936, the Green Hornet radio program aired on WXYZ in Detroit, Michigan. Al Hodge played the part of the Green Hornet from 1936 through January of 1943.</Description>
+		</Show>
+		<Show>
+			<Name>Tales of the Texas rangers</Name>
+			<Url>http://www.botar.us/talesofthetexasrangers.xml</Url>
+			<Category>Drama</Category>
+			<Description>Joel McCrea stars as Texas Ranger Jace Pearson in this thirty minute western adventure series. The shows are all reenactments of incidents from Texas Ranger history. The Texas lawman and his trusty steed, Charcoal, would track a criminal, often a killer, throughout the vast 260,000 square miles of Texas. With Joel McCrea lending star power, Tales of the Texas Rangers debuted over the NBC radio network on July 8, 1950. The thirty-minute show, sponsored by Wheaties, ran on Saturday nights at 930 for three months. In October, the show switched to Sunday evenings, eventually settling into the six oclock time slot. The weekly adventures were set during the past two decades in order that the show have a modern slant. Ranger Jace Pearson drove an automobile, but he had a horse trailer and often galloped astride his horse Charcoal into the backcountry in pursuit of lawbreakers. First Broadcast date July 8, 1950. Last Broadcast date September 14th 1952</Description>
+		</Show>
+		<Show>
+			<Name>Adventures of Superman</Name>
+			<Url>http://www.botar.us/superman.xml</Url>
+			<Category>Drama</Category>
+			<Description>Faster than a speeding bullet. More powerful than a locomotive. Able to leap tall buildings at a single bound. Look. Up in the sky. Its a bird. Its a plane. Its Superman. Superman strange visitor from another planet who came to Earth with powers and abilities far beyond those of mortal men. Superman defender of law and order, champion of equal rights, valiant, courageous fighter against the forces of hate and prejudice, who disguised as Clark Kent, mild mannered reporter for a great metropolitan newspaper, fights a never ending battle for truth, justice and the American way.</Description>
+		</Show>
+		<Show>
+			<Name>Space Patrol</Name>
+			<Url>http://www.botar.us/spacepatrol.xml</Url>
+			<Category>Drama</Category>
+			<Description>Space Patrol was a science fiction adventure, aimed at juvenile audiences of the early 1950s via television, radio, and comic books. It was the brainchild of creator Mike Moser, an ex U.S. Navy Air force veteran in WW II. The stories followed the 30th century adventures of Commander Buzz Corry of the United Planets Space Patrol and his young sidekick Cadet Happy as they faced nefarious interplanetary villains with diabolical schemes.</Description>
+		</Show>
+		<Show>
+			<Name>Sherlock Holmes</Name>
+			<Url>http://www.botar.us/sherlockholmes.xml</Url>
+			<Category>Drama</Category>
+			<Description>Throughout the early 1940's on American Radio, Basil Rathbone and Nigel Bruce performed as Holmes and Watson, respectively, in several series of canonical and original Sherlock Holmes stories.</Description>
+		</Show>
+		<Show>
+			<Name>Flash Gordon</Name>
+			<Url>http://www.botar.us/flashgordon.xml</Url>
+			<Category>Drama</Category>
+			<Description>Flash Gordon is the hero of a science fiction comic strip originally drawn by Alex Raymond, which was first published on January 7, 1934. Starting April 22, 1935, the strip was adapted into The Amazing Interplanetary Adventures of Flash Gordon, a 26 episode weekly radio serial. The series followed the strip very closely, amounting to a week-by-week adaptation of the Sunday strip for most of its run.</Description>
+		</Show>
+		<Show>
+			<Name>Journey into space</Name>
+			<Url>http://www.botar.us/journeyintospace.xml</Url>
+			<Category>Drama</Category>
+			<Description>Journey Into Space was a BBC Radio science fiction program. In the UK it was the last radio program to attract a bigger evening audience than television. It went on to be translated into 17 languages and broadcast worldwide. Each half-hour episode would usually end with a dramatic cliffhanger, to increase the audience's incentive to tune in to the next episode. The original magnetic recordings of the show were erased shortly after broadcast, and for several decades, it was believed that no recordings of the show still survived. However, in 1986, a set of mis-filed Transcription Service discs were discovered, containing complete copies of the three original series.</Description>
+		</Show>
+		<Show>
+			<Name>Strange Tales (Old Time Radio)</Name>
+			<Url>https://feeds.feedburner.com/relicradiostrangetales</Url>
+			<Category>Drama</Category>
+			<Description>Tales of the strange and bizarre, the weird and the wicked. Stories not necessarily of the supernatural, but of the unnatural. Join us Sunday's for radio drama at its most mysterious and unusual.</Description>
+		</Show>
+		<Show>
+			<Name>The Horror! (Old Time Radio)</Name>
+			<Url>http://feeds.feedburner.com/horror</Url>
+			<Category>Drama</Category>
+			<Description>Ghost stories, monsters, creatures who walk the earth, and other tales of the unexplained. Join me Saturday's as we explore these stories. But leave those lights on!</Description>
+		</Show>
+		<Show>
+			<Name>Case Closed! (old time radio)</Name>
+			<Url>https://feeds.feedburner.com/caseclosed</Url>
+			<Category>Drama</Category>
+			<Description>Crime stories from the golden age. Old Time Radio is filled with cops, robbers, and private investigators...Lets reopen the cases and hear these great stories again! A new hour every Wednesday.</Description>
+		</Show>
+		<Show>
+			<Name>A Legacy Of Laughs (old time radio)</Name>
+			<Url>https://feeds.feedburner.com/alegacyoflaughs</Url>
+			<Category>Drama</Category>
+			<Description>A Legacy Of Laughs features comedians from the golden age of radio. Hear Bob Hope, Red Skelton, Stan Freberg, Fred Allen, and Jack Benny among many others. New shows twice a week.</Description>
+		</Show>
+		<Show>
+			<Name>Crime Classics</Name>
+			<Url>http://www.botar.us/crimeclassics.xml</Url>
+			<Category>Drama</Category>
+			<Description>Crime Classics aired on CBS September 30, 1953 and was a series of true crime stories from the records and newpapers of every land, from every time. Your host each week, was Mr. Thomas Hyland a connoisseur of crime, student of violence, and teller of murders.</Description>
+		</Show>
+		<Show>
+			<Name>Mercury theatre on air</Name>
+			<Url>http://www.botar.us/mercurytheatre.xml</Url>
+			<Category>Drama</Category>
+			<Description>The Mercury Theatre was a theatre company founded in New York City by Orson Welles and John Houseman. They had initial success in the theatre, then went to radio, and one of the most notable radio broadcasts of all time, The War of the Worlds. The Mercury Theatre on the Air was an hour-long dramatic radio program which began in the summer of 1938 on the CBS radio network. Most episodes dramatized many works of classic and contemporary literature.</Description>
+		</Show>
+		<Show>
+			<Name>The NEOZAZ Internet Entertainment Main Feed</Name>
+			<Url>http://neozaz.libsyn.com/rss</Url>
+			<Category>Entertainment</Category>
+			<Description>The NEOZAZ Internet Entertainment Main Feed - all the episodes from all our shows in one place! Star Wars In Character, The Best of Fives, Catacombs of Halloween Horror Nights, Dial Up Movies, RPG Real Players Gaming, You Pick It I&#039;ll Watch it, Phillies Full Count, Trailer Pod Boys, Pass the Popcorn, all the Specials, and much, much more from all the great shows at NEOZAZ.com!</Description>
+		</Show>
+		<Show>
+			<Name>Creature Feature</Name>
+			<Url>https://feeds.megaphone.fm/HSW2071140295</Url>
+			<Category>Nature</Category>
+			<Description>Are we really better than animals?\nWe ask comedians to put themselves in the mindset of other creatures, so we can give listeners an in-depth look at the natural world, discussing the amusing ways in which animal behavior resembles human psychology.\nLearn about evolutionary biology with our quirky homosapien guests.</Description>
+		</Show>
+		<Show>
+			<Name>StarTalk Radio</Name>
+			<Url>https://rss.art19.com/startalk-radio</Url>
+			<Category>Science</Category>
+			<Description>Science, pop culture and comedy collide on StarTalk Radio! Astrophysicist and Hayden Planetarium director Neil deGrasse Tyson, his comic co-hosts, guest celebrities and scientists discuss astronomy, physics, and everything else about life in the universe. Keep Looking Up! New episodes premiere Friday nights at 7pm ET.</Description>
+		</Show>
+		<Show>
+			<Name>BBC Six O'Clock News</Name>
+			<Url>https://podcasts.files.bbci.co.uk/b006qjxt.rss</Url>
+			<Category>News</Category>
+			<Description>The latest national and international news from BBC Radio 4</Description>
+		</Show>
+	</Shows>
 </eWolfPodcast>
