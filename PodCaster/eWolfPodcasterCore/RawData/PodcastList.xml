@@ -477,16 +477,16 @@
       <Description>Are we really better than animals?\nWe ask comedians to put themselves in the mindset of other creatures, so we can give listeners an in-depth look at the natural world, discussing the amusing ways in which animal behavior resembles human psychology.\nLearn about evolutionary biology with our quirky homosapien guests.</Description>
     </Show>
     <Show>
-      <Name>Chernobyl</Name>
-      <Url>https://feeds.megaphone.fm/thechernobylpodcast</Url>
-      <Category>Drama</Category>
-      <Description>Chernobyl, a five-part miniseries co-production from HBO and Sky, dramatizes the story of the 1986 nuclear accident, one of the worst man-made catastrophes in history — and of the sacrifices made to save Europe from unimaginable disaster.\nPremiering May 6, and followed by subsequent episodes each Monday, Chernobyl stars Emmy-nominee Jared Harris (The Crown, Mad Men), Stellan Skarsgård (Melancholia, Good Will Hunting) and Oscar-nominee Emily Watson (Hilary and Jackie, Breaking the Waves).</Description>
-    </Show>
-    <Show>
       <Name>StarTalk Radio</Name>
       <Url>https://rss.art19.com/startalk-radio</Url>
       <Category>Science</Category>
       <Description>Science, pop culture and comedy collide on StarTalk Radio! Astrophysicist and Hayden Planetarium director Neil deGrasse Tyson, his comic co-hosts, guest celebrities and scientists discuss astronomy, physics, and everything else about life in the universe. Keep Looking Up! New episodes premiere Friday nights at 7pm ET.</Description>
+    </Show>
+    <Show>
+      <Name>BBC Six O'Clock News</Name>
+      <Url>https://podcasts.files.bbci.co.uk/b006qjxt.rss</Url>
+      <Category>News</Category>
+      <Description>The latest national and international news from BBC Radio 4</Description>
     </Show>
   </Shows>
 </eWolfPodcast>

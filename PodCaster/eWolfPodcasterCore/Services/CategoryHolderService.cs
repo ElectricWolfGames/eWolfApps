@@ -8,6 +8,7 @@ namespace eWolfPodcasterCore.Services
         public CategoryHolderService()
         {
             Categories = new List<CatergeryData>();
+            Categories.Add(new CatergeryData("News"));
             Categories.Add(new CatergeryData("Music"));
             Categories.Add(new CatergeryData("Music Podcasts"));
             Categories.Add(new CatergeryData("Developer"));
