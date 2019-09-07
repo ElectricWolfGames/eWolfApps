@@ -15,6 +15,8 @@ namespace eWolfPodcasterCore.Services
             Categories.Add(new CatergeryData("Science"));
             Categories.Add(new CatergeryData("Other"));
             Categories.Add(new CatergeryData("Misc"));
+            Categories.Add(new CatergeryData("Doctor Who"));
+            Categories.Add(new CatergeryData("Star wars"));
             Categories.Add(new CatergeryData("Entertainment"));
         }
 
