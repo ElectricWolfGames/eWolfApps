@@ -4,9 +4,12 @@ using System.Text;
 namespace eWolfPodcasterCore.Helpers
 {
     public static class WordParseHelper
-     {
+    {
         public static string[] GetWordsPerLine(string text, int lineLength)
         {
+            if (string.IsNullOrEmpty(text))
+                return new string[0];
+
             List<string> outputLines = new List<string>();
             string[] words = text.Split(' ');
 

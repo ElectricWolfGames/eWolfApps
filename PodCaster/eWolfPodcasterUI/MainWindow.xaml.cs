@@ -199,7 +199,7 @@ namespace eWolfPodcasterUI
         {
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(1000)
+                Interval = TimeSpan.FromMilliseconds(5000)
             };
             timer.Tick += MediaPlayerIntervalUpdate;
             timer.Start();
@@ -209,7 +209,7 @@ namespace eWolfPodcasterUI
         {
             _rssTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(100)
+                Interval = TimeSpan.FromMilliseconds(4000)
             };
             _rssTimer.Tick += UpdateRssFeedTimer;
             _rssTimer.Start();
