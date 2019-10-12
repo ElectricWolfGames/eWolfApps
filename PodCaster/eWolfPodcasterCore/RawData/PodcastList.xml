@@ -1,6 +1,12 @@
 <eWolfPodcast>
   <Shows>
     <Show>
+      <Name>Trains Magazine</Name>
+      <Url>https://feeds.soundcloud.com/users/soundcloud:users:280531119/sounds.rss</Url>
+      <Category>Trains</Category>
+      <Description></Description>
+    </Show>
+    <Show>
       <Name>Star Wars News Net</Name>
       <Url>https://www.starwarsnewsnet.com/feed/podcast</Url>
       <Category>Star wars</Category>
