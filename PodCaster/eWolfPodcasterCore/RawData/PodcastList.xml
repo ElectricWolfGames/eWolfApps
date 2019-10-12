@@ -1,6 +1,12 @@
 <eWolfPodcast>
   <Shows>
     <Show>
+      <Name>Star Wars News Net</Name>
+      <Url>https://www.starwarsnewsnet.com/feed/podcast</Url>
+      <Category>Star wars</Category>
+      <Description></Description>
+    </Show>
+    <Show>
       <Name>Dear Railway</Name>
       <Url>http://www.spreaker.com/show/2679075/episodes/feed</Url>
       <Category>Trains</Category>
