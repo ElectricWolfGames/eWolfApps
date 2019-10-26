@@ -1,6 +1,60 @@
 <eWolfPodcast>
   <Shows>
     <Show>
+      <Name>HarlemQueen</Name>
+      <Url>https://feed.podbean.com/HarlemQueen/feed.xml</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>Wolf 359</Name>
+      <Url>http://wolf359radio.libsyn.com/rss</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>The Big Loop</Name>
+      <Url>http://thebiglooppodcast.libsyn.com/rss</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>CARAVAN</Name>
+      <Url>http://caravanradio.libsyn.com/rss</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>36 Questions</Name>
+      <Url>https://feeds.megaphone.fm/TWU6263225887</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>Steal the Stars</Name>
+      <Url>https://feeds.megaphone.fm/stealthestars</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>Alba Salix, Royal Physician</Name>
+      <Url>https://albasalix.libsyn.com/rss</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>The Amelia Project</Name>
+      <Url>http://theameliaproject.libsyn.com/rss</Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>Greater Boston</Name>
+      <Url>http://greaterboston.libsyn.com/rss  </Url>
+      <Category>Drama</Category>
+      <Description></Description>
+    </Show>
+    <Show>
       <Name>Trains Magazine</Name>
       <Url>https://feeds.soundcloud.com/users/soundcloud:users:280531119/sounds.rss</Url>
       <Category>Trains</Category>
