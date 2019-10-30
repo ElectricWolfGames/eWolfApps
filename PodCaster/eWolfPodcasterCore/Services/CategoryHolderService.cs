@@ -18,6 +18,10 @@ namespace eWolfPodcasterCore.Services
             Categories.Add(new CatergeryData("Doctor Who"));
             Categories.Add(new CatergeryData("Star wars"));
             Categories.Add(new CatergeryData("Entertainment"));
+            Categories.Add(new CatergeryData("Drama Vintage"));
+            Categories.Add(new CatergeryData("Drama Sci-fi"));
+            Categories.Add(new CatergeryData("Drama Others"));
+            Categories.Add(new CatergeryData("Drama Historical"));
         }
 
         public static List<CatergeryData> GetAllCategories
