@@ -1,33 +1,45 @@
 <eWolfPodcast>
   <Shows>
     <Show>
+      <Name>Elite: Escape Velocity</Name>
+      <Url>http://laveradio.com/feed/escapevelocity.xml</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>A new full-cast science fiction audio adventure, inspired by the upcoming game Elite: Dangerous and drawing on the legacy of Elite 2: Frontier.</Description>
+    </Show>
+    <Show>
+      <Name>The Second Oil Age</Name>
+      <Url>https://feeds.megaphone.fm/HSW5433847780</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>When an oil executive goes missing aboard the deep-sea Atlas Station, the company sends agent Synøve Pan down for answers — and she’s just the woman to get them. Welcome to the Second Oil Age: a sci-fi podcast that transports listeners to a post–energy-crisis world in which humanity’s thirst for oil is satisfied through a bargain with a mysterious deep-sea species.</Description>
+    </Show>
+    <Show>
       <Name>Arca-45672</Name>
       <Url>https://feed.podbean.com/arca45672/feed.xml</Url>
-      <Category>Drama</Category>
+      <Category>Drama Sci-fi</Category>
       <Description>The year is 2172 and the world is dying. A small fraction of the Earth's former biosphere remains. The world is running out of food. During these hard times part of the human population has gone sterile. There has been massive inbreeding and genetic distortions. However, teams of scientists and military personnel tasked with finding a way to save humanity from extinction are confronted with a possible opportunity: an exoplanet near the Proxima Centauri system is discovered.</Description>
     </Show>
     <Show>
       <Name>Marsfall</Name>
       <Url>https://marsfallpodcast.com/feed/</Url>
-      <Category>Drama</Category>
+      <Category>Drama Sci-fi</Category>
       <Description>Marsfall follows some of the earliest colonists to settle on Mars in the year 2047, and each episode continues the story from a different character’s perspective</Description>
     </Show>
     <Show>
       <Name>ars PARADOXICA</Name>
       <Url>https://arsparadoxica.libsyn.com/rss</Url>
-      <Category>Drama</Category>
+      <Category>Drama Sci-fi</Category>
       <Description>ars PARADOXICA is a love letter to physics, fiction, and the future. It's a disorienting  journey through spacetime and the Cold War. It's a tome of secret history you stumbled across in a library in the dead of night.</Description>
     </Show>
     <Show>
       <Name>StarTripper!!</Name>
       <Url>https://startripper.libsyn.com/rss</Url>
-      <Category>Drama</Category>
+      <Category>Drama Sci-fi</Category>
       <Description>A ZOWY SEARCH FOR THE BEST EXPERIENCES THE GALAXY HAS TO OFFER</Description>
     </Show>
     <Show>
       <Name>The Bright Sessions</Name>
       <Url>https://feeds.megaphone.fm/thebrightsessions</Url>
-      <Category>Drama</Category>
+      <Category>Drama Sci-fi</Category>
       <Description>The Bright Sessions is a science fiction podcast that follows a group of therapy patients. But these are not your typical patients - each has a unique supernatural ability. The show documents their struggles and discoveries as well as the motivations of their mysterious therapist, Dr. Bright.</Description>
     </Show>
     <Show>
