@@ -7,21 +7,23 @@ namespace eWolfPodcasterCore.Services
     {
         public CategoryHolderService()
         {
-            Categories = new List<CatergeryData>();
-            Categories.Add(new CatergeryData("News"));
-            Categories.Add(new CatergeryData("Music"));
-            Categories.Add(new CatergeryData("Music Podcasts"));
-            Categories.Add(new CatergeryData("Developer"));
-            Categories.Add(new CatergeryData("Science"));
-            Categories.Add(new CatergeryData("Other"));
-            Categories.Add(new CatergeryData("Misc"));
-            Categories.Add(new CatergeryData("Doctor Who"));
-            Categories.Add(new CatergeryData("Star wars"));
-            Categories.Add(new CatergeryData("Entertainment"));
-            Categories.Add(new CatergeryData("Drama Vintage"));
-            Categories.Add(new CatergeryData("Drama Sci-fi"));
-            Categories.Add(new CatergeryData("Drama Others"));
-            Categories.Add(new CatergeryData("Drama Historical"));
+            Categories = new List<CatergeryData>
+            {
+                new CatergeryData("News"),
+                new CatergeryData("Music"),
+                new CatergeryData("Music Podcasts"),
+                new CatergeryData("Developer"),
+                new CatergeryData("Science"),
+                new CatergeryData("Other"),
+                new CatergeryData("Misc"),
+                new CatergeryData("Doctor Who"),
+                new CatergeryData("Star wars"),
+                new CatergeryData("Entertainment"),
+                new CatergeryData("Drama Vintage"),
+                new CatergeryData("Drama Sci-fi"),
+                new CatergeryData("Drama Others"),
+                new CatergeryData("Drama Historical")
+            };
         }
 
         public static List<CatergeryData> GetAllCategories

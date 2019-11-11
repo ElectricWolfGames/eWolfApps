@@ -214,4 +214,10 @@
     <Resource Include="Images\Refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(SolutionDir)../Apps" mkdir "$(SolutionDir)../Apps"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)" "$(SolutionDir)..\Apps/"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

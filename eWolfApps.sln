@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E4477379-7F62-447B-8B12-94337CFFE5D8}"
 EndProject
@@ -57,6 +57,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Increment", "Increment", "{190053B5-4366-4020-AC5D-1CD03E46A010}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RenameAllFilesInFolder", "RenameAllFilesInFolder", "{A63F8958-4FCA-4ED2-8297-918BC2B00CA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RenameFilesWithPostName", "RenameFilesWithPostName", "{1F9B572F-733D-4B16-AD32-A54A852EC3AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -353,6 +355,7 @@ Global
 		{CE7CD3F0-5C5E-40E2-A937-CBDA0DC719B4} = {A63F8958-4FCA-4ED2-8297-918BC2B00CA5}
 		{190053B5-4366-4020-AC5D-1CD03E46A010} = {537C485D-57F7-4108-8CD0-8538C54CB572}
 		{A63F8958-4FCA-4ED2-8297-918BC2B00CA5} = {537C485D-57F7-4108-8CD0-8538C54CB572}
+		{1F9B572F-733D-4B16-AD32-A54A852EC3AF} = {537C485D-57F7-4108-8CD0-8538C54CB572}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BF211A1-AD9A-4012-8319-C8E74664B742}
