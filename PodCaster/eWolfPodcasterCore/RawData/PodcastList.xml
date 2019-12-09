@@ -1,6 +1,18 @@
 <eWolfPodcast>
   <Shows>
     <Show>
+      <Name>Bench Time</Name>
+      <Url>https://hoscalecustoms.podbean.com/feed.xml</Url>
+      <Category>Trains</Category>
+      <Description>Bench Time https://hoscalecustoms.podbean.com/</Description>
+    </Show>
+    <Show>
+      <Name>A ModelersLife (Model Railroading)</Name>
+      <Url>http://modelerslife.libsyn.com/rss</Url>
+      <Category>Trains</Category>
+      <Description>A ModelersLife http://modelerslife.libsyn.com/episode-135-jim-gore</Description>
+    </Show>
+    <Show>
       <Name>Elite: Escape Velocity</Name>
       <Url>http://laveradio.com/feed/escapevelocity.xml</Url>
       <Category>Drama Sci-fi</Category>

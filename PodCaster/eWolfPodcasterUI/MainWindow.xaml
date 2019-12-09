@@ -40,28 +40,28 @@
             <TextBlock Text="{Binding Title}" Margin="0,0,0,0" />-->
             <Button x:Name="btnPlay" VerticalAlignment="Top"
                                         Click="BtnPlay_Click"
-                                        Margin="260,10,0,0"
+                                        Margin="298,10,0,0"
                                         Width="30" Height="30" HorizontalAlignment="Left"
                                         Content=""
-                                        RenderTransformOrigin="-0.008,0.478" Grid.Column="2">
+                                        RenderTransformOrigin="-0.008,0.478">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/Play.png" />
                 </Button.Background>
             </Button>
             <Button x:Name="btnPause" VerticalAlignment="Top"
                                         Click="BtnPause_Click"
-                                        Margin="302,10,0,0"
+                                        Margin="333,10,0,0"
                                         Width="30" Height="30" HorizontalAlignment="Left"
-                                        Content="" Grid.Column="2">
+                                        Content="">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/Pause.png" />
                 </Button.Background>
             </Button>
             <Button x:Name="btnStop" VerticalAlignment="Top"
                                         Click="BtnStop_Click"
-                                        Margin="346,10,0,0"
+                                        Margin="368,10,0,0"
                                         Width="32" Height="30" HorizontalAlignment="Left"
-                                        Content="" Grid.Column="2">
+                                        Content="">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/Stop.png" />
                 </Button.Background>
@@ -90,14 +90,19 @@
                 Content="x1" />
             <Button x:Name="btnSpeedX15" VerticalAlignment="Top"
                 Click="BtnSpeedX1dot5_Click"
-                Margin="175,10,0,0"
+                Margin="209,10,0,0"
                 Width="26" Height="30" HorizontalAlignment="Left"
                 Content="x1.5" />
             <Button x:Name="btnSpeedX2" VerticalAlignment="Top"
                 Click="BtnSpeedX2_Click"
-                Margin="206,10,0,0"
+                Margin="240,10,0,0"
                 Width="26" Height="30" HorizontalAlignment="Left"
                 Content="x2" />
+            <Button x:Name="btnSpeedX12_Copy" VerticalAlignment="Top"
+                Click="BtnSpeedX12_Click"
+                Margin="175,10,0,0"
+                Width="26" Height="30" HorizontalAlignment="Left"
+                Content="x12" />
         </Grid>
 
         <Button Content="" HorizontalAlignment="Left" Margin="16,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonAddShowClick" Style="{StaticResource MyButton}">

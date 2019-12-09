@@ -116,6 +116,11 @@ namespace eWolfPodcasterUI
             _mediaPlayerWrapper.SetSpeed(1);
         }
 
+        private void BtnSpeedX12_Click(object sender, RoutedEventArgs e)
+        {
+            _mediaPlayerWrapper.SetSpeed(1.2f);
+        }
+
         private void BtnSpeedX1dot5_Click(object sender, RoutedEventArgs e)
         {
             _mediaPlayerWrapper.SetSpeed(1.5f);
