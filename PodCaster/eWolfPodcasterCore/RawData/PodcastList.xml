@@ -1,6 +1,12 @@
 <eWolfPodcast>
   <Shows>
     <Show>
+      <Name>Orbital Path</Name>
+      <Url>http://feeds.prx.org/orbitalpath/</Url>
+      <Category>Trains</Category>
+      <Description>Orbital Path with Michelle Thaller takes a look at the big questions of the cosmos and what the answers can reveal about life here on Earth.</Description>
+    </Show>
+    <Show>
       <Name>Bench Time</Name>
       <Url>https://hoscalecustoms.podbean.com/feed.xml</Url>
       <Category>Trains</Category>
