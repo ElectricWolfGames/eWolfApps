@@ -1,6 +1,5 @@
 ﻿using FileDuplicates.Data;
 using FileDuplicates.Services;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
