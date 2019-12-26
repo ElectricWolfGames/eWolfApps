@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Threading;
 
-namespace FileDuplicatesUI.Data
+namespace FileDuplicates.Data
 {
     public class FileDetailsObservableCollection<T> : ObservableCollection<T>
     {

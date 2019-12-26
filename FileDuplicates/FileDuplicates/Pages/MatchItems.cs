@@ -1,6 +1,6 @@
-﻿using FileDuplicatesUI.Data;
+﻿using FileDuplicates.Data;
 
-namespace FileDuplicatesUI.Pages
+namespace FileDuplicates.Pages
 {
     public class MatchItems
     {

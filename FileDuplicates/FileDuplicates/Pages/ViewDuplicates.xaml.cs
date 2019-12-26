@@ -1,5 +1,5 @@
-﻿using FileDuplicatesUI.Data;
-using FileDuplicatesUI.Services;
+﻿using FileDuplicates.Data;
+using FileDuplicates.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace FileDuplicatesUI.Pages
+namespace FileDuplicates.Pages
 {
     public partial class ViewDuplicates : Window
     {
@@ -101,7 +101,7 @@ namespace FileDuplicatesUI.Pages
         {
             foreach (var mi in _matchedItems)
             {
-                if (mi.Name.Contains("copy", StringComparison.OrdinalIgnoreCase))
+                if (mi.Name.ToUpper().Contains("COPY"))
                 {
                     mi.Action = Actions.Delete;
                 }

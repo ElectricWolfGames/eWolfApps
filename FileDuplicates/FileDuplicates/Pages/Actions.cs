@@ -1,4 +1,4 @@
-﻿namespace FileDuplicatesUI.Pages
+﻿namespace FileDuplicates.Pages
 {
     public enum Actions
     {

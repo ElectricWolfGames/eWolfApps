@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FileDuplicatesUI.Services
+namespace FileDuplicates.Services
 {
     public class ServiceLocator : ServiceLocatorBase
     {

@@ -1,8 +1,9 @@
-﻿<Application x:Class="FileDuplicatesUI.App"
+﻿<Application x:Class="FileDuplicates.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FileDuplicatesUI"
+             xmlns:local="clr-namespace:FileDuplicates"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+         
     </Application.Resources>
 </Application>

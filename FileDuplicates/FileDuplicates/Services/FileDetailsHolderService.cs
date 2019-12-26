@@ -1,6 +1,6 @@
-﻿using FileDuplicatesUI.Data;
+﻿using FileDuplicates.Data;
 
-namespace FileDuplicatesUI.Services
+namespace FileDuplicates.Services
 {
     public class FileDetailsHolderService
     {

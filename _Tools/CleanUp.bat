@@ -20,8 +20,8 @@ RD /S /Q ..\Common\eWolfCommon\obj
 RD /S /Q ..\Common\eWolfCommonUnitTests\bin
 RD /S /Q ..\Common\eWolfCommonUnitTests\obj
 
-RD /S /Q ..\FileDuplicates\FileDuplicatesUI\bin
-RD /S /Q ..\FileDuplicates\FileDuplicatesUI\obj
+RD /S /Q ..\FileDuplicates\FileDuplicates\bin
+RD /S /Q ..\FileDuplicates\FileDuplicates\obj
 
 RD /S /Q ..\PodCaster\eWolfPodcasterCore\bin
 RD /S /Q ..\PodCaster\eWolfPodcasterCore\obj
