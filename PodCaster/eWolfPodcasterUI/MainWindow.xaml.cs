@@ -83,6 +83,41 @@ namespace eWolfPodcasterUI
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        private void AddStaredShows()
+        {
+            Shows shows = (Shows)Shows.GetShowService;
+
+            TreeViewItem categoryNodeSelected = new TreeViewItem
+            {
+                Header = "Starred"
+            };
+
+            ShowsItemsTree.Items.Add(categoryNodeSelected);
+
+            IEnumerable<ShowControl> showsWithStar = shows.ShowList.Where(x => x != null && x.ShowOption.Starred);
+
+            if (!showsWithStar.Any())
+                return;
+
+            foreach (ShowControl show in showsWithStar)
+            {
+                TreeViewItem showNode = new TreeViewItem
+                {
+                    Header = show.Title + $" [ {show.EpisodesWatched}/{show.Episodes.Count} ]",
+                    Tag = show
+                };
+                categoryNodeSelected.Items.Add(showNode);
+            }
+        }
+
+        private void BtnClearHide_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHelper.ClearHidden(_currentShows);
+
+            Shows.GetShowService.Save();
+            ShowAllEpisodesFromShows();
+        }
+
         private void BtnClearWatch_Click(object sender, RoutedEventArgs e)
         {
             ShowHelper.ClearWatched(_currentShows);
@@ -169,6 +204,19 @@ namespace eWolfPodcasterUI
             PopulateTree();
         }
 
+        private void ButtonStarShowClick(object sender, RoutedEventArgs e)
+        {
+            TreeViewItem item = (TreeViewItem)ShowsItemsTree.SelectedItem;
+            if (item == null)
+                return;
+
+            ShowControl selectedItem = item.Tag as ShowControl;
+            selectedItem.ShowOption.Starred = !selectedItem.ShowOption.Starred;
+
+            Shows.GetShowService.Save();
+            PopulateTree();
+        }
+
         private void ButtonSubShowClick(object sender, RoutedEventArgs e)
         {
             TreeViewItem item = (TreeViewItem)ShowsItemsTree.SelectedItem;
@@ -190,7 +238,7 @@ namespace eWolfPodcasterUI
                 {
                     if (Shows.GetShowService.UpdateNextRSSFeeds())
                     {
-                        _rssTimer.Interval = _rssTimer.Interval + TimeSpan.FromMinutes(10);
+                        // _rssTimer.Interval = _rssTimer.Interval + TimeSpan.FromMinutes(10);
                     }
                 });
             }
@@ -204,7 +252,7 @@ namespace eWolfPodcasterUI
         {
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(5000)
+                Interval = TimeSpan.FromMilliseconds(2500)
             };
             timer.Tick += MediaPlayerIntervalUpdate;
             timer.Start();
@@ -214,7 +262,7 @@ namespace eWolfPodcasterUI
         {
             _rssTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(4000)
+                Interval = TimeSpan.FromMilliseconds(5000)
             };
             _rssTimer.Tick += UpdateRssFeedTimer;
             _rssTimer.Start();
@@ -320,9 +368,12 @@ namespace eWolfPodcasterUI
             ShowsItemsTree.Items.Clear();
             Shows shows = (Shows)Shows.GetShowService;
             List<string> groups = shows.Groups();
+
             groups.Add("Ungrouped");
 
             groups = groups.OrderBy(x => x).ToList();
+
+            AddStaredShows();
 
             foreach (string groupName in groups)
             {

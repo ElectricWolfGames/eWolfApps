@@ -68,9 +68,9 @@
             </Button>
             <Button x:Name="btnClearWatch" VerticalAlignment="Top"
                                         Click="BtnClearWatch_Click"
-                                        Margin="528,10,0,0"
-                                        Width="120" Height="30" HorizontalAlignment="Left"
-                                        Content="Un watched" />
+                                        Margin="554,10,0,0"
+                                        Width="94" Height="30" HorizontalAlignment="Left"
+                                        Content="Clear watched" />
             <Button x:Name="btnBackMinute" VerticalAlignment="Top"
                                         Click="BtnRewindMinute_Click"
                                         Margin="10,10,0,0"
@@ -103,6 +103,11 @@
                 Margin="175,10,0,0"
                 Width="26" Height="30" HorizontalAlignment="Left"
                 Content="x12" />
+            <Button x:Name="btnClearHide" VerticalAlignment="Top"
+                Click="BtnClearHide_Click"
+                Margin="712,10,0,0"
+                Width="71" Height="30" HorizontalAlignment="Left"
+                Content="Un-Hide" />
         </Grid>
 
         <Button Content="" HorizontalAlignment="Left" Margin="16,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonAddShowClick" Style="{StaticResource MyButton}">
@@ -123,6 +128,11 @@
         <Button Content="" HorizontalAlignment="Left" Margin="133,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonRefreshShowClick" Style="{StaticResource MyButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Images/Refresh.png" />
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="172,7,0,0" VerticalAlignment="Top" Width="34" Height="34" Click="ButtonStarShowClick" Style="{StaticResource MyButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/Star.png" />
             </Button.Background>
         </Button>
     </Grid>

@@ -2,7 +2,6 @@
 using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Library;
 using eWolfPodcasterUI.Pages;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml;

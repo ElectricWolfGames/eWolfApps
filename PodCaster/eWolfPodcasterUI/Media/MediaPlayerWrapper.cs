@@ -1,6 +1,5 @@
 ﻿using eWolfPodcasterCore.Data;
 using eWolfPodcasterCore.Interfaces;
-using eWolfPodcasterUI.UserControls;
 using System;
 using System.Windows.Media;
 

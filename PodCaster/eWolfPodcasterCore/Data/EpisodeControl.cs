@@ -106,7 +106,6 @@ namespace eWolfPodcasterCore.Data
 
         public void DownloadAsMp3()
         {
-
             Thread newThread = new Thread(Downloading);
             DownloadRetryCount++;
             newThread.Start();

@@ -1,6 +1,4 @@
 ﻿using eWolfPodcasterCore.Services;
-using System;
-using System.IO;
 
 namespace eWolfPodcasterCore.Logger
 {

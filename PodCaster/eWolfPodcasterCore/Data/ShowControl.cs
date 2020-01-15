@@ -62,6 +62,11 @@ namespace eWolfPodcasterCore.Data
 
         public bool UpdatedRssTurn { get; internal set; }
 
+        public void ClearHidden()
+        {
+            Episodes.ForEach(x => x.Hidden = false);
+        }
+
         public override string ToString()
         {
             return TitleCount;
@@ -81,7 +86,7 @@ namespace eWolfPodcasterCore.Data
             downloadFolder = Path.Combine(downloadFolder, Title);
             Directory.CreateDirectory(downloadFolder);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 List<EpisodeControl> orderedEpisodes = Episodes.OrderBy(x => x.DownloadRetryCount).ToList();
                 if (orderedEpisodes.Count == 0)
@@ -126,12 +131,6 @@ namespace eWolfPodcasterCore.Data
                 // safty catch
             }
             UpdateEpisode(episodes);
-        }
-
-        private string GetLastFolder(string filename)
-        {
-            string[] part = filename.Split('\\');
-            return part[part.Length - 2];
         }
 
         internal void UpdateEpisode(List<EpisodeControl> newEpisodes)
@@ -190,6 +189,12 @@ namespace eWolfPodcasterCore.Data
         private string GetDownloadFolder()
         {
             return ServiceLocator.Instance.GetService<IProjectDetails>().GetDownloadFolder();
+        }
+
+        private string GetLastFolder(string filename)
+        {
+            string[] part = filename.Split('\\');
+            return part[part.Length - 2];
         }
     }
 }

@@ -14,5 +14,7 @@ namespace eWolfPodcasterCore.Data
         public bool IncludeSubFolders { get; set; }
 
         public ShowStorageType ShowStorage { get; set; }
+
+        public bool Starred { get; set; }
     }
 }
