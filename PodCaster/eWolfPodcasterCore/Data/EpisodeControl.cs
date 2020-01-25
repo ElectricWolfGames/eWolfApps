@@ -27,6 +27,14 @@ namespace eWolfPodcasterCore.Data
             }
         }
 
+        public string ShowLength
+        {
+            get
+            {
+                return PlayedDetails.ShowLength.ToString("0:00");
+            }
+        }
+
         public long PlayedLength
         {
             get

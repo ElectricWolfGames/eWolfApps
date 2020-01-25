@@ -123,6 +123,14 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
+        public string ShowLength
+        {
+            get
+            {
+                return $"{_episodeData.ShowLength}";
+            }
+        }
+
         public string UrlToPlay
         {
             get
