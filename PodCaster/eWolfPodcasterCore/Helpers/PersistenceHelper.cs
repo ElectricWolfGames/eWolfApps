@@ -1,4 +1,5 @@
-﻿using eWolfPodcasterCore.Interfaces;
+﻿using eWolfCommon.Helpers;
+using eWolfPodcasterCore.Interfaces;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -68,6 +69,8 @@ namespace eWolfPodcasterCore.Helper
 
         public bool SaveDataSingle(ISaveable saveable)
         {
+            FileHelper.CreateBackFileDate(_outputFolder, saveable.GetFileName);
+
             string outputFileName = Path.Combine(_outputFolder, saveable.GetFileName);
             IFormatter formatter = new BinaryFormatter();
             Stream stream = null;
