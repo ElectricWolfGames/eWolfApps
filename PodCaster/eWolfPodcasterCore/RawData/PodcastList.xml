@@ -1,6 +1,24 @@
 <eWolfPodcast>
   <Shows>
     <Show>
+      <Name>Clarkesworld Magazine</Name>
+      <Url>http://clarkesworldmagazine.com/feed/rss/</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>Bubble</Name>
+      <Url>https://maximumfun.org/feeds/bubble.xml</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description></Description>
+    </Show>
+    <Show>
+      <Name>Girl in space</Name>
+      <Url>https://podcasts.apple.com/us/podcast/girl-in-space/id1281287693</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description></Description>
+    </Show>
+    <Show>
       <Name>RABBITS</Name>
       <Url>http://rabbits.libsyn.com/rss</Url>
       <Category>Drama Sci-fi</Category>
@@ -495,7 +513,7 @@
     <Show>
       <Name>Into The West (old time radio)</Name>
       <Url>http://feeds.feedburner.com/intothewestotr</Url>
-      <Category>Drama</Category>
+      <Category>Drama Vintage</Category>
       <Description></Description>
     </Show>
     <Show>
@@ -513,7 +531,7 @@
     <Show>
       <Name>Relic Radio Sci-Fi (old time radio)</Name>
       <Url>http://feeds.feedburner.com/relicradiosciencefiction</Url>
-      <Category>Drama</Category>
+      <Category>Drama Vintage</Category>
       <Description></Description>
     </Show>
     <Show>
@@ -537,7 +555,7 @@
     <Show>
       <Name>The Horror! (Old Time Radio)</Name>
       <Url>http://feeds.feedburner.com/horror</Url>
-      <Category>Drama</Category>
+      <Category>Drama Vintage</Category>
       <Description></Description>
     </Show>
     <Show>
@@ -573,13 +591,13 @@
     <Show>
       <Name>Old Time Radio Fans Podcast</Name>
       <Url>http://www.oldtimeradiofans.com/radio/wimpy_podcast.php</Url>
-      <Category>Drama</Category>
+      <Category>Drama Vintage</Category>
       <Description>Old time radio</Description>
     </Show>
     <Show>
       <Name>Science Fiction – Retro Radio Podcast</Name>
       <Url>http://feeds.feedburner.com/RetroRadioPodcastScienceFiction</Url>
-      <Category>Drama</Category>
+      <Category>Drama Vintage</Category>
       <Description>Science Fiction – Retro Radio Podcast</Description>
     </Show>
 
