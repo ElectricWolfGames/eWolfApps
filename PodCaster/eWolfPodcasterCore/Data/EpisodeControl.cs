@@ -11,8 +11,6 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class EpisodeControl : Episode, IPodCastInfo
     {
-        public int DownloadRetryCount { get; set; }
-
         public IEpisode EpisodeData
         {
             get; set;
@@ -24,14 +22,6 @@ namespace eWolfPodcasterCore.Data
             {
                 string offLineFileName = GetOffLineFileName();
                 return File.Exists(offLineFileName);
-            }
-        }
-
-        public string ShowLength
-        {
-            get
-            {
-                return PlayedDetails.ShowLength.ToString("0:00");
             }
         }
 
@@ -56,6 +46,14 @@ namespace eWolfPodcasterCore.Data
             set
             {
                 PlayedDetails.PlayedLengthScaled = value;
+            }
+        }
+
+        public string ShowLength
+        {
+            get
+            {
+                return PlayedDetails.ShowLength.ToString("0:00");
             }
         }
 
@@ -114,10 +112,9 @@ namespace eWolfPodcasterCore.Data
 
         public void DownloadAsMp3()
         {
-            Thread newThread = new Thread(Downloading);
-            DownloadRetryCount++;
-            newThread.Start();
-            Console.WriteLine("Started Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
+            var ds = DownloadService.GetDownloadService;
+            string downloadFileTo = GetOffLineFileName();
+            ds.Add(PodcastURL, downloadFileTo);
         }
 
         public string GetOffLineFileName()
@@ -183,23 +180,6 @@ namespace eWolfPodcasterCore.Data
                         PlayedDetails.ShowLength = showLength;
 
                     break;
-            }
-        }
-
-        private void Downloading()
-        {
-            try
-            {
-                string downloadFile = GetOffLineFileName();
-                using (WebClient webClient = new WebClient())
-                {
-                    webClient.DownloadFile(PodcastURL, downloadFile);
-                    Console.WriteLine("Finished Downloaded File \"{0}\" from \"{1}\"", Title, PodcastURL);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Failed podcast Downloaded File " + ex);
             }
         }
 

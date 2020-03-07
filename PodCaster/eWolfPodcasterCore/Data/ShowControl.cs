@@ -82,19 +82,13 @@ namespace eWolfPodcasterCore.Data
 
         internal void Download()
         {
-            string downloadFolder = GetDownloadFolder();
-            downloadFolder = Path.Combine(downloadFolder, Title);
-            Directory.CreateDirectory(downloadFolder);
-
-            for (int i = 0; i < 5; i++)
+            foreach (var ep in Episodes)
             {
-                List<EpisodeControl> orderedEpisodes = Episodes.OrderBy(x => x.DownloadRetryCount).ToList();
-                if (orderedEpisodes.Count == 0)
-                    return;
-
-                EpisodeControl ep = orderedEpisodes.First();
-                ep.ShowName = Title;
-                ep.DownloadAsMp3();
+                if (!ep.IsOffLine)
+                {
+                    ep.ShowName = Title;
+                    ep.DownloadAsMp3();
+                }
             }
         }
 

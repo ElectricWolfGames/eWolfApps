@@ -212,7 +212,7 @@ namespace eWolfPodcasterCore.Data
                 lock (_shows)
                 {
                     nextShowDownload.AutoDownloadTurn = true;
-                    Console.WriteLine($"Auto download {nextShowDownload.Title}");
+                    Console.WriteLine($"Download all shows for {nextShowDownload.Title}");
                     ServiceLocator.Instance.GetService<LoggerService>().AddError($"Auto download {nextShowDownload.Title}");
 
                     nextShowDownload.Download();

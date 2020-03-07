@@ -102,7 +102,7 @@
                 Click="BtnSpeedX12_Click"
                 Margin="175,10,0,0"
                 Width="26" Height="30" HorizontalAlignment="Left"
-                Content="x12" />
+                Content="x1.2" />
             <Button x:Name="btnClearHide" VerticalAlignment="Top"
                 Click="BtnClearHide_Click"
                 Margin="712,10,0,0"

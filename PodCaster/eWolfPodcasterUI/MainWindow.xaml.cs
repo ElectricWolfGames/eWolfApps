@@ -238,7 +238,7 @@ namespace eWolfPodcasterUI
                 {
                     if (Shows.GetShowService.UpdateNextRSSFeeds())
                     {
-                        // _rssTimer.Interval = _rssTimer.Interval + TimeSpan.FromMinutes(10);
+                        _rssTimer.Interval = TimeSpan.FromMinutes(5);
                     }
                 });
             }
@@ -252,7 +252,7 @@ namespace eWolfPodcasterUI
         {
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(2500)
+                Interval = TimeSpan.FromMilliseconds(2000)
             };
             timer.Tick += MediaPlayerIntervalUpdate;
             timer.Start();
@@ -262,7 +262,7 @@ namespace eWolfPodcasterUI
         {
             _rssTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(5000)
+                Interval = TimeSpan.FromMilliseconds(500)
             };
             _rssTimer.Tick += UpdateRssFeedTimer;
             _rssTimer.Start();

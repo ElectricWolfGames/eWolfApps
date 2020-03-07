@@ -16,7 +16,8 @@ namespace eWolfPodcasterCore.Services
                 { typeof(CategoryHolderService), new CategoryHolderService() },
                 { typeof(IShows), new Shows() },
                 { typeof(ShowLibraryService), new ShowLibraryService() },
-                { typeof(LoggerService), new LoggerService() }
+                { typeof(LoggerService), new LoggerService() },
+                { typeof(DownloadService), new DownloadService() }
             };
         }
 
