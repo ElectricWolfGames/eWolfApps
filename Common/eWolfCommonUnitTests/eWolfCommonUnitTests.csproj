@@ -55,6 +55,7 @@
     <Compile Include="Builders\HtmlStringExtensionsTests.cs" />
     <Compile Include="Collections\StoreUniqueListTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\TextHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Diagnostics\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Reflection\" />
     <Folder Include="Services\" />
   </ItemGroup>
