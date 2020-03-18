@@ -1,0 +1,6 @@
+
+
+Linked items like a podcast with many parts need to have them off set from the start
+a part from the main items
+
+

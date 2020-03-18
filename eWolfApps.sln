@@ -70,6 +70,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWolfTagHolders", "eWolfTag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWolfTagSystem.UnitTests", "eWolfTagSystem\eWolfTagSystem.UnitTests\eWolfTagSystem.UnitTests.csproj", "{57092857-455C-4F47-A2BF-D1461F935ECC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLineHelpers", "Common\CommandLineHelpers\CommandLineHelpers.csproj", "{E27EEB43-B577-49A6-A53E-2F963CA0805A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -390,6 +392,22 @@ Global
 		{57092857-455C-4F47-A2BF-D1461F935ECC}.Release|x64.Build.0 = Release|Any CPU
 		{57092857-455C-4F47-A2BF-D1461F935ECC}.Release|x86.ActiveCfg = Release|Any CPU
 		{57092857-455C-4F47-A2BF-D1461F935ECC}.Release|x86.Build.0 = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|x64.Build.0 = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|ARM.Build.0 = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|x64.ActiveCfg = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|x64.Build.0 = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -417,6 +435,7 @@ Global
 		{D91B975E-7DFE-45EE-BFC8-91791EA3FCBE} = {2E2F3EB7-01C1-4F40-AF96-B0FB06F03D2B}
 		{5BDE4C53-98F6-448E-8362-128AD10D1519} = {79803E45-8C83-408A-8003-DCE2762A7B0D}
 		{57092857-455C-4F47-A2BF-D1461F935ECC} = {79803E45-8C83-408A-8003-DCE2762A7B0D}
+		{E27EEB43-B577-49A6-A53E-2F963CA0805A} = {E4477379-7F62-447B-8B12-94337CFFE5D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BF211A1-AD9A-4012-8319-C8E74664B742}
