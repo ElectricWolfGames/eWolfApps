@@ -1,5 +1,221 @@
 <eWolfPodcast>
+  <!-- list of more podcasts https://fourble.co.uk/podcasts-->
   <Shows>
+    <Show>
+      <Name></Name>
+      <Url></Url>
+      <Category>Comedy</Category>
+      <Description>
+      </Description>
+    </Show>
+    <Show>
+      <Name></Name>
+      <Url></Url>
+      <Category>Comedy</Category>
+      <Description>
+      </Description>
+    </Show>
+    <Show>
+      <Name>Agatha Christie BBC Dramatisations</Name>
+      <Url>https://fourble.co.uk/bbcradio7-180411-7.rss</Url>
+      <Category>Drama</Category>
+      <Description>
+        BBC radio have produced over 70 full cast adaptations of Agatha Christie’s beloved crime stories, including Hercule Poirot and Miss Marple.
+      </Description>
+    </Show>
+    <Show>
+      <Name>After Henry</Name>
+      <Url>https://fourble.co.uk/afterhenry1-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        British radio sitcom about a widow and her family, written by Simon Brett, later televised. Prunella Scales and Joan Sanderson starred in both radio and television versions.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Im Sorry I Havent A Clue</Name>
+      <Url>https://fourble.co.uk/imsorryihave-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        Various radio episodes of I'm Sorry I Haven't A Clue from 1999-2004 with extra special programmes including "Humph Biography" and "Humphrey Lyttleton Tribute" which remembered the chairman of the programme after his death.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Journey Into Space</Name>
+      <Url>https://fourble.co.uk/journeyintospace-180411-7.rss</Url>
+      <Category>Drama</Category>
+      <Description>
+        BBC Radio science fiction drama serial written by Charles Chilton, first broadcast in 1958 as the series Operation Luna, followed by sequels from the same author including two series of Space Force, plus a sequel by Julian Simpson. Our square-jawed heroes confront the dangers of deep space and boldly charge towards another cliffhanger ending, courageously ignoring the mortal danger, and sometimes overlooking the laws of physics. 72 episodes plus 2 episodes of an interview with Charles Chilton.
+      </Description>
+    </Show>
+    <Show>
+      <Name>The Navy Lark</Name>
+      <Url>https://fourble.co.uk/navylarkthes-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        The Navy Lark was a BBC Radio comedy series that ran for 15 series between 1959 and 1976 with largely the sane cast, and, some would say, the same jokes. An ensemble cast played a number of characters, many with distinct catchphrases. Among the most memorable are the thieving Chief Petty Officer Pertwee, the oldest Sub Lieutenant in the Navy, Sub Lieutenant Phillips, Able Seaman Goldstein, Wren Chasen (the only sensible person in the crew), the long suffering Lieutenant Murray and their collective nemesis, Commander Povey.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Nebulous</Name>
+      <Url>https://fourble.co.uk/profnebulous-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        BBC Radio 4 science fiction spoof by Graham Duff broadcast in 18 episodes from 2005 to 2008, set on a post-apocalypse Earth where Professor Nebulous (Mark Gatiss) and his crew of misfits save the planet from highly unlikely catastrophes without adequate resources or funding or common sense.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Orbiter X</Name>
+      <Url>https://fourble.co.uk/orbiterx-180411-7.rss</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>
+        BBC science fiction serial written by B D Chapman and broadcast in 14 episodes in 1959. A bold new venture by the British space programme falls prey to a malignant power - can our square-jawed heroes escape deadly peril and save the day?
+      </Description>
+    </Show>
+    <Show>
+      <Name>Nightfall</Name>
+      <Url>https://fourble.co.uk/nightfallcbc-180411-7.rss</Url>
+      <Category>Horror</Category>
+      <Description>
+        Nightfall is the title of a radio drama series aired on CBC Radio from July 1980 to June 1983. While primarily a supernatural/horror series, Nightfall featured some episodes in other genres, such as science fiction, mystery, fantasy, and human drama. One episode was even adapted from a folk song by Stan Rogers. Some of Nightfall's episodes were so terrifying that the CBC registered numerous complaints and some affiliate stations dropped it. Despite this, the series went on to become one of the most popular shows in CBC Radio history, running 100 episodes that featured a mix of original tales and adaptations of both classic and obscure short stories.
+      </Description>
+    </Show>
+    <Show>
+      <Name>The Secret Life of Kenneth Williams</Name>
+      <Url>https://fourble.co.uk/secretlife-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        Kenneth Williams plays a spy, in this comedy series written by crime writer R D Wingfield.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Much-Binding-in-the-Marsh</Name>
+      <Url>https://fourble.co.uk/muchbindingi-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        The RAF station of Much-Binding was first introduced in a show from the Merry-go-round series on the 31st March 1944, and was around until 1954, although by that time, the RAF station was no more, and the former staff now ran a newspaper - The Weekly Bind.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Caesar</Name>
+      <Url>https://fourble.co.uk/caesar-180411-7.rss</Url>
+      <Category>Historical </Category>
+      <Description>
+        Historical drama about Rome's most influential emperors
+      </Description>
+    </Show>
+    <Show>
+      <Name>Charles Dickens drama collection</Name>
+      <Url>https://fourble.co.uk/thecharlesdi-180411-7.rss</Url>
+      <Category>Drama</Category>
+      <Description>
+        The Early Years includes the episodic adventure Nicholas Nickleby, comic tale The Pickwick Papers, poignant melodrama The Old Curiosity Shop and the much-loved Oliver Twist. Plus, there's the gripping historical novel Barnaby Rudge, picaresque comedy Martin Chuzzlewit and bittersweet tale of family relationships Dombey and Son.With their compelling plots, larger-than-life characters and vivid descriptions of Victorian life, Dickens' stories have captivated generations. These radio adaptations bring out all the hope and happiness, pathos and tragedy, satire and social realism of his seven classic masterpieces.Among the star cast are Anna Massey, Alex Jennings, Phil Daniels, Julia McKenzie, Tim McInnerny and Robert Glenister.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Doctor Who radio dramas</Name>
+      <Url>https://fourble.co.uk/dwradio-180411-7.rss</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>
+        The four radio series of Doctor Who made for BBC radio - Doctor Who and the Pescatons (4th Doctor, 1976), Slipback (6th Doctor, 1985), The Paradise of Death (3rd Doctor, 1993), The Ghosts of N-Space (3rd Doctor, 1996)
+      </Description>
+    </Show>
+    <Show>
+      <Name>Earthsearch</Name>
+      <Url>https://fourble.co.uk/earthsearch20-180411-7.rss</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>
+        BBC radio science fiction serial by James Follett, broadcast in 20 episodes in 1981 and 1982. The four crew members of a damaged spaceship, all born during the 100 year journey, want to return to Earth, the home world they have never seen, but the computers who really control the ship have other ideas...
+      </Description>
+    </Show>
+    <Show>
+      <Name>Hamish And Dougal - You'll Have Had Your Tea</Name>
+      <Url>https://fourble.co.uk/hadyourtea-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        BBC Radio 4 sitcom broadcast in 18 episodes from 2002 to 2007, starring Graeme Garden and Barry Cryer as the eponymous Scotsmen, with Alison Steadman and Jeremy Hardy, under the title "You'll Have Had Your Tea?" - the Scottish way of informing visitors that they will not be fed! The show is a spin-off from Radio 4's "antidote to panel games", "I'm Sorry I Haven't A Clue"; no pun is left undone, no entendre is left undoubled, in the same vein of humour as its progenitor.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Ghost Stories</Name>
+      <Url>https://fourble.co.uk/ghoststories-180411-7.rss</Url>
+      <Category>Drama</Category>
+      <Description>
+        An unsettling collection of stories from the long-running BBC Radio 4 horror series.
+      </Description>
+    </Show>
+    <Show>
+      <Name>Fear on Four</Name>
+      <Url>https://fourble.co.uk/fearon4-180411-7.rss</Url>
+      <Category>Drama</Category>
+      <Description>
+        An unsettling collection of full-cast dramas from the long-running BBC Radio 4 horror series, a revival of the earlier "Appointment with Fear".
+      </Description>
+    </Show>
+    <Show>
+      <Name>1940s BBC Comedy</Name>
+      <Url>https://fourble.co.uk/oldtimeradio-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        This is a collection of BBC radio comedies: "Band Waggon" starring Arthur Askey and Richard Murdoch; "ITMA" (It's That Man Again) starring Tommy Handley; "Much Binding in the Marsh" starring Richard Murdoch and Kenneth Horne; "HMS Waterlogged" starring Eric Barker, with Jon Pertwee; "Studio Stand Easy" starring Charlie Chester; "Up The Pole" starring Jimmy Jewel and Ben Warriss, with Jon Pertwee; "Life with the Lyons" starring Ben Lyon and Bebe Daniels; and "The Will Hay Programme" starring Will Hay.
+      </Description>
+    </Show>
+    <Show>
+      <Name>The Burkiss Way</Name>
+      <Url>https://fourble.co.uk/burkissway-180411-7.rss</Url>
+      <Category>Comedy</Category>
+      <Description>
+        BBC Radio 4 comedy sketch show written mainly by Andrew Marshall and David Renwick, starring Chris Emmett, Fred Harris, Jo Kendal, Nigel Rees and Denise Coffey, broadcast from 1976 to 1980
+      </Description>
+    </Show>
+
+    <Show>
+      <Name>Dan Carlin's Hardcore History</Name>
+      <Url>https://www.dancarlin.com/</Url>
+      <Category>History</Category>
+      <Description>
+        In 'Hardcore History' journalist and broadcaster Dan Carlin takes his 'Martian', unorthodox way of thinking and
+        applies it to the past. Was Alexander the Great as bad a person as Adolf Hitler? What would Apaches with
+        modern weapons be like? Will our modern civilization ever fall like civilizations from past eras? This isn't academic
+        history (and Carlin isn't a historian) but the podcast's unique blend of high drama, masterful narration and Twilight
+        Zone-style twists has entertained millions of listeners.
+      </Description>
+    </Show>
+
+    <Show>
+      <Name>Stuff You Missed in History Class</Name>
+      <Url>https://feeds.megaphone.fm/stuffyoumissedinhistoryclass</Url>
+      <Category>History</Category>
+      <Description>
+        Join Holly and Tracy as they bring you the greatest and strangest Stuff You Missed In History Class in this podcast by iHeartRadio.
+      </Description>
+    </Show>
+
+    <Show>
+      <Name>Tumanbay</Name>
+      <Url>https://feeds.megaphone.fm/tumanbay</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>
+        Tumanbay: the most magnificent city on earth. The beating heart of a vast empire. A city of dreams – where those who once arrived as slaves now reside in the seat of power.
+      </Description>
+    </Show>
+
+    <Show>
+      <Name>The Adventure Zone</Name>
+      <Url>https://feeds.simplecast.com/cYQVc__c</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>
+        Justin, Travis and Griffin McElroy from My Brother, My Brother and Me have recruited their dad Clint for a campaign of high adventure. Join the McElroys as they find their fortune and slay an unconscionable number of ... you know, kobolds or whatever in ... The Adventure Zone..
+      </Description>
+    </Show>
+    <Show>
+      <Name>Dust</Name>
+      <Url>https://feeds.megaphone.fm/dust</Url>
+      <Category>Drama Sci-fi</Category>
+      <Description>
+        DUST presents Season Two: FLIGHT 008. Eleven of the biggest writers in science fiction, through eleven unique stories, follow one single thread: a non-stop flight from Tokyo to San Francisco that passes through a wrinkle in spacetime and lands in the year 2040. New episodes every Wednesday! FLIGHT 008 is made in partnership with XPRIZE. DUST is the premier destination for immersive science fiction audio stories.
+      </Description>
+    </Show>
+
     <Show>
       <Name>Clarkesworld Magazine</Name>
       <Url>http://clarkesworldmagazine.com/feed/rss/</Url>
