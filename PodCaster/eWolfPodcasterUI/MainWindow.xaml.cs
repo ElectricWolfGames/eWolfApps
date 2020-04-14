@@ -101,9 +101,20 @@ namespace eWolfPodcasterUI
 
             foreach (ShowControl show in showsWithStar)
             {
+                bool local = (show.ShowOption.ShowStorage == ShowStorageType.LocalStorage);
+                string header;
+                if (local)
+                {
+                    header = show.Title + $"c: [ {show.EpisodesWatched}/{show.Episodes.Count} ]";
+                }
+                else
+                {
+                    header = show.Title + $"[ {show.EpisodesWatched}/{show.Episodes.Count} ]";
+                }
+
                 TreeViewItem showNode = new TreeViewItem
                 {
-                    Header = show.Title + $" [ {show.EpisodesWatched}/{show.Episodes.Count} ]",
+                    Header = header,
                     Tag = show
                 };
                 categoryNodeSelected.Items.Add(showNode);
@@ -391,11 +402,23 @@ namespace eWolfPodcasterUI
 
                 foreach (ShowControl show in showsInCat)
                 {
+                    bool local = (show.ShowOption.ShowStorage == ShowStorageType.LocalStorage);
+                    string header;
+                    if (local)
+                    {
+                        header = show.Title + $" (local) [ {show.EpisodesWatched}/{show.Episodes.Count} ]";
+                    }
+                    else
+                    {
+                        header = show.Title + $"[ {show.EpisodesWatched}/{show.Episodes.Count} ]";
+                    }
+
                     TreeViewItem showNode = new TreeViewItem
                     {
-                        Header = show.Title + $" [ {show.EpisodesWatched}/{show.Episodes.Count} ]",
+                        Header = header,
                         Tag = show
                     };
+
                     categoryNode.Items.Add(showNode);
                 }
             }
