@@ -14,5 +14,24 @@ namespace eWolfCommonUnitTests.Helpers
             string text = TextHelper.ToSentenceCase(from);
             text.Should().Be(to);
         }
+
+        [TestCase("Text", "Text")]
+        [TestCase("Text more words", "Text_more_words")]
+        [TestCase("TextMore Words", "TextMore_words")]
+        [TestCase("Text-More Words", "Text_more_words")]
+        [TestCase("Can't", "Cant")]
+        public void ShouldConvertTextToUnderscores(string from, string to)
+        {
+            string text = TextHelper.ConvertTextToUnderscores(from);
+            text.Should().Be(to);
+        }
+
+        [TestCase("value", "const string value = \"value\";")]
+        [TestCase("Value With Spaces", "const string valueWithSpaces = \"Value With Spaces\";")]
+        public void ShouldConvertTextToStringVar(string from, string to)
+        {
+            string text = TextHelper.ConvertTextToStringVar(from);
+            text.Should().Be(to);
+        }
     }
 }
