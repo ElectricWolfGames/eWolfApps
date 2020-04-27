@@ -31,10 +31,10 @@ namespace eWolfPodcasterUI.UserControls
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(ShowLibraryData.LastDownloadMessage))
+                /*if (string.IsNullOrWhiteSpace(ShowLibraryData.LastDownloadMessage))
                 {
                     GetEpisodeCount();
-                }
+                }*/
                 return ShowLibraryData.LastDownloadMessage;
             }
         }
