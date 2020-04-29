@@ -61,8 +61,6 @@ namespace eWolfPodcasterCore.Services
 
         public void Load(string fileName)
         {
-            CreateLibraryFileFromProject(fileName);
-
             try
             {
                 eWolfPodcast eWolfPodcast = ReadWriteFileHelper.ReadFromXmlFile<eWolfPodcast>(fileName);
@@ -94,7 +92,7 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
-        private void CreateLibraryFileFromProject(string fileName)
+        public void CreateLibraryFileFromProject(string fileName)
         {
             string file = ProjectItems.LoadFile("eWolfPodcasterCore.RawData.PodcastList.xml");
             File.WriteAllText(fileName, file);

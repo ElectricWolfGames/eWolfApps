@@ -29,6 +29,7 @@ namespace eWolfPodcasterUI
         private readonly ObservableCollection<PodcastEpisode> _shows = new ObservableCollection<PodcastEpisode>();
         private PodcastEpisode _currentPodcast = null;
         private List<ShowControl> _currentShows = new List<ShowControl>();
+        private ProjectDetails _projectDetails;
         private DispatcherTimer _rssTimer;
 
         public MainWindow()
@@ -36,14 +37,15 @@ namespace eWolfPodcasterUI
             InitializeComponent();
             DebugLog.LogInfo("App started");
 
-            ProjectDetails projectDetails = new ProjectDetails();
-            ServiceLocator.Instance.InjectService<IProjectDetails>(projectDetails);
+            _projectDetails = new ProjectDetails();
+            ServiceLocator.Instance.InjectService<IProjectDetails>(_projectDetails);
             ServiceLocator.Instance.InjectService<IMainBase>(this);
 
-            Shows.GetShowService.Load(projectDetails.GetOutputFolder());
+            Shows.GetShowService.Load(_projectDetails.GetOutputFolder());
             Shows.GetShowService.Save();
 
-            ShowLibraryService.GetLibrary.Load(projectDetails.GetLibraryPath());
+            ShowLibraryService.GetLibrary.CreateLibraryFileFromProject(_projectDetails.GetLibraryPath());
+            DownloadShowList(_projectDetails.GetOutputFolder());
 
             PopulateTree();
             PopulateLogPage();
@@ -204,6 +206,8 @@ namespace eWolfPodcasterUI
 
         private void ButtonLibraryShowClick(object sender, RoutedEventArgs e)
         {
+            ShowLibraryService.GetLibrary.Load(_projectDetails.GetLibraryPath());
+
             ShowLibrary addNewShow = new ShowLibrary { };
             addNewShow.ShowDialog();
             Shows.GetShowService.Save();
@@ -277,6 +281,13 @@ namespace eWolfPodcasterUI
             };
             _rssTimer.Tick += UpdateRssFeedTimer;
             _rssTimer.Start();
+        }
+
+        private void DownloadShowList(string downloadFileTo)
+        {
+            var ds = DownloadService.GetDownloadService;
+            string fileToDownload = "http://electricwolf.co.uk/Podcaster/PodcastList.xml";
+            ds.Add(fileToDownload, downloadFileTo + "\\PodcastList.xml");
         }
 
         private void EditSelectedItem(ShowControl sc)

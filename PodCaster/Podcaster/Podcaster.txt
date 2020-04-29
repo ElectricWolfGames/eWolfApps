@@ -1,4 +1,10 @@
 
+2020/04/27
+* Add a download library from web button - public_html/Podcaster/PodcastList.xml
+* Upload app - add an appsetting part so we can not store the password on the server
+  Appsetting could have other settings as well - like the download folder.
+
+
 
 Linked items like a podcast with many parts need to have them off set from the start
 a part from the main items

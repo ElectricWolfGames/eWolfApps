@@ -30,7 +30,7 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
-        internal void Add(string url, string downloadFileTo)
+        public void Add(string url, string downloadFileTo)
         {
             var array = _downloadqueue.ToArray();
             if (array.Any(x => x.From == url))
