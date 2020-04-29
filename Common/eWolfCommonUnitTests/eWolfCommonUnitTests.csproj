@@ -68,15 +68,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\eWolfCommon\eWolfCommon.csproj">
-      <Project>{BBFAEC0A-F7DD-4667-BF9A-3DE2246402DB}</Project>
-      <Name>eWolfCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Diagnostics\" />
     <Folder Include="Reflection\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eWolfCommon\eWolfCommon.csproj">
+      <Project>{12085810-f74b-4ec6-bce5-f82baad0c65b}</Project>
+      <Name>eWolfCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
