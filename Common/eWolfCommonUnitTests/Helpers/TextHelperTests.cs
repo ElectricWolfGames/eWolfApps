@@ -19,6 +19,7 @@ namespace eWolfCommonUnitTests.Helpers
         [TestCase("Text more words", "Text_more_words")]
         [TestCase("TextMore Words", "TextMore_words")]
         [TestCase("Text-More Words", "Text_more_words")]
+        [TestCase("dot.dot", "dot_dot")]
         [TestCase("Can't", "Cant")]
         public void ShouldConvertTextToUnderscores(string from, string to)
         {

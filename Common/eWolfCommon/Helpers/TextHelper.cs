@@ -13,6 +13,7 @@ namespace eWolfCommon.Helpers
         {
             sentence = sentence.Replace('-', ' ');
             sentence = sentence.Replace("\'", "");
+            sentence = sentence.Replace('.', '_');
             string[] words = sentence.Split(' ');
 
             if (words.Length > 1)
