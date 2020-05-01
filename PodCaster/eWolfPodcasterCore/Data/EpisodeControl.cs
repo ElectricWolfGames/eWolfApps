@@ -3,8 +3,6 @@ using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Services;
 using System;
 using System.IO;
-using System.Net;
-using System.Threading;
 
 namespace eWolfPodcasterCore.Data
 {

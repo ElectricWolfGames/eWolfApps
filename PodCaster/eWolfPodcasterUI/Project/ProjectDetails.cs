@@ -1,4 +1,5 @@
 ﻿using eWolfPodcasterCore.Interfaces;
+using eWolfPodcasterCore.Services;
 using System;
 using System.IO;
 
@@ -13,7 +14,7 @@ namespace eWolfPodcasterUI.Project
 
         public string GetDownloadFolder()
         {
-            return @"C:\Personal\PodCastData\Downloads\";
+            return SettingService.GetSetting.DownloadFolder;
         }
 
         public string GetLibraryPath()
