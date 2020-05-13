@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 
 namespace FileDuplicates.Data
 {
+    [Serializable]
     public class FileDetails
     {
         public string FileName { get; set; }
@@ -22,6 +23,7 @@ namespace FileDuplicates.Data
 
         private string _hashcode;
 
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
         public List<FileDetails> Matches { get; set; } = new List<FileDetails>();
 
         public string HashCode { get { return _hashcode; } }

@@ -15,12 +15,23 @@ namespace FileDuplicates
     /// </summary>
     public partial class MainWindow : Window
     {
+        private FileDetailsObservableCollection<FileDetails> ShowDetails = new FileDetailsObservableCollection<FileDetails>();
+
         public MainWindow()
         {
             InitializeComponent();
 
             FileDetailsHolderService fileDetailsHolderService = Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>();
-            ItemList.ItemsSource = fileDetailsHolderService.Details;
+
+            FileDetailsHolderService f = FileDetailsHolderService.Load(@"C:\Temp\");
+            fileDetailsHolderService.AddFrom(f);
+            ShowDetails.Clear();
+            foreach (var f2 in f.Details)
+            {
+                ShowDetails.Add(f2);
+            }
+
+            ItemList.ItemsSource = ShowDetails;
         }
 
         private async void CheckAllFiles_Click(object sender, RoutedEventArgs e)
@@ -43,6 +54,7 @@ namespace FileDuplicates
                 {
                     FileDetails fd = new FileDetails(file);
                     fileDetailsHolderService.Details.Add(fd);
+                    ShowDetails.Add(fd);
                 }
             });
 
@@ -70,7 +82,8 @@ namespace FileDuplicates
 
         private async void MatchAllFiles_Click(object sender, RoutedEventArgs e)
         {
-            FileDetailsHolderService fileDetailsHolderService = Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>();
+            /*FileDetailsHolderService fileDetailsHolderService = Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>();
+
             ObservableCollection<FileDetails> fileDetails = fileDetailsHolderService.Details;
 
             List<FileDetails> copy = new List<FileDetails>();
@@ -101,12 +114,13 @@ namespace FileDuplicates
                 {
                     fileDetails.Remove(removed);
                 }
-                /*if (!fd.Matched)
-                {
-                    fileDetails.Remove(fd);
-                }*/
-            }
+            }*/
             this.ItemList.Items.Refresh();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            FileDetailsHolderService.Save(Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>(), @"C:\Temp\");
         }
     }
 }
