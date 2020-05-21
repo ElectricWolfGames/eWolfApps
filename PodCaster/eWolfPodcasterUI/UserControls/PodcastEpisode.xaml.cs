@@ -123,6 +123,14 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
+        public string ShowDate
+        {
+            get
+            {
+                return $"{_episodeData.PublishedDate}";
+            }
+        }
+
         public string ShowLength
         {
             get
