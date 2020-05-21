@@ -37,14 +37,13 @@ namespace FileDuplicates.Data
             FileName = Path.GetFileName(fullPath);
             FilePath = fullPath.Replace(FileName, string.Empty);
             CreateCode();
-            FileDetails fd = new FileDetails();
         }
 
         public string FullFilePath
         {
             get
             {
-                return $"{FilePath}\\{FileName}";
+                return $"{FilePath}{FileName}";
             }
         }
 

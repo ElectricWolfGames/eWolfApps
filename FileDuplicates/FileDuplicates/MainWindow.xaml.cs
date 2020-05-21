@@ -4,6 +4,7 @@ using FileDuplicates.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,15 +22,12 @@ namespace FileDuplicates
         {
             InitializeComponent();
 
-            FileDetailsHolderService fileDetailsHolderService = Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>();
+            Drives.Items.Add(@"C:\");
+            Drives.Items.Add(@"E:\");
+            Drives.Items.Add(@"G:\");
+            Drives.Items.Add(@"F:\");
 
-            FileDetailsHolderService f = FileDetailsHolderService.Load(@"C:\Temp\");
-            fileDetailsHolderService.AddFrom(f);
-            ShowDetails.Clear();
-            foreach (var f2 in f.Details)
-            {
-                ShowDetails.Add(f2);
-            }
+            Drives.SelectedIndex = 0;
 
             ItemList.ItemsSource = ShowDetails;
         }
@@ -44,7 +42,7 @@ namespace FileDuplicates
             CheckAllFiles.Content = "Go Started";
 
             FileDetailsHolderService fileDetailsHolderService = ServiceLocator.Instance.GetService<FileDetailsHolderService>();
-            fileDetailsHolderService.Details.Clear();
+            // fileDetailsHolderService.Details.Clear();
 
             string[] files = Directory.GetFiles(fileName, "*.*", SearchOption.AllDirectories);
 
@@ -52,9 +50,12 @@ namespace FileDuplicates
             {
                 foreach (string file in files)
                 {
-                    FileDetails fd = new FileDetails(file);
-                    fileDetailsHolderService.Details.Add(fd);
-                    ShowDetails.Add(fd);
+                    if (!fileDetailsHolderService.Details.Any(x => x.FullFilePath == file))
+                    {
+                        FileDetails fd = new FileDetails(file);
+                        fileDetailsHolderService.Details.Add(fd);
+                        ShowDetails.Add(fd);
+                    }
                 }
             });
 
@@ -82,10 +83,8 @@ namespace FileDuplicates
 
         private async void MatchAllFiles_Click(object sender, RoutedEventArgs e)
         {
-            /*FileDetailsHolderService fileDetailsHolderService = Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>();
-
-            ObservableCollection<FileDetails> fileDetails = fileDetailsHolderService.Details;
-
+            FileDetailsHolderService fileDetailsHolderService = ServiceLocator.Instance.GetService<FileDetailsHolderService>();
+            List<FileDetails> fileDetails = fileDetailsHolderService.Details;
             List<FileDetails> copy = new List<FileDetails>();
             foreach (var fd in fileDetails)
             {
@@ -114,13 +113,37 @@ namespace FileDuplicates
                 {
                     fileDetails.Remove(removed);
                 }
-            }*/
+            }
+
+            ShowDetails.Clear();
+            foreach (var f2 in fileDetailsHolderService.Details)
+            {
+                ShowDetails.Add(f2);
+            }
+
             this.ItemList.Items.Refresh();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            FileDetailsHolderService.Save(Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>(), @"C:\Temp\");
+            string drive = Drives.SelectedItem.ToString();
+            FileDetailsHolderService.Save(Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>(), $@"{drive}Temp\");
+        }
+
+        private void Drives_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string drive = Drives.SelectedItem.ToString();
+            FileDetailsHolderService fileDetailsHolderService = ServiceLocator.Instance.GetService<FileDetailsHolderService>();
+            FileDetailsHolderService f = FileDetailsHolderService.Load($@"{drive}Temp\");
+            fileDetailsHolderService.AddFrom(f);
+            ShowDetails.Clear();
+            if (f != null)
+            {
+                foreach (var f2 in f.Details)
+                {
+                    ShowDetails.Add(f2);
+                }
+            }
         }
     }
 }
