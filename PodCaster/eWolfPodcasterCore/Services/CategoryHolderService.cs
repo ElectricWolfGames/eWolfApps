@@ -23,7 +23,11 @@ namespace eWolfPodcasterCore.Services
                 new CatergeryData("Drama Sci-fi"),
                 new CatergeryData("Drama Others"),
                 new CatergeryData("Drama Historical"),
-                new CatergeryData("Comedy")
+                new CatergeryData("Comedy"),
+
+                new CatergeryData("History"),
+                new CatergeryData("Country"),
+                new CatergeryData("Gaming")
             };
         }
 

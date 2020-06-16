@@ -41,12 +41,12 @@ namespace eWolfPodcasterCore.Services
             try
             {
                 // Get the configuration file.
-                System.Configuration.Configuration config =
+                Configuration config =
                     ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
                 // Get the appSettings section.
-                System.Configuration.AppSettingsSection appSettings =
-                    (System.Configuration.AppSettingsSection)config.GetSection("appSettings");
+                AppSettingsSection appSettings =
+                    (AppSettingsSection)config.GetSection("appSettings");
 
                 // Get the auxiliary file name.
                 Console.WriteLine("Auxiliary file: {0}", config.AppSettings.File);

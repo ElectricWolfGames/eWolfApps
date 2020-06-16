@@ -16,6 +16,78 @@
       </Description>
     </Show>
     <Show>
+      <Name>BBC The History Hour</Name>
+      <Url>https://podcasts.files.bbci.co.uk/p016tmg1.rss</Url>
+      <Category>History</Category>
+      <Description>
+        An hour of historical reporting told by the people who were there.
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC In Out Time</Name>
+      <Url>https://podcasts.files.bbci.co.uk/b006qykl.rss</Url>
+      <Category>History</Category>
+      <Description>
+        Melvyn Bragg and guests discuss the history of ideas
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC HomeSchool History</Name>
+      <Url>https://podcasts.files.bbci.co.uk/m000hmmf.rss</Url>
+      <Category>History</Category>
+      <Description>
+        Fun history lessons for all the family, presented by Horrible Histories' Greg Jenner. Full of facts and jokes, the series brings to life a broad range of historical topics.
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC Youre Dead to me</Name>
+      <Url>https://podcasts.files.bbci.co.uk/p07mdbhg.rss</Url>
+      <Category>History</Category>
+      <Description>
+        The history podcast for people who don’t like history… and those who do. Greg Jenner brings together the best names in comedy and history to learn and laugh about the past.
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC World War One</Name>
+      <Url>https://podcasts.files.bbci.co.uk/p02sx794.rss</Url>
+      <Category>History</Category>
+      <Description>
+        The events of the first truly global war and its devastating and far reaching impact.
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC Country Focus</Name>
+      <Url>https://podcasts.files.bbci.co.uk/b0079frs.rss</Url>
+      <Category>Country</Category>
+      <Description>
+        Programme serving everyone living in the countryside and tackling the issues affecting them. With rural, farming and environmental news
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC Ramblings</Name>
+      <Url>https://podcasts.files.bbci.co.uk/b006xrr2.rss</Url>
+      <Category>Country</Category>
+      <Description>
+        Clare Balding joins notable and interesting people for a walk through the countryside
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC Open Country</Name>
+      <Url>https://podcasts.files.bbci.co.uk/b006qgft.rss</Url>
+      <Category>Country</Category>
+      <Description>
+        Countryside magazine featuring the people and wildlife that shape the landscape of the British Isles
+      </Description>
+    </Show>
+    <Show>
+      <Name>BBC Lets talk about tech</Name>
+      <Url>https://podcasts.files.bbci.co.uk/p02nrxgq.rss</Url>
+      <Category>Gaming</Category>
+      <Description>
+        BBC Radio 5 live’s award winning gaming podcast, discussing the world of video games and games culture.
+      </Description>
+    </Show>
+    <Show>
       <Name>Agatha Christie BBC Dramatisations</Name>
       <Url>https://fourble.co.uk/bbcradio7-180411-7.rss</Url>
       <Category>Drama</Category>
