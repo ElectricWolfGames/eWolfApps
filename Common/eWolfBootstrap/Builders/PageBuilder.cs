@@ -1,22 +1,29 @@
 ﻿using eWolfBootstrap.Helpers;
 using eWolfBootstrap.Interfaces;
-using System;
 using System.IO;
 using System.Text;
 
-namespace eWolfBootstrap.Builder
+namespace eWolfBootstrap.Builders
 {
     public class PageBuilder : IPageBuilder
     {
-        private string _fileName;
-        private string _path;
-        private StringBuilder _stringBuilder = new StringBuilder();
+        protected string _fileName;
+        protected string _path;
+        protected StringBuilder _stringBuilder = new StringBuilder();
 
         public PageBuilder(string fileName, string path, IPageHeader pageHeader)
         {
             _fileName = fileName;
             _path = path;
-            _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader));
+            _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, ""));
+            _stringBuilder.Append("<Body>");
+        }
+
+        public PageBuilder(string fileName, string path, IPageHeader pageHeader, string offSet)
+        {
+            _fileName = fileName;
+            _path = path;
+            _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, offSet));
             _stringBuilder.Append("<Body>");
         }
 
@@ -28,12 +35,32 @@ namespace eWolfBootstrap.Builder
             _stringBuilder.Append(text);
         }
 
+        public void AddStickyHeader(string name)
+        {
+            string text = @"<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById(" + name + @");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add('sticky');
+  } else {
+    header.classList.remove('sticky');
+  }
+}
+</script>";
+
+            _stringBuilder.Append(text);
+        }
+
         public string GetString()
         {
             return _stringBuilder.ToString();
         }
 
-        public void Output()
+        public virtual void Output()
         {
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
