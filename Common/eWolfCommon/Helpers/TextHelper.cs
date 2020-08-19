@@ -42,8 +42,6 @@ namespace eWolfCommon.Helpers
             string text = $"const string {wordSpaces} = \"{words}\";";
 
             return text;
-            
         }
-
     }
 }

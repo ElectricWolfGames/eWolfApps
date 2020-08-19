@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace eWolfCommon.Helpers
+namespace eWolfCommon.FileIO
 {
     public class PersistenceHelper<T>
     {

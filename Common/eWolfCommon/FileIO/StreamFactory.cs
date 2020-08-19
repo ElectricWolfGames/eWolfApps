@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace eWolfCommon.Helpers
+namespace eWolfCommon.FileIO
 {
     public static class StreamFactory
     {

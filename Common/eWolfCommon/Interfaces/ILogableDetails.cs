@@ -1,4 +1,4 @@
-﻿namespace eWolfCommon.Interface
+﻿namespace eWolfCommon.Interfaces
 {
     public interface ILogableDetails
     {
