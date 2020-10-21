@@ -3,4 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Helpers\HtmlExtractHelpers.cs~RF32d5757e.TMP" />
+  </ItemGroup>
 </Project>

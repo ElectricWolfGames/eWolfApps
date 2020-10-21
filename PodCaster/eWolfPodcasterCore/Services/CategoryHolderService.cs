@@ -27,7 +27,8 @@ namespace eWolfPodcasterCore.Services
 
                 new CatergeryData("History"),
                 new CatergeryData("Country"),
-                new CatergeryData("Gaming")
+                new CatergeryData("Gaming"),
+                new CatergeryData("Trains")
             };
         }
 
