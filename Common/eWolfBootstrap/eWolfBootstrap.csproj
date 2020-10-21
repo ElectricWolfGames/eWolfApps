@@ -7,4 +7,12 @@
   <ItemGroup>
     <None Remove="Helpers\HtmlExtractHelpers.cs~RF32d5757e.TMP" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eWolfCommon\eWolfCommon.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using eWolfBootstrap.Helpers;
 using eWolfBootstrap.Interfaces;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -74,6 +75,27 @@ function myFunction() {
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, _stringBuilder.ToString());
+        }
+
+        public void AddImages(string htmlpath, string imagePath, string path)
+        {
+            List<string> images = ImageHelper.GetAllImages(path);
+            Append("<div class='container mt-4'><div class='row'>");
+            int count = 2;
+            foreach (string layoutImage in images)
+            {
+                if (images.Contains(layoutImage))
+                {
+                    HTMLHelper.AddImageToPage(htmlpath, imagePath, this, layoutImage);
+                    if (count-- == 0)
+                    {
+                        count = 2;
+                        Append("</div></div>");
+                        Append("<div class='container mt-4'><div class='row'>");
+                    }
+                }
+            }
+            Append("</div></div>");
         }
     }
 }
