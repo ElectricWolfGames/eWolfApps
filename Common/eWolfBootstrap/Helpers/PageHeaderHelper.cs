@@ -21,6 +21,13 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append($"<meta name='author' content='{pageDetails.Author}'>");
             stringBuilder.Append("    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>");
             stringBuilder.Append($@"    <link rel='stylesheet' href='{offSet}Scripts/style.css'>");
+            stringBuilder.Append($@"    <script type='text/javascript' src='{offSet}Scripts/chart.js'></script>");
+
+            if (pageDetails.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
+            {
+                stringBuilder.Append(@"<link rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css'>");
+            }
+
             stringBuilder.Append(@"    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>");
             stringBuilder.Append(@"    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>");
             stringBuilder.Append(@"    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>");
@@ -36,9 +43,9 @@ namespace eWolfBootstrap.Helpers
         {
             sb.Append(@"
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src='https://www.googletagmanager.com/gtag/js?id=UA-12875541-9'></script>
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-180928318-1'></script>
 <script>
-  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date());  gtag('config', 'UA-12875541-9');
+  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date());  gtag('config', 'UA-180928318-1');
 </script>");
         }
     }
