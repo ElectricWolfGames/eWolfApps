@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using eWolfBootstrap.Enums;
+using System.Collections.Generic;
 
 namespace eWolfBootstrap.Interfaces
 {
     public interface IPageHeader
     {
-        string Title { get; set; }
+        string Author { get; set; }
+        List<BootstrapOptions> ExtraIncludes { get; set; }
         List<string> Keywords { get; set; }
         string MetaDetails { get; set; }
-
-        string Author { get; set; }
+        string Title { get; set; }
     }
 }

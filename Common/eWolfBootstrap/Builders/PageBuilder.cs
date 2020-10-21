@@ -10,9 +10,11 @@ namespace eWolfBootstrap.Builders
         protected string _fileName;
         protected string _path;
         protected StringBuilder _stringBuilder = new StringBuilder();
+        private IPageHeader _pageHeader;
 
         public PageBuilder(string fileName, string path, IPageHeader pageHeader)
         {
+            _pageHeader = pageHeader;
             _fileName = fileName;
             _path = path;
             _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, ""));
@@ -21,6 +23,7 @@ namespace eWolfBootstrap.Builders
 
         public PageBuilder(string fileName, string path, IPageHeader pageHeader, string offSet)
         {
+            _pageHeader = pageHeader;
             _fileName = fileName;
             _path = path;
             _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, offSet));
@@ -62,6 +65,12 @@ function myFunction() {
 
         public virtual void Output()
         {
+            if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
+            {
+                _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js'></script>");
+                _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/locale/bootstrap-table-zh-CN.min.js'></script>");
+            }
+
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, _stringBuilder.ToString());
