@@ -15,7 +15,7 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append("    <meta charset='UTF-8'>");
             stringBuilder.Append($"    <title>{pageDetails.Title}</title>");
             stringBuilder.Append("<meta http-equiv='Content -Type' content='text/html; charset=UTF-8'>");
-            stringBuilder.Append($"<meta name='description' content='{pageDetails.MetaDetails}'/>");
+            stringBuilder.Append($"<meta name='description' content='{pageDetails.Description}'/>");
             stringBuilder.Append($"<meta name='keywords' content='{string.Join(" ", pageDetails.Keywords)}'/>");
             stringBuilder.Append($"<meta name='title' content='{pageDetails.Title}'/>");
             stringBuilder.Append($"<meta name='author' content='{pageDetails.Author}'>");

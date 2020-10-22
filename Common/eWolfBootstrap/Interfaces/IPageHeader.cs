@@ -8,7 +8,7 @@ namespace eWolfBootstrap.Interfaces
         string Author { get; set; }
         List<BootstrapOptions> ExtraIncludes { get; set; }
         List<string> Keywords { get; set; }
-        string MetaDetails { get; set; }
         string Title { get; set; }
+        string Description { get; set; }
     }
 }
