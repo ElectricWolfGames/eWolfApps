@@ -34,9 +34,25 @@ namespace eWolfBootstrap.Builders
         public PageBuilder()
         { }
 
-        public void Append(string text)
+        public void AddImages(string htmlpath, string imagePath, string path)
         {
-            _stringBuilder.Append(text);
+            List<string> images = ImageHelper.GetAllImages(path);
+            Append("<div class='container mt-4'><div class='row'>");
+            int count = 2;
+            foreach (string layoutImage in images)
+            {
+                if (images.Contains(layoutImage))
+                {
+                    HTMLHelper.AddImageToPage(htmlpath, imagePath, this, layoutImage);
+                    if (count-- == 0)
+                    {
+                        count = 2;
+                        Append("</div></div>");
+                        Append("<div class='container mt-4'><div class='row'>");
+                    }
+                }
+            }
+            Append("</div></div>");
         }
 
         public void AddStickyHeader(string name)
@@ -59,9 +75,31 @@ function myFunction() {
             _stringBuilder.Append(text);
         }
 
+        public void Append(string text)
+        {
+            _stringBuilder.Append(text);
+        }
+
         public string GetString()
         {
             return _stringBuilder.ToString();
+        }
+
+        public void Jumbotron(string title, string body)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("<div class='jumbotron'>");
+            stringBuilder.AppendLine("<div class='row'>");
+            stringBuilder.AppendLine("<div class='col-md-4'>");
+            stringBuilder.AppendLine(title);
+            stringBuilder.AppendLine(body);
+
+            stringBuilder.AppendLine("</div>");
+            stringBuilder.AppendLine("</div>");
+            stringBuilder.AppendLine("</div>");
+
+            Append(stringBuilder.ToString());
         }
 
         public virtual void Output()
@@ -75,27 +113,6 @@ function myFunction() {
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, _stringBuilder.ToString());
-        }
-
-        public void AddImages(string htmlpath, string imagePath, string path)
-        {
-            List<string> images = ImageHelper.GetAllImages(path);
-            Append("<div class='container mt-4'><div class='row'>");
-            int count = 2;
-            foreach (string layoutImage in images)
-            {
-                if (images.Contains(layoutImage))
-                {
-                    HTMLHelper.AddImageToPage(htmlpath, imagePath, this, layoutImage);
-                    if (count-- == 0)
-                    {
-                        count = 2;
-                        Append("</div></div>");
-                        Append("<div class='container mt-4'><div class='row'>");
-                    }
-                }
-            }
-            Append("</div></div>");
         }
     }
 }
