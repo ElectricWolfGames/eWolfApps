@@ -68,13 +68,13 @@ namespace eWolfBootstrap.Helpers
             return word;
         }
 
-        public static string RemoveAbbrKeepInner(string text)
+        public static string RemoveKeepInner(string text, string tagName)
         {
             string[] tagGroups = CreateTagGroups(text);
 
             foreach (string line in tagGroups)
             {
-                if (!line.Contains(text))
+                if (!line.Contains(tagName))
                     continue;
 
                 return GetTextFromTagPair(line);

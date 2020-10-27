@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using eWolfBootstrap.Helpers;
+using System.Collections.Generic;
 
 namespace eWolfBootstrap.HtmlExtracts
 {
@@ -58,9 +59,10 @@ namespace eWolfBootstrap.HtmlExtracts
             if (tag == "Whyte" && name.Contains("2-6-4"))
             {
                 // need to call HTMLRemover
+
                 int i = 0;
                 i++;
-                return "2-6-4";
+                return "2-6-4" + HTMLRemover.RemoveKeepInner(name, "abbr");
             }
 
             if (name.Contains("18.8 short tons"))
