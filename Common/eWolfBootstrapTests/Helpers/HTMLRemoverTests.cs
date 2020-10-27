@@ -7,9 +7,9 @@ namespace eWolfBootstrapTests.Helpers
     public class HTMLRemoverTests
     {
         [Test]
-        [TestCase("<abbr >More text here</abbr>", "addr", "More text here")]
-        [TestCase("<abbr>More text here</abbr>", "addr", "More text here")]
-        [TestCase("<abbr title=\'Side tank\'>T</abbr>", "addr", "T")]
+        [TestCase("<abbr >More text here</abbr>", "abbr", "More text here")]
+        [TestCase("<abbr>More text here</abbr>", "abbr", "More text here")]
+        [TestCase("<abbr title=\'Side tank\'>T</abbr>", "abbr", "T")]
         public void RemoveAbbrKeepInnerTests(string html, string tagName, string expected)
         {
             string results = HTMLRemover.RemoveKeepInner(html, tagName);
