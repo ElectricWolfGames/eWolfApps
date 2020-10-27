@@ -52,8 +52,36 @@ namespace eWolfBootstrap.HtmlExtracts
         public string GetDisplayText(string tag)
         {
             string name = GetValue(tag);
-            string displayName = name;
+            if (string.IsNullOrWhiteSpace(name))
+                return string.Empty;
 
+            if (tag == "Whyte" && name.Contains("2-6-4"))
+            {
+                // need to call HTMLRemover
+                int i = 0;
+                i++;
+                return "2-6-4";
+            }
+
+            if (name.Contains("18.8 short tons"))
+            {
+                int endA = name.LastIndexOf("<a");
+                if (endA > 2)
+                {
+                    name = name.Substring(0, endA - 1);
+                }
+            }
+
+            if (name.Contains("buffers"))
+            {
+                int endA = name.LastIndexOf("<a");
+                if (endA > 2)
+                {
+                    name = name.Substring(0, endA - 5);
+                }
+            }
+
+            string displayName = name;
             if (name.Contains("<a"))
             {
                 int endA = name.LastIndexOf("</a");
