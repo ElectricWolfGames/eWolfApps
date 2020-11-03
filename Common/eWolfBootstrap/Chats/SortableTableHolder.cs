@@ -4,12 +4,31 @@ namespace eWolfBootstrap.Chats
 {
     public class SortableTableHolder : TableHolderBase
     {
+        private string _title = "name";
+
         // https://examples.bootstrap-table.com/#column-options/sortable.html
+        public SortableTableHolder(string name)
+        {
+            _title = name;
+        }
+
+        public SortableTableHolder()
+        {
+        }
 
         public string Output()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("<table class='table' id='table' data-toggle='table' data-height='800' >");
+
+            if (_rows.Count > 15)
+            {
+                sb.Append($"<table class='table' id='table{_title}' data-toggle='table' data-height='800' >");
+            }
+            else
+            {
+                sb.Append($"<table class='table' id='table{_title}' data-toggle='table'>");
+            }
+
             sb.Append("<thead>");
             sb.Append("<tr>");
 
@@ -21,7 +40,7 @@ namespace eWolfBootstrap.Chats
             sb.Append("</tr>");
             sb.Append("</thead>");
 
-            sb.Append("<body>");
+            sb.Append("<tbody>");
 
             foreach (var row in _rows)
             {
@@ -35,7 +54,8 @@ namespace eWolfBootstrap.Chats
                 sb.Append("</tr>");
             }
 
-            sb.Append("</body>");
+            sb.Append("</tbody>");
+            sb.Append("</table>");
 
             return sb.ToString();
         }

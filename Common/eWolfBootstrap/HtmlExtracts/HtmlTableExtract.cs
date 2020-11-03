@@ -46,6 +46,9 @@ namespace eWolfBootstrap.HtmlExtracts
             if (value == "<div class=\"plainlist\">\n<ul><li>6400: 40</li>\n<li>7400: 50</li></ul>\n</div>")
                 return 90;
 
+            if (string.IsNullOrWhiteSpace(value))
+                return 0;
+
             int val = int.Parse(value);
             return val;
         }
@@ -56,12 +59,23 @@ namespace eWolfBootstrap.HtmlExtracts
             if (string.IsNullOrWhiteSpace(name))
                 return string.Empty;
 
+            if (tag == "Length" && name == "<div class=\"plainlist\"><ul><li><i>Streamlined:</i> 73&#160;ft <span class=\"frac nowrap\">9<span class=\"visualhide\">&#160;</span><sup>3</sup>&#8260;<sub>4</sub></span>&#160;in (22.498&#160;m)</li><li><i>Conventional:</i> 73&#160;ft <span class=\"frac nowrap\">10<span class=\"visualhide\">&#160;</span><sup>1</sup>&#8260;<sub>4</sub></span>&#160;in (22.511&#160;m)</li></ul></div></td></tr>")
+            {
+                return "73 ft 10 1⁄4 in (22.511 m) Conventional";
+            }
+
+            if (tag == "Length" && name.Contains("visualhide"))
+            {
+                return HTMLRemover.RemoveAll(name);
+            }
+
             if (tag == "Whyte" && name.Contains("2-6-4"))
             {
-                // need to call HTMLRemover
+                if (name == "<a href=\"/wiki/2-6-4T\" class=\"mw-redirect\" title=\"2-6-4T\">2-6-4T</a></td></tr>")
+                {
+                    return "2-6-4T";
+                }
 
-                int i = 0;
-                i++;
                 return "2-6-4" + HTMLRemover.RemoveKeepInner(name, "abbr");
             }
 

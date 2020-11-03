@@ -68,6 +68,19 @@ namespace eWolfBootstrap.Helpers
             return word;
         }
 
+        public static string RemoveAll(string text)
+        {
+            // "45&#160;ft <span class=\"frac nowrap\">9<span class=\"visualhide\">&#160;</span><sup>3</sup>&#8260;<sub>4</sub></span>&#160;in (13.96&#160;m)"
+            int end = text.IndexOf('<', 0);
+            if (end < 1)
+            {
+                return text;
+            }
+            string word = text.Substring(0, (end - 1));
+
+            return word;
+        }
+
         public static string RemoveKeepInner(string text, string tagName)
         {
             string[] tagGroups = CreateTagGroups(text);

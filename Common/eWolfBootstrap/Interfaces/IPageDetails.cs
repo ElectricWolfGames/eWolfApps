@@ -4,6 +4,7 @@
     {
         string HtmlFileName { get; }
         string HtmlPath { get; }
+        string LocalPath { get; }
         string PageTitle { get; }
     }
 }
