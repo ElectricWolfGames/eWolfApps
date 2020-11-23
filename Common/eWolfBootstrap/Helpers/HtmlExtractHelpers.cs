@@ -8,6 +8,11 @@ namespace eWolfBootstrap.Helpers
         {
             HtmlTableExtract hte = new HtmlTableExtract();
 
+            if (string.IsNullOrWhiteSpace(file))
+            {
+                return hte;
+            }
+
             int index = file.IndexOf(section);
 
             string header = file.Substring(0, index);
@@ -31,6 +36,15 @@ namespace eWolfBootstrap.Helpers
                     hte.SetHeader(line);
                 }
             }
+
+            index = file.IndexOf("<table class=\"infobox\"");
+
+            string results = HTMLExtraction.GetTagLine(file, "th", index);
+            results = HTMLRemover.RemoveAnyTags(results, "br");
+            results = HTMLRemover.GetTextBetweenTags(results);
+
+            hte.DisplayName = results;
+
             return hte;
         }
     }

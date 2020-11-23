@@ -36,12 +36,29 @@ namespace eWolfBootstrapTests.Helpers
         }
 
         [Test]
+        [TestCase("<th colspan=\"2\" style=\"text-align:center;font-size:125%;font-weight:bold\">GCR Class 1B LNER Class L1 (later L3)</th>",
+            "GCR Class 1B LNER Class L1 (later L3)")]
+        public void ShouldFindTextBetweenTags(string html, string expected)
+        {
+            string results = HTMLRemover.GetTextBetweenTags(html);
+            results.Should().Be(expected);
+        }
+
+        [Test]
         [TestCase("<abbr>T</abbr>", "T")]
         [TestCase("<abbr title=\'Side tank\'>T</abbr>", "T")]
         public void ShouldGetTextFromTagPairTests(string html, string expected)
         {
             string text = HTMLRemover.GetTextFromTagPair(html);
             text.Should().Be(expected);
+        }
+
+        [Test]
+        [TestCase("More text</ br> here", "br", "More text here")]
+        public void ShouldRemoveAnyTags(string html, string tagName, string expected)
+        {
+            string results = HTMLRemover.RemoveAnyTags(html, tagName);
+            results.Should().Be(expected);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using eWolfBootstrap.Helpers;
+using System;
 using System.Collections.Generic;
 
 namespace eWolfBootstrap.HtmlExtracts
@@ -7,6 +8,8 @@ namespace eWolfBootstrap.HtmlExtracts
     {
         private string _header;
         public string Name { get; set; }
+        public string DisplayName { get; set; }
+
         private Dictionary<string, string> _tableParts = new Dictionary<string, string>();
 
         public void SetHeader(string value)
@@ -45,6 +48,15 @@ namespace eWolfBootstrap.HtmlExtracts
 
             if (value == "<div class=\"plainlist\">\n<ul><li>6400: 40</li>\n<li>7400: 50</li></ul>\n</div>")
                 return 90;
+
+            if (value == "40 (9K / C13)<br />12 (9L / C14)")
+                return 40;
+
+            if (value == "<div class=\"plainlist\"><ul><li>8K: 126</li><li>8M: 19</li><li>ROD 2-8-0: 521</li></ul></div>")
+                return 126;
+
+            if (value == "&#91;1&#93;")
+                return 91;
 
             if (string.IsNullOrWhiteSpace(value))
                 return 0;

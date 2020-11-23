@@ -52,6 +52,14 @@ namespace eWolfBootstrap.Helpers
             return tags.ToArray();
         }
 
+        public static string GetTextBetweenTags(string text)
+        {
+            int starting = text.IndexOf(">");
+            int end = text.IndexOf("<");
+
+            return text.Substring(starting + 1, end - starting);
+        }
+
         public static string GetTextFromTagPair(string text)
         {
             int startingIndex = 0;
@@ -79,6 +87,18 @@ namespace eWolfBootstrap.Helpers
             string word = text.Substring(0, (end - 1));
 
             return word;
+        }
+
+        public static string RemoveAnyTags(string text, string tagName)
+        {
+            string tagClose = $"</ {tagName}>";
+            string tagCloseB = $"</{tagName}>";
+            string tagOpen = $"<{tagName}>";
+
+            text = text.Replace(tagClose, string.Empty);
+            text = text.Replace(tagCloseB, string.Empty);
+            text = text.Replace(tagOpen, string.Empty);
+            return text;
         }
 
         public static string RemoveKeepInner(string text, string tagName)
