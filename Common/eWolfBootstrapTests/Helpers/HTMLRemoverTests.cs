@@ -36,6 +36,7 @@ namespace eWolfBootstrapTests.Helpers
         }
 
         [Test]
+        [TestCase("<th>here</th>", "here")]
         [TestCase("<th colspan=\"2\" style=\"text-align:center;font-size:125%;font-weight:bold\">GCR Class 1B LNER Class L1 (later L3)</th>",
             "GCR Class 1B LNER Class L1 (later L3)")]
         public void ShouldFindTextBetweenTags(string html, string expected)

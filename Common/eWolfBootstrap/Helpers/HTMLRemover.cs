@@ -55,9 +55,9 @@ namespace eWolfBootstrap.Helpers
         public static string GetTextBetweenTags(string text)
         {
             int starting = text.IndexOf(">");
-            int end = text.IndexOf("<");
+            int end = text.IndexOf("<", starting);
 
-            return text.Substring(starting + 1, end - starting);
+            return text.Substring(starting + 1, end - starting - 1);
         }
 
         public static string GetTextFromTagPair(string text)
