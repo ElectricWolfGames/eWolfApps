@@ -61,7 +61,9 @@ namespace eWolfBootstrap.HtmlExtracts
             if (string.IsNullOrWhiteSpace(value))
                 return 0;
 
-            int val = int.Parse(value);
+            int val = 0;
+            int.TryParse(value, out val);
+
             return val;
         }
 
@@ -70,6 +72,15 @@ namespace eWolfBootstrap.HtmlExtracts
             string name = GetValue(tag);
             if (string.IsNullOrWhiteSpace(name))
                 return string.Empty;
+
+            if (tag == "Operators" && name == "<a href=\"/wiki/British_Railways\" class=\"mw-redirect\" title=\"British Railways\">British Railways</a></td></tr>")
+                return "British Railways";
+
+            if (tag == "Operators" && name == "<div class=\"plainlist\"><ul><li><a href=\"/wiki/Great_Central_R")
+                return "Great Central Railways";
+
+            if (tag == "Operators" && name == "<div class=\"plainlist\"><ul><li><a href=\"/wiki/Great_Western_Railway\" title=\"Great Western")
+                return "Great Central Railways";
 
             if (tag == "Length" && name == "<div class=\"plainlist\"><ul><li><i>Streamlined:</i> 73&#160;ft <span class=\"frac nowrap\">9<span class=\"visualhide\">&#160;</span><sup>3</sup>&#8260;<sub>4</sub></span>&#160;in (22.498&#160;m)</li><li><i>Conventional:</i> 73&#160;ft <span class=\"frac nowrap\">10<span class=\"visualhide\">&#160;</span><sup>1</sup>&#8260;<sub>4</sub></span>&#160;in (22.511&#160;m)</li></ul></div></td></tr>")
             {

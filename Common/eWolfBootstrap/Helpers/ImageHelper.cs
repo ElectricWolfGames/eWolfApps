@@ -15,16 +15,18 @@ namespace eWolfBootstrap.Helpers
 
             name = FixName(name);
             string newFileName = path + "\\" + name;
+            newFileName = newFileName.Replace("\\\\", "\\");
 
             if (!File.Exists(newFileName))
             {
+                Directory.CreateDirectory(path);
                 using (FileStream pngStream = new FileStream(orignalImage, FileMode.Open, FileAccess.Read))
                 using (var im = new Bitmap(pngStream))
                 {
                     float width = im.Width;
                     float height = im.Height;
 
-                    float percentage = 0.20f;
+                    float percentage = 0.28f;
 
                     Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
                     bitmap.Save(newFileName);

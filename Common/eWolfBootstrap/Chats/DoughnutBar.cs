@@ -58,11 +58,8 @@ namespace eWolfBootstrap.Chats
             stringBuilder.Append("data: {");
             //stringBuilder.Append("labels: ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'],");
             stringBuilder.Append(labels);
-
             stringBuilder.Append("datasets: [{");
-            //stringBuilder.Append("data: [300, 50, 100, 40, 120],");
             stringBuilder.Append(data);
-            //stringBuilder.Append("backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],");
             stringBuilder.Append(colour);
             stringBuilder.Append("hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774']");
             stringBuilder.Append("}]");

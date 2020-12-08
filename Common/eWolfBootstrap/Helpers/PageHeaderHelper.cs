@@ -20,20 +20,32 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append($"<meta name='title' content='{pageDetails.Title}'/>");
             stringBuilder.Append($"<meta name='author' content='{pageDetails.Author}'>");
             stringBuilder.Append("    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>");
+
             stringBuilder.Append($@"    <link rel='stylesheet' href='{offSet}Scripts/style.css'>");
-            stringBuilder.Append($@"    <script type='text/javascript' src='{offSet}Scripts/chart.js'></script>");
+            stringBuilder.Append($@"<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>");
+            stringBuilder.Append($@"<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>");
+            stringBuilder.Append($@"<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>");
 
-            if (pageDetails.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
+            if (pageDetails.ExtraIncludes.Contains(Enums.BootstrapOptions.GALLERY))
             {
-                stringBuilder.Append(@"<link rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css'>");
+                stringBuilder.Append($@"<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>");
+                stringBuilder.Append($@"<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>");
+                stringBuilder.Append($@"<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css' />");
+                stringBuilder.Append($@"<link rel='stylesheet' href='{offSet}Scripts/grid-gallery.css'>");
             }
+            else
+            {
+                stringBuilder.Append($@"    <script type='text/javascript' src='{offSet}Scripts/chart.js'></script>");
 
-            stringBuilder.Append(@"    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>");
-            stringBuilder.Append(@"    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>");
-            stringBuilder.Append(@"    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>");
-            stringBuilder.Append(@"    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>");
+                if (pageDetails.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
+                {
+                    stringBuilder.Append(@"<link rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css'>");
+                }
 
-            AddSiteTracker(stringBuilder);
+                stringBuilder.Append($@"<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>");
+
+                AddSiteTracker(stringBuilder);
+            }
             stringBuilder.Append("</head>");
 
             return stringBuilder.ToString();

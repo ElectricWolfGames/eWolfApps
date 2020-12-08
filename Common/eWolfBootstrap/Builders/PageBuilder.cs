@@ -9,6 +9,7 @@ namespace eWolfBootstrap.Builders
     public class PageBuilder : IPageBuilder
     {
         protected string _fileName;
+        protected string _offSet;
         protected string _path;
         protected StringBuilder _stringBuilder = new StringBuilder();
         private IPageHeader _pageHeader;
@@ -27,6 +28,7 @@ namespace eWolfBootstrap.Builders
             _pageHeader = pageHeader;
             _fileName = fileName;
             _path = path;
+            _offSet = offSet;
             _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, offSet));
             _stringBuilder.Append("<Body>");
         }
@@ -37,22 +39,14 @@ namespace eWolfBootstrap.Builders
         public void AddImages(string htmlpath, string imagePath, string path)
         {
             List<string> images = ImageHelper.GetAllImages(path);
-            Append("<div class='container mt-4'><div class='row'>");
-            int count = 2;
-            foreach (string layoutImage in images)
+            HTMLHelper.Gallery.AddGalleryHeader(this, null);
+
+            foreach (string image in images)
             {
-                if (images.Contains(layoutImage))
-                {
-                    HTMLHelper.AddImageToPage(htmlpath, imagePath, this, layoutImage);
-                    if (count-- == 0)
-                    {
-                        count = 2;
-                        Append("</div></div>");
-                        Append("<div class='container mt-4'><div class='row'>");
-                    }
-                }
+                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image);
             }
-            Append("</div></div>");
+
+            HTMLHelper.Gallery.AddGalleryFooter(this);
         }
 
         public void AddStickyHeader(string name)
@@ -108,6 +102,11 @@ function myFunction() {
             {
                 _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js'></script>");
                 _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/locale/bootstrap-table-zh-CN.min.js'></script>");
+            }
+
+            if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.GALLERY))
+            {
+                HTMLHelper.Gallery.AddGalleryPageFooter(this);
             }
 
             _stringBuilder.Append("</Body>");

@@ -3,5 +3,6 @@
     public enum BootstrapOptions
     {
         BT, //https://bootstrap-table.com/
+        GALLERY,
     }
 }
