@@ -94,6 +94,37 @@ namespace eWolfPodcasterCore.Data
 
             PersistenceHelper<ShowControl> ph = new PersistenceHelper<ShowControl>(outputFolder);
             _shows = ph.LoadData();
+
+            FixPath();
+            
+        }
+
+        private void FixPath()
+        {
+            foreach (var show in _shows)
+            {
+                if (show == null || show.RssFeed == null)
+                    continue;
+
+                if (show.RssFeed.StartsWith("F:"))
+                {
+                    show.RssFeed = show.RssFeed.Replace("F:", "G:");
+                }
+
+                foreach (var e in show.Episodes)
+                {
+                    if (e == null || e.PodcastURL == null)
+                        continue;
+
+                    if (e.PodcastURL.StartsWith("F:"))
+                    {
+                        e.PodcastURL = e.PodcastURL.Replace("F:", "G:");
+                    }
+                }
+
+
+
+            }
         }
 
         public void RemoveEpisodeFromShow(string showName, string episodeName)

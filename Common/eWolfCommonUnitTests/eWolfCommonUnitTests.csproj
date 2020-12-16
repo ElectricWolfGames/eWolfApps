@@ -103,7 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eWolfCommon\eWolfCommon.csproj">
-      <Project>{12085810-f74b-4ec6-bce5-f82baad0c65b}</Project>
+      <Project>{c1bb7922-5a1d-4c5d-b39a-df628e8e5680}</Project>
       <Name>eWolfCommon</Name>
     </ProjectReference>
   </ItemGroup>
