@@ -415,14 +415,17 @@ namespace eWolfPodcasterUI
                 {
                     bool local = (show.ShowOption.ShowStorage == ShowStorageType.LocalStorage);
                     string header;
+                    string localDisplay = string.Empty;
+                    string updatesDisplay = string.Empty;
                     if (local)
                     {
-                        header = show.Title + $" (local) [ {show.EpisodesWatched}/{show.Episodes.Count} ]";
+                        localDisplay = " -L-";
                     }
-                    else
-                    {
-                        header = show.Title + $"[ {show.EpisodesWatched}/{show.Episodes.Count} ]";
-                    }
+
+                    if (show.ShowOption.CheckforUpdates)
+                        updatesDisplay = " -U-";
+
+                    header = show.Title + $"{localDisplay}{updatesDisplay} [ {show.EpisodesWatched}/{show.Episodes.Count} ]";
 
                     TreeViewItem showNode = new TreeViewItem
                     {

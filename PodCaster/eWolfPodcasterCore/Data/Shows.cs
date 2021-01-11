@@ -96,7 +96,6 @@ namespace eWolfPodcasterCore.Data
             _shows = ph.LoadData();
 
             FixPath();
-            
         }
 
         private void FixPath()
@@ -106,9 +105,10 @@ namespace eWolfPodcasterCore.Data
                 if (show == null || show.RssFeed == null)
                     continue;
 
-                if (show.RssFeed.StartsWith("F:"))
+                if (show.RssFeed.StartsWith("G:"))
                 {
-                    show.RssFeed = show.RssFeed.Replace("F:", "G:");
+                    show.RssFeed = show.RssFeed.Replace("__Audio", "Audio");
+                    show.ShowOption.CheckforUpdates = false;
                 }
 
                 foreach (var e in show.Episodes)
@@ -116,14 +116,11 @@ namespace eWolfPodcasterCore.Data
                     if (e == null || e.PodcastURL == null)
                         continue;
 
-                    if (e.PodcastURL.StartsWith("F:"))
+                    if (e.PodcastURL.StartsWith("G:"))
                     {
-                        e.PodcastURL = e.PodcastURL.Replace("F:", "G:");
+                        e.PodcastURL = e.PodcastURL.Replace("__Audio", "Audio");
                     }
                 }
-
-
-
             }
         }
 
