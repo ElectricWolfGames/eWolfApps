@@ -1,4 +1,5 @@
 ﻿using eWolfCommon.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -19,18 +20,24 @@ namespace eWolfBootstrap.Helpers
 
             if (!File.Exists(newFileName))
             {
-                Directory.CreateDirectory(path);
-                using (FileStream pngStream = new FileStream(orignalImage, FileMode.Open, FileAccess.Read))
-                using (var im = new Bitmap(pngStream))
+                try
                 {
-                    float width = im.Width;
-                    float height = im.Height;
+                    Directory.CreateDirectory(path);
+                    using (FileStream pngStream = new FileStream(orignalImage, FileMode.Open, FileAccess.Read))
+                    {
+                        var im = new Bitmap(pngStream);
+                        {
+                            float width = im.Width;
+                            float height = im.Height;
 
-                    float percentage = 0.28f;
+                            float percentage = 0.28f;
 
-                    Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
-                    bitmap.Save(newFileName);
+                            Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
+                            bitmap.Save(newFileName);
+                        }
+                    }
                 }
+                catch { }
             }
 
             return newFileName;
@@ -46,28 +53,21 @@ namespace eWolfBootstrap.Helpers
 
             if (!File.Exists(newFileName))
             {
-                /*using (Image im = Image.FromFile(orignalImage))
+                //try
                 {
-                    float width = im.Width;
-                    float height = im.Height;
+                    using (FileStream pngStream = new FileStream(orignalImage, FileMode.Open, FileAccess.Read))
+                    using (var im = new Bitmap(pngStream))
+                    {
+                        float width = im.Width;
+                        float height = im.Height;
 
-                    float percentage = 0.07f;
+                        float percentage = 0.07f;
 
-                    Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
-                    bitmap.Save(newFileName);
-                }*/
-
-                using (FileStream pngStream = new FileStream(orignalImage, FileMode.Open, FileAccess.Read))
-                using (var im = new Bitmap(pngStream))
-                {
-                    float width = im.Width;
-                    float height = im.Height;
-
-                    float percentage = 0.07f;
-
-                    Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
-                    bitmap.Save(newFileName);
+                        Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
+                        bitmap.Save(newFileName);
+                    }
                 }
+                //catch { }
             }
 
             return newFileName;
