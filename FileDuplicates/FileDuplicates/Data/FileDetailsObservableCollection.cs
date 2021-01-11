@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Windows.Threading;
 
 namespace FileDuplicates.Data

@@ -1,8 +1,4 @@
-﻿using eWolfBootstrap.Helpers;
-using FluentAssertions;
-using NUnit.Framework;
-
-namespace eWolfBootstrapTests.Helpers
+﻿namespace eWolfBootstrapTests.Helpers
 {
     public class HTMLRemoverTests
     {

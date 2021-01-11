@@ -1,5 +1,4 @@
 ﻿using eWolfBootstrap.Helpers;
-using System;
 using System.Collections.Generic;
 
 namespace eWolfBootstrap.HtmlExtracts

@@ -23,7 +23,7 @@ namespace AudioWolfStandard.Data
         public string ImagePath { get; set; }
 
         public float Length { get; set; }
-        
+
         public string Name
         {
             get

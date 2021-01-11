@@ -1,5 +1,5 @@
-﻿using eWolfCommon.Interfaces;
-using eWolfCommon.FileIO;
+﻿using eWolfCommon.FileIO;
+using eWolfCommon.Interfaces;
 using FileDuplicates.Data;
 using System;
 using System.Collections.Generic;
