@@ -12,7 +12,7 @@ using System.Windows;
 using System.Windows.Media;
 
 // Need to create a custom sound object.
-// need to create a tag system that we can use in the Vidoe Tagger and the image tagger.
+// need to create a tag system that we can use in the video Tagger and the image tagger.
 // need to set the serach folders for all the audio.
 // need to save out the main options in C:\ docs \EWolf folders.
 // need to save out the list of all the sample in  the main serch folder for each one.

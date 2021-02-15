@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AudioWolfUI.Pages"
         mc:Ignorable="d"
-        Title="LibraryPage" Height="450" Width="800">
+        Title="LibraryPage" Height="708.704" Width="1022.267">
     <Grid>
-        <ListView x:Name="MainItemsList" HorizontalAlignment="Left" Height="336" Margin="10,73,0,0" VerticalAlignment="Top" Width="772">
+        <ListView x:Name="MainItemsList" HorizontalAlignment="Left" Height="595" Margin="10,73,0,0" VerticalAlignment="Top" Width="994">
             <ListView.View>
                 <GridView>
                     <GridViewColumn />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AudioWolfStandard.Configuration;
+using System.Collections.Generic;
 
 namespace AudioWolfStandard.Options
 {
@@ -8,7 +9,7 @@ namespace AudioWolfStandard.Options
 
         public OptionsHolder()
         {
-            _pathsToSearch.Add(@"C:\GitHub\eWolfApps\AudioWolf\ExmapleData\");
+            _pathsToSearch.Add(Constants.LibraryPath);
         }
 
         public List<string> PathsToSearch => _pathsToSearch;
