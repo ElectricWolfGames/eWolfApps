@@ -33,6 +33,18 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append(HTMLHelper.BuildImageCard(newImagePath, newImagePathThumb, imageTitle));
         }
 
+        public static void AddQuickImage(string htmlpath, string imagePath, eWolfBootstrap.Interfaces.IPageBuilder stringBuilder, string image)
+        {
+            htmlpath = htmlpath.Replace("\\\\", "\\");
+            imagePath = imagePath.Replace("\\\\", "\\");
+
+            string newImagePath = ImageHelper.CopyImageTo(imagePath, image, 1);
+            newImagePath = newImagePath.Replace(htmlpath, string.Empty);
+
+            string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
+            stringBuilder.Append(HTMLHelper.BuildImageQuick(newImagePath, newImagePath, imageTitle));
+        }
+
         public static string BuildImageCard(string image, string imageThumb, string title)
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -62,6 +74,32 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.AppendLine($"<img class='img-fluid image scale-on-hover' src='{imageThumb}'>");
             stringBuilder.AppendLine("</a>");
             stringBuilder.AppendLine("</div>");
+
+            return stringBuilder.ToString();
+        }
+
+        public static string BuildImageGalleryCardFloatRight(string image, string imageThumb, string title)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("<div class='col-md-6 col-lg-4 item'>");
+            stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
+            stringBuilder.AppendLine($"<img class='rounded float-right img-fluid image scale-on-hover' src='{imageThumb}'>");
+            stringBuilder.AppendLine("</a>");
+            stringBuilder.AppendLine("</div>");
+
+            return stringBuilder.ToString();
+        }
+
+        public static string BuildImageQuick(string image, string imageThumb, string title)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            //stringBuilder.AppendLine("<div class='col-md-6 col-lg-4 item'>");
+            //stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
+            stringBuilder.AppendLine($"<img class='rounded float img-fluid image scale-on-hover' src='{imageThumb}'>");
+            //stringBuilder.AppendLine("</a>");
+            //stringBuilder.AppendLine("</div>");
 
             return stringBuilder.ToString();
         }

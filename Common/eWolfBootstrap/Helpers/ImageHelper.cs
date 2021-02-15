@@ -9,7 +9,7 @@ namespace eWolfBootstrap.Helpers
 {
     public static class ImageHelper
     {
-        public static string CopyImageTo(string path, string orignalImage)
+        public static string CopyImageTo(string path, string orignalImage, float percentage = 0.28f)
         {
             string name = Path.GetFileName(orignalImage);
 
@@ -28,8 +28,6 @@ namespace eWolfBootstrap.Helpers
                         {
                             float width = im.Width;
                             float height = im.Height;
-
-                            float percentage = 0.28f;
 
                             Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
                             bitmap.Save(newFileName);

@@ -36,6 +36,11 @@ namespace eWolfBootstrap.Builders
         public PageBuilder()
         { }
 
+        public void AddImage(string htmlpath, string imagePath, string path)
+        {
+            HTMLHelper.AddQuickImage(htmlpath, imagePath, this, path);
+        }
+
         public void AddImages(string htmlpath, string imagePath, string path)
         {
             List<string> images = ImageHelper.GetAllImages(path);
@@ -79,13 +84,13 @@ function myFunction() {
             return _stringBuilder.ToString();
         }
 
-        public void Jumbotron(string title, string body)
+        public void Jumbotron(string title, string body, int size = 4)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
             stringBuilder.AppendLine("<div class='jumbotron'>");
             stringBuilder.AppendLine("<div class='row'>");
-            stringBuilder.AppendLine("<div class='col-md-4'>");
+            stringBuilder.AppendLine($"<div class='col-md-{size}'>");
             stringBuilder.AppendLine(title);
             stringBuilder.AppendLine(body);
 
