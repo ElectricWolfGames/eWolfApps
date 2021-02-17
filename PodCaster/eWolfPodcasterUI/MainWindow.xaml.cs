@@ -3,6 +3,7 @@ using eWolfPodcasterCore.Helpers;
 using eWolfPodcasterCore.Interfaces;
 using eWolfPodcasterCore.Logger;
 using eWolfPodcasterCore.Services;
+using eWolfPodcasterUI.Groups;
 using eWolfPodcasterUI.Media;
 using eWolfPodcasterUI.Pages;
 using eWolfPodcasterUI.Project;
@@ -387,12 +388,25 @@ namespace eWolfPodcasterUI
 
         private void PopulateTree()
         {
+            TreeGroupHolder treeGroupHolder = new TreeGroupHolder(ShowsItemsTree);
+
             ShowsItemsTree.Items.Clear();
             Shows shows = (Shows)Shows.GetShowService;
-            List<string> groups = shows.Groups();
+            List<string> groups = new List<string>();
 
             groups.Add("Ungrouped");
+            groups.Add("Frist|Second");
+            groups.Add("Frist|Second|More");
+            groups.Add("Frist|Second|MoreB");
+            groups.Add("Frist|Other|More");
+            groups = groups.OrderBy(x => x).ToList();
 
+            foreach (string groupName in groups)
+            {
+                treeGroupHolder.Add(groupName);
+            }
+
+            groups = shows.Groups();
             groups = groups.OrderBy(x => x).ToList();
 
             AddStaredShows();
@@ -400,8 +414,8 @@ namespace eWolfPodcasterUI
             foreach (string groupName in groups)
             {
                 List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
-                if (!showsInCat.Any())
-                    continue;
+                //if (!showsInCat.Any())
+                //continue;
 
                 showsInCat = showsInCat.OrderBy(x => x.Title).ToList();
                 TreeViewItem categoryNode = new TreeViewItem

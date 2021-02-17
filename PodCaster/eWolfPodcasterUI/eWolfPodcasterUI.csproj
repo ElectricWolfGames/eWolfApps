@@ -143,6 +143,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Groups\TreeGroupDetails.cs" />
+    <Compile Include="Groups\TreeGroupHolder.cs" />
     <Compile Include="Media\MediaPlayerWrapper.cs" />
     <Compile Include="Pages\AddNewShow.xaml.cs">
       <DependentUpon>AddNewShow.xaml</DependentUpon>
