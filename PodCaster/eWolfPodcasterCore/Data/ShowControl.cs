@@ -103,6 +103,10 @@ namespace eWolfPodcasterCore.Data
                 string showName = new DirectoryInfo(folderLocation).Name;
                 foreach (string filename in files)
                 {
+                    //string folderExtra = filename.Replace(folderLocation, "");
+                    //string[] folders = folderExtra.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
+                    //string groupName = CreateNewGroup
+
                     string fileNameUpper = filename.ToUpper();
                     string exp = Path.GetExtension(fileNameUpper);
                     if (exp != ".MP3" && exp != ".MP4")

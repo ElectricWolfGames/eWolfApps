@@ -16,5 +16,7 @@ namespace eWolfPodcasterCore.Data
         public ShowStorageType ShowStorage { get; set; }
 
         public bool Starred { get; set; }
+
+        // public UpdatedFrequency updatedFrequency { get; set; } = UpdatedFrequency.Weekly;
     }
 }

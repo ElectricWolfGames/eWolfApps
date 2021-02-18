@@ -9,25 +9,27 @@ namespace eWolfPodcasterCore.Services
         {
             Categories = new List<CatergeryData>
             {
-                new CatergeryData("News"),
-                new CatergeryData("Music"),
-                new CatergeryData("Music Podcasts"),
-                new CatergeryData("Developer"),
-                new CatergeryData("Science"),
-                new CatergeryData("Other"),
-                new CatergeryData("Misc"),
-                new CatergeryData("Doctor Who"),
-                new CatergeryData("Star wars"),
-                new CatergeryData("Entertainment"),
-                new CatergeryData("Drama Vintage"),
-                new CatergeryData("Drama Sci-fi"),
-                new CatergeryData("Drama Others"),
-                new CatergeryData("Drama Historical"),
                 new CatergeryData("Comedy"),
-
-                new CatergeryData("History"),
                 new CatergeryData("Country"),
+                new CatergeryData("Developer"),
+                new CatergeryData("Doctor Who"),
+                new CatergeryData("Drama Historical"),
+                new CatergeryData("Drama Others"),
+                new CatergeryData("Drama Sci-fi"),
+                new CatergeryData("Drama Vintage"),
+                new CatergeryData("Entertainment"),
                 new CatergeryData("Gaming"),
+                new CatergeryData("History"),
+                new CatergeryData("Misc"),
+                new CatergeryData("Music Podcasts"),
+                new CatergeryData("Music"),
+                new CatergeryData("Music|StarWars"),
+                new CatergeryData("Nature"),
+                new CatergeryData("News"),
+                new CatergeryData("Other"),
+                new CatergeryData("Science"),
+                new CatergeryData("Star wars"),
+                new CatergeryData("Tech"),
                 new CatergeryData("Trains")
             };
         }

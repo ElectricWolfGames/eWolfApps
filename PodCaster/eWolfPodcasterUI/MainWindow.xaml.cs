@@ -414,8 +414,8 @@ namespace eWolfPodcasterUI
             foreach (string groupName in groups)
             {
                 List<ShowControl> showsInCat = shows.ShowInGroup(groupName);
-                //if (!showsInCat.Any())
-                //continue;
+                if (!showsInCat.Any())
+                    continue;
 
                 showsInCat = showsInCat.OrderBy(x => x.Title).ToList();
                 TreeViewItem categoryNode = new TreeViewItem
