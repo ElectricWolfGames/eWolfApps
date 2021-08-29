@@ -54,6 +54,31 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.Gallery.AddGalleryFooter(this);
         }
 
+        public void AddImages(List<string> imageToUse, string htmlpath, string imagePath, string path, string offSetFolder)
+        {
+            HTMLHelper.Gallery.AddGalleryHeader(this, null);
+
+            foreach (string image in imageToUse)
+            {
+                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image, offSetFolder);
+            }
+
+            HTMLHelper.Gallery.AddGalleryFooter(this);
+        }
+
+        public void AddImagesWithSeeMore(List<string> imageToUse, string htmlpath, string imagePath, string path, string offSetFolder, string seeMore)
+        {
+            HTMLHelper.Gallery.AddGalleryHeader(this, null);
+
+            foreach (string image in imageToUse)
+            {
+                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image, offSetFolder);
+            }
+            Append(HTMLHelper.CreateCard(seeMore));
+
+            HTMLHelper.Gallery.AddGalleryFooter(this);
+        }
+
         public void AddStickyHeader(string name)
         {
             string text = @"<script>
@@ -76,7 +101,17 @@ function myFunction() {
 
         public void Append(string text)
         {
-            _stringBuilder.Append(text);
+            _stringBuilder.AppendLine(text);
+        }
+
+        public void ConvertImages(string htmlpath, string imagePath, string path)
+        {
+            List<string> images = ImageHelper.GetAllImages(path);
+
+            foreach (string image in images)
+            {
+                HTMLHelper.ConvertImageToGallery(htmlpath, imagePath, this, image);
+            }
         }
 
         public string GetString()
@@ -99,6 +134,29 @@ function myFunction() {
             stringBuilder.AppendLine("</div>");
 
             Append(stringBuilder.ToString());
+        }
+
+        public void JumbotronWithImage(string title, string body, string imageHtmlPath, string imagePath, string imageName, int size = 4)
+        {
+            Append("<div class='jumbotron'>");
+            Append("<div class='row'>");
+
+            Append($"<div class='col-md-6'>");
+            Append(title);
+            Append(body);
+            Append("</div>");
+
+            Append("<div class='col-md-4'>");
+
+            AddImage(
+                imageHtmlPath,
+                imagePath,
+                imageName);
+
+            Append("</div>");
+
+            Append("</div>");
+            Append("</div>");
         }
 
         public virtual void Output()
