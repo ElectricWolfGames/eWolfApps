@@ -46,6 +46,19 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append(HTMLHelper.BuildImageQuick(newImagePath, newImagePath, imageTitle));
         }
 
+        public static void AddQuickImageCenter(string htmlpath, string imagePath, eWolfBootstrap.Interfaces.IPageBuilder stringBuilder, string image)
+        {
+            htmlpath = htmlpath.Replace("\\\\", "\\");
+            imagePath = imagePath.Replace("\\\\", "\\");
+
+            string newImagePath = ImageHelper.CopyImageTo(imagePath, image, 1);
+            newImagePath = newImagePath.Replace(htmlpath, string.Empty);
+
+            string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
+            stringBuilder.Append(HTMLHelper.BuildImageQuickCenter(newImagePath, newImagePath, imageTitle));
+        }
+
+
         public static string CreateCard(string title)
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -109,13 +122,16 @@ namespace eWolfBootstrap.Helpers
         public static string BuildImageQuick(string image, string imageThumb, string title)
         {
             StringBuilder stringBuilder = new StringBuilder();
-
-            //stringBuilder.AppendLine("<div class='col-md-6 col-lg-4 item'>");
-            //stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
             stringBuilder.AppendLine($"<img class='rounded float img-fluid image scale-on-hover' src='{imageThumb}'>");
-            //stringBuilder.AppendLine("</a>");
-            //stringBuilder.AppendLine("</div>");
+            return stringBuilder.ToString();
+        }
 
+        public static string BuildImageQuickCenter(string image, string imageThumb, string title)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("<div class='text-center'>");
+            stringBuilder.AppendLine($"<img class='rounded float img-fluid image scale-on-hover' align='center' width='80%' src='{imageThumb}'>");
+            stringBuilder.Append("</div>");
             return stringBuilder.ToString();
         }
 

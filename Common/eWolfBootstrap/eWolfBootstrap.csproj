@@ -15,4 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\eWolfCommon\eWolfCommon.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SiteBuilder\Attributes\" />
+  </ItemGroup>
 </Project>

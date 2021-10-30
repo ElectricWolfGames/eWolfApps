@@ -74,6 +74,7 @@ namespace eWolfBootstrap.Helpers
         {
             List<string> files = new List<string>();
 
+            Directory.CreateDirectory(path);
             //if (File.Exists(path))
             {
                 var filesOnDrive = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
