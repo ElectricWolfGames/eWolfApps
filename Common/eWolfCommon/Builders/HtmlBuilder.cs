@@ -9,6 +9,24 @@ namespace eWolfCommon.Builders
         private int _inTableCount = 0;
         private int _inUnordedList = 0;
 
+        public void AddLink(string displayName, string link)
+        {
+            _data.Append($"<a hreft='{link}'>{displayName}</a>");
+        }
+
+        public void AddListItem(string listItem)
+        {
+            if (_inUnordedList == 0)
+                throw new InvalidProgramException();
+
+            _data.Append($"<li>{listItem}</li>");
+        }
+
+        public void AddNewLine()
+        {
+            _data.Append("</br>");
+        }
+
         public void AddTableHeader(string[] headerList)
         {
             foreach (string header in headerList)
@@ -51,6 +69,15 @@ namespace eWolfCommon.Builders
             _inTableCount--;
         }
 
+        public void EndUnordedList()
+        {
+            if (_inUnordedList < 1)
+                throw new InvalidProgramException();
+
+            _data.Append("</ul>");
+            _inUnordedList--;
+        }
+
         public string Output()
         {
             if (_inTableCount != 0)
@@ -78,33 +105,6 @@ namespace eWolfCommon.Builders
         {
             _data.Append("<ul>");
             _inUnordedList++;
-        }
-
-        public void EndUnordedList()
-        {
-            if (_inUnordedList < 1)
-                throw new InvalidProgramException();
-
-            _data.Append("</ul>");
-            _inUnordedList--;
-        }
-
-        public void AddListItem(string listItem)
-        {
-            if (_inUnordedList == 0)
-                throw new InvalidProgramException();
-
-            _data.Append($"<li>{listItem}</li>");
-        }
-
-        public void AddNewLine()
-        {
-            _data.Append("</br>");
-        }
-
-        public void AddLink(string displayName, string link)
-        {
-            _data.Append($"<a hreft='{link}'>{displayName}</a>");
         }
     }
 }

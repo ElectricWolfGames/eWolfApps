@@ -20,30 +20,6 @@ namespace eWolfCommonUnitTests.Collections
         }
 
         [Test]
-        public void ShouldNotAddSameItemTwice()
-        {
-            StoreUniqueList<string> sul = new StoreUniqueList<string>(5);
-            sul.Add("Item A");
-            sul.Add("Item A");
-
-            sul.Items.Should().HaveCount(1);
-        }
-
-        [Test]
-        public void ShouldNotStoreMoreThanTheMaximumItems()
-        {
-            int total = 5;
-            StoreUniqueList<string> sul = new StoreUniqueList<string>(total);
-
-            for (int i = 0; i < total + 1; i++)
-            {
-                sul.Add("Items " + i);
-            }
-
-            sul.Items.Should().HaveCount(total);
-        }
-
-        [Test]
         public void ShouldBeAbleToAddInts()
         {
             StoreUniqueList<int> listOfInts = new StoreUniqueList<int>(5);
@@ -51,6 +27,16 @@ namespace eWolfCommonUnitTests.Collections
             listOfInts.Add(10);
 
             listOfInts.Items.Should().HaveCount(2);
+        }
+
+        [Test]
+        public void ShouldNotAddSameItemTwice()
+        {
+            StoreUniqueList<string> sul = new StoreUniqueList<string>(5);
+            sul.Add("Item A");
+            sul.Add("Item A");
+
+            sul.Items.Should().HaveCount(1);
         }
 
         [Test]
@@ -67,6 +53,20 @@ namespace eWolfCommonUnitTests.Collections
             listOfInts.Add(12);
 
             listOfInts.Items.Should().HaveCount(5);
+        }
+
+        [Test]
+        public void ShouldNotStoreMoreThanTheMaximumItems()
+        {
+            int total = 5;
+            StoreUniqueList<string> sul = new StoreUniqueList<string>(total);
+
+            for (int i = 0; i < total + 1; i++)
+            {
+                sul.Add("Items " + i);
+            }
+
+            sul.Items.Should().HaveCount(total);
         }
     }
 }

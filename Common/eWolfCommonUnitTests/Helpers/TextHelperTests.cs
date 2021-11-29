@@ -6,12 +6,11 @@ namespace eWolfCommonUnitTests.Helpers
 {
     public class TextHelperTests
     {
-        [TestCase("Text", "Text")]
-        [TestCase("TextMoreWords", "Text more words")]
-        [TestCase("TextMore Words", "Text more Words")]
-        public void ShouldConvertToSentenceCase(string from, string to)
+        [TestCase("value", "const string value = \"value\";")]
+        [TestCase("Value With Spaces", "const string valueWithSpaces = \"Value With Spaces\";")]
+        public void ShouldConvertTextToStringVar(string from, string to)
         {
-            string text = TextHelper.ToSentenceCase(from);
+            string text = TextHelper.ConvertTextToStringVar(from);
             text.Should().Be(to);
         }
 
@@ -27,11 +26,12 @@ namespace eWolfCommonUnitTests.Helpers
             text.Should().Be(to);
         }
 
-        [TestCase("value", "const string value = \"value\";")]
-        [TestCase("Value With Spaces", "const string valueWithSpaces = \"Value With Spaces\";")]
-        public void ShouldConvertTextToStringVar(string from, string to)
+        [TestCase("Text", "Text")]
+        [TestCase("TextMoreWords", "Text more words")]
+        [TestCase("TextMore Words", "Text more Words")]
+        public void ShouldConvertToSentenceCase(string from, string to)
         {
-            string text = TextHelper.ConvertTextToStringVar(from);
+            string text = TextHelper.ToSentenceCase(from);
             text.Should().Be(to);
         }
     }

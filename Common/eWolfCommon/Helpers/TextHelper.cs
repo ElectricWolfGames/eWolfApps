@@ -4,9 +4,16 @@ namespace eWolfCommon.Helpers
 {
     public static class TextHelper
     {
-        public static string ToSentenceCase(string word)
+        public static string ConvertTextToStringVar(string sentence)
         {
-            return Regex.Replace(word, "[a-z][A-Z]", m => $"{m.Value[0]} {char.ToLower(m.Value[1])}");
+            string words = ToSentenceCase(sentence);
+
+            string wordSpaces = RemovedSpaces(words);
+            wordSpaces = char.ToLower(wordSpaces[0]) + wordSpaces.Substring(1);
+
+            string text = $"const string {wordSpaces} = \"{words}\";";
+
+            return text;
         }
 
         public static string ConvertTextToUnderscores(string sentence)
@@ -32,16 +39,9 @@ namespace eWolfCommon.Helpers
             return sentence.Replace(" ", "");
         }
 
-        public static string ConvertTextToStringVar(string sentence)
+        public static string ToSentenceCase(string word)
         {
-            string words = ToSentenceCase(sentence);
-
-            string wordSpaces = RemovedSpaces(words);
-            wordSpaces = char.ToLower(wordSpaces[0]) + wordSpaces.Substring(1);
-
-            string text = $"const string {wordSpaces} = \"{words}\";";
-
-            return text;
+            return Regex.Replace(word, "[a-z][A-Z]", m => $"{m.Value[0]} {char.ToLower(m.Value[1])}");
         }
     }
 }

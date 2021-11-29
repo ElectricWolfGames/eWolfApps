@@ -4,8 +4,8 @@ namespace eWolfCommon.Collections
 {
     public sealed class StoreUniqueList<T>
     {
-        private readonly int _maxItems;
         private readonly List<T> _list = new List<T>();
+        private readonly int _maxItems;
 
         public StoreUniqueList(int maxItems)
         {
