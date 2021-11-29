@@ -1,20 +1,14 @@
-﻿using eWolfBootstrap.Helpers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using eWolfBootstrap.Helpers;
 
 namespace eWolfBootstrap.HtmlExtracts
 {
     public class HtmlTableExtract
     {
         private string _header;
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
-
         private Dictionary<string, string> _tableParts = new Dictionary<string, string>();
-
-        public void SetHeader(string value)
-        {
-            _header = value;
-        }
+        public string DisplayName { get; set; }
+        public string Name { get; set; }
 
         public void AddTableLine(string[] parts)
         {
@@ -22,48 +16,6 @@ namespace eWolfBootstrap.HtmlExtracts
             string right = parts[1];
 
             _tableParts.Add(left, right);
-        }
-
-        public string GetValue(string key)
-        {
-            foreach (var pair in _tableParts)
-            {
-                if (pair.Key.Contains(key))
-                {
-                    return pair.Value;
-                }
-            }
-            return null;
-        }
-
-        public int GetIntDisplayText(string name)
-        {
-            string value = GetDisplayText(name);
-            if (value == "A1: 52<br />A3: 51 rebuilt + 27 new (78)")
-                return 78;
-
-            if (value == "71 (6959 <i>Peatling Hall</i>-7929 <i>Wyke Hall</i>)")
-                return 71;
-
-            if (value == "<div class=\"plainlist\">\n<ul><li>6400: 40</li>\n<li>7400: 50</li></ul>\n</div>")
-                return 90;
-
-            if (value == "40 (9K / C13)<br />12 (9L / C14)")
-                return 40;
-
-            if (value == "<div class=\"plainlist\"><ul><li>8K: 126</li><li>8M: 19</li><li>ROD 2-8-0: 521</li></ul></div>")
-                return 126;
-
-            if (value == "&#91;1&#93;")
-                return 91;
-
-            if (string.IsNullOrWhiteSpace(value))
-                return 0;
-
-            int val = 0;
-            int.TryParse(value, out val);
-
-            return val;
         }
 
         public string GetDisplayText(string tag)
@@ -144,6 +96,53 @@ namespace eWolfBootstrap.HtmlExtracts
             }
 
             return displayName;
+        }
+
+        public int GetIntDisplayText(string name)
+        {
+            string value = GetDisplayText(name);
+            if (value == "A1: 52<br />A3: 51 rebuilt + 27 new (78)")
+                return 78;
+
+            if (value == "71 (6959 <i>Peatling Hall</i>-7929 <i>Wyke Hall</i>)")
+                return 71;
+
+            if (value == "<div class=\"plainlist\">\n<ul><li>6400: 40</li>\n<li>7400: 50</li></ul>\n</div>")
+                return 90;
+
+            if (value == "40 (9K / C13)<br />12 (9L / C14)")
+                return 40;
+
+            if (value == "<div class=\"plainlist\"><ul><li>8K: 126</li><li>8M: 19</li><li>ROD 2-8-0: 521</li></ul></div>")
+                return 126;
+
+            if (value == "&#91;1&#93;")
+                return 91;
+
+            if (string.IsNullOrWhiteSpace(value))
+                return 0;
+
+            int val = 0;
+            int.TryParse(value, out val);
+
+            return val;
+        }
+
+        public string GetValue(string key)
+        {
+            foreach (var pair in _tableParts)
+            {
+                if (pair.Key.Contains(key))
+                {
+                    return pair.Value;
+                }
+            }
+            return null;
+        }
+
+        public void SetHeader(string value)
+        {
+            _header = value;
         }
     }
 }

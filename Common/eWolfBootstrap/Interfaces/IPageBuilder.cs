@@ -4,8 +4,8 @@
     {
         void Append(string text);
 
-        void Output();
-
         string GetString();
+
+        void Output();
     }
 }

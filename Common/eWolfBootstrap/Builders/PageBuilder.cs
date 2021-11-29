@@ -1,8 +1,8 @@
-﻿using eWolfBootstrap.Helpers;
-using eWolfBootstrap.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using eWolfBootstrap.Helpers;
+using eWolfBootstrap.Interfaces;
 
 namespace eWolfBootstrap.Builders
 {
@@ -40,11 +40,11 @@ namespace eWolfBootstrap.Builders
         {
             HTMLHelper.AddQuickImage(htmlpath, imagePath, this, path);
         }
+
         public void AddImageCenter(string htmlpath, string imagePath, string path)
         {
             HTMLHelper.AddQuickImageCenter(htmlpath, imagePath, this, path);
         }
-        
 
         public void AddImages(string htmlpath, string imagePath, string path)
         {

@@ -1,8 +1,8 @@
-﻿using eWolfBootstrap.Helpers;
-using eWolfBootstrap.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using eWolfBootstrap.Helpers;
+using eWolfBootstrap.Interfaces;
 
 namespace eWolfBootstrap.Builders
 {
@@ -10,8 +10,8 @@ namespace eWolfBootstrap.Builders
     public class ResponsiveSidebarPage : PageBuilder
     {
         private string _currentSection;
-        private List<string> _sectionsName = new List<string>();
         private Dictionary<string, StringBuilder> _sections = new Dictionary<string, StringBuilder>();
+        private List<string> _sectionsName = new List<string>();
 
         public ResponsiveSidebarPage(string fileName, string path, string offSet, IPageHeader pageHeader)
         {
@@ -21,28 +21,16 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("<Body>");
         }
 
-        public void StartSection(string name)
-        {
-            _currentSection = name;
-            _sectionsName.Add(name);
-            _sections.Add(name, new StringBuilder());
-
-            AppendSection($"<a id='{name}'></a>");
-            AppendSection("<br /><br />");
-
-            AppendSection($"<h2>{name}</h2>");
-        }
-
-        public void AppendSection(string text)
-        {
-            _sections[_currentSection].Append(text);
-        }
-
         public void AppendCode(string code)
         {
             //_sections[_currentSection].Append("<code>");
             _sections[_currentSection].Append(code);
             //_sections[_currentSection].Append("</code>");
+        }
+
+        public void AppendSection(string text)
+        {
+            _sections[_currentSection].Append(text);
         }
 
         public override void Output()
@@ -93,6 +81,18 @@ namespace eWolfBootstrap.Builders
 
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, stringBuilder.ToString());
+        }
+
+        public void StartSection(string name)
+        {
+            _currentSection = name;
+            _sectionsName.Add(name);
+            _sections.Add(name, new StringBuilder());
+
+            AppendSection($"<a id='{name}'></a>");
+            AppendSection("<br /><br />");
+
+            AppendSection($"<h2>{name}</h2>");
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using eWolfBootstrap.Interfaces;
-using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
+using eWolfBootstrap.Interfaces;
 
 namespace eWolfBootstrap.Helpers
 {
@@ -56,21 +55,6 @@ namespace eWolfBootstrap.Helpers
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
             stringBuilder.Append(HTMLHelper.BuildImageQuickCenter(newImagePath, newImagePath, imageTitle));
-        }
-
-
-        public static string CreateCard(string title)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            stringBuilder.AppendLine("<div class='col-md-6 col-lg-4 item'>");
-            stringBuilder.AppendLine(title);
-            //stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
-            //stringBuilder.AppendLine($"<img class='img-fluid image scale-on-hover' src='{imageThumb}'>");
-            //stringBuilder.AppendLine("</a>");
-            stringBuilder.AppendLine("</div>");
-
-            return stringBuilder.ToString();
         }
 
         public static string BuildImageCard(string image, string imageThumb, string title)
@@ -149,6 +133,20 @@ namespace eWolfBootstrap.Helpers
             //string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
             return newImagePath;
             //stringBuilder.Append(HTMLHelper.BuildImageGalleryCard(newImagePath, newImagePathThumb, imageTitle));
+        }
+
+        public static string CreateCard(string title)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("<div class='col-md-6 col-lg-4 item'>");
+            stringBuilder.AppendLine(title);
+            //stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
+            //stringBuilder.AppendLine($"<img class='img-fluid image scale-on-hover' src='{imageThumb}'>");
+            //stringBuilder.AppendLine("</a>");
+            stringBuilder.AppendLine("</div>");
+
+            return stringBuilder.ToString();
         }
 
         public class Gallery

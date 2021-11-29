@@ -6,13 +6,13 @@ namespace eWolfBootstrap.Chats
 {
     public class DoughnutBar
     {
-        private List<DoughnutData> _doughnutDatas = new List<DoughnutData>();
-        private int _colourIndex = 0;
-
         private List<string> _colors = new List<string>()
             {
                 "#F7464A","#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"
             };
+
+        private int _colourIndex = 0;
+        private List<DoughnutData> _doughnutDatas = new List<DoughnutData>();
 
         public void Add(int count, string name)
         {
@@ -76,11 +76,10 @@ namespace eWolfBootstrap.Chats
 
         public class DoughnutData
         {
+            public string Color { get; set; }
             public string Name { get; set; }
 
             public int Value { get; set; }
-
-            public string Color { get; set; }
         }
     }
 }
