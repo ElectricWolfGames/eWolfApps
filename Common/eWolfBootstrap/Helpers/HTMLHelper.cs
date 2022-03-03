@@ -21,6 +21,21 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
         }
 
+        public static void AddImageToGallerySmall(string htmlpath, string imagePath, IPageBuilder stringBuilder, string image, string offSetFolder = "")
+        {
+            htmlpath = htmlpath.Replace("\\\\", "\\");
+            imagePath = imagePath.Replace("\\\\", "\\");
+
+            string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
+            string newImagePathThumb = ImageHelper.CopyImageToThumb(imagePath, image);
+
+            newImagePath = newImagePath.Replace(htmlpath, string.Empty);
+            newImagePathThumb = newImagePathThumb.Replace(htmlpath, string.Empty);
+
+            string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
+            stringBuilder.Append(HTMLHelper.BuildImageGalleryCardSmall(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
+        }
+
         public static void AddImageToPage(string htmlpath, string imagePath, eWolfBootstrap.Interfaces.IPageBuilder stringBuilder, string image)
         {
             string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
@@ -89,6 +104,18 @@ namespace eWolfBootstrap.Helpers
 
             return stringBuilder.ToString();
         }
+        public static string BuildImageGalleryCardSmall(string image, string imageThumb, string title)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("<div class='col-md-2 col-lg-2 item'>");
+            stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
+            stringBuilder.AppendLine($"<img class='img-fluid image scale-on-hover' src='{imageThumb}'>");
+            stringBuilder.AppendLine("</a>");
+            stringBuilder.AppendLine("</div>");
+
+            return stringBuilder.ToString();
+        }
 
         public static string BuildImageGalleryCardFloatRight(string image, string imageThumb, string title)
         {
@@ -139,11 +166,8 @@ namespace eWolfBootstrap.Helpers
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.AppendLine("<div class='col-md-6 col-lg-4 item'>");
+            stringBuilder.AppendLine("<div class='col-md-6 col-lg-2 item'>");
             stringBuilder.AppendLine(title);
-            //stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
-            //stringBuilder.AppendLine($"<img class='img-fluid image scale-on-hover' src='{imageThumb}'>");
-            //stringBuilder.AppendLine("</a>");
             stringBuilder.AppendLine("</div>");
 
             return stringBuilder.ToString();
@@ -151,12 +175,12 @@ namespace eWolfBootstrap.Helpers
 
         public class Gallery
         {
-            public static void AddGalleryFooter(Interfaces.IPageBuilder builder)
+            public static void AddGalleryFooter(IPageBuilder builder)
             {
                 builder.Append("</div></div></section>");
             }
 
-            public static void AddGalleryHeader(Interfaces.IPageBuilder builder, string name)
+            public static void AddGalleryHeader(IPageBuilder builder, string name)
             {
                 builder.Append("<section class='gallery-block grid-gallery'>");
                 builder.Append("<div class='container'>");
@@ -165,6 +189,27 @@ namespace eWolfBootstrap.Helpers
                 {
                     builder.Append($"<h2><a id='{name}'>{name}</a></h2>");
                 }
+                builder.Append("</div>");
+                builder.Append("<div class='row'>");
+            }
+
+            public static void AddGalleryHeaderLocos(IPageBuilder builder, string name)
+            {
+                builder.Append("<section class='gallery-block grid-gallery'>");
+                builder.Append("<div class='container'>");
+                builder.Append("<div class='row'>");
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    builder.Append($"<h2><a id='{name}'>{name}</a></h2>");
+                }
+            }
+
+            public static void AddGalleryHeaderWithDate(IPageBuilder builder, string name)
+            {
+                builder.Append("<section class='gallery-block grid-gallery'>");
+                builder.Append("<div class='container'>");
+                builder.Append("<div class='col-md-12'>");
+                builder.Append($"<hp>{name}</hp>");
                 builder.Append("</div>");
                 builder.Append("<div class='row'>");
             }

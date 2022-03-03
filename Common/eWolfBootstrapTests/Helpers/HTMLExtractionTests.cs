@@ -1,4 +1,8 @@
-﻿namespace eWolfBootstrapTests.Helpers
+﻿using eWolfBootstrap.Helpers;
+using FluentAssertions;
+using NUnit.Framework;
+
+namespace eWolfBootstrapTests.Helpers
 {
     public class HTMLExtractionTests
     {

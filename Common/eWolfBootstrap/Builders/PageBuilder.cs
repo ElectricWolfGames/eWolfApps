@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 using eWolfBootstrap.Helpers;
 using eWolfBootstrap.Interfaces;
 
@@ -46,6 +47,48 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.AddQuickImageCenter(htmlpath, imagePath, this, path);
         }
 
+
+        public void AddImagesGroupedByDate(string htmlpath, string imagePath, string path)
+        {
+            List<string> images = ImageHelper.GetAllImages(path);
+            
+            Dictionary<string, List<string>> byDate = new Dictionary<string, List<string>>();
+
+            foreach (string image in images)
+            {
+                var time = File.GetLastWriteTime(image);
+                string date = $"{time.Year}-{time.Month.ToString("00")}-{time.Day.ToString("00")}";
+                List<string> files = new List<string>();
+
+                if (byDate.TryGetValue(date, out files))
+                {
+                    files.Add(image);
+                }
+                else
+                {
+                    files = new List<string>();
+                    files.Add(image);
+                    byDate.Add(date, files);
+                }
+            }
+
+            List<string> keyList = new List<string>(byDate.Keys);
+            keyList = keyList.OrderByDescending(x => x).ToList();
+
+            foreach (var date in keyList)
+            {
+                var list = byDate[date];
+                string name =$"{date}";
+                HTMLHelper.Gallery.AddGalleryHeaderWithDate(this, name);
+                foreach (var fileName in list)
+                {
+                    HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, fileName);
+                }
+                HTMLHelper.Gallery.AddGalleryFooter(this);
+            }
+
+        }
+
         public void AddImages(string htmlpath, string imagePath, string path)
         {
             List<string> images = ImageHelper.GetAllImages(path);
@@ -71,14 +114,21 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.Gallery.AddGalleryFooter(this);
         }
 
-        public void AddImagesWithSeeMore(List<string> imageToUse, string htmlpath, string imagePath, string path, string offSetFolder, string seeMore)
+        public void AddImagesWithSeeMore(List<string> imageToUse, List<string> imageToUseSmall, string htmlpath, string imagePath, string path, string offSetFolder, string seeMore)
         {
-            HTMLHelper.Gallery.AddGalleryHeader(this, null);
+            HTMLHelper.Gallery.AddGalleryHeaderLocos(this, null);
 
             foreach (string image in imageToUse)
             {
                 HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image, offSetFolder);
             }
+
+            foreach (string image in imageToUseSmall)
+            {
+                HTMLHelper.AddImageToGallerySmall(htmlpath, imagePath, this, image, offSetFolder);
+            }
+
+
             Append(HTMLHelper.CreateCard(seeMore));
 
             HTMLHelper.Gallery.AddGalleryFooter(this);

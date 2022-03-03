@@ -2,8 +2,8 @@
 
 namespace eWolfBootstrap.SiteBuilder.Attributes
 {
-    [System.AttributeUsage(System.AttributeTargets.Class |
-                       System.AttributeTargets.Struct,
+    [AttributeUsage(AttributeTargets.Class |
+                       AttributeTargets.Struct,
                        AllowMultiple = true)]
     public sealed class PageTitleAttribute : Attribute
     {

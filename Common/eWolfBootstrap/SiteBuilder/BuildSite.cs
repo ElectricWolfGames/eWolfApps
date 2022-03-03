@@ -4,14 +4,15 @@ using eWolfBootstrap.SiteBuilder.Interfaces;
 
 namespace eWolfBootstrap.SiteBuilder
 {
-    public class BuildSite
+    public class BuildSite : IBuildSite
     {
-        private List<ISitePageDetails> _allPages;
-        public string WebSiteRootAddress { get; set; } = @"D:\Projects\ElectricWolfWebBuilder\eWolfSiteBuilder\DemoSite\";
+        public List<ISitePageDetails> AllPages { get; set; }
+
+        public string WebSiteRootAddress { get; set; }
 
         public void Create()
         {
-            foreach (var page in _allPages)
+            foreach (var page in AllPages)
             {
                 page.RootAddress = WebSiteRootAddress;
                 page.CreatePage();
@@ -20,12 +21,12 @@ namespace eWolfBootstrap.SiteBuilder
 
         public void OpenHomePage()
         {
-            OpenSite(_allPages[0]);
+            OpenSite(AllPages[0]);
         }
 
         public void PreProcess(System.Reflection.Assembly assembly)
         {
-            _allPages = PageDetails.GetAllPages(assembly);
+            AllPages = PageDetails.GetAllPages(assembly);
         }
 
         private static void OpenSite(ISitePageDetails pageDetails)
@@ -37,5 +38,9 @@ namespace eWolfBootstrap.SiteBuilder
             };
             Process.Start(psi);
         }
+    }
+
+    public class NavigationBuilder : INavigationBuilder
+    {
     }
 }

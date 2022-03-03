@@ -107,7 +107,7 @@ namespace eWolfPodcasterCore.Data
 
                 if (show.RssFeed.StartsWith("G:"))
                 {
-                    show.RssFeed = show.RssFeed.Replace("__Audio", "Audio");
+                    show.RssFeed = show.RssFeed.Replace("G:", "H:");
                     show.ShowOption.CheckforUpdates = false;
                 }
 
@@ -118,7 +118,7 @@ namespace eWolfPodcasterCore.Data
 
                     if (e.PodcastURL.StartsWith("G:"))
                     {
-                        e.PodcastURL = e.PodcastURL.Replace("__Audio", "Audio");
+                        e.PodcastURL = e.PodcastURL.Replace("G:", "H:");
                     }
                 }
             }

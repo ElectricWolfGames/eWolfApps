@@ -3,6 +3,6 @@
 {
     public interface IPageHeaderDetails
     {
-        string Output();
+        string Output(PageDetails pageDetails);
     }
 }

@@ -13,15 +13,6 @@ namespace CommandLineHelpers
 
         private static IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
 
-        public static void StartWindow()
-        {
-            AllocConsole();
-        }
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool AllocConsole();
-
         public static void SetFont(string fontName = "Lucida Console", int fontSize = 700)
         {
             unsafe
@@ -55,6 +46,15 @@ namespace CommandLineHelpers
             Console.SetWindowSize(width, height);
         }
 
+        public static void StartWindow()
+        {
+            AllocConsole();
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool AllocConsole();
+
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern IntPtr GetStdHandle(int dwType);
 
@@ -78,7 +78,7 @@ namespace CommandLineHelpers
             internal COORD dwFontSize;
             internal int FontFamily;
             internal int FontWeight;
-            internal fixed char FaceName[LF_FACESIZE];
+            internal char FaceName;// [LF_FACESIZE]
         }
 
         [StructLayout(LayoutKind.Sequential)]

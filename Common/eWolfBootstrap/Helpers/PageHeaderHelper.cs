@@ -1,20 +1,10 @@
-﻿using System.Text;
-using eWolfBootstrap.Interfaces;
+﻿using eWolfBootstrap.Interfaces;
+using System.Text;
 
 namespace eWolfBootstrap.Helpers
 {
     public class PageHeaderHelper
     {
-        public static void AddSiteTracker(StringBuilder sb)
-        {
-            sb.Append(@"
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src='https://www.googletagmanager.com/gtag/js?id=UA-180928318-1'></script>
-<script>
-  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date());  gtag('config', 'UA-180928318-1');
-</script>");
-        }
-
         public static string PageHeader(IPageHeader pageDetails, string offSet)
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -59,6 +49,16 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append("</head>");
 
             return stringBuilder.ToString();
+        }
+
+        private static void AddSiteTracker(StringBuilder sb)
+        {
+            sb.Append(@"
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-180928318-1'></script>
+<script>
+  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date());  gtag('config', 'UA-180928318-1');
+</script>");
         }
     }
 }

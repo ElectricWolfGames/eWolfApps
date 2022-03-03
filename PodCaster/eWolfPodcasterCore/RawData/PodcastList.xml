@@ -1,7 +1,63 @@
 <eWolfPodcast>
   <!-- list of more podcasts https://fourble.co.uk/podcasts-->
   <Shows>
-    <Show>
+	  <Show>
+		  <Name>TechCheck</Name>
+		  <Url>https://feeds.simplecast.com/Q_DAkYfy</Url>
+		  <Category>Tech</Category>
+		  <Description>
+			  TechCheck
+		  </Description>
+	  </Show>
+	  <Show>
+		  <Name>CBS Radio Mystery Theater</Name>
+		  <Url>http://www.mysteryshows.com/Podcasts/Mystery-Shows-Feed.xml</Url>
+		  <Category>Drama</Category>
+		  <Description>
+			  Old Time Radio Mystery Theater
+		  </Description>
+	  </Show>
+	  <Show>
+		  <Name>Brimstone Valley Mall</Name>
+		  <Url>https://brimstonevalleymall.libsyn.com/rss</Url>
+		  <Category>Drama</Category>
+		  <Description>
+			  Brimstone Valley Mall is truly the epitome of what old people think rock music does to the youth-Satan worshipping and a sudden taste for leather included.
+		  </Description>
+	  </Show>
+	  <Show>
+		  <Name>The Godshead Incidental</Name>
+		  <Url>https://godsheadincidental.com/feed/</Url>
+		  <Category>Drama</Category>
+		  <Description>
+			  Brimstone Valley Mall is truly the epitome of what old people think rock music does to the youth-Satan worshipping and a sudden taste for leather included.
+		  </Description>
+	  </Show>
+	  <Show>
+		  <Name>The Long Hallway</Name>
+		  <Url>https://thelonghallway.libsyn.com/rss</Url>
+		  <Category>Drama</Category>
+		  <Description>
+			  Anthology shows are in no short supply in audio drama but there’s just something about The Long Hallway that really caught my attention. Its methodical pace, its slightly eerie atmosphere, and its love for twists and subtle theming all packed in episodes that never go over eleven minutes makes it an excellent entry level podcast.
+		  </Description>
+	  </Show>
+	  <Show>
+		  <Name>SAYER</Name>
+		  <Url>https://feeds.feedburner.com/sayer</Url>
+		  <Category>Drama Sci-fi</Category>
+		  <Description>
+			  AYER is the science fiction horror audio drama debut of Adam Bash who has weaved a positively fascinating if terrifying futuristic dystopia. And it’s through the eyes of the titular SAYER, as well as a number of other equally dysfunctional artificial intelligences, that we learn about the dark secrets and darker tragedies befalling the citizens of Typhon.
+		  </Description>
+	  </Show>
+	  <Show>
+		  <Name>Return Home</Name>
+		  <Url>https://discoverpods.com/audio-drama-podcasts-fiction/</Url>
+		  <Category>Drama</Category>
+		  <Description>
+			  Return Home is one of those shows that has a little bit of everything: comedy, strange supernatural forces, and romance all wrapped up in a package that’s so unashamedly authentic. With a loveable trio as the leads and an interesting slew of monsters to pick from, this long trip to Melancholy Falls is a nice blend of creative and campy.
+		  </Description>
+	  </Show>
+	  <Show>
       <Name></Name>
       <Url></Url>
       <Category>Comedy</Category>

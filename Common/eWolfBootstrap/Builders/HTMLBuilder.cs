@@ -51,7 +51,7 @@ namespace eWolfBootstrap.Builders
 
         public void NewLine()
         {
-            _stringBuilder.Append("<br />");
+            _stringBuilder.Append("</br>");
         }
 
         public virtual string Output()
@@ -108,6 +108,20 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("<div class='text-center'>");
             _stringBuilder.Append($@"<iframe width='560' height='315' src='https://www.youtube.com/embed/" + link + "?rel=0' frameborder='0' allowfullscreen></iframe>");
             _stringBuilder.Append("</div>");
+        }
+
+        public void Jumbotron(string title, string body, int size = 12)
+        {
+            _stringBuilder.AppendLine("<div class='jumbotron'>");
+            _stringBuilder.AppendLine("<div class='row'>");
+            _stringBuilder.AppendLine($"<div class='col-md-{size}'>");
+
+            _stringBuilder.AppendLine($"<h1>{title}</h1>");
+            _stringBuilder.AppendLine($"<p class='lead'>{body}</p>");
+            
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
         }
     }
 }
