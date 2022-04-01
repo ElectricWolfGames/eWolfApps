@@ -29,7 +29,9 @@ namespace eWolfPodcasterCore.Helpers
                             {
                                 string attr = reader.GetAttribute(0);
                                 showData.PodcastURL = attr;
-                                if (!attr.Contains("mp3"))
+                                if (!showData.PodcastURL.Contains("mp3"))
+                                    showData.PodcastURL = reader.GetAttribute(1);
+                                if (!showData.PodcastURL.Contains("mp3"))
                                     showData.PodcastURL = reader.GetAttribute(2);
                             }
 

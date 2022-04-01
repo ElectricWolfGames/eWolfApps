@@ -48,5 +48,29 @@ namespace eWolfPodcasterCoreUnitTests.Helpers
             episode.Title.Should().Be("81. Understanding Complexity Theory");
             episode.PodcastURL.Should().Be("http://media.blubrry.com/codingblocks/www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/codingblocks/coding-blocks-episode-81.mp3");
         }
+
+        [Test]
+        public void ShouldParseIsaacArthurEpisodes()
+        {
+            XmlReader reader = null;
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "eWolfPodcasterCoreUnitTests.Examples.Isaac Arthur.xml";
+
+            List<EpisodeControl> episodes;
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                reader = XmlReader.Create(stream, settings);
+                episodes = RSSHelper.ReadEpisodes(reader);
+            }
+
+            EpisodeControl episode = episodes[0];
+            episode.Title.Should().Be("Programmable & Smart Matter");
+            episode.PodcastURL.Should().Be("https://feeds.soundcloud.com/stream/1241912254-isaac-arthur-148927746-programmable-smart-matter.mp3");
+        }
     }
 }

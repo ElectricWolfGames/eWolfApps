@@ -16,6 +16,42 @@ namespace eWolfPodcasterCoreUnitTests.Data
         }
 
         [Test]
+        public void ShouldReturnFalseForUniqueEpisodes()
+        {
+            EpisodeControl episodeA = CreateEpisode("MyFirstEpisodediff", "UrlDiff");
+            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
+
+            episodeA.SameAs(episodeB).Should().BeFalse();
+        }
+
+        [Test]
+        public void ShouldReturnTrueForSameEpisodes()
+        {
+            EpisodeControl episodeA = CreateEpisode("MyFirstEpisode", "Url");
+            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
+
+            episodeA.SameAs(episodeB).Should().BeTrue();
+        }
+
+        [Test]
+        public void ShouldReturnTrueForUniqueTitleEpisodes()
+        {
+            EpisodeControl episodeA = CreateEpisode("MyFirstEpisodeDiff", "Url");
+            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
+
+            episodeA.SameAs(episodeB).Should().BeTrue();
+        }
+
+        [Test]
+        public void ShouldReturnTrueForUniqueUrlEpisodes()
+        {
+            EpisodeControl episodeA = CreateEpisode("MyFirstEpisode", "UrlDiff");
+            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
+
+            episodeA.SameAs(episodeB).Should().BeTrue();
+        }
+
+        [Test]
         public void ShouldSeeEpisodesAreSame()
         {
             EpisodeControl ec = new EpisodeControl
@@ -88,42 +124,6 @@ namespace eWolfPodcasterCoreUnitTests.Data
             ec.SetTextNodeData("title", "MyTitle");
 
             ec.Title.Should().Be("MyTitle");
-        }
-
-        [Test]
-        public void ShouldReturnTrueForSameEpisodes()
-        {
-            EpisodeControl episodeA = CreateEpisode("MyFirstEpisode", "Url");
-            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
-
-            episodeA.SameAs(episodeB).Should().BeTrue();
-        }
-
-        [Test]
-        public void ShouldReturnTrueForUniqueTitleEpisodes()
-        {
-            EpisodeControl episodeA = CreateEpisode("MyFirstEpisodeDiff", "Url");
-            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
-
-            episodeA.SameAs(episodeB).Should().BeTrue();
-        }
-
-        [Test]
-        public void ShouldReturnTrueForUniqueUrlEpisodes()
-        {
-            EpisodeControl episodeA = CreateEpisode("MyFirstEpisode", "UrlDiff");
-            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
-
-            episodeA.SameAs(episodeB).Should().BeTrue();
-        }
-
-        [Test]
-        public void ShouldReturnFalseForUniqueEpisodes()
-        {
-            EpisodeControl episodeA = CreateEpisode("MyFirstEpisodediff", "UrlDiff");
-            EpisodeControl episodeB = CreateEpisode("MyFirstEpisode", "Url");
-
-            episodeA.SameAs(episodeB).Should().BeFalse();
         }
 
         private static EpisodeControl CreateEpisode(string title, string url)

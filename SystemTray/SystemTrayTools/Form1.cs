@@ -35,6 +35,11 @@ namespace SystemTrayTools
             UpdateAll();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
         private void NotifyIconsMouseDoubleClick(object sender, MouseEventArgs e)
         {
             WindowState = FormWindowState.Normal;
@@ -72,11 +77,6 @@ namespace SystemTrayTools
                     _menuActionsHolder.UpdateClipboard(str);
                 }
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Hide();
         }
     }
 }

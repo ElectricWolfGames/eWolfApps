@@ -17,8 +17,8 @@ namespace eWolfPodcasterUI.Pages
     {
         private string _currentGroupName;
 
-        private List<CatergeryData> _groups;
         private List<string> _groupNames;
+        private List<CatergeryData> _groups;
         private ObservableCollection<LibraryItem> _libraryItem = new ObservableCollection<LibraryItem>();
 
         public ShowLibrary()
@@ -69,6 +69,24 @@ namespace eWolfPodcasterUI.Pages
             PopulateGroup();
         }
 
+        private void PopulateCatergies()
+        {
+            ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
+
+            List<string> allGroups = showLibraryService.Groups().Select(x => x.Name).ToList();
+            _groupNames = new List<string>();
+
+            foreach (string group in allGroups)
+            {
+                List<ShowLibraryData> shows = showLibraryService.GetList(group);
+                if (shows.Any(x => !IsShowAllReadyAdded(x)))
+                {
+                    _groupNames.Add(group);
+                }
+            }
+            LibraryCategories.ItemsSource = _groupNames;
+        }
+
         private void PopulateGroup()
         {
             if (_currentGroupName != null)
@@ -90,24 +108,6 @@ namespace eWolfPodcasterUI.Pages
                 }
             }
             LibraryShows.ItemsSource = _libraryItem;
-        }
-
-        private void PopulateCatergies()
-        {
-            ShowLibraryService showLibraryService = ShowLibraryService.GetLibrary;
-
-            List<string> allGroups = showLibraryService.Groups().Select(x => x.Name).ToList();
-            _groupNames = new List<string>();
-
-            foreach (string group in allGroups)
-            {
-                List<ShowLibraryData> shows = showLibraryService.GetList(group);
-                if (shows.Any(x => !IsShowAllReadyAdded(x)))
-                {
-                    _groupNames.Add(group);
-                }
-            }
-            LibraryCategories.ItemsSource = _groupNames;
         }
     }
 }

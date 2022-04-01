@@ -11,6 +11,11 @@ namespace SystemTrayTools.Pages
             InitializeComponent();
         }
 
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void buttonOk_Click(object sender, EventArgs e)
         {
             string textToStore = textToLog.Text;
@@ -19,11 +24,6 @@ namespace SystemTrayTools.Pages
                 ReporterService.Service.AddTextToReport(textToStore);
             }
 
-            Close();
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
             Close();
         }
     }

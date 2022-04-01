@@ -5,17 +5,16 @@ namespace GenerateLogo
 {
     public class BuildHTML
     {
-        public string Name { get; set; }
-        public string FileName { get; set; }
-
-        public string ColorA { get; set; }
-        public string ColorB { get; set; }
-
         public BuildHTML(string name, string fileName)
         {
             Name = name;
             FileName = fileName;
         }
+
+        public string ColorA { get; set; }
+        public string ColorB { get; set; }
+        public string FileName { get; set; }
+        public string Name { get; set; }
 
         public void Build()
         {

@@ -14,10 +14,9 @@ namespace eWolfPodcasterCore.Logger
             Fatal
         }
 
+        public string Message { get; set; }
         public DateTime MessageTime { get; set; }
 
         public MessageTypes MessageType { get; set; }
-
-        public string Message { get; set; }
     }
 }

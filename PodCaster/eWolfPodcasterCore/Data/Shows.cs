@@ -98,32 +98,6 @@ namespace eWolfPodcasterCore.Data
             FixPath();
         }
 
-        private void FixPath()
-        {
-            foreach (var show in _shows)
-            {
-                if (show == null || show.RssFeed == null)
-                    continue;
-
-                if (show.RssFeed.StartsWith("G:"))
-                {
-                    show.RssFeed = show.RssFeed.Replace("G:", "H:");
-                    show.ShowOption.CheckforUpdates = false;
-                }
-
-                foreach (var e in show.Episodes)
-                {
-                    if (e == null || e.PodcastURL == null)
-                        continue;
-
-                    if (e.PodcastURL.StartsWith("G:"))
-                    {
-                        e.PodcastURL = e.PodcastURL.Replace("G:", "H:");
-                    }
-                }
-            }
-        }
-
         public void RemoveEpisodeFromShow(string showName, string episodeName)
         {
             var show = GetShowFromName(showName);
@@ -295,6 +269,32 @@ namespace eWolfPodcasterCore.Data
                     }
                 }
                 catch { }
+            }
+        }
+
+        private void FixPath()
+        {
+            foreach (var show in _shows)
+            {
+                if (show == null || show.RssFeed == null)
+                    continue;
+
+                if (show.RssFeed.StartsWith("G:"))
+                {
+                    show.RssFeed = show.RssFeed.Replace("G:", "H:");
+                    show.ShowOption.CheckforUpdates = false;
+                }
+
+                foreach (var e in show.Episodes)
+                {
+                    if (e == null || e.PodcastURL == null)
+                        continue;
+
+                    if (e.PodcastURL.StartsWith("G:"))
+                    {
+                        e.PodcastURL = e.PodcastURL.Replace("G:", "H:");
+                    }
+                }
             }
         }
     }

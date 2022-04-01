@@ -5,10 +5,9 @@ namespace eWolfPodcasterCore.Interfaces
 {
     public interface IDebugLoggerData
     {
+        string Message { get; }
         DateTime MessageTime { get; }
 
         MessageTypes MessageType { get; }
-
-        string Message { get; }
     }
 }

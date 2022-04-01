@@ -92,6 +92,12 @@ namespace eWolfPodcasterCore.Helper
             return true;
         }
 
+        internal void DeleteFile(ISaveable saveable)
+        {
+            string outputFileName = Path.Combine(_outputFolder, saveable.GetFileName);
+            File.Delete(outputFileName);
+        }
+
         private static bool SaveToStream(Stream stream, IFormatter formatter, object objectToSave)
         {
             try
@@ -103,12 +109,6 @@ namespace eWolfPodcasterCore.Helper
             {
                 return false;
             }
-        }
-
-        internal void DeleteFile(ISaveable saveable)
-        {
-            string outputFileName = Path.Combine(_outputFolder, saveable.GetFileName);
-            File.Delete(outputFileName);
         }
     }
 }

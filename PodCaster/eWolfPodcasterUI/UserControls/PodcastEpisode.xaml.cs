@@ -103,6 +103,22 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
+        public string ShowDate
+        {
+            get
+            {
+                return $"{_episodeData.PublishedDate}";
+            }
+        }
+
+        public string ShowLength
+        {
+            get
+            {
+                return $"{_episodeData.ShowLength}";
+            }
+        }
+
         public string ShowName
         {
             get
@@ -120,22 +136,6 @@ namespace eWolfPodcasterUI.UserControls
             get
             {
                 return $"{_episodeData.ShowName}: {_episodeData.Title}";
-            }
-        }
-
-        public string ShowDate
-        {
-            get
-            {
-                return $"{_episodeData.PublishedDate}";
-            }
-        }
-
-        public string ShowLength
-        {
-            get
-            {
-                return $"{_episodeData.ShowLength}";
             }
         }
 

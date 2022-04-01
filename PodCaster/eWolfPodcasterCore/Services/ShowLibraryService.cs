@@ -23,6 +23,12 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
+        public void CreateLibraryFileFromProject(string fileName)
+        {
+            string file = ProjectItems.LoadFile("eWolfPodcasterCore.RawData.PodcastList.xml");
+            File.WriteAllText(fileName, file);
+        }
+
         public List<ShowLibraryData> GetList(string name)
         {
             return _library.Where(x => x.Catergery == name).ToList();
@@ -49,14 +55,6 @@ namespace eWolfPodcasterCore.Services
             }
 
             return groups;
-        }
-
-        private IEnumerable<CatergeryData> DefaultGroups()
-        {
-            List<CatergeryData> catergerys = new List<CatergeryData>();
-
-            catergerys.AddRange(CategoryHolderService.GetAllCategories);
-            return catergerys.OrderBy(x => x.Name);
         }
 
         public void Load(string fileName)
@@ -92,10 +90,12 @@ namespace eWolfPodcasterCore.Services
             }
         }
 
-        public void CreateLibraryFileFromProject(string fileName)
+        private IEnumerable<CatergeryData> DefaultGroups()
         {
-            string file = ProjectItems.LoadFile("eWolfPodcasterCore.RawData.PodcastList.xml");
-            File.WriteAllText(fileName, file);
+            List<CatergeryData> catergerys = new List<CatergeryData>();
+
+            catergerys.AddRange(CategoryHolderService.GetAllCategories);
+            return catergerys.OrderBy(x => x.Name);
         }
     }
 }

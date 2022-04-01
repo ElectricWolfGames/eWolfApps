@@ -27,27 +27,16 @@ namespace eWolfPodcasterCoreUnitTests.Data
         }
 
         [Test]
-        public void ShouldNotAddAnotherShowWithSameRSSFeedOrTitle()
+        public void ShouldGetOnlyShowInNoGroup()
         {
             Shows shows = new Shows();
-            shows.Add(CreateShowControl("My Title", "RSS", "GroupA"));
-            shows.Add(CreateShowControl("My Title", "RSS", "GroupA"));
-            shows.Add(CreateShowControl("My Title Other", "RSS", "GroupA"));
+            shows.Add(CreateShowControl("Show1", "RSSA", "None"));
+            shows.Add(CreateShowControl("Show2", "RSSB", "None"));
+            shows.Add(CreateShowControl("Show3", "RSSC", "None"));
+            shows.Add(CreateShowControl("Show4", "RSSD"));
 
-            shows.Count.Should().Be(1);
-        }
-
-        [Test]
-        public void ShouldGroupsReturnCorrectGroups()
-        {
-            Shows shows = new Shows();
-            shows.Add(CreateShowControl("Show1", "RSS", "GroupA"));
-            shows.Add(CreateShowControl("Show2", "RSSA", "GroupA"));
-            shows.Add(CreateShowControl("Show3", "RSSB", "GroupB"));
-
-            shows.Groups().Should().HaveCount(2);
-            shows.Groups().Contains("GroupA").Should().BeTrue();
-            shows.Groups().Contains("GroupB").Should().BeTrue();
+            List<ShowControl> showsInGroup = shows.ShowInGroup("Ungrouped");
+            showsInGroup.Should().HaveCount(4);
         }
 
         [Test]
@@ -66,16 +55,27 @@ namespace eWolfPodcasterCoreUnitTests.Data
         }
 
         [Test]
-        public void ShouldGetOnlyShowInNoGroup()
+        public void ShouldGroupsReturnCorrectGroups()
         {
             Shows shows = new Shows();
-            shows.Add(CreateShowControl("Show1", "RSSA", "None"));
-            shows.Add(CreateShowControl("Show2", "RSSB", "None"));
-            shows.Add(CreateShowControl("Show3", "RSSC", "None"));
-            shows.Add(CreateShowControl("Show4", "RSSD"));
+            shows.Add(CreateShowControl("Show1", "RSS", "GroupA"));
+            shows.Add(CreateShowControl("Show2", "RSSA", "GroupA"));
+            shows.Add(CreateShowControl("Show3", "RSSB", "GroupB"));
 
-            List<ShowControl> showsInGroup = shows.ShowInGroup("Ungrouped");
-            showsInGroup.Should().HaveCount(4);
+            shows.Groups().Should().HaveCount(2);
+            shows.Groups().Contains("GroupA").Should().BeTrue();
+            shows.Groups().Contains("GroupB").Should().BeTrue();
+        }
+
+        [Test]
+        public void ShouldNotAddAnotherShowWithSameRSSFeedOrTitle()
+        {
+            Shows shows = new Shows();
+            shows.Add(CreateShowControl("My Title", "RSS", "GroupA"));
+            shows.Add(CreateShowControl("My Title", "RSS", "GroupA"));
+            shows.Add(CreateShowControl("My Title Other", "RSS", "GroupA"));
+
+            shows.Count.Should().Be(1);
         }
 
         private ShowControl CreateShowControl(string name, string feed, string cat)

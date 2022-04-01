@@ -8,19 +8,9 @@ namespace eWolfPodcasterCoreUnitTests.Data
     {
         public ObservableCollection<ShowControl> ShowList => throw new System.NotImplementedException();
 
-        public void Save()
+        public bool Add(ShowControl show)
         {
-            // Fake do nothing service.
-        }
-
-        public void Load(string outputFolder)
-        {
-            // Fake do nothing service.
-        }
-
-        public void RemoveShow(ShowControl itemToRemove)
-        {
-            // Fake do nothing service.
+            return false;
         }
 
         public bool Contains(ShowControl show)
@@ -28,14 +18,24 @@ namespace eWolfPodcasterCoreUnitTests.Data
             return false;
         }
 
-        public bool Add(ShowControl show)
+        public ShowControl GetShowFromName(string showName)
         {
-            return false;
+            return null;
         }
 
-        public bool UpdateNextRSSFeeds()
+        public void Load(string outputFolder)
         {
-            return true;
+            // Fake do nothing service.
+        }
+
+        public void RemoveEpisodeFromShow(string showName, string episodeName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RemoveShow(ShowControl itemToRemove)
+        {
+            // Fake do nothing service.
         }
 
         public void ReplaceAllShows(Shows shows)
@@ -43,14 +43,14 @@ namespace eWolfPodcasterCoreUnitTests.Data
             // Fake do nothing service.
         }
 
-        public ShowControl GetShowFromName(string showName)
+        public void Save()
         {
-            return null;
+            // Fake do nothing service.
         }
 
-        public void RemoveEpisodeFromShow(string showName, string episodeName)
+        public bool UpdateNextRSSFeeds()
         {
-            throw new System.NotImplementedException();
+            return true;
         }
     }
 }

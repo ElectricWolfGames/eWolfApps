@@ -12,6 +12,26 @@ namespace eWolfPodcasterCoreUnitTests.Helper
     public class PersistenceHelperTests
     {
         [Test]
+        public void ShouldLoadSavedData()
+        {
+            RemoveTempFolder();
+
+            TempSaveable tempSaveable = new TempSaveable
+            {
+                Name = "MyName",
+                OtherData = "OtherData",
+                Modifyed = true
+            };
+            PersistenceHelper<TempSaveable> ph = new PersistenceHelper<TempSaveable>(GetOutputFolder());
+            ph.SaveData(new List<ISaveable>() { tempSaveable });
+
+            ObservableCollection<TempSaveable> loadItems = ph.LoadData();
+            loadItems.Should().HaveCount(1);
+            loadItems[0].Name.Should().Be("MyName");
+            loadItems[0].OtherData.Should().Be("OtherData");
+        }
+
+        [Test]
         public void ShouldSaveOneFile()
         {
             RemoveTempFolder();
@@ -51,26 +71,6 @@ namespace eWolfPodcasterCoreUnitTests.Helper
             File.Exists(finalName).Should().BeTrue();
         }
 
-        [Test]
-        public void ShouldLoadSavedData()
-        {
-            RemoveTempFolder();
-
-            TempSaveable tempSaveable = new TempSaveable
-            {
-                Name = "MyName",
-                OtherData = "OtherData",
-                Modifyed = true
-            };
-            PersistenceHelper<TempSaveable> ph = new PersistenceHelper<TempSaveable>(GetOutputFolder());
-            ph.SaveData(new List<ISaveable>() { tempSaveable });
-
-            ObservableCollection<TempSaveable> loadItems = ph.LoadData();
-            loadItems.Should().HaveCount(1);
-            loadItems[0].Name.Should().Be("MyName");
-            loadItems[0].OtherData.Should().Be("OtherData");
-        }
-
         [TearDown]
         public void TearDown()
         {
@@ -99,11 +99,10 @@ namespace eWolfPodcasterCoreUnitTests.Helper
         {
             public string GetFileName => "TestSave.data";
 
+            public bool Modifyed { get; set; }
             public string Name { get; set; }
 
             public string OtherData { get; set; }
-
-            public bool Modifyed { get; set; }
         }
 
         [Serializable]

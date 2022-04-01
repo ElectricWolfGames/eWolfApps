@@ -7,14 +7,6 @@ namespace eWolfPodcasterCore.Data
     [Serializable]
     public class Show
     {
-        public List<EpisodeControl> Episodes { get; set; } = new List<EpisodeControl>();
-
-        public string RssFeed { get; set; }
-
-        public ShowOptions ShowOption { get; set; } = new ShowOptions();
-
-        public string Title { get; set; }
-
         public CatergeryData Catergery { get; set; } = new CatergeryData("None");
 
         public int Count
@@ -24,5 +16,13 @@ namespace eWolfPodcasterCore.Data
                 return Episodes.Count;
             }
         }
+
+        public List<EpisodeControl> Episodes { get; set; } = new List<EpisodeControl>();
+
+        public string RssFeed { get; set; }
+
+        public ShowOptions ShowOption { get; set; } = new ShowOptions();
+
+        public string Title { get; set; }
     }
 }

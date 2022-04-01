@@ -7,6 +7,16 @@ namespace eWolfPodcasterCoreUnitTests.Helpers
 {
     public class DataCleansingTests
     {
+        [TestCase("", "")]
+        [TestCase(":", "-")]
+        [TestCase("a?b", "a-b")]
+        [TestCase("a:?:b", "a---b")]
+        [TestCase("a:\\:b", "a---b")]
+        public void ShouldMakeFilenameSafe(string text, string expected)
+        {
+            DataCleansing.FileSafeFileName(text).Should().Be(expected);
+        }
+
         [Test]
         public void ShouldRemoveAllStrings()
         {
@@ -32,16 +42,6 @@ namespace eWolfPodcasterCoreUnitTests.Helpers
             str = DataCleansing.RemoveAllStrings(str, new List<string>() { "and", "else" });
 
             str.Should().Be("All    Everything ");
-        }
-
-        [TestCase("", "")]
-        [TestCase(":", "-")]
-        [TestCase("a?b", "a-b")]
-        [TestCase("a:?:b", "a---b")]
-        [TestCase("a:\\:b", "a---b")]
-        public void ShouldMakeFilenameSafe(string text, string expected)
-        {
-            DataCleansing.FileSafeFileName(text).Should().Be(expected);
         }
     }
 }

@@ -25,8 +25,6 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
-        public ShowLibraryData ShowLibraryData { get; set; } = new ShowLibraryData();
-
         public string EpisodeCount
         {
             get
@@ -39,42 +37,7 @@ namespace eWolfPodcasterUI.UserControls
             }
         }
 
-        private void GetEpisodeCount()
-        {
-            XmlReader downloadRSS = DownloadRSSFile();
-            if (downloadRSS == null)
-                return;
-
-            CountEpisodes(downloadRSS);
-        }
-
-        private void CountEpisodes(XmlReader downloadRSS)
-        {
-            var items = RSSHelper.ReadEpisodes(downloadRSS);
-            ShowLibraryData.LastDownloadMessage = $"{items.Count} Episodes";
-        }
-
-        internal XmlReader DownloadRSSFile()
-        {
-            XmlReader reader = null;
-            XmlReaderSettings settings = new XmlReaderSettings
-            {
-                DtdProcessing = DtdProcessing.Parse
-            };
-
-            try
-            {
-                reader = XmlReader.Create(ShowLibraryData.URL, settings);
-                ShowLibraryData.LastDownloadMessage = "Downloaded";
-            }
-            catch
-            {
-                ShowLibraryData.LastDownloadMessage = "Failed";
-                reader = null;
-            }
-
-            return reader;
-        }
+        public ShowLibraryData ShowLibraryData { get; set; } = new ShowLibraryData();
 
         public string Title
         {
@@ -104,6 +67,43 @@ namespace eWolfPodcasterUI.UserControls
                 System.Console.WriteLine($"{ShowLibraryData.Name} All ready in list");
             }
             LibraryMain.RedrawList();
+        }
+
+        internal XmlReader DownloadRSSFile()
+        {
+            XmlReader reader = null;
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
+
+            try
+            {
+                reader = XmlReader.Create(ShowLibraryData.URL, settings);
+                ShowLibraryData.LastDownloadMessage = "Downloaded";
+            }
+            catch
+            {
+                ShowLibraryData.LastDownloadMessage = "Failed";
+                reader = null;
+            }
+
+            return reader;
+        }
+
+        private void CountEpisodes(XmlReader downloadRSS)
+        {
+            var items = RSSHelper.ReadEpisodes(downloadRSS);
+            ShowLibraryData.LastDownloadMessage = $"{items.Count} Episodes";
+        }
+
+        private void GetEpisodeCount()
+        {
+            XmlReader downloadRSS = DownloadRSSFile();
+            if (downloadRSS == null)
+                return;
+
+            CountEpisodes(downloadRSS);
         }
     }
 }
