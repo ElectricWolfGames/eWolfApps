@@ -1,19 +1,21 @@
-﻿using System;
+﻿using eWolfBootstrap.SiteBuilder.Attributes;
+using eWolfBootstrap.SiteBuilder.Enums;
+using eWolfBootstrap.SiteBuilder.Helpers;
+using eWolfBootstrap.SiteBuilder.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using eWolfBootstrap.SiteBuilder.Attributes;
-using eWolfBootstrap.SiteBuilder.Enums;
-using eWolfBootstrap.SiteBuilder.Helpers;
-using eWolfBootstrap.SiteBuilder.Interfaces;
 
 namespace eWolfBootstrap.SiteBuilder
 {
     public class WebPage
     {
-        private ISitePageDetails _pageDetails;
-        private StringBuilder _stringBuilder = new();
+        private readonly ISitePageDetails _pageDetails;
+        private readonly StringBuilder _stringBuilder = new();
+
+        private readonly List<string> _tags = new List<string>();
 
         public WebPage(ISitePageDetails pageDetails)
         {
@@ -40,54 +42,13 @@ namespace eWolfBootstrap.SiteBuilder
             }
         }
 
-        public void StartDiv(string tag)
-        {
-            _stringBuilder.Append(tag);
-            _tags.Add("/div");
-        }
-
-        private List<string> _tags = new List<string>();
-
-        public void CloseAllsDiv()
-        {
-            while (_tags.Any())
-            {
-                CloseDiv();
-            }
-        }
-
-        public void CloseDiv()
-        {
-            if (!_tags.Any())
-                return;
-
-            _stringBuilder.Append("</div>");
-            _tags.RemoveAt(0);
-        }
-
         public string HtmlPath { get; set; }
 
         public string HtmlTitle { get; set; }
 
-        public void IndexTitle(HTMLIndexedItems indexItem)
-        {
-            string linkName = indexItem.Title;
-            Append($"<li><a href='#{linkName}'>{linkName}</a></li>");
-        }
-
         public int NavigationIndex { get; set; }
-        public NavigationTypes NavigationTypes { get; set; }
 
-        public void StartBody()
-        {
-            _stringBuilder.Append("<Body>");
-            
-        }
-        public void EndBody()
-        {
-            
-            _stringBuilder.Append("</Body>");
-        }
+        public NavigationTypes NavigationTypes { get; set; }
 
         public void AddHeader(PageDetails pageDetails)
         {
@@ -132,44 +93,6 @@ namespace eWolfBootstrap.SiteBuilder
             stringBuilder.AppendLine("</nav>");
 
             _stringBuilder.Append(stringBuilder.ToString());
-        }
-
-        private void PopulatePageAddresses(NavigationTypes navigationType, List<NavigationPageAddressDetails> pageAddress)
-        {
-            var siteBuilder = SiteBuilderServiceLocator.Instance.GetService<IBuildSite>();
-            var navs = siteBuilder.AllPages.Where(x => x.WebPage.NavigationTypes == navigationType);
-
-            string[] parts = HtmlPath.Split("\\", StringSplitOptions.RemoveEmptyEntries);
-            int count = parts.Count();
-
-            foreach (var nav in navs)
-            {
-                string[] parts2 = nav.WebPage.HtmlPath.Split("/", StringSplitOptions.RemoveEmptyEntries);
-                int pageCount = parts2.Count();
-
-                string htmlPath = nav.WebPage.HtmlPath + "/";
-                if (pageCount < count)
-                {
-                    htmlPath = "";
-                    for (int i = 0; i < count - pageCount; i++)
-                    {
-                        htmlPath += "../";
-                    }
-                }
-
-                if (pageCount == count)
-                {
-                    htmlPath = string.Empty;
-                }
-
-                pageAddress.Add(
-                        new NavigationPageAddressDetails()
-                        {
-                            Address = $"{htmlPath}{nav.WebPage.HtmlTitle}",
-                            Title = nav.MenuTitle
-                        }
-                    );
-            }
         }
 
         public void AddNavigation(string offSet)
@@ -244,6 +167,34 @@ function myFunction() {
             _stringBuilder.AppendLine(text);
         }
 
+        public void CloseAllsDiv()
+        {
+            while (_tags.Any())
+            {
+                CloseDiv();
+            }
+        }
+
+        public void CloseDiv()
+        {
+            if (!_tags.Any())
+                return;
+
+            _stringBuilder.Append("</div>");
+            _tags.RemoveAt(0);
+        }
+
+        public void EndBody()
+        {
+            _stringBuilder.Append("</Body>");
+        }
+
+        public void IndexTitle(HTMLIndexedItems indexItem)
+        {
+            string linkName = indexItem.Title;
+            Append($"<li><a href='#{linkName}'>{linkName}</a></li>");
+        }
+
         public void Output()
         {
             _pageDetails.FullLocalFilename = @$"{_pageDetails.RootAddress}\\{HtmlPath}\\{HtmlTitle}";
@@ -251,6 +202,55 @@ function myFunction() {
             Directory.CreateDirectory(_pageDetails.RootAddress);
             Directory.CreateDirectory(_pageDetails.RootAddress + "\\" + HtmlPath);
             File.WriteAllText(_pageDetails.FullLocalFilename, _stringBuilder.ToString());
+        }
+
+        public void StartBody()
+        {
+            _stringBuilder.Append("<Body>");
+        }
+
+        public void StartDiv(string tag)
+        {
+            _stringBuilder.Append(tag);
+            _tags.Add("/div");
+        }
+
+        private void PopulatePageAddresses(NavigationTypes navigationType, List<NavigationPageAddressDetails> pageAddress)
+        {
+            var siteBuilder = SiteBuilderServiceLocator.Instance.GetService<IBuildSite>();
+            var navs = siteBuilder.AllPages.Where(x => x.WebPage.NavigationTypes == navigationType);
+
+            string[] parts = HtmlPath.Split("\\", StringSplitOptions.RemoveEmptyEntries);
+            int count = parts.Length;
+
+            foreach (var nav in navs)
+            {
+                string[] parts2 = nav.WebPage.HtmlPath.Split("/", StringSplitOptions.RemoveEmptyEntries);
+                int pageCount = parts2.Length;
+
+                string htmlPath = nav.WebPage.HtmlPath + "/";
+                if (pageCount < count)
+                {
+                    htmlPath = "";
+                    for (int i = 0; i < count - pageCount; i++)
+                    {
+                        htmlPath += "../";
+                    }
+                }
+
+                if (pageCount == count)
+                {
+                    htmlPath = string.Empty;
+                }
+
+                pageAddress.Add(
+                        new NavigationPageAddressDetails()
+                        {
+                            Address = $"{htmlPath}{nav.WebPage.HtmlTitle}",
+                            Title = nav.MenuTitle
+                        }
+                    );
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace eWolfBootstrap.Chats
 {
     public class SortableTableHolder : TableHolderBase
     {
-        private string _title = "name";
+        private readonly string _title = "name";
 
         // https://examples.bootstrap-table.com/#column-options/sortable.html
         public SortableTableHolder(string name)

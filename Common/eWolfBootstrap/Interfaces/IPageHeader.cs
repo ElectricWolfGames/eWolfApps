@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using eWolfBootstrap.Enums;
+﻿using eWolfBootstrap.Enums;
+using System.Collections.Generic;
 
 namespace eWolfBootstrap.Interfaces
 {

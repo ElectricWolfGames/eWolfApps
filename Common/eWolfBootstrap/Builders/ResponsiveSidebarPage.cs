@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using eWolfBootstrap.Helpers;
+using eWolfBootstrap.Interfaces;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using eWolfBootstrap.Helpers;
-using eWolfBootstrap.Interfaces;
 
 namespace eWolfBootstrap.Builders
 {
     // https://getbootstrap.com/docs/4.0/examples/
     public class ResponsiveSidebarPage : PageBuilder
     {
+        private readonly Dictionary<string, StringBuilder> _sections = new Dictionary<string, StringBuilder>();
+        private readonly List<string> _sectionsName = new List<string>();
         private string _currentSection;
-        private Dictionary<string, StringBuilder> _sections = new Dictionary<string, StringBuilder>();
-        private List<string> _sectionsName = new List<string>();
 
         public ResponsiveSidebarPage(string fileName, string path, string offSet, IPageHeader pageHeader)
         {

@@ -1,6 +1,6 @@
-﻿using System.IO;
+﻿using eWolfBootstrap.Interfaces;
+using System.IO;
 using System.Text;
-using eWolfBootstrap.Interfaces;
 
 namespace eWolfBootstrap.Helpers
 {
@@ -104,18 +104,6 @@ namespace eWolfBootstrap.Helpers
 
             return stringBuilder.ToString();
         }
-        public static string BuildImageGalleryCardSmall(string image, string imageThumb, string title)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            stringBuilder.AppendLine("<div class='col-md-2 col-lg-2 item'>");
-            stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
-            stringBuilder.AppendLine($"<img class='img-fluid image scale-on-hover' src='{imageThumb}'>");
-            stringBuilder.AppendLine("</a>");
-            stringBuilder.AppendLine("</div>");
-
-            return stringBuilder.ToString();
-        }
 
         public static string BuildImageGalleryCardFloatRight(string image, string imageThumb, string title)
         {
@@ -124,6 +112,19 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.AppendLine("<div class='col-md-6 col-lg-4 item'>");
             stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
             stringBuilder.AppendLine($"<img class='rounded float-right img-fluid image scale-on-hover' src='{imageThumb}'>");
+            stringBuilder.AppendLine("</a>");
+            stringBuilder.AppendLine("</div>");
+
+            return stringBuilder.ToString();
+        }
+
+        public static string BuildImageGalleryCardSmall(string image, string imageThumb, string title)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("<div class='col-md-2 col-lg-2 item'>");
+            stringBuilder.AppendLine($"<a class='lightbox' href='{image}'>");
+            stringBuilder.AppendLine($"<img class='img-fluid image scale-on-hover' src='{imageThumb}'>");
             stringBuilder.AppendLine("</a>");
             stringBuilder.AppendLine("</div>");
 

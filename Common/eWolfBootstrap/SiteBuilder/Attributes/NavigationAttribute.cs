@@ -1,5 +1,5 @@
-﻿using System;
-using eWolfBootstrap.SiteBuilder.Enums;
+﻿using eWolfBootstrap.SiteBuilder.Enums;
+using System;
 
 namespace eWolfBootstrap.SiteBuilder.Attributes
 {

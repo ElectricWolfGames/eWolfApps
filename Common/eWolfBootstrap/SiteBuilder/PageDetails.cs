@@ -1,9 +1,10 @@
-﻿using System;
+﻿using eWolfBootstrap.Builders;
+using eWolfBootstrap.SiteBuilder.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using eWolfBootstrap.SiteBuilder.Interfaces;
 
 namespace eWolfBootstrap.SiteBuilder
 
@@ -35,14 +36,12 @@ namespace eWolfBootstrap.SiteBuilder
             int folderCount = pathParts.Length;
 
             StringBuilder sb = new StringBuilder();
-            for (int i =0; i < folderCount;i++)
+            for (int i = 0; i < folderCount; i++)
             {
                 sb.Append("../");
             }
 
             return sb.ToString();
         }
-
-
     }
 }

@@ -4,6 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;IDE0090;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;IDE0090;</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Helpers\HtmlExtractHelpers.cs~RF32d5757e.TMP" />
   </ItemGroup>

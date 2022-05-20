@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using eWolfBootstrap.SiteBuilder.Interfaces;
+using System.Collections.Generic;
 using System.Diagnostics;
-using eWolfBootstrap.SiteBuilder.Interfaces;
 
 namespace eWolfBootstrap.SiteBuilder
 {

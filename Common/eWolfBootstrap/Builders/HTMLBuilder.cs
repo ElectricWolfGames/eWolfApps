@@ -1,12 +1,16 @@
-﻿using System.Text;
+﻿using eWolfBootstrap.SiteBuilder;
+using eWolfBootstrap.SiteBuilder.Builders;
+using System.Collections.Generic;
+using System.Text;
 
 namespace eWolfBootstrap.Builders
 {
     public class HTMLBuilder
     {
+        private readonly StringBuilder _stringBuilder = new StringBuilder();
         private HTMLSection _left;
+        private HTMLSection _mid;
         private HTMLSection _right;
-        private StringBuilder _stringBuilder = new StringBuilder();
 
         public HTMLBuilder()
         {
@@ -15,6 +19,53 @@ namespace eWolfBootstrap.Builders
         public void Bold(string text)
         {
             _stringBuilder.Append($"<strong>{text}</strong>");
+        }
+
+        public void CreateIndex(List<HTMLIndexedItems> items)
+        {
+            HTMLSection a = new HTMLSection("col-md-2");
+            HTMLSection b = new HTMLSection("col-md-8");
+            HTMLSection c = new HTMLSection("col-md-2");
+            SetThreeSections(a, b, c);
+
+            HTML h = new();
+            h.TextCenter().Br();
+            foreach (var item in items)
+            {
+                h.IndexItem(item);
+            }
+            h.EndDiv();
+
+            b.Text(h.Output());
+            b.NewLine();
+        }
+
+        public void CreateIndexItems(List<HTMLIndexedItems> items)
+        {
+            foreach (var item in items)
+            {
+                _stringBuilder.Append(item.BuildItem());
+            }
+        }
+
+        public void EndTextCenter()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
+        public void EndTextCenterLeft()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
+        public void EndTextCenterRight()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
+        public void EndTextMiddel()
+        {
+            _stringBuilder.Append("</p></div>");
         }
 
         public void Image(string imageName, float percnetage = 100)
@@ -37,9 +88,43 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append($@"<img class='img-fluid rounded mx-auto d-block' src='images//{imageName}' width={percnetage}%px >");
         }
 
+        public void ImageLeft(string imageName, float percnetage = 100)
+        {
+            StartTextCenterLeft();
+            Image(imageName, percnetage);
+            EndTextCenterLeft();
+        }
+
+        public void ImageRight(string imageName, float percnetage = 100)
+        {
+            StartTextCenterRight();
+            Image(imageName, percnetage);
+            EndTextCenterRight();
+        }
+
+        public void IndexTitle(HTMLIndexedItems indexItem)
+        {
+            string linkName = indexItem.Title;
+            _stringBuilder.Append($"<li><a href='#{indexItem.Index}'>{linkName}</a></li>");
+        }
+
         public void InspectorDetails(string field, string description)
         {
             _stringBuilder.Append($"<strong>{field}: </strong>{description}<br />");
+        }
+
+        public void Jumbotron(string title, string body, int size = 12)
+        {
+            _stringBuilder.AppendLine("<div class='jumbotron'>");
+            _stringBuilder.AppendLine("<div class='row'>");
+            _stringBuilder.AppendLine($"<div class='col-md-{size}'>");
+
+            _stringBuilder.AppendLine($"<h1>{title}</h1>");
+            _stringBuilder.AppendLine($"<p class='lead'>{body}</p>");
+
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
         }
 
         public void NamedUnity3DLink(string name, string link)
@@ -62,6 +147,12 @@ namespace eWolfBootstrap.Builders
                 _stringBuilder.Append(_left.Output());
             }
 
+            if (_mid != null)
+            {
+                _mid.End();
+                _stringBuilder.Append(_mid.Output());
+            }
+
             if (_right != null)
             {
                 _right.End();
@@ -72,11 +163,39 @@ namespace eWolfBootstrap.Builders
             return _stringBuilder.ToString();
         }
 
+        public void SetThreeSections(HTMLSection left, HTMLSection mid, HTMLSection right)
+        {
+            Text("<div class='row'>");
+            _left = left;
+            _right = right;
+            _mid = mid;
+        }
+
         public void SetTwoSections(HTMLSection left, HTMLSection right)
         {
             Text("<div class='row'>");
             _left = left;
             _right = right;
+        }
+
+        public void StartTextCenter()
+        {
+            _stringBuilder.Append("<div class='text-center'>");
+        }
+
+        public void StartTextCenterLeft()
+        {
+            _stringBuilder.Append("<div class='text-left'>");
+        }
+
+        public void StartTextCenterRight()
+        {
+            _stringBuilder.Append("<div class='text-right'>");
+        }
+
+        public void StartTextMiddel(float size)
+        {
+            _stringBuilder.Append($"<div class='d-flex align-items-center' style='height: {size}px'><p>");
         }
 
         public void Text(string text)
@@ -98,6 +217,11 @@ namespace eWolfBootstrap.Builders
 
         public void Unity3DLink(string link)
         {
+            _stringBuilder.Append($"Available at the <a href='{link}' target='Blank' >Unity Asset Store</a>");
+        }
+
+        public void Unity3DLinkTextCenter(string link)
+        {
             _stringBuilder.Append("<div class='text-center'>");
             _stringBuilder.Append($"Available at the <a href='{link}' target='Blank' >Unity Asset Store</a>");
             _stringBuilder.Append("</div>");
@@ -110,18 +234,11 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("</div>");
         }
 
-        public void Jumbotron(string title, string body, int size = 12)
+        public void YouTubeLinkBig(string link)
         {
-            _stringBuilder.AppendLine("<div class='jumbotron'>");
-            _stringBuilder.AppendLine("<div class='row'>");
-            _stringBuilder.AppendLine($"<div class='col-md-{size}'>");
-
-            _stringBuilder.AppendLine($"<h1>{title}</h1>");
-            _stringBuilder.AppendLine($"<p class='lead'>{body}</p>");
-            
-            _stringBuilder.AppendLine("</div>");
-            _stringBuilder.AppendLine("</div>");
-            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.Append("<div class='text-center'>");
+            _stringBuilder.Append($@"<iframe width='854' height='480' src='https://www.youtube.com/embed/" + link + "?rel=0' frameborder='0' allowfullscreen></iframe>");
+            _stringBuilder.Append("</div>");
         }
     }
 }

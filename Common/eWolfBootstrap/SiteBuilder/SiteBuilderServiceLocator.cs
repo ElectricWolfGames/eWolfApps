@@ -1,6 +1,6 @@
-﻿using System;
+﻿using eWolfCommon.Services;
+using System;
 using System.Collections.Generic;
-using eWolfCommon.Services;
 
 namespace eWolfBootstrap.SiteBuilder
 {

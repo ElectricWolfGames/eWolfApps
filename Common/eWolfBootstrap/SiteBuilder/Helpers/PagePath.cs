@@ -1,6 +1,6 @@
-﻿using System;
+﻿using eWolfBootstrap.SiteBuilder.Interfaces;
+using System;
 using System.Collections.Generic;
-using eWolfBootstrap.SiteBuilder.Interfaces;
 
 namespace eWolfBootstrap.SiteBuilder.Helpers
 {

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using eWolfBootstrap.Helpers;
+﻿using eWolfBootstrap.Helpers;
+using System.Collections.Generic;
 
 namespace eWolfBootstrap.HtmlExtracts
 {
     public class HtmlTableExtract
     {
+        private readonly Dictionary<string, string> _tableParts = new Dictionary<string, string>();
         private string _header;
-        private Dictionary<string, string> _tableParts = new Dictionary<string, string>();
         public string DisplayName { get; set; }
         public string Name { get; set; }
 

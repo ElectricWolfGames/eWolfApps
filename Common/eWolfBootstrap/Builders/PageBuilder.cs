@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Linq;
-using eWolfBootstrap.Helpers;
+﻿using eWolfBootstrap.Helpers;
 using eWolfBootstrap.Interfaces;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace eWolfBootstrap.Builders
 {
@@ -13,7 +13,7 @@ namespace eWolfBootstrap.Builders
         protected string _offSet;
         protected string _path;
         protected StringBuilder _stringBuilder = new StringBuilder();
-        private IPageHeader _pageHeader;
+        private readonly IPageHeader _pageHeader;
 
         public PageBuilder(string fileName, string path, IPageHeader pageHeader)
         {
@@ -47,11 +47,35 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.AddQuickImageCenter(htmlpath, imagePath, this, path);
         }
 
+        public void AddImages(string htmlpath, string imagePath, string path)
+        {
+            List<string> images = ImageHelper.GetAllImages(path);
+            HTMLHelper.Gallery.AddGalleryHeader(this, null);
+
+            foreach (string image in images)
+            {
+                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image);
+            }
+
+            HTMLHelper.Gallery.AddGalleryFooter(this);
+        }
+
+        public void AddImages(List<string> imageToUse, string htmlpath, string imagePath, string path, string offSetFolder)
+        {
+            HTMLHelper.Gallery.AddGalleryHeader(this, null);
+
+            foreach (string image in imageToUse)
+            {
+                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image, offSetFolder);
+            }
+
+            HTMLHelper.Gallery.AddGalleryFooter(this);
+        }
 
         public void AddImagesGroupedByDate(string htmlpath, string imagePath, string path)
         {
             List<string> images = ImageHelper.GetAllImages(path);
-            
+
             Dictionary<string, List<string>> byDate = new Dictionary<string, List<string>>();
 
             foreach (string image in images)
@@ -78,7 +102,7 @@ namespace eWolfBootstrap.Builders
             foreach (var date in keyList)
             {
                 var list = byDate[date];
-                string name =$"{date}";
+                string name = $"{date}";
                 HTMLHelper.Gallery.AddGalleryHeaderWithDate(this, name);
                 foreach (var fileName in list)
                 {
@@ -86,32 +110,6 @@ namespace eWolfBootstrap.Builders
                 }
                 HTMLHelper.Gallery.AddGalleryFooter(this);
             }
-
-        }
-
-        public void AddImages(string htmlpath, string imagePath, string path)
-        {
-            List<string> images = ImageHelper.GetAllImages(path);
-            HTMLHelper.Gallery.AddGalleryHeader(this, null);
-
-            foreach (string image in images)
-            {
-                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image);
-            }
-
-            HTMLHelper.Gallery.AddGalleryFooter(this);
-        }
-
-        public void AddImages(List<string> imageToUse, string htmlpath, string imagePath, string path, string offSetFolder)
-        {
-            HTMLHelper.Gallery.AddGalleryHeader(this, null);
-
-            foreach (string image in imageToUse)
-            {
-                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image, offSetFolder);
-            }
-
-            HTMLHelper.Gallery.AddGalleryFooter(this);
         }
 
         public void AddImagesWithSeeMore(List<string> imageToUse, List<string> imageToUseSmall, string htmlpath, string imagePath, string path, string offSetFolder, string seeMore)
@@ -127,7 +125,6 @@ namespace eWolfBootstrap.Builders
             {
                 HTMLHelper.AddImageToGallerySmall(htmlpath, imagePath, this, image, offSetFolder);
             }
-
 
             Append(HTMLHelper.CreateCard(seeMore));
 
