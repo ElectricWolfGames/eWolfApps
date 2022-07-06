@@ -2,15 +2,16 @@
 using AudioWolfStandard.Tags;
 using System;
 using System.Collections.Generic;
-using System.Windows.Media.Imaging;
+
+//using System.Windows.Media.Imaging;
 
 namespace AudioWolfStandard.Data
 {
     [Serializable]
     public class SoundItemData
     {
-        [NonSerialized]
-        private BitmapImage _image = null;
+        //      [NonSerialized]
+        //     private BitmapImage _image = null;
 
         private string _name;
 
@@ -18,7 +19,7 @@ namespace AudioWolfStandard.Data
 
         public string FullPath { get; set; }
 
-        public BitmapImage Image { get => _image; set => _image = value; }
+        //   public BitmapImage Image { get => _image; set => _image = value; }
 
         public string ImagePath { get; set; }
 
@@ -40,6 +41,14 @@ namespace AudioWolfStandard.Data
             }
         }
 
+        public List<TagData> Tags
+        {
+            get
+            {
+                return _tagHolder.Tags;
+            }
+        }
+
         public bool AddTag(string name)
         {
             return _tagHolder.Add(name);
@@ -48,14 +57,6 @@ namespace AudioWolfStandard.Data
         public void Clear()
         {
             _tagHolder.ClearTags();
-        }
-
-        public List<TagData> Tags
-        {
-            get
-            {
-                return _tagHolder.Tags;
-            }
         }
     }
 }

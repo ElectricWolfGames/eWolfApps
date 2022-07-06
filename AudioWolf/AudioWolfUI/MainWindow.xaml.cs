@@ -52,6 +52,16 @@ namespace AudioWolfUI
             ConvertTagsToList();
         }
 
+        private void ClearList_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentSoundItemData == null)
+                return;
+
+            _currentSoundItemData.SoundItemData.Clear();
+            PopulateSelectItem();
+            _soundHolder.SaveIfNeeded(true);
+        }
+
         private void ConvertItemTagsToList()
         {
             _itemTags.Clear();
@@ -87,7 +97,7 @@ namespace AudioWolfUI
         {
             SelectedName.Text = _currentSoundItemData.SoundItemData.Name;
             SoundWaveEdit.Stretch = Stretch.Fill;
-            SoundWaveEdit.Source = _currentSoundItemData.SoundItemData.Image;
+            //SoundWaveEdit.Source = _currentSoundItemData.SoundItemData.Image;
             ConvertItemTagsToList();
         }
 
@@ -130,26 +140,16 @@ namespace AudioWolfUI
             _soundHolder.SaveIfNeeded(true);
         }
 
-        private void TestButton_Click(object sender, RoutedEventArgs e)
-        {
-            // test button to show the fist item.
-        }
-
-        private void ClearList_Click(object sender, RoutedEventArgs e)
-        {
-            if (_currentSoundItemData == null)
-                return;
-
-            _currentSoundItemData.SoundItemData.Clear();
-            PopulateSelectItem();
-            _soundHolder.SaveIfNeeded(true);
-        }
-
         private void TagFilter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             string filters = TagFilters.Text;
 
             // List<TagData> tags =
+        }
+
+        private void TestButton_Click(object sender, RoutedEventArgs e)
+        {
+            // test button to show the fist item.
         }
     }
 }

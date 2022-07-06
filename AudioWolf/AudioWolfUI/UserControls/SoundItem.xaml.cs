@@ -95,12 +95,12 @@ namespace AudioWolfUI.UserControls
                     MemoryStream stream = new MemoryStream();
                     image.Save(stream, ImageFormat.Png);
 
-                    SoundItemData.Image = new BitmapImage();
+                    /*SoundItemData.Image = new BitmapImage();
                     SoundItemData.Image.BeginInit();
                     SoundItemData.Image.StreamSource = stream;
                     SoundItemData.Image.EndInit();
                     SoundWave.Stretch = Stretch.Fill;
-                    SoundWave.Source = SoundItemData.Image;
+                    SoundWave.Source = SoundItemData.Image;*/
                 });
             }
             catch (Exception e)
@@ -112,11 +112,11 @@ namespace AudioWolfUI.UserControls
 
         private void RenderWaveform()
         {
-            if (SoundItemData.Image != null)
+            /*if (SoundItemData.Image != null)
             {
                 SoundWave.Source = SoundItemData.Image;
                 return;
-            }
+            }*/
 
             var settings = GetRendererSettings();
 
