@@ -1,7 +1,7 @@
-﻿using System;
-using eWolfCommon.Builders;
+﻿using eWolfCommon.Builders;
 using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace eWolfCommonUnitTests.Builders
 {

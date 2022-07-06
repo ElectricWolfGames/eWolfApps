@@ -1,7 +1,4 @@
 ﻿using DynamicSynchronize.Cloners;
-using eWolfCommon.Helpers;
-using System;
-using System.Threading;
 
 namespace SynchronizeFolders
 {
