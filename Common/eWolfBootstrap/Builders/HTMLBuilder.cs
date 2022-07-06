@@ -65,41 +65,50 @@ namespace eWolfBootstrap.Builders
 
         public void EndTextMiddel()
         {
-            _stringBuilder.Append("</p></div>");
+            _stringBuilder.Append("</p>");
+            _stringBuilder.Append("</div>");
         }
 
-        public void Image(string imageName, float percnetage = 100)
+        public void Image(string imageName, float percentage = 100)
         {
-            _stringBuilder.Append($@"<img src='images//{imageName}' width={percnetage}%px >");
+            _stringBuilder.Append($@"<img src='images/{imageName}' width={percentage}%px >");
         }
 
-        public void ImageCard(string imageName, float percnetage = 100)
+        public void ImageCard(string imageName, float percentage = 100)
         {
             _stringBuilder.Append("<div class='col-md-4'>");
             _stringBuilder.Append("<div class='thumbnail'>");
-            _stringBuilder.Append($@"<img class='rounded mx-auto d-block' src='images//{imageName}' width={percnetage}%px >");
+            _stringBuilder.Append($@"<img class='rounded mx-auto d-block' src='images/{imageName}' width={percentage}%px >");
             _stringBuilder.Append("<div class='caption'>&nbsp;</div>");
             _stringBuilder.Append("</div>");
             _stringBuilder.Append("</div>");
         }
 
-        public void ImageCenter(string imageName, float percnetage = 100)
+        public void ImageCenter(string imageName, float percentage = 100)
         {
-            _stringBuilder.Append($@"<img class='img-fluid rounded mx-auto d-block' src='images//{imageName}' width={percnetage}%px >");
+            _stringBuilder.Append($@"<img class='img-fluid rounded mx-auto d-block' src='images/{imageName}' width={percentage}%px >");
         }
 
-        public void ImageLeft(string imageName, float percnetage = 100)
+        public void ImageLeft(string imageName, float percentage = 100)
         {
             StartTextCenterLeft();
-            Image(imageName, percnetage);
+            Image(imageName, percentage);
             EndTextCenterLeft();
         }
 
-        public void ImageRight(string imageName, float percnetage = 100)
+        public void ImageRight(string imageName, float percentage = 100)
         {
             StartTextCenterRight();
-            Image(imageName, percnetage);
+            Image(imageName, percentage);
             EndTextCenterRight();
+        }
+
+        public void Images(int percentage, params string[] images)
+        {
+            foreach (var image in images)
+            {
+                _stringBuilder.Append($@"<img class='img-fluid ' src='images/{image}' width={percentage}%px >");
+            }
         }
 
         public void IndexTitle(HTMLIndexedItems indexItem)
@@ -127,6 +136,20 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.AppendLine("</div>");
         }
 
+        public void JumbotronImage(string title, string body, string imageName, float percentage, int size = 12)
+        {
+            _stringBuilder.AppendLine("<div class='jumbotron'>");
+            _stringBuilder.AppendLine("<div class='row'>");
+            _stringBuilder.AppendLine($"<div class='col-md-{size}'>");
+
+            _stringBuilder.Append($@"<img class='rounded mx-auto d-block' src='images/{imageName}' width={percentage}%px >");
+            _stringBuilder.AppendLine($"<p class='lead'>{body}</p>");
+
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+        }
+
         public void NamedUnity3DLink(string name, string link)
         {
             _stringBuilder.Append("<div class='text-center'>");
@@ -137,6 +160,11 @@ namespace eWolfBootstrap.Builders
         public void NewLine()
         {
             _stringBuilder.Append("</br>");
+        }
+
+        public void OtherDetails(string field, string description)
+        {
+            _stringBuilder.Append($"<strong>{field} </strong>{description}<br />");
         }
 
         public virtual string Output()
@@ -161,6 +189,12 @@ namespace eWolfBootstrap.Builders
             }
 
             return _stringBuilder.ToString();
+        }
+
+        public void PageLink(string per, string linkName, string link)
+        {
+            // TODO: Need to linke 'link' to item just in case we change it one day!
+            _stringBuilder.Append($"{per} <a href='{link}'>{linkName}</a>");
         }
 
         public void SetThreeSections(HTMLSection left, HTMLSection mid, HTMLSection right)
@@ -195,12 +229,18 @@ namespace eWolfBootstrap.Builders
 
         public void StartTextMiddel(float size)
         {
-            _stringBuilder.Append($"<div class='d-flex align-items-center' style='height: {size}px'><p>");
+            _stringBuilder.Append($"<div class='d-flex align-items-middle' style='height: {size}px'><p>");
         }
 
         public void Text(string text)
         {
             _stringBuilder.Append(text);
+        }
+
+        public void TextBold(string textA, string boldA)
+        {
+            Text(textA);
+            Bold(boldA);
         }
 
         public void TextBoldText(string textA, string boldA, string textB)

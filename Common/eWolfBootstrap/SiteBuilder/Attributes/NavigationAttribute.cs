@@ -5,7 +5,7 @@ namespace eWolfBootstrap.SiteBuilder.Attributes
 {
     [AttributeUsage(AttributeTargets.Class |
                        AttributeTargets.Struct,
-                       AllowMultiple = true)]
+                       AllowMultiple = false)]
     public sealed class NavigationAttribute : Attribute
     {
         private readonly int _index;

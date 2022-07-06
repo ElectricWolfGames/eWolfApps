@@ -5,9 +5,9 @@ using System.Threading;
 
 namespace SynchronizeFolders
 {
-    internal class SynchronizeFolders
+    public class SynchronizeFoldersProcesseor
     {
-        internal void Now(string from, string to)
+        public void Now(string from, string to)
         {
             string[] files = Directory.GetFiles(from, "", SearchOption.AllDirectories);
 
@@ -20,6 +20,9 @@ namespace SynchronizeFolders
             foreach (var file in files)
             {
                 if (exculedFile.Contains(file))
+                    continue;
+
+                if (file.Contains("_STORE"))
                     continue;
 
                 string partFile = file.Replace(from, string.Empty);
@@ -35,7 +38,7 @@ namespace SynchronizeFolders
                 }
                 else
                 {
-                    Console.WriteLine($" Files {count++} of {total} : SAME {file}");
+                    //Console.WriteLine($" Files {count++} of {total} : SAME {file}");
                     DateTime fileDetailsFrom = File.GetLastWriteTime(file);
                     DateTime fileDetailsTo = File.GetLastWriteTime(dest);
 
@@ -54,6 +57,9 @@ namespace SynchronizeFolders
             string[] filesTo = Directory.GetFiles(to, "", SearchOption.AllDirectories);
             foreach (var file in filesTo)
             {
+                if (file.Contains("_STORE"))
+                    continue;
+
                 string partFile = file.Replace(to, string.Empty);
                 string dest = from + partFile;
                 if (!File.Exists(dest))

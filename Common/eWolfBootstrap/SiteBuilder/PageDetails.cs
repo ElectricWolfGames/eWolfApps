@@ -12,6 +12,7 @@ namespace eWolfBootstrap.SiteBuilder
     public abstract class PageDetails : ISitePageDetails
     {
         public string DisplayTitle { get; set; }
+        public bool DontBuildPage { get; set; }
         public string FullLocalFilename { get; set; }
         public string MenuTitle { get; set; }
         public string RootAddress { get; set; }

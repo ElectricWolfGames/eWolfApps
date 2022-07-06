@@ -1,4 +1,6 @@
-﻿namespace eWolfBootstrap.Builders
+﻿using System;
+
+namespace eWolfBootstrap.Builders
 {
     public class HTMLSection : HTMLBuilder
     {

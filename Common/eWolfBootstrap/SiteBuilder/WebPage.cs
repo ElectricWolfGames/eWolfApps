@@ -56,7 +56,7 @@ namespace eWolfBootstrap.SiteBuilder
             _stringBuilder.Append(pageHeaderDetails.Output(pageDetails));
         }
 
-        public void AddNavigation(NavigationTypes navigationType)
+        public void AddNavigation(NavigationTypes navigationType, string offSet = "")
         {
             List<NavigationPageAddressDetails> pageAddress = new();
             PopulatePageAddresses(navigationType, pageAddress);
@@ -65,7 +65,7 @@ namespace eWolfBootstrap.SiteBuilder
             stringBuilder.AppendLine("<nav class='navbar navbar-expand-md navbar-dark bg-dark'>");
 
             var homePage = pageAddress.First(x => x.Title == "Home");
-            stringBuilder.AppendLine($"<a class='navbar-brand' href='{homePage.Address}'>{homePage.Title}</a>");
+            stringBuilder.AppendLine($"<a class='navbar-brand' href='{offSet}{homePage.Address}'>{homePage.Title}</a>");
 
             stringBuilder.AppendLine("<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarsExample04' aria-controls='navbarsExample04' aria-expanded='false' aria-label='Toggle navigation'>");
             stringBuilder.AppendLine("<span class='navbar-toggler-icon'></span>");
@@ -78,16 +78,15 @@ namespace eWolfBootstrap.SiteBuilder
                 if (kvp.Title == "Home")
                     continue;
 
-                stringBuilder.AppendLine($"<li class='nav-item active'><a class='nav-link'" +
+                //var offSet = pageDetails.GetRooloffSet();
 
-                                $"href='{kvp.Address}'>{kvp.Title}</a></li>");
+                stringBuilder.AppendLine($"<li class='nav-item active'><a class='nav-link'" +
+                        $"href='{offSet}{kvp.Address}'>{kvp.Title}</a></li>");
             }
 
             stringBuilder.AppendLine("</div>");
             stringBuilder.AppendLine("</li>");
             stringBuilder.AppendLine("</ul>");
-            //stringBuilder.AppendLine("<form class='form-inline my-2 my-md-0'>");
-            // stringBuilder.AppendLine("<input class='form-control' type='text' placeholder='Search'>");
             stringBuilder.AppendLine("</form>");
             stringBuilder.AppendLine("</div>");
             stringBuilder.AppendLine("</nav>");
@@ -201,7 +200,8 @@ function myFunction() {
 
             Directory.CreateDirectory(_pageDetails.RootAddress);
             Directory.CreateDirectory(_pageDetails.RootAddress + "\\" + HtmlPath);
-            File.WriteAllText(_pageDetails.FullLocalFilename, _stringBuilder.ToString());
+            if (!_pageDetails.DontBuildPage)
+                File.WriteAllText(_pageDetails.FullLocalFilename, _stringBuilder.ToString());
         }
 
         public void StartBody()
@@ -219,13 +219,18 @@ function myFunction() {
         {
             var siteBuilder = SiteBuilderServiceLocator.Instance.GetService<IBuildSite>();
             var navs = siteBuilder.AllPages.Where(x => x.WebPage.NavigationTypes == navigationType);
+            navs = navs.OrderBy(x => x.WebPage.NavigationIndex);
 
             string[] parts = HtmlPath.Split("\\", StringSplitOptions.RemoveEmptyEntries);
             int count = parts.Length;
 
             foreach (var nav in navs)
             {
-                string[] parts2 = nav.WebPage.HtmlPath.Split("/", StringSplitOptions.RemoveEmptyEntries);
+                string htmlPath = "";
+                if (!string.IsNullOrWhiteSpace(nav.WebPage.HtmlPath))
+                    htmlPath = nav.WebPage.HtmlPath + "/";
+
+                /*string[] parts2 = nav.WebPage.HtmlPath.Split("/", StringSplitOptions.RemoveEmptyEntries);
                 int pageCount = parts2.Length;
 
                 string htmlPath = nav.WebPage.HtmlPath + "/";
@@ -242,7 +247,7 @@ function myFunction() {
                 {
                     htmlPath = string.Empty;
                 }
-
+                */
                 pageAddress.Add(
                         new NavigationPageAddressDetails()
                         {

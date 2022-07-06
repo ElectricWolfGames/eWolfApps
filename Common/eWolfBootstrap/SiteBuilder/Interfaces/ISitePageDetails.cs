@@ -3,9 +3,9 @@
     public interface ISitePageDetails
     {
         string DisplayTitle { get; set; }
+        bool DontBuildPage { get; set; }
         string FullLocalFilename { get; set; }
         string MenuTitle { get; set; }
-
         string RootAddress { get; set; }// do we need this??
 
         WebPage WebPage { get; }

@@ -41,7 +41,7 @@ namespace SynchronizeFolders
 
             try
             {
-                SynchronizeFolders synchronizeFolders = new SynchronizeFolders();
+                SynchronizeFoldersProcesseor synchronizeFolders = new SynchronizeFoldersProcesseor();
                 synchronizeFolders.Now(from, to);
             }
             catch
