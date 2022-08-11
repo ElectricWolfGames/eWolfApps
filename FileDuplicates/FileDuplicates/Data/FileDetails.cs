@@ -8,25 +8,7 @@ namespace FileDuplicates.Data
     [Serializable]
     public class FileDetails
     {
-        public string FileName { get; set; }
-        public string FilePath { get; set; }
-
-        public bool Matched { get; set; }
-
-        public int Count
-        {
-            get
-            {
-                return Matches.Count;
-            }
-        }
-
         private string _hashcode;
-
-        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
-        public List<FileDetails> Matches { get; set; } = new List<FileDetails>();
-
-        public string HashCode { get { return _hashcode; } }
 
         public FileDetails()
         {
@@ -39,6 +21,17 @@ namespace FileDuplicates.Data
             CreateCode();
         }
 
+        public int Count
+        {
+            get
+            {
+                return Matches.Count;
+            }
+        }
+
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
+
         public string FullFilePath
         {
             get
@@ -46,6 +39,13 @@ namespace FileDuplicates.Data
                 return $"{FilePath}{FileName}";
             }
         }
+
+        public string HashCode
+        { get { return _hashcode; } }
+        public bool Matched { get; set; }
+
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
+        public List<FileDetails> Matches { get; set; } = new List<FileDetails>();
 
         public void CreateCode()
         {

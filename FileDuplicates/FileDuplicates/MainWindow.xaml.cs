@@ -36,6 +36,22 @@ namespace FileDuplicates
             await GetFiles(FolderLocation.Text);
         }
 
+        private void Drives_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string drive = Drives.SelectedItem.ToString();
+            FileDetailsHolderService fileDetailsHolderService = ServiceLocator.Instance.GetService<FileDetailsHolderService>();
+            FileDetailsHolderService f = FileDetailsHolderService.Load($@"{drive}Temp\");
+            fileDetailsHolderService.AddFrom(f);
+            ShowDetails.Clear();
+            if (f != null)
+            {
+                foreach (var f2 in f.Details)
+                {
+                    ShowDetails.Add(f2);
+                }
+            }
+        }
+
         private async Task GetFiles(string fileName)
         {
             CheckAllFiles.Content = "Go Started";
@@ -127,22 +143,6 @@ namespace FileDuplicates
         {
             string drive = Drives.SelectedItem.ToString();
             FileDetailsHolderService.Save(Services.ServiceLocator.Instance.GetService<FileDetailsHolderService>(), $@"{drive}Temp\");
-        }
-
-        private void Drives_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string drive = Drives.SelectedItem.ToString();
-            FileDetailsHolderService fileDetailsHolderService = ServiceLocator.Instance.GetService<FileDetailsHolderService>();
-            FileDetailsHolderService f = FileDetailsHolderService.Load($@"{drive}Temp\");
-            fileDetailsHolderService.AddFrom(f);
-            ShowDetails.Clear();
-            if (f != null)
-            {
-                foreach (var f2 in f.Details)
-                {
-                    ShowDetails.Add(f2);
-                }
-            }
         }
     }
 }

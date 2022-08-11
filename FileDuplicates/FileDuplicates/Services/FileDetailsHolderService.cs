@@ -23,6 +23,14 @@ namespace FileDuplicates.Services
             }
         }
 
+        public static FileDetailsHolderService Load(string path)
+        {
+            PersistenceHelper<FileDetailsHolderService> ph = new PersistenceHelper<FileDetailsHolderService>(path);
+            FileDetailsHolderService tf = ph.LoadDataSingle(path + @"\eWolfFileDuplicates.dat");
+
+            return tf;
+        }
+
         public static void Save(FileDetailsHolderService fileDetailsHolderService, string path)
         {
             lock (fileDetailsHolderService.Details)
@@ -44,14 +52,6 @@ namespace FileDuplicates.Services
             {
                 Details.Add(f);
             }
-        }
-
-        public static FileDetailsHolderService Load(string path)
-        {
-            PersistenceHelper<FileDetailsHolderService> ph = new PersistenceHelper<FileDetailsHolderService>(path);
-            FileDetailsHolderService tf = ph.LoadDataSingle(path + @"\eWolfFileDuplicates.dat");
-
-            return tf;
         }
     }
 }
