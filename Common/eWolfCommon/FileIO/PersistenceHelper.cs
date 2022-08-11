@@ -43,7 +43,7 @@ namespace eWolfCommon.FileIO
 
                 return sd;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (stream != null)
                     stream.Close();
@@ -77,7 +77,7 @@ namespace eWolfCommon.FileIO
                 else
                     return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (stream != null)
                     stream.Close();
@@ -94,7 +94,7 @@ namespace eWolfCommon.FileIO
                 formatter.Serialize(stream, objectToSave);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

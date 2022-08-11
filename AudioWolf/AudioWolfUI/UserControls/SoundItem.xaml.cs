@@ -17,7 +17,7 @@ namespace AudioWolfUI.UserControls
     /// </summary>
     public partial class SoundItem : UserControl
     {
-        private readonly WaveFormRendererSettings _standardSettings;
+        //private readonly WaveFormRendererSettings _standardSettings;
 
         private readonly WaveFormRenderer _waveFormRenderer = new WaveFormRenderer();
 

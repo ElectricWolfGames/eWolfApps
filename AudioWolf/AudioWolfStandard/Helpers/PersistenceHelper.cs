@@ -42,7 +42,7 @@ namespace AudioWolfStandard.Helpers
 
                 return sd;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (stream != null)
                     stream.Close();
@@ -93,7 +93,7 @@ namespace AudioWolfStandard.Helpers
                 formatter.Serialize(stream, objectToSave);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

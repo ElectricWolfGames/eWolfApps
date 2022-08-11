@@ -16,7 +16,7 @@ namespace eWolfBootstrap.SiteBuilder
             {
                 page.RootAddress = WebSiteRootAddress;
                 page.CreatePage();
-                if (page.DisplayTitle.Contains("Modular"))
+                if (page.DisplayTitle.Contains("Salvager"))
                     OpenSite(page);
             }
         }

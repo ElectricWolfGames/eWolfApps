@@ -193,7 +193,6 @@ namespace eWolfBootstrap.Builders
 
         public void PageLink(string per, string linkName, string link)
         {
-            // TODO: Need to linke 'link' to item just in case we change it one day!
             _stringBuilder.Append($"{per} <a href='{link}'>{linkName}</a>");
         }
 
