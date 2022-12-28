@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Text;
+using System.Web;
 
 namespace eWolfBootstrap.SiteBuilder
 {
     public class HTMLIndexedItems
     {
-        public Func<string, string> Body;
-
+        public Func<string, string> Body = null;
+        public string BodyText;
         public string Index;
 
         public string Title;
@@ -15,6 +16,13 @@ namespace eWolfBootstrap.SiteBuilder
         {
             Title = title;
             Body = body;
+            Index = title.Replace(" ", "");
+        }
+
+        public HTMLIndexedItems(string title, string bodyText)
+        {
+            Title = title;
+            BodyText = bodyText;
             Index = title.Replace(" ", "");
         }
 
@@ -31,7 +39,10 @@ namespace eWolfBootstrap.SiteBuilder
             sb.AppendLine($"<h2>{Title}</h2>");
             sb.AppendLine("</div>");
 
-            sb.Append(Body.Invoke(string.Empty));
+            if (Body != null)
+                sb.Append(Body.Invoke(string.Empty));
+            else
+                sb.Append(BodyText);
 
             sb.AppendLine("</div>");
             sb.AppendLine("</div>");
