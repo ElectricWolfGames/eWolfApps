@@ -9,7 +9,7 @@ namespace eWolfPodcasterCore.Services
 {
     public class DownloadService
     {
-        private readonly ConcurrentQueue<DownlaodItem> _downloadqueue = new ConcurrentQueue<DownlaodItem>();
+        private readonly ConcurrentQueue<DownloadItem> _downloadqueue = new ConcurrentQueue<DownloadItem>();
 
         private bool _downloading = false;
 
@@ -39,7 +39,7 @@ namespace eWolfPodcasterCore.Services
                 return;
             }
 
-            DownlaodItem di = new DownlaodItem
+            DownloadItem di = new DownloadItem
             {
                 Name = "Test",
                 From = url,
@@ -54,7 +54,7 @@ namespace eWolfPodcasterCore.Services
             if (_downloadqueue.IsEmpty || _downloading)
                 return;
 
-            DownlaodItem di;
+            DownloadItem di;
             if (_downloadqueue.TryDequeue(out di))
             {
                 _downloading = true;

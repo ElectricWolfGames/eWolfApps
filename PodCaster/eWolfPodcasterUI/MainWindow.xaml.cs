@@ -472,9 +472,11 @@ namespace eWolfPodcasterUI
                 if (x.Hidden)
                     continue;
 
-                PodcastEpisode pce = new PodcastEpisode();
-                pce.EpisodeControlData = x;
-                pce.ShowName = x.ShowName;
+                PodcastEpisode pce = new PodcastEpisode
+                {
+                    EpisodeControlData = x,
+                    ShowName = x.ShowName
+                };
                 _podcasts.Add(pce);
             }
 

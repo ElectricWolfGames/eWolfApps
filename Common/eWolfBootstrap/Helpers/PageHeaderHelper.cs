@@ -35,7 +35,10 @@ namespace eWolfBootstrap.Helpers
             }
             else
             {
-                stringBuilder.Append($@"    <script type='text/javascript' src='{offSet}Scripts/chart.js'></script>");
+                if (pageDetails.ExtraIncludes.Contains(Enums.BootstrapOptions.CHART))
+                {
+                    stringBuilder.Append($@"    <script type='text/javascript' src='{offSet}Scripts/Chart.js'></script>");
+                }
 
                 if (pageDetails.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
                 {
