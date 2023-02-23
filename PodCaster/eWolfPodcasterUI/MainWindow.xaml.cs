@@ -246,11 +246,11 @@ namespace eWolfPodcasterUI
             PopulateTree();
         }
 
-        private async void CheckNextShow()
+        private void CheckNextShow()
         {
             try
             {
-                await Task.Run(() =>
+                Task.Run(() =>
                 {
                     if (Shows.GetShowService.UpdateNextRSSFeeds())
                     {
