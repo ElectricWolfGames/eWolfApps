@@ -166,6 +166,27 @@ function myFunction() {
             }
         }
 
+        public void EndTextCenter()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
+        public void EndTextCenterLeft()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
+        public void EndTextCenterRight()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
+        public void EndTextMiddel()
+        {
+            _stringBuilder.Append("</p>");
+            _stringBuilder.Append("</div>");
+        }
+
         public string GetString()
         {
             return _stringBuilder.ToString();
@@ -227,6 +248,26 @@ function myFunction() {
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, _stringBuilder.ToString());
+        }
+
+        public void StartTextCenter()
+        {
+            _stringBuilder.Append("<div class='text-center'>");
+        }
+
+        public void StartTextCenterLeft()
+        {
+            _stringBuilder.Append("<div class='text-left'>");
+        }
+
+        public void StartTextCenterRight()
+        {
+            _stringBuilder.Append("<div class='text-right'>");
+        }
+
+        public void StartTextMiddel(float size)
+        {
+            _stringBuilder.Append($"<div class='d-flex align-items-middle' style='height: {size}px'><p>");
         }
     }
 }

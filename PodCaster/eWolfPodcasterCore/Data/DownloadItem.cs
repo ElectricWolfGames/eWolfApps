@@ -2,7 +2,7 @@
 
 namespace eWolfPodcasterCore.Services
 {
-    public class DownlaodItem
+    public class DownloadItem
     {
         public string From { get; set; }
         public string Name { get; set; }

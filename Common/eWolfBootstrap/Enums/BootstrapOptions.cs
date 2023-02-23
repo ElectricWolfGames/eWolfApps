@@ -4,5 +4,6 @@
     {
         BT, //https://bootstrap-table.com/
         GALLERY,
+        CHART,
     }
 }
