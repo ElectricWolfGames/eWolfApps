@@ -29,6 +29,15 @@ namespace eWolfBootstrap.Helpers
                             float width = im.Width;
                             float height = im.Height;
 
+                            if (width > 2000)
+                            {
+                                percentage = 0.28f;
+                            }
+                            else
+                            {
+                                percentage = 0.9f;
+                            }
+
                             Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
                             bitmap.Save(newFileName);
                         }
@@ -59,6 +68,14 @@ namespace eWolfBootstrap.Helpers
                         float height = im.Height;
 
                         float percentage = 0.07f;
+                        if (width > 2000)
+                        {
+                            percentage = 0.07f;
+                        }
+                        else
+                        {
+                            percentage = 0.20f;
+                        }
 
                         Bitmap bitmap = ResizeImage(im, (int)(width * percentage), (int)(height * percentage));
                         bitmap.Save(newFileName);
