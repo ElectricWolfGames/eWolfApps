@@ -109,7 +109,7 @@ namespace eWolfPodcasterCore.Data
 
                     string fileNameUpper = filename.ToUpper();
                     string exp = Path.GetExtension(fileNameUpper);
-                    if (exp != ".MP3" && exp != ".MP4")
+                    if (exp != ".MP3" && exp != ".MP4" && exp != ".M4A")
                         continue;
 
                     string shortFileName = GetLastFolder(filename);

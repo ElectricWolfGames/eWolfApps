@@ -119,8 +119,9 @@ namespace eWolfPodcasterCore.Data
         {
             string show = DataCleansing.FileSafeFileName(ShowName);
             string title = DataCleansing.FileSafeFileName(Title);
+            string date = PublishedDate.ToString("yyyy-MM-dd");
 
-            return $"{GetDownloadFolder()}\\{show}\\{title}.mp3";
+            return $"{GetDownloadFolder()}\\{show}\\{date}-{title}.mp3";
         }
 
         public bool SameAs(EpisodeControl newEpisode)
