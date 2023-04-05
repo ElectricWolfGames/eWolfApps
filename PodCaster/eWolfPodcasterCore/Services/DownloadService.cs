@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eWolfPodcasterCore.Helpers;
+using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
@@ -62,15 +63,18 @@ namespace eWolfPodcasterCore.Services
                 {
                     using (WebClient webClient = new WebClient())
                     {
-                        Directory.CreateDirectory(Path.GetDirectoryName(di.To));
+                        string name = DataCleansing.FileSafeFileName(Path.GetFileName(di.To));
+                        string path = Path.GetDirectoryName(di.To);
+                        Directory.CreateDirectory(path);
 
-                        webClient.DownloadFile(di.From, di.To);
-                        Console.WriteLine($"Finished Downloaded {Path.GetFileName(di.To)}");
+                        webClient.DownloadFile(di.From, path + "\\" + name);
+                        Console.WriteLine($"Finished Downloaded {Path.GetFileName(name)}");
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Failed podcast Downloaded File " + ex);
+                    _downloading = false;
                 }
 
                 _downloading = false;

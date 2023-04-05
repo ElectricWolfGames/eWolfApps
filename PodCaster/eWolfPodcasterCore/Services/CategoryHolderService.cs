@@ -9,6 +9,10 @@ namespace eWolfPodcasterCore.Services
         {
             Categories = new List<CatergeryData>
             {
+                new CatergeryData("Drama Sci-fi Vintage"),
+                new CatergeryData("Drama Sci-fi New"),
+                new CatergeryData("Drama Sci-fi Other"),
+
                 new CatergeryData("Comedy"),
                 new CatergeryData("Country"),
                 new CatergeryData("Developer"),
