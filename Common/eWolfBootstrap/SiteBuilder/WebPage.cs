@@ -85,9 +85,7 @@ namespace eWolfBootstrap.SiteBuilder
             }
 
             stringBuilder.AppendLine("</div>");
-            stringBuilder.AppendLine("</li>");
             stringBuilder.AppendLine("</ul>");
-            stringBuilder.AppendLine("</form>");
             stringBuilder.AppendLine("</div>");
             stringBuilder.AppendLine("</nav>");
 
