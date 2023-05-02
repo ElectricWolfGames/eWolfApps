@@ -40,12 +40,22 @@ namespace eWolfBootstrap.Builders
             b.NewLine();
         }
 
-        public void CreateIndexItems(List<HTMLIndexedItems> items)
+        public void CreateIndexItems(List<HTMLIndexedItems> items, string size = "12")
         {
             foreach (var item in items)
             {
-                _stringBuilder.Append(item.BuildItem());
+                _stringBuilder.Append(item.BuildItem(size));
             }
+        }
+
+        public void CreateSideBarItems(List<HTMLIndexedItems> items)
+        {
+            HTML h = new();
+            foreach (var item in items)
+            {
+                h.SideBarItem(item);
+            }
+            _stringBuilder.Append(h.Output());
         }
 
         public void EndTextCenter()

@@ -1,4 +1,5 @@
-﻿using eWolfBootstrap.SiteBuilder.Interfaces;
+﻿using eWolfBootstrap.Builders;
+using eWolfBootstrap.SiteBuilder.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,37 @@ namespace eWolfBootstrap.SiteBuilder
             }
 
             return sb.ToString();
+        }
+
+        protected void AddIndexItemsWithSideBar(List<HTMLIndexedItems> items)
+        {
+            // Start Side Bar
+            WebPage.Append("<div class=\"d-flex\" id=\"wrapper\">");
+            WebPage.Append("<div class=\"border-end bg-white col-md-2\" id=\"sidebar-wrapper\">");
+            WebPage.Append("<div class=\"sticky-top\">");
+            WebPage.Append("<div class=\"list-group list-group-flush\">");
+
+            // Create Index
+            HTMLBuilder options = new HTMLBuilder();
+            options.CreateSideBarItems(items);
+            WebPage.Append(options.Output());
+
+            // End Side Bar
+            WebPage.Append("</div>");
+            WebPage.Append("</div>");
+            WebPage.Append("</div>");
+
+            WebPage.Append("<div id=\"page-content-wrapper col-md-8\">");
+
+            // Add all pages here
+            options = new HTMLBuilder();
+            options.CreateIndexItems(items, "12");
+            WebPage.Append(options.Output());
+            WebPage.Append("</div>");
+
+            // End
+            WebPage.Append("</div>");
+            WebPage.Append("</div>");
         }
     }
 }

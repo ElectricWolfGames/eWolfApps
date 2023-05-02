@@ -31,6 +31,12 @@ namespace eWolfBootstrap.SiteBuilder.Builders
             return _stringBuilder.ToString();
         }
 
+        public void SideBarItem(HTMLIndexedItems indexItem)
+        {
+            string linkName = indexItem.Title;
+            _stringBuilder.Append($"<a class=\"list-group-item list-group-item-action list-group-item-light p-2\" href=\"#{indexItem.Index}\">{linkName}</a>");
+        }
+
         public HTML TextCenter()
         {
             _stringBuilder.Append("<div class='text-center'>");

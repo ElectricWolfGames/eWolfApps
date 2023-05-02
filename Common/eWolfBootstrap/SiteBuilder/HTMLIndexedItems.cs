@@ -26,13 +26,14 @@ namespace eWolfBootstrap.SiteBuilder
             Index = title.Replace(" ", "");
         }
 
-        public string BuildItem()
+        public string BuildItem(string size)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"<a id='{Index}'></a>");
             sb.AppendLine("<div class ='row bg-light'>");
-            sb.AppendLine($"<div class='col-md-12'>");
+            if (size != "na")
+                sb.AppendLine($"<div class='col-md-{size}'>");
 
             sb.AppendLine("<div class='section-title'>");
             sb.Append("<div class='text-left'>");
@@ -45,7 +46,8 @@ namespace eWolfBootstrap.SiteBuilder
                 sb.Append(BodyText);
 
             sb.AppendLine("</div>");
-            sb.AppendLine("</div>");
+            if (size != "na")
+                sb.AppendLine("</div>");
             sb.AppendLine("</div>");
             sb.AppendLine("<br />");
             return sb.ToString();
