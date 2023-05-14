@@ -48,7 +48,7 @@ namespace eWolfBootstrap.SiteBuilder
         protected void AddIndexItemsWithSideBar(List<HTMLIndexedItems> items)
         {
             // Start Side Bar
-            WebPage.Append("<div class=\"d-flex\" id=\"wrapper\">");
+            WebPage.Append("<div class=\"d-flex flex-sm-row flex-column justify-content-between\">");
             WebPage.Append("<div class=\"border-end bg-white col-md-2\" id=\"sidebar-wrapper\">");
             WebPage.Append("<div class=\"sticky-top\">");
             WebPage.Append("<div class=\"list-group list-group-flush\">");
