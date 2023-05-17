@@ -63,7 +63,7 @@ namespace eWolfBootstrap.Helpers
 <script>
   window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date());  gtag('config', 'UA-180928318-1');
 </script>");*/
-            sb.Append(@"<!-- Google tag (gtag.js) -->
+           /* sb.Append(@"<!-- Google tag (gtag.js) -->
 <script async src=""https://www.googletagmanager.com/gtag/js?id=G-XCYJV6WSHD""></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -71,6 +71,15 @@ namespace eWolfBootstrap.Helpers
   gtag('js', new Date());
 
   gtag('config', 'G-XCYJV6WSHD');
+</script>");*/
+            sb.Append(@"<!-- Google tag (gtag.js) -->
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-N0VN5409QJ""></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N0VN5409QJ');
 </script>");
         }
     }
