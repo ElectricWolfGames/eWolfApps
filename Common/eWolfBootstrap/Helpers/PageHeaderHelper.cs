@@ -12,6 +12,7 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Append("<!DOCTYPE html>");
             stringBuilder.Append("<html lang='en' >");
             stringBuilder.Append("<head>");
+            AddSiteTracker(stringBuilder);
             stringBuilder.Append("    <meta charset='UTF-8'>");
             stringBuilder.Append($"    <title>{pageDetails.Title}</title>");
             stringBuilder.Append("<meta http-equiv='Content -Type' content='text/html; charset=UTF-8'>");
@@ -48,7 +49,7 @@ namespace eWolfBootstrap.Helpers
                 stringBuilder.Append($@"<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>");
             }
 
-            AddSiteTracker(stringBuilder);
+            
             stringBuilder.Append("</head>");
 
             return stringBuilder.ToString();
@@ -56,11 +57,20 @@ namespace eWolfBootstrap.Helpers
 
         private static void AddSiteTracker(StringBuilder sb)
         {
-            sb.Append(@"
+            /*sb.Append(@"
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src='https://www.googletagmanager.com/gtag/js?id=UA-180928318-1'></script>
 <script>
   window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date());  gtag('config', 'UA-180928318-1');
+</script>");*/
+            sb.Append(@"<!-- Google tag (gtag.js) -->
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-XCYJV6WSHD""></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XCYJV6WSHD');
 </script>");
         }
     }
