@@ -259,6 +259,12 @@ namespace eWolfBootstrap.Builders
             Text(textB);
         }
 
+        public void TextNewLine(string text)
+        {
+            _stringBuilder.Append(text);
+            NewLine();
+        }
+
         public void Title(string text)
         {
             _stringBuilder.Append($"<h2>{text}</h2>");
