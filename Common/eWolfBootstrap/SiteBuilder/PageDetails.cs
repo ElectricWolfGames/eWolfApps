@@ -11,6 +11,7 @@ namespace eWolfBootstrap.SiteBuilder
 {
     public abstract class PageDetails : ISitePageDetails
     {
+        private string[] _linkedPackages = new string[0];
         public string DisplayTitle { get; set; }
         public bool DontBuildPage { get; set; }
         public string FullLocalFilename { get; set; }
@@ -18,6 +19,9 @@ namespace eWolfBootstrap.SiteBuilder
         public string MenuTitle { get; set; }
         public string RootAddress { get; set; }
         public WebPage WebPage { get; protected set; }
+
+     
+
 
         public static List<ISitePageDetails> GetAllPages(Assembly assembly)
         {
@@ -44,6 +48,19 @@ namespace eWolfBootstrap.SiteBuilder
             }
 
             return sb.ToString();
+        }
+
+        public string[] LinkedPackages
+        {
+            get
+            {
+                return _linkedPackages;
+            }
+        }
+
+        public void LinkedThePackages(params string[] packages)
+        {
+            _linkedPackages = packages;
         }
 
         protected void AddIndexItemsWithSideBar(List<HTMLIndexedItems> items)
