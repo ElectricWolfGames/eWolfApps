@@ -78,8 +78,6 @@ namespace eWolfBootstrap.SiteBuilder
                 if (kvp.Title == "Home")
                     continue;
 
-                //var offSet = pageDetails.GetRooloffSet();
-
                 stringBuilder.AppendLine($"<li class='nav-item active'><a class='nav-link'" +
                         $"href='{offSet}{kvp.Address}'>{kvp.Title}</a></li>");
             }
@@ -102,7 +100,6 @@ namespace eWolfBootstrap.SiteBuilder
             stringBuilder.AppendLine("</button>");
             stringBuilder.AppendLine("<div class='collapse navbar-collapse' id='navbarsExample04'>");
             stringBuilder.AppendLine("<ul class='navbar-nav mr-auto'>");
-            //stringBuilder.AppendLine("<li class='nav-item'><a class='nav-link' href='#'>Locomotives</a></li>");
 
             string modelEvents = $"{offSet}ModelEvents/index.html";
             string modelLocations = $"{offSet}Constants.ModelEvents/locations.html";
@@ -113,7 +110,6 @@ namespace eWolfBootstrap.SiteBuilder
             string auctions = $"{offSet}Shop/GCRAuctions.html";
             string stockVideos = $"{offSet}Constants.StockVideos/index.html";
 
-            //stringBuilder.AppendLine($"<li class='nav-item active'><a class='nav-link' href='{modelEvents}'>Model Events <span class='sr-only'>(current)</span></a></li>");
             stringBuilder.AppendLine($"<li class='nav-item active'><a class='nav-link' href='{myLayouts}'>Cattington</a></li>");
             stringBuilder.AppendLine($"<li class='nav-item active'><a class='nav-link' href='{shop}'>Shop</a></li>");
             stringBuilder.AppendLine($"<li class='nav-item active'><a class='nav-link' href='{auctions}'>Auctions</a></li>");
@@ -129,8 +125,7 @@ namespace eWolfBootstrap.SiteBuilder
             stringBuilder.AppendLine("</div>");
             stringBuilder.AppendLine("</li>");
             stringBuilder.AppendLine("</ul>");
-            //stringBuilder.AppendLine("<form class='form-inline my-2 my-md-0'>");
-            // stringBuilder.AppendLine("<input class='form-control' type='text' placeholder='Search'>");
+
             stringBuilder.AppendLine("</form>");
             stringBuilder.AppendLine("</div>");
             stringBuilder.AppendLine("</nav>");
@@ -138,7 +133,6 @@ namespace eWolfBootstrap.SiteBuilder
             _stringBuilder.Append(stringBuilder.ToString());
         }
 
-        // TODO: AddStickyHeader -Need to check if this is the best place
         public void AddStickyHeader(string name)
         {
             string text = @"<script>
@@ -204,7 +198,7 @@ function myFunction() {
 
         public void StartBody()
         {
-            _stringBuilder.Append("<Body>");
+            _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
         }
 
         public void StartDiv(string tag)
@@ -228,24 +222,6 @@ function myFunction() {
                 if (!string.IsNullOrWhiteSpace(nav.WebPage.HtmlPath))
                     htmlPath = nav.WebPage.HtmlPath + "/";
 
-                /*string[] parts2 = nav.WebPage.HtmlPath.Split("/", StringSplitOptions.RemoveEmptyEntries);
-                int pageCount = parts2.Length;
-
-                string htmlPath = nav.WebPage.HtmlPath + "/";
-                if (pageCount < count)
-                {
-                    htmlPath = "";
-                    for (int i = 0; i < count - pageCount; i++)
-                    {
-                        htmlPath += "../";
-                    }
-                }
-
-                if (pageCount == count)
-                {
-                    htmlPath = string.Empty;
-                }
-                */
                 pageAddress.Add(
                         new NavigationPageAddressDetails()
                         {

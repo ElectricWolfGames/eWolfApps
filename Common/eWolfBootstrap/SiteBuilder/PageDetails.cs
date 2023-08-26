@@ -14,9 +14,9 @@ namespace eWolfBootstrap.SiteBuilder
         public string DisplayTitle { get; set; }
         public bool DontBuildPage { get; set; }
         public string FullLocalFilename { get; set; }
+        public List<string> Keywords { get; set; } = new List<string>();
         public string MenuTitle { get; set; }
         public string RootAddress { get; set; }
-        public List<string> Keywords { get; set; } = new List<string>();
         public WebPage WebPage { get; protected set; }
 
         public static List<ISitePageDetails> GetAllPages(Assembly assembly)
