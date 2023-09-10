@@ -1,5 +1,6 @@
 ﻿using eWolfBootstrap.Helpers;
 using eWolfBootstrap.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace eWolfBootstrap.Builders
             _fileName = fileName;
             _path = path;
             _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, ""));
-            _stringBuilder.Append("<Body>");
+            _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
         }
 
         public PageBuilder(string fileName, string path, IPageHeader pageHeader, string offSet)
@@ -31,7 +32,7 @@ namespace eWolfBootstrap.Builders
             _path = path;
             _offSet = offSet;
             _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, offSet));
-            _stringBuilder.Append("<Body>");
+            _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
         }
 
         public PageBuilder()
