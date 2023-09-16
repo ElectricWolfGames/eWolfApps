@@ -23,7 +23,12 @@ namespace eWolfBootstrap.SiteBuilder
 
         public void OpenHomePage()
         {
-            OpenSite(AllPages[0]);
+
+            foreach(var page in AllPages)
+            {
+                if (!page.DontBuildPage)
+                    OpenSite(page);
+            }
         }
 
         public void PreProcess(System.Reflection.Assembly assembly)

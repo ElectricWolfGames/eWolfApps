@@ -190,6 +190,11 @@ function myFunction() {
         {
             _pageDetails.FullLocalFilename = @$"{_pageDetails.RootAddress}\\{HtmlPath}\\{HtmlTitle}";
 
+            for (int i = 0; i < 3; i++)
+            {
+                _pageDetails.FullLocalFilename = _pageDetails.FullLocalFilename.Replace("\\\\", "\\");
+            }
+
             Directory.CreateDirectory(_pageDetails.RootAddress);
             Directory.CreateDirectory(_pageDetails.RootAddress + "\\" + HtmlPath);
             if (!_pageDetails.DontBuildPage)
