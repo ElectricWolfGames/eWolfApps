@@ -27,7 +27,10 @@ namespace eWolfBootstrap.SiteBuilder
             foreach(var page in AllPages)
             {
                 if (!page.DontBuildPage)
+                {
                     OpenSite(page);
+                    return;
+                }
             }
         }
 
