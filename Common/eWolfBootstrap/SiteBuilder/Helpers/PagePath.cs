@@ -32,7 +32,12 @@ namespace eWolfBootstrap.SiteBuilder.Helpers
                     folders.Add(part);
                 }
             }
-            return string.Join("\\", folders);
+
+
+            string fullPath = string.Join("\\", folders);
+
+
+            return fullPath.Replace("_", "-");
         }
     }
 }

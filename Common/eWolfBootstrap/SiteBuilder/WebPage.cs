@@ -49,8 +49,19 @@ namespace eWolfBootstrap.SiteBuilder
         public int NavigationIndex { get; set; }
 
         public NavigationTypes NavigationTypes { get; set; }
+        public string SetRootAddress
+        {
+            get { return _pageDetails.RootAddress; }
+            set { _pageDetails.RootAddress = value; }
+        }
 
-        public void AddHeader(PageDetails pageDetails)
+        public bool SetDontBuild
+        {
+            get { return _pageDetails.DontBuildPage; }
+            set { _pageDetails.DontBuildPage = value; }
+        }
+
+public void AddHeader(PageDetails pageDetails)
         {
             var pageHeaderDetails = SiteBuilderServiceLocator.Instance.GetService<IPageHeaderDetails>();
             _stringBuilder.Append(pageHeaderDetails.Output(pageDetails));
@@ -223,7 +234,13 @@ function myFunction() {
 
             foreach (var nav in navs)
             {
-                string htmlPath = "";
+                if (nav.DontBuildPage)
+                    continue;
+
+                if (nav.DontShowNavigation)
+                    continue;
+
+                    string htmlPath = "";
                 if (!string.IsNullOrWhiteSpace(nav.WebPage.HtmlPath))
                     htmlPath = nav.WebPage.HtmlPath + "/";
 

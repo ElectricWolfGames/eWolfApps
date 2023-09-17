@@ -14,6 +14,7 @@ namespace eWolfBootstrap.SiteBuilder
         private string[] _linkedPackages = new string[0];
         public string DisplayTitle { get; set; }
         public bool DontBuildPage { get; set; }
+        public bool DontShowNavigation { get; set; }
         public string FullLocalFilename { get; set; }
         public List<string> Keywords { get; set; } = new List<string>();
         public string MenuTitle { get; set; }
