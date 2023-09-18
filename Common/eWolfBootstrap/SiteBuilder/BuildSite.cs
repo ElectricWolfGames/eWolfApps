@@ -16,7 +16,10 @@ namespace eWolfBootstrap.SiteBuilder
             {
                 page.RootAddress = WebSiteRootAddress;
                 if (page.DontBuildPage)
+                {
+                    page.NoBuildAction();
                     continue;
+                }
 
                 page.CreatePage();
                 /*if (page.DisplayTitle.Contains("Salvager"))

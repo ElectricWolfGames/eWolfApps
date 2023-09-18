@@ -188,6 +188,26 @@ function myFunction() {
             _stringBuilder.Append("</div>");
         }
 
+        public virtual string GetOutput()
+        {
+            if (_pageHeader != null)
+            {
+                if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
+                {
+                    _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js'></script>");
+                    _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/locale/bootstrap-table-zh-CN.min.js'></script>");
+                }
+
+                if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.GALLERY))
+                {
+                    HTMLHelper.Gallery.AddGalleryPageFooter(this);
+                }
+            }
+
+            _stringBuilder.Append("</Body>");
+            return _stringBuilder.ToString();
+        }
+
         public string GetString()
         {
             return _stringBuilder.ToString();
@@ -249,26 +269,6 @@ function myFunction() {
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, _stringBuilder.ToString());
-        }
-
-        public virtual string GetOutput()
-        {
-            if (_pageHeader != null)
-            {
-                if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
-                {
-                    _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js'></script>");
-                    _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/locale/bootstrap-table-zh-CN.min.js'></script>");
-                }
-
-                if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.GALLERY))
-                {
-                    HTMLHelper.Gallery.AddGalleryPageFooter(this);
-                }
-            }
-
-            _stringBuilder.Append("</Body>");
-            return _stringBuilder.ToString();
         }
 
         public void StartTextCenter()

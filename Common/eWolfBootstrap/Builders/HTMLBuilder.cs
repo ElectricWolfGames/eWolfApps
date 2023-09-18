@@ -1,4 +1,5 @@
-﻿using eWolfBootstrap.SiteBuilder;
+﻿using eWolfBootstrap.Helpers;
+using eWolfBootstrap.SiteBuilder;
 using eWolfBootstrap.SiteBuilder.Builders;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,11 @@ namespace eWolfBootstrap.Builders
 
         public HTMLBuilder()
         {
+        }
+
+        public void AddImage(string htmlpath, string imagePath, string path)
+        {
+            HTMLHelper.AddQuickImage(htmlpath, imagePath, _stringBuilder, path);
         }
 
         public void Bold(string text)
@@ -156,6 +162,29 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.AppendLine($"<p class='lead'>{body}</p>");
 
             _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+        }
+
+        public void JumbotronWithImage(string title, string body, string imageHtmlPath, string imagePath, string imageName, int size = 4)
+        {
+            _stringBuilder.AppendLine("<div class='jumbotron'>");
+            _stringBuilder.AppendLine("<div class='row'>");
+
+            _stringBuilder.AppendLine($"<div class='col-md-6'>");
+            _stringBuilder.AppendLine(title);
+            _stringBuilder.AppendLine(body);
+            _stringBuilder.AppendLine("</div>");
+
+            _stringBuilder.AppendLine("<div class='col-md-4'>");
+
+            AddImage(
+                imageHtmlPath,
+                imagePath,
+                imageName);
+
+            _stringBuilder.AppendLine("</div>");
+
             _stringBuilder.AppendLine("</div>");
             _stringBuilder.AppendLine("</div>");
         }

@@ -12,6 +12,7 @@
         WebPage WebPage { get; }
 
         void CreatePage();
+        void NoBuildAction();
 
         string GetRooloffSet();
     }

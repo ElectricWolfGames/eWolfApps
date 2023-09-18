@@ -59,6 +59,17 @@ namespace eWolfBootstrap.Helpers
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
             stringBuilder.Append(HTMLHelper.BuildImageQuick(newImagePath, newImagePath, imageTitle));
         }
+        public static void AddQuickImage(string htmlpath, string imagePath, StringBuilder stringBuilder, string image)
+        {
+            htmlpath = htmlpath.Replace("\\\\", "\\");
+            imagePath = imagePath.Replace("\\\\", "\\");
+
+            string newImagePath = ImageHelper.CopyImageTo(imagePath, image, 1);
+            newImagePath = newImagePath.Replace(htmlpath, string.Empty);
+
+            string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
+            stringBuilder.Append(HTMLHelper.BuildImageQuick(newImagePath, newImagePath, imageTitle));
+        }
 
         public static void AddQuickImageCenter(string htmlpath, string imagePath, eWolfBootstrap.Interfaces.IPageBuilder stringBuilder, string image)
         {

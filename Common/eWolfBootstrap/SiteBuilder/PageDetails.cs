@@ -21,7 +21,7 @@ namespace eWolfBootstrap.SiteBuilder
         public string RootAddress { get; set; }
         public WebPage WebPage { get; protected set; }
 
-     
+
 
 
         public static List<ISitePageDetails> GetAllPages(Assembly assembly)
@@ -35,6 +35,9 @@ namespace eWolfBootstrap.SiteBuilder
         }
 
         public abstract void CreatePage();
+        public virtual void NoBuildAction()
+        {
+        }
 
         public string GetRooloffSet()
         {
