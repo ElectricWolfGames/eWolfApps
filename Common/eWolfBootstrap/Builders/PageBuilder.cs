@@ -8,6 +8,7 @@ using System.Text;
 
 namespace eWolfBootstrap.Builders
 {
+    //TODO: NEED TO REMOVE THIS CLASS
     public class PageBuilder : IPageBuilder
     {
         protected string _fileName;
@@ -21,7 +22,7 @@ namespace eWolfBootstrap.Builders
             _pageHeader = pageHeader;
             _fileName = fileName;
             _path = path;
-            _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, ""));
+            //_stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, ""));
             _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
         }
 
@@ -31,7 +32,7 @@ namespace eWolfBootstrap.Builders
             _fileName = fileName;
             _path = path;
             _offSet = offSet;
-            _stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, offSet));
+            //_stringBuilder.Append(PageHeaderHelper.PageHeader(pageHeader, offSet));
             _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
         }
 

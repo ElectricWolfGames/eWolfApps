@@ -61,7 +61,7 @@ namespace eWolfBootstrap.SiteBuilder
             set { _pageDetails.DontBuildPage = value; }
         }
 
-public void AddHeader(PageDetails pageDetails)
+        public void AddHeader(PageDetails pageDetails)
         {
             var pageHeaderDetails = SiteBuilderServiceLocator.Instance.GetService<IPageHeaderDetails>();
             _stringBuilder.Append(pageHeaderDetails.Output(pageDetails));

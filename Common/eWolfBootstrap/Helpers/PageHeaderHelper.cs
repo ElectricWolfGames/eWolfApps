@@ -9,7 +9,7 @@ namespace eWolfBootstrap.Helpers
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.Append("<!DOCTYPE html>");
+            /*stringBuilder.Append("<!DOCTYPE html>");
             stringBuilder.Append("<html lang='en' >");
             stringBuilder.Append("<head>");
             AddSiteTracker(stringBuilder);
@@ -53,7 +53,7 @@ namespace eWolfBootstrap.Helpers
 
             
             stringBuilder.Append("</head>");
-
+            */
             return stringBuilder.ToString();
         }
 
