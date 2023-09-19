@@ -3,6 +3,7 @@ using System;
 
 namespace eWolfBootstrap.SiteBuilder.Attributes
 {
+
     [AttributeUsage(AttributeTargets.Class |
                        AttributeTargets.Struct,
                        AllowMultiple = false)]

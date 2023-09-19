@@ -199,6 +199,8 @@ function myFunction() {
 
         public void Output()
         {
+            CheckForAddGallery();
+
             _pageDetails.FullLocalFilename = @$"{_pageDetails.RootAddress}\\{HtmlPath}\\{HtmlTitle}";
 
             for (int i = 0; i < 3; i++)
@@ -210,6 +212,24 @@ function myFunction() {
             Directory.CreateDirectory(_pageDetails.RootAddress + "\\" + HtmlPath);
             if (!_pageDetails.DontBuildPage)
                 File.WriteAllText(_pageDetails.FullLocalFilename, _stringBuilder.ToString());
+        }
+
+        private void CheckForAddGallery()
+        {
+            Type types = _pageDetails.GetType();
+
+            var gallery=
+             (AddGalleryAttribute)Attribute.GetCustomAttribute(
+                     types,
+                     typeof(AddGalleryAttribute));
+
+            if (gallery != null)
+            {
+                Append("<script src='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js'></script>");
+                Append("<script>");
+                Append("baguetteBox.run('.grid-gallery', { animation: 'slideIn'});");
+                Append("</script>");
+            }
         }
 
         public void StartBody()

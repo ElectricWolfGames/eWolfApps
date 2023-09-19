@@ -41,7 +41,12 @@ namespace eWolfBootstrap.SiteBuilder
 
         public string GetRooloffSet()
         {
-            string[] pathParts = WebPage.HtmlPath.Split("\\", StringSplitOptions.RemoveEmptyEntries);
+            return GetRooloffSet(WebPage.HtmlPath);
+
+        }
+        public string GetRooloffSet(string path)
+        {
+            string[] pathParts = path.Split("\\", StringSplitOptions.RemoveEmptyEntries);
 
             int folderCount = pathParts.Length;
 
