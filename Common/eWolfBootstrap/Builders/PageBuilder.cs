@@ -8,7 +8,7 @@ using System.Text;
 
 namespace eWolfBootstrap.Builders
 {
-    //TODO: NEED TO REMOVE THIS CLASS
+    [Obsolete("Not used any more", false)]
     public class PageBuilder : IPageBuilder
     {
         protected string _fileName;
@@ -44,10 +44,6 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.AddQuickImage(htmlpath, imagePath, this, path);
         }
 
-        public void AddImageCenter(string htmlpath, string imagePath, string path)
-        {
-            HTMLHelper.AddQuickImageCenter(htmlpath, imagePath, this, path);
-        }
 
         public void AddImages(string htmlpath, string imagePath, string path)
         {
@@ -62,17 +58,6 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.Gallery.AddGalleryFooter(this);
         }
 
-        public void AddImages(List<string> imageToUse, string htmlpath, string imagePath, string path, string offSetFolder)
-        {
-            HTMLHelper.Gallery.AddGalleryHeader(this, null);
-
-            foreach (string image in imageToUse)
-            {
-                HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, image, offSetFolder);
-            }
-
-            HTMLHelper.Gallery.AddGalleryFooter(this);
-        }
 
         public void AddImagesGroupedByDate(string htmlpath, string imagePath, string path)
         {
@@ -128,32 +113,12 @@ namespace eWolfBootstrap.Builders
                 HTMLHelper.AddImageToGallerySmall(htmlpath, imagePath, this, image, offSetFolder);
             }
 
-            Append(HTMLHelper.CreateCard(seeMore));
+            Text(HTMLHelper.CreateCard(seeMore));
 
             HTMLHelper.Gallery.AddGalleryFooter(this);
         }
 
-        public void AddStickyHeader(string name)
-        {
-            string text = @"<script>
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById(" + name + @");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add('sticky');
-  } else {
-    header.classList.remove('sticky');
-  }
-}
-</script>";
-
-            _stringBuilder.Append(text);
-        }
-
-        public void Append(string text)
+        public void Text(string text)
         {
             _stringBuilder.AppendLine(text);
         }
@@ -168,43 +133,8 @@ function myFunction() {
             }
         }
 
-        public void EndTextCenter()
-        {
-            _stringBuilder.Append("</div>");
-        }
-
-        public void EndTextCenterLeft()
-        {
-            _stringBuilder.Append("</div>");
-        }
-
-        public void EndTextCenterRight()
-        {
-            _stringBuilder.Append("</div>");
-        }
-
-        public void EndTextMiddel()
-        {
-            _stringBuilder.Append("</p>");
-            _stringBuilder.Append("</div>");
-        }
-
         public virtual string GetOutput()
         {
-            if (_pageHeader != null)
-            {
-                if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
-                {
-                    _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js'></script>");
-                    _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/locale/bootstrap-table-zh-CN.min.js'></script>");
-                }
-
-                if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.GALLERY))
-                {
-                    HTMLHelper.Gallery.AddGalleryPageFooter(this);
-                }
-            }
-
             _stringBuilder.Append("</Body>");
             return _stringBuilder.ToString();
         }
@@ -214,82 +144,35 @@ function myFunction() {
             return _stringBuilder.ToString();
         }
 
-        public void Jumbotron(string title, string body, int size = 4)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            stringBuilder.AppendLine("<div class='jumbotron'>");
-            stringBuilder.AppendLine("<div class='row'>");
-            stringBuilder.AppendLine($"<div class='col-md-{size}'>");
-            stringBuilder.AppendLine(title);
-            stringBuilder.AppendLine(body);
-
-            stringBuilder.AppendLine("</div>");
-            stringBuilder.AppendLine("</div>");
-            stringBuilder.AppendLine("</div>");
-
-            Append(stringBuilder.ToString());
-        }
-
         public void JumbotronWithImage(string title, string body, string imageHtmlPath, string imagePath, string imageName, int size = 4)
         {
-            Append("<div class='jumbotron'>");
-            Append("<div class='row'>");
+            Text("<div class='jumbotron'>");
+            Text("<div class='row'>");
 
-            Append($"<div class='col-md-6'>");
-            Append(title);
-            Append(body);
-            Append("</div>");
+            Text($"<div class='col-md-6'>");
+            Text(title);
+            Text(body);
+            Text("</div>");
 
-            Append("<div class='col-md-4'>");
+            Text("<div class='col-md-4'>");
 
             AddImage(
                 imageHtmlPath,
                 imagePath,
                 imageName);
 
-            Append("</div>");
+            Text("</div>");
 
-            Append("</div>");
-            Append("</div>");
+            Text("</div>");
+            Text("</div>");
         }
 
         public virtual void Output()
         {
-            if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.BT))
-            {
-                _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js'></script>");
-                _stringBuilder.Append(@"<script src='https://unpkg.com/bootstrap-table@1.18.0/dist/locale/bootstrap-table-zh-CN.min.js'></script>");
-            }
-
-            if (_pageHeader.ExtraIncludes.Contains(Enums.BootstrapOptions.GALLERY))
-            {
-                HTMLHelper.Gallery.AddGalleryPageFooter(this);
-            }
-
+           
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, _stringBuilder.ToString());
-        }
-
-        public void StartTextCenter()
-        {
-            _stringBuilder.Append("<div class='text-center'>");
-        }
-
-        public void StartTextCenterLeft()
-        {
-            _stringBuilder.Append("<div class='text-left'>");
-        }
-
-        public void StartTextCenterRight()
-        {
-            _stringBuilder.Append("<div class='text-right'>");
-        }
-
-        public void StartTextMiddel(float size)
-        {
-            _stringBuilder.Append($"<div class='d-flex align-items-middle' style='height: {size}px'><p>");
         }
     }
 }

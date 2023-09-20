@@ -36,7 +36,7 @@ namespace eWolfBootstrap.Helpers
             newImagePathThumb = newImagePathThumb.Replace(htmlpath, string.Empty);
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
-            stringBuilder.Append(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
+            stringBuilder.Text(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
         }
 
         public static void AddImageToGallerySmall(string htmlpath, string imagePath, IPageBuilder stringBuilder, string image, string offSetFolder = "")
@@ -51,7 +51,7 @@ namespace eWolfBootstrap.Helpers
             newImagePathThumb = newImagePathThumb.Replace(htmlpath, string.Empty);
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
-            stringBuilder.Append(HTMLHelper.BuildImageGalleryCardSmall(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
+            stringBuilder.Text(HTMLHelper.BuildImageGalleryCardSmall(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
         }
 
         public static void AddImageToPage(string htmlpath, string imagePath, eWolfBootstrap.Interfaces.IPageBuilder stringBuilder, string image)
@@ -63,7 +63,7 @@ namespace eWolfBootstrap.Helpers
             newImagePathThumb = newImagePathThumb.Replace(htmlpath, string.Empty);
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
-            stringBuilder.Append(HTMLHelper.BuildImageCard(newImagePath, newImagePathThumb, imageTitle));
+            stringBuilder.Text(HTMLHelper.BuildImageCard(newImagePath, newImagePathThumb, imageTitle));
         }
 
         public static void AddQuickImage(string htmlpath, string imagePath, eWolfBootstrap.Interfaces.IPageBuilder stringBuilder, string image)
@@ -75,7 +75,7 @@ namespace eWolfBootstrap.Helpers
             newImagePath = newImagePath.Replace(htmlpath, string.Empty);
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
-            stringBuilder.Append(HTMLHelper.BuildImageQuick(newImagePath, newImagePath, imageTitle));
+            stringBuilder.Text(HTMLHelper.BuildImageQuick(newImagePath, newImagePath, imageTitle));
         }
         public static void AddQuickImage(string htmlpath, string imagePath, StringBuilder stringBuilder, string image)
         {
@@ -98,7 +98,7 @@ namespace eWolfBootstrap.Helpers
             newImagePath = newImagePath.Replace(htmlpath, string.Empty);
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
-            stringBuilder.Append(HTMLHelper.BuildImageQuickCenter(newImagePath, newImagePath, imageTitle));
+            stringBuilder.Text(HTMLHelper.BuildImageQuickCenter(newImagePath, newImagePath, imageTitle));
         }
 
         public static string BuildImageCard(string image, string imageThumb, string title)
@@ -207,7 +207,7 @@ namespace eWolfBootstrap.Helpers
         {
             public static void AddGalleryFooter(IPageBuilder builder)
             {
-                builder.Append("</div></div></section>");
+                builder.Text("</div></div></section>");
             }
             public static void AddGalleryFooter(HTMLBuilder builder)
             {
@@ -216,15 +216,15 @@ namespace eWolfBootstrap.Helpers
 
             public static void AddGalleryHeader(IPageBuilder builder, string name)
             {
-                builder.Append("<section class='gallery-block grid-gallery'>");
-                builder.Append("<div class='container'>");
-                builder.Append("<div class='heading'>");
+                builder.Text("<section class='gallery-block grid-gallery'>");
+                builder.Text("<div class='container'>");
+                builder.Text("<div class='heading'>");
                 if (!string.IsNullOrWhiteSpace(name))
                 {
-                    builder.Append($"<h2><a id='{name}'>{name}</a></h2>");
+                    builder.Text($"<h2><a id='{name}'>{name}</a></h2>");
                 }
-                builder.Append("</div>");
-                builder.Append("<div class='row'>");
+                builder.Text("</div>");
+                builder.Text("<div class='row'>");
             }
 
             public static void AddGalleryHeader(HTMLBuilder builder, string name)
@@ -242,31 +242,31 @@ namespace eWolfBootstrap.Helpers
 
             public static void AddGalleryHeaderLocos(IPageBuilder builder, string name)
             {
-                builder.Append("<section class='gallery-block grid-gallery'>");
-                builder.Append("<div class='container'>");
-                builder.Append("<div class='row'>");
+                builder.Text("<section class='gallery-block grid-gallery'>");
+                builder.Text("<div class='container'>");
+                builder.Text("<div class='row'>");
                 if (!string.IsNullOrWhiteSpace(name))
                 {
-                    builder.Append($"<h2><a id='{name}'>{name}</a></h2>");
+                    builder.Text($"<h2><a id='{name}'>{name}</a></h2>");
                 }
             }
 
             public static void AddGalleryHeaderWithDate(IPageBuilder builder, string name)
             {
-                builder.Append("<section class='gallery-block grid-gallery'>");
-                builder.Append("<div class='container'>");
-                builder.Append("<div class='col-md-12'>");
-                builder.Append($"<hp>{name}</hp>");
-                builder.Append("</div>");
-                builder.Append("<div class='row'>");
+                builder.Text("<section class='gallery-block grid-gallery'>");
+                builder.Text("<div class='container'>");
+                builder.Text("<div class='col-md-12'>");
+                builder.Text($"<hp>{name}</hp>");
+                builder.Text("</div>");
+                builder.Text("<div class='row'>");
             }
 
             public static void AddGalleryPageFooter(IPageBuilder pageBuilder)
             {
-                pageBuilder.Append("<script src='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js'></script>");
-                pageBuilder.Append("<script>");
-                pageBuilder.Append("baguetteBox.run('.grid-gallery', { animation: 'slideIn'});");
-                pageBuilder.Append("</script>");
+                pageBuilder.Text("<script src='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js'></script>");
+                pageBuilder.Text("<script>");
+                pageBuilder.Text("baguetteBox.run('.grid-gallery', { animation: 'slideIn'});");
+                pageBuilder.Text("</script>");
             }
         }
     }

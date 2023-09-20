@@ -2,7 +2,7 @@
 {
     public interface IPageBuilder
     {
-        void Append(string text);
+        void Text(string text);
 
         string GetString();
 
