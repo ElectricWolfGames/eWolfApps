@@ -1,4 +1,5 @@
-﻿using eWolfBootstrap.Interfaces;
+﻿using eWolfBootstrap.Builders;
+using eWolfBootstrap.Interfaces;
 using System.IO;
 using System.Text;
 
@@ -6,6 +7,23 @@ namespace eWolfBootstrap.Helpers
 {
     public static class HTMLHelper
     {
+
+        public static void AddImageToGallery(string htmlpath, string imagePath, HTMLBuilder stringBuilder, string image, string offSetFolder = "")
+        {
+            htmlpath = htmlpath.Replace("\\\\", "\\");
+            imagePath = imagePath.Replace("\\\\", "\\");
+
+            string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
+            string newImagePathThumb = ImageHelper.CopyImageToThumb(imagePath, image);
+
+            newImagePath = newImagePath.Replace(htmlpath, string.Empty);
+            newImagePathThumb = newImagePathThumb.Replace(htmlpath, string.Empty);
+
+            string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
+            stringBuilder.Text(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
+        }
+
+
         public static void AddImageToGallery(string htmlpath, string imagePath, IPageBuilder stringBuilder, string image, string offSetFolder = "")
         {
             htmlpath = htmlpath.Replace("\\\\", "\\");
@@ -191,6 +209,10 @@ namespace eWolfBootstrap.Helpers
             {
                 builder.Append("</div></div></section>");
             }
+            public static void AddGalleryFooter(HTMLBuilder builder)
+            {
+                builder.Text("</div></div></section>");
+            }
 
             public static void AddGalleryHeader(IPageBuilder builder, string name)
             {
@@ -203,6 +225,19 @@ namespace eWolfBootstrap.Helpers
                 }
                 builder.Append("</div>");
                 builder.Append("<div class='row'>");
+            }
+
+            public static void AddGalleryHeader(HTMLBuilder builder, string name)
+            {
+                builder.Text("<section class='gallery-block grid-gallery'>");
+                builder.Text("<div class='container'>");
+                builder.Text("<div class='heading'>");
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    builder.Text($"<h2><a id='{name}'>{name}</a></h2>");
+                }
+                builder.Text("</div>");
+                builder.Text("<div class='row'>");
             }
 
             public static void AddGalleryHeaderLocos(IPageBuilder builder, string name)
