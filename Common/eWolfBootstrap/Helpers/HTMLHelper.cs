@@ -234,7 +234,7 @@ namespace eWolfBootstrap.Helpers
                 builder.Text("<div class='heading'>");
                 if (!string.IsNullOrWhiteSpace(name))
                 {
-                    builder.Text($"<h2><a id='{name}'>{name}</a></h2>");
+                    builder.Text($"</br><h2><a id='{name}'>{name}</a></h2>");
                 }
                 builder.Text("</div>");
                 builder.Text("<div class='row'>");
