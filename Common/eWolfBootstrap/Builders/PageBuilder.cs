@@ -99,6 +99,9 @@ namespace eWolfBootstrap.Builders
             }
         }
 
+        
+
+
         public void AddImagesWithSeeMore(List<string> imageToUse, List<string> imageToUseSmall, string htmlpath, string imagePath, string path, string offSetFolder, string seeMore)
         {
             HTMLHelper.Gallery.AddGalleryHeaderLocos(this, null);

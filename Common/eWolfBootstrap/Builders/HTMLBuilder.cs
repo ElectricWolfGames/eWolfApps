@@ -2,6 +2,8 @@
 using eWolfBootstrap.SiteBuilder;
 using eWolfBootstrap.SiteBuilder.Builders;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace eWolfBootstrap.Builders
@@ -323,6 +325,47 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("<div class='text-center'>");
             _stringBuilder.Append($@"<iframe width='854' height='480' src='https://www.youtube.com/embed/" + link + "?rel=0' frameborder='0' allowfullscreen></iframe>");
             _stringBuilder.Append("</div>");
+        }
+
+        public void AddImagesGroupedByDate(string htmlpath, string imagePath, string path)
+        {
+            
+            List<string> images = ImageHelper.GetAllImages(path);
+
+            Dictionary<string, List<string>> byDate = new Dictionary<string, List<string>>();
+
+            foreach (string image in images)
+            {
+                var time = File.GetLastWriteTime(image);
+                string date = $"{time.Year}-{time.Month.ToString("00")}-{time.Day.ToString("00")}";
+                List<string> files = new List<string>();
+
+                if (byDate.TryGetValue(date, out files))
+                {
+                    files.Add(image);
+                }
+                else
+                {
+                    files = new List<string>();
+                    files.Add(image);
+                    byDate.Add(date, files);
+                }
+            }
+
+            List<string> keyList = new List<string>(byDate.Keys);
+            keyList = keyList.OrderByDescending(x => x).ToList();
+
+            foreach (var date in keyList)
+            {
+                var list = byDate[date];
+                string name = $"{date}";
+                HTMLHelper.Gallery.AddGalleryHeaderWithDate(this, name);
+                foreach (var fileName in list)
+                {
+                    HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, fileName);
+                }
+                HTMLHelper.Gallery.AddGalleryFooter(this);
+            }
         }
     }
 }

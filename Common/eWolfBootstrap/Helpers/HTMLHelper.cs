@@ -261,6 +261,16 @@ namespace eWolfBootstrap.Helpers
                 builder.Text("<div class='row'>");
             }
 
+            public static void AddGalleryHeaderWithDate(HTMLBuilder builder, string name)
+            {
+                builder.Text("<section class='gallery-block grid-gallery'>");
+                builder.Text("<div class='container'>");
+                builder.Text("<div class='col-md-12'>");
+                builder.Text($"<hp>{name}</hp>");
+                builder.Text("</div>");
+                builder.Text("<div class='row'>");
+            }
+
             public static void AddGalleryPageFooter(IPageBuilder pageBuilder)
             {
                 pageBuilder.Text("<script src='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js'></script>");
