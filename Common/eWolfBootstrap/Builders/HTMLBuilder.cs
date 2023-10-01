@@ -277,6 +277,26 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append(text);
         }
 
+        public void CodeText(string text)
+        {
+            _stringBuilder.Append($"<div class='col-md-6'>");
+            _stringBuilder.Append("<div class='text-left'>");
+
+            _stringBuilder.Append($"<div class=\"p-3 mb-2 bg-secondary text-white\">{text}</div>");
+            _stringBuilder.Append("</div>");
+            _stringBuilder.Append("</div>");
+        }
+
+        public void StartTextLeft()
+        {
+            _stringBuilder.Append("<div class='text-left'>");
+        }
+        public void EndTextLeft()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
+
         public void TextBold(string textA, string boldA)
         {
             Text(textA);
