@@ -92,14 +92,14 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append($@"<img src='images/{imageName}' width={percentage}%px >");
         }
 
-        public void ImageCard(string imageName, float percentage = 100)
+        public void ImageCard(string imageName, float percentage = 100, string subFolder = "images")
         {
-            _stringBuilder.Append("<div class='col-md-4'>");
-            _stringBuilder.Append("<div class='thumbnail'>");
-            _stringBuilder.Append($@"<img class='rounded mx-auto d-block' src='images/{imageName}' width={percentage}%px >");
-            _stringBuilder.Append("<div class='caption'>&nbsp;</div>");
-            _stringBuilder.Append("</div>");
-            _stringBuilder.Append("</div>");
+            _stringBuilder.AppendLine("<div class='col-md-4'>");
+            _stringBuilder.AppendLine("<div class='thumbnail'>");
+            _stringBuilder.AppendLine($@"<img class='rounded mx-auto d-block' src='{subFolder}/{imageName}' width={percentage}%px >");
+            _stringBuilder.AppendLine("<div class='caption'>&nbsp;</div>");
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
         }
 
         public void ImageCenter(string imageName, float percentage = 100)

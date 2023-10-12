@@ -101,6 +101,14 @@ namespace eWolfBootstrap.Helpers
             stringBuilder.Text(HTMLHelper.BuildImageQuickCenter(newImagePath, newImagePath, imageTitle));
         }
 
+        public static (string,string) CopyImageUploads(string imagePath, string image)
+        {
+            string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
+            string newImagePathThumb = ImageHelper.CopyImageToThumb(imagePath, image);
+            return (newImagePath, newImagePathThumb);
+        }
+
+
         public static string BuildImageCard(string image, string imageThumb, string title)
         {
             StringBuilder stringBuilder = new StringBuilder();
