@@ -24,9 +24,61 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.AddQuickImage(htmlpath, imagePath, _stringBuilder, path);
         }
 
+        public void AddImagesGroupedByDate(string htmlpath, string imagePath, string path)
+        {
+            List<string> images = ImageHelper.GetAllImages(path);
+
+            Dictionary<string, List<string>> byDate = new Dictionary<string, List<string>>();
+
+            foreach (string image in images)
+            {
+                var time = File.GetLastWriteTime(image);
+                string date = $"{time.Year}-{time.Month.ToString("00")}-{time.Day.ToString("00")}";
+                List<string> files = new List<string>();
+
+                if (byDate.TryGetValue(date, out files))
+                {
+                    files.Add(image);
+                }
+                else
+                {
+                    files = new List<string>();
+                    files.Add(image);
+                    byDate.Add(date, files);
+                }
+            }
+
+            List<string> keyList = new List<string>(byDate.Keys);
+            keyList = keyList.OrderByDescending(x => x).ToList();
+
+            foreach (var date in keyList)
+            {
+                var list = byDate[date];
+                string name = $"{date}";
+                HTMLHelper.Gallery.AddGalleryHeaderWithDate(this, name);
+                foreach (var fileName in list)
+                {
+                    HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, fileName);
+                }
+                HTMLHelper.Gallery.AddGalleryFooter(this);
+            }
+        }
+
         public void Bold(string text)
         {
             _stringBuilder.Append($"<strong>{text}</strong>");
+        }
+
+        public void CodeText(string text)
+        {
+            text = AddBRs(text);
+            text = AddTabs(text);
+            _stringBuilder.Append($"<div class='col-md-12'>");
+            _stringBuilder.Append("<div class='text-left'>");
+
+            _stringBuilder.Append($"<div class=\"p-3 mb-2 bg-secondary text-white\">{text}</div>");
+            _stringBuilder.Append("</div>");
+            _stringBuilder.Append("</div>");
         }
 
         public void CreateIndex(List<HTMLIndexedItems> items)
@@ -81,6 +133,11 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("</div>");
         }
 
+        public void EndTextLeft()
+        {
+            _stringBuilder.Append("</div>");
+        }
+
         public void EndTextMiddel()
         {
             _stringBuilder.Append("</p>");
@@ -105,6 +162,11 @@ namespace eWolfBootstrap.Builders
         public void ImageCenter(string imageName, float percentage = 100)
         {
             _stringBuilder.Append($@"<img class='img-fluid rounded mx-auto d-block' src='images/{imageName}' width={percentage}%px >");
+        }
+
+        public void ImageFolder(string path, string imageName, float percentage = 100)
+        {
+            _stringBuilder.Append($@"<img src='{path}/{imageName}' width={percentage}%px >");
         }
 
         public void ImageLeft(string imageName, float percentage = 100)
@@ -267,6 +329,11 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("<div class='text-right'>");
         }
 
+        public void StartTextLeft()
+        {
+            _stringBuilder.Append("<div class='text-left'>");
+        }
+
         public void StartTextMiddel(float size)
         {
             _stringBuilder.Append($"<div class='d-flex align-items-middle' style='height: {size}px'><p>");
@@ -276,26 +343,6 @@ namespace eWolfBootstrap.Builders
         {
             _stringBuilder.Append(text);
         }
-
-        public void CodeText(string text)
-        {
-            _stringBuilder.Append($"<div class='col-md-6'>");
-            _stringBuilder.Append("<div class='text-left'>");
-
-            _stringBuilder.Append($"<div class=\"p-3 mb-2 bg-secondary text-white\">{text}</div>");
-            _stringBuilder.Append("</div>");
-            _stringBuilder.Append("</div>");
-        }
-
-        public void StartTextLeft()
-        {
-            _stringBuilder.Append("<div class='text-left'>");
-        }
-        public void EndTextLeft()
-        {
-            _stringBuilder.Append("</div>");
-        }
-
 
         public void TextBold(string textA, string boldA)
         {
@@ -347,45 +394,25 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("</div>");
         }
 
-        public void AddImagesGroupedByDate(string htmlpath, string imagePath, string path)
+        private string AddTabs(string text)
         {
-            
-            List<string> images = ImageHelper.GetAllImages(path);
+            string[] lines = text.Split("</br>");
+            StringBuilder sb = new StringBuilder();
 
-            Dictionary<string, List<string>> byDate = new Dictionary<string, List<string>>();
-
-            foreach (string image in images)
+            foreach (string line in lines)
             {
-                var time = File.GetLastWriteTime(image);
-                string date = $"{time.Year}-{time.Month.ToString("00")}-{time.Day.ToString("00")}";
-                List<string> files = new List<string>();
-
-                if (byDate.TryGetValue(date, out files))
-                {
-                    files.Add(image);
-                }
-                else
-                {
-                    files = new List<string>();
-                    files.Add(image);
-                    byDate.Add(date, files);
-                }
+                var temp = line.Replace("    ", "&nbsp&nbsp&nbsp&nbsp");
+                sb.Append($"{temp}</br>");
             }
 
-            List<string> keyList = new List<string>(byDate.Keys);
-            keyList = keyList.OrderByDescending(x => x).ToList();
+            return sb.ToString();
+        }
 
-            foreach (var date in keyList)
-            {
-                var list = byDate[date];
-                string name = $"{date}";
-                HTMLHelper.Gallery.AddGalleryHeaderWithDate(this, name);
-                foreach (var fileName in list)
-                {
-                    HTMLHelper.AddImageToGallery(htmlpath, imagePath, this, fileName);
-                }
-                HTMLHelper.Gallery.AddGalleryFooter(this);
-            }
+        private string AddBRs(string text)
+        {
+            text = text.Replace("\r\n", "</br>");
+            return text;
+
         }
     }
 }
