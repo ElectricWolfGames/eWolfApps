@@ -3,6 +3,6 @@
 {
     public interface IPageHeaderDetails
     {
-        string Output(PageDetails pageDetails);
+        string Output(PageDetails pageDetails, string extraOffSet = "");
     }
 }

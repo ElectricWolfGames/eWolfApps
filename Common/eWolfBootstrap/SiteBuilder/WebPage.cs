@@ -61,10 +61,10 @@ namespace eWolfBootstrap.SiteBuilder
             set { _pageDetails.DontBuildPage = value; }
         }
 
-        public void AddHeader(PageDetails pageDetails)
+        public void AddHeader(PageDetails pageDetails, string extraOffSet = "")
         {
             var pageHeaderDetails = SiteBuilderServiceLocator.Instance.GetService<IPageHeaderDetails>();
-            _stringBuilder.Append(pageHeaderDetails.Output(pageDetails));
+            _stringBuilder.Append(pageHeaderDetails.Output(pageDetails, extraOffSet));
         }
 
         public void AddNavigation(NavigationTypes navigationType, string offSet = "")
