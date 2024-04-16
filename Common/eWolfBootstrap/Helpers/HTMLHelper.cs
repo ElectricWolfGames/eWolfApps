@@ -15,6 +15,13 @@ namespace eWolfBootstrap.Helpers
             htmlpath = htmlpath.Replace("\\\\", "\\");
             imagePath = imagePath.Replace("\\\\", "\\");
 
+            if (image.Contains("\'"))
+            {
+                int i = 0;
+                i++;
+            }
+            image = image.Replace("\'", "");
+            
             string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
             string newImagePathThumb = ImageHelper.CopyImageToThumb(imagePath, image);
 
