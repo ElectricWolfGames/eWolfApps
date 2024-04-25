@@ -51,6 +51,9 @@ namespace eWolfBootstrap.Helpers
 
         public static string CopyImageToThumb(string path, string orignalImage)
         {
+
+            orignalImage = orignalImage.Replace("\'", "");
+
             string name = Path.GetFileName(orignalImage);
 
             name = FixName(name);
