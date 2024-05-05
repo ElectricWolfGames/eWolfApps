@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
+using System.Linq;
+using Image = System.Drawing.Image;
 
 namespace eWolfBootstrap.Helpers
 {
@@ -24,7 +27,7 @@ namespace eWolfBootstrap.Helpers
                     Directory.CreateDirectory(path);
                     using (FileStream pngStream = new FileStream(orignalImage, FileMode.Open, FileAccess.Read))
                     {
-                        var im = new Bitmap(pngStream);
+                        Bitmap im = new Bitmap(pngStream);
                         {
                             float width = im.Width;
                             float height = im.Height;
@@ -103,6 +106,8 @@ namespace eWolfBootstrap.Helpers
                     files.Add(file);
                 }
             }
+
+            
             return files;
         }
 
