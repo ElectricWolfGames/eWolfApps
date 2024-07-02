@@ -7,7 +7,7 @@ using System.Text;
 namespace eWolfBootstrap.Builders
 {
     // https://getbootstrap.com/docs/4.0/examples/
-    public class ResponsiveSidebarPage : PageBuilder
+    /*public class ResponsiveSidebarPage : PageBuilder
     {
         private readonly Dictionary<string, StringBuilder> _sections = new Dictionary<string, StringBuilder>();
         private readonly List<string> _sectionsName = new List<string>();
@@ -93,6 +93,5 @@ namespace eWolfBootstrap.Builders
             AppendSection("<br /><br />");
 
             AppendSection($"<h2>{name}</h2>");
-        }
-    }
+        }*/
 }

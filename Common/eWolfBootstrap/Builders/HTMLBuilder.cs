@@ -33,7 +33,7 @@ namespace eWolfBootstrap.Builders
             foreach (string image in images)
             {
                 var time = File.GetLastWriteTime(image);
-                string date = $"{time.Year}-{time.Month.ToString("00")}-{time.Day.ToString("00")}";
+                string date = $"{time.Year}-{time.Month:00}-{time.Day:00}";
                 List<string> files = new List<string>();
 
                 if (byDate.TryGetValue(date, out files))
@@ -216,7 +216,7 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.AppendLine("</div>");
         }
 
-        public void JumbotronImage(string title, string body, string imageName, float percentage, int size = 12)
+        public void JumbotronImage(string body, string imageName, float percentage, int size = 12)
         {
             _stringBuilder.AppendLine("<div class='jumbotron'>");
             _stringBuilder.AppendLine("<div class='row'>");
@@ -230,7 +230,7 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.AppendLine("</div>");
         }
 
-        public void JumbotronWithImage(string title, string body, string imageHtmlPath, string imagePath, string imageName, int size = 4)
+        public void JumbotronWithImage(string title, string body, string imageHtmlPath, string imagePath, string imageName)
         {
             _stringBuilder.AppendLine("<div class='jumbotron'>");
             _stringBuilder.AppendLine("<div class='row'>");
@@ -394,7 +394,13 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append("</div>");
         }
 
-        private string AddTabs(string text)
+        private static string AddBRs(string text)
+        {
+            text = text.Replace("\r\n", "</br>");
+            return text;
+        }
+
+        private static string AddTabs(string text)
         {
             string[] lines = text.Split("</br>");
             StringBuilder sb = new StringBuilder();
@@ -406,13 +412,6 @@ namespace eWolfBootstrap.Builders
             }
 
             return sb.ToString();
-        }
-
-        private string AddBRs(string text)
-        {
-            text = text.Replace("\r\n", "</br>");
-            return text;
-
         }
     }
 }
