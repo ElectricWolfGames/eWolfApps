@@ -7,8 +7,7 @@ namespace eWolfBootstrap.Helpers
 {
     public static class HTMLHelper
     {
-
-        public static void AddImageToGallery(string htmlpath, string imagePath, HTMLBuilder stringBuilder, string image, string offSetFolder = "")
+        public static ImagesPair AddImageToGallery(string htmlpath, string imagePath, HTMLBuilder stringBuilder, string image, string offSetFolder = "")
         {
             htmlpath = htmlpath.Replace("\\\\", "\\");
             imagePath = imagePath.Replace("\\\\", "\\");
@@ -21,7 +20,7 @@ namespace eWolfBootstrap.Helpers
                 i++;
             }
             image = image.Replace("\'", "");
-            
+
             string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
             string newImagePathThumb = ImageHelper.CopyImageToThumb(imagePath, image);
 
@@ -30,8 +29,13 @@ namespace eWolfBootstrap.Helpers
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
             stringBuilder.Text(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
-        }
 
+            ImagesPair im = new ImagesPair();
+            im.FilenameThumb = offSetFolder + newImagePathThumb;
+            im.Filename = offSetFolder + newImagePath;
+
+            return im;
+        }
 
         public static void AddImageToGallery(string htmlpath, string imagePath, IPageBuilder stringBuilder, string image, string offSetFolder = "")
         {
@@ -86,6 +90,7 @@ namespace eWolfBootstrap.Helpers
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
             stringBuilder.Text(HTMLHelper.BuildImageQuick(newImagePath, newImagePath, imageTitle));
         }
+
         public static void AddQuickImage(string htmlpath, string imagePath, StringBuilder stringBuilder, string image)
         {
             htmlpath = htmlpath.Replace("\\\\", "\\");
@@ -109,14 +114,6 @@ namespace eWolfBootstrap.Helpers
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
             stringBuilder.Text(HTMLHelper.BuildImageQuickCenter(newImagePath, newImagePath, imageTitle));
         }
-
-        public static (string,string) CopyImageUploads(string imagePath, string image)
-        {
-            string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
-            string newImagePathThumb = ImageHelper.CopyImageToThumb(imagePath, image);
-            return (newImagePath, newImagePathThumb);
-        }
-
 
         public static string BuildImageCard(string image, string imageThumb, string title)
         {
@@ -209,6 +206,13 @@ namespace eWolfBootstrap.Helpers
             //stringBuilder.Append(HTMLHelper.BuildImageGalleryCard(newImagePath, newImagePathThumb, imageTitle));
         }
 
+        public static (string, string) CopyImageUploads(string imagePath, string image)
+        {
+            string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
+            string newImagePathThumb = ImageHelper.CopyImageToThumb(imagePath, image);
+            return (newImagePath, newImagePathThumb);
+        }
+
         public static string CreateCard(string title)
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -226,6 +230,7 @@ namespace eWolfBootstrap.Helpers
             {
                 builder.Text("</div></div></section>");
             }
+
             public static void AddGalleryFooter(HTMLBuilder builder)
             {
                 builder.Text("</div></div></section>");
@@ -296,5 +301,11 @@ namespace eWolfBootstrap.Helpers
                 pageBuilder.Text("</script>");
             }
         }
+    }
+
+    public class ImagesPair
+    {
+        public string Filename { get; set; }
+        public string FilenameThumb { get; set; }
     }
 }
