@@ -1,13 +1,15 @@
 ﻿using eWolfBootstrap.Builders;
 using eWolfBootstrap.Interfaces;
+using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace eWolfBootstrap.Helpers
 {
     public static class HTMLHelper
     {
-        public static ImagesPair AddImageToGallery(string htmlpath, string imagePath, HTMLBuilder stringBuilder, string image, string offSetFolder = "")
+        public static ImagesPair AddImageToGallery(string htmlpath, string imagePath, HTMLBuilder pageBuilder, string image, string offSetFolder = "")
         {
             htmlpath = htmlpath.Replace("\\\\", "\\");
             imagePath = imagePath.Replace("\\\\", "\\");
@@ -28,16 +30,21 @@ namespace eWolfBootstrap.Helpers
             newImagePathThumb = newImagePathThumb.Replace(htmlpath, string.Empty);
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
-            stringBuilder.Text(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
+            pageBuilder.Text(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
 
             ImagesPair im = new ImagesPair();
             im.FilenameThumb = offSetFolder + newImagePathThumb;
             im.Filename = offSetFolder + newImagePath;
+            im.Name = imageTitle;
+
+            string[] parts = htmlpath.Split("\\", System.StringSplitOptions.RemoveEmptyEntries);
+
+            im.Folder = parts.Last();
 
             return im;
         }
 
-        public static void AddImageToGallery(string htmlpath, string imagePath, IPageBuilder stringBuilder, string image, string offSetFolder = "")
+        public static void AddImageToGallery(string htmlpath, string imagePath, IPageBuilder pageBuilder, string image, string offSetFolder = "")
         {
             htmlpath = htmlpath.Replace("\\\\", "\\");
             imagePath = imagePath.Replace("\\\\", "\\");
@@ -49,7 +56,12 @@ namespace eWolfBootstrap.Helpers
             newImagePathThumb = newImagePathThumb.Replace(htmlpath, string.Empty);
 
             string imageTitle = Path.GetFileNameWithoutExtension(newImagePath);
-            stringBuilder.Text(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
+            pageBuilder.Text(HTMLHelper.BuildImageGalleryCard(offSetFolder + newImagePath, offSetFolder + newImagePathThumb, imageTitle));
+        }
+
+        public static void AddImageToGallery(string folder, ImagesPair lp, HTMLBuilder pageBuilder)
+        {
+            pageBuilder.Text(HTMLHelper.BuildImageGalleryCard(folder + lp.Filename, folder + lp.FilenameThumb, lp.Name));
         }
 
         public static void AddImageToGallerySmall(string htmlpath, string imagePath, IPageBuilder stringBuilder, string image, string offSetFolder = "")
@@ -307,5 +319,7 @@ namespace eWolfBootstrap.Helpers
     {
         public string Filename { get; set; }
         public string FilenameThumb { get; set; }
+        public string Folder { get; set; }
+        public string Name { get; set; }
     }
 }
