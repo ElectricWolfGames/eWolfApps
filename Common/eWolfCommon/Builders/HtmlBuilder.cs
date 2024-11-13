@@ -24,7 +24,7 @@ namespace eWolfCommon.Builders
 
         public void AddNewLine()
         {
-            _data.Append("</br>");
+            _data.Append("<br/>");
         }
 
         public void AddTableHeader(string[] headerList)
