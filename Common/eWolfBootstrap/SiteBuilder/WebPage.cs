@@ -49,16 +49,17 @@ namespace eWolfBootstrap.SiteBuilder
         public int NavigationIndex { get; set; }
 
         public NavigationTypes NavigationTypes { get; set; }
-        public string SetRootAddress
-        {
-            get { return _pageDetails.RootAddress; }
-            set { _pageDetails.RootAddress = value; }
-        }
 
         public bool SetDontBuild
         {
             get { return _pageDetails.DontBuildPage; }
             set { _pageDetails.DontBuildPage = value; }
+        }
+
+        public string SetRootAddress
+        {
+            get { return _pageDetails.RootAddress; }
+            set { _pageDetails.RootAddress = value; }
         }
 
         public void AddHeader(PageDetails pageDetails, string extraOffSet = "")
@@ -214,11 +215,22 @@ function myFunction() {
                 File.WriteAllText(_pageDetails.FullLocalFilename, _stringBuilder.ToString());
         }
 
+        public void StartBody()
+        {
+            _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
+        }
+
+        public void StartDiv(string tag)
+        {
+            _stringBuilder.Append(tag);
+            _tags.Add("/div");
+        }
+
         private void CheckForAddGallery()
         {
             Type types = _pageDetails.GetType();
 
-            var gallery=
+            var gallery =
              (AddGalleryAttribute)Attribute.GetCustomAttribute(
                      types,
                      typeof(AddGalleryAttribute));
@@ -230,17 +242,6 @@ function myFunction() {
                 Append("baguetteBox.run('.grid-gallery', { animation: 'slideIn'});");
                 Append("</script>");
             }
-        }
-
-        public void StartBody()
-        {
-            _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
-        }
-
-        public void StartDiv(string tag)
-        {
-            _stringBuilder.Append(tag);
-            _tags.Add("/div");
         }
 
         private void PopulatePageAddresses(NavigationTypes navigationType, List<NavigationPageAddressDetails> pageAddress)
@@ -260,7 +261,7 @@ function myFunction() {
                 if (nav.DontShowNavigation)
                     continue;
 
-                    string htmlPath = "";
+                string htmlPath = "";
                 if (!string.IsNullOrWhiteSpace(nav.WebPage.HtmlPath))
                     htmlPath = nav.WebPage.HtmlPath + "/";
 
