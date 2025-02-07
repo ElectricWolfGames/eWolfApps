@@ -115,7 +115,7 @@ namespace eWolfPodcasterCore.Data
                     string shortFileName = GetLastFolder(filename);
 
                     EpisodeControl ep = new EpisodeControl();
-                    ep.Description = showName + " : " + shortFileName;
+                    ep.Description = $"{shortFileName}, {showName}";// showName + " : " + shortFileName;
                     ep.Hidden = false;
                     ep.PodcastURL = filename;
                     ep.PublishedDate = DateTime.Now;
@@ -142,6 +142,11 @@ namespace eWolfPodcasterCore.Data
                     if (episode.SameAs(newEpisode))
                     {
                         newEpisodeFlag = false;
+                        if (episode.Description != newEpisode.Description)
+                        {
+                            addedNew = true;
+                            episode.Description = newEpisode.Description;
+                        }
                     }
                 }
 
