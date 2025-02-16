@@ -103,19 +103,23 @@ namespace eWolfPodcasterCore.Data
                 string showName = new DirectoryInfo(folderLocation).Name;
                 foreach (string filename in files)
                 {
-                    //string folderExtra = filename.Replace(folderLocation, "");
-                    //string[] folders = folderExtra.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
-                    //string groupName = CreateNewGroup
-
                     string fileNameUpper = filename.ToUpper();
                     string exp = Path.GetExtension(fileNameUpper);
                     if (exp != ".MP3" && exp != ".MP4" && exp != ".M4A")
                         continue;
 
                     string shortFileName = GetLastFolder(filename);
+                    string showTitle = GetNextToLastFolder(filename);
 
                     EpisodeControl ep = new EpisodeControl();
-                    ep.Description = $"{shortFileName}, {showName}";// showName + " : " + shortFileName;
+                    if (shortFileName.Length < 4)
+                    {
+                        ep.Description = $"{showTitle}, {shortFileName}, {showName}";
+                    }
+                    else
+                    {
+                        ep.Description = $"{shortFileName}, {showName}";
+                    }
                     ep.Hidden = false;
                     ep.PodcastURL = filename;
                     ep.PublishedDate = DateTime.Now;
@@ -198,6 +202,11 @@ namespace eWolfPodcasterCore.Data
         {
             string[] part = filename.Split('\\');
             return part[part.Length - 2];
+        }
+        private string GetNextToLastFolder(string filename)
+        {
+            string[] part = filename.Split('\\');
+            return part[part.Length - 3];
         }
     }
 }
