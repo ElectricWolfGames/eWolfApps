@@ -15,6 +15,8 @@ namespace eWolfPodcasterCore.Data
         [NonSerialized]
         private int _failedCount = 0;
 
+        private bool _deleted { get; set; } = false;
+
         public bool AutoDownloadTurn { get; internal set; }
 
         public int EpisodesWatched
@@ -94,14 +96,27 @@ namespace eWolfPodcasterCore.Data
 
         internal void ScanLocalFilesOnly()
         {
+            if (_deleted)
+                return;
+
             List<EpisodeControl> episodes = new List<EpisodeControl>();
 
             string folderLocation = RssFeed;
+            string[] files;
             try
             {
-                string[] files = Directory.GetFiles(folderLocation, "*.*", SearchOption.AllDirectories);
-                string showName = new DirectoryInfo(folderLocation).Name;
-                foreach (string filename in files)
+                files = Directory.GetFiles(folderLocation, "*.*", SearchOption.AllDirectories);
+            }
+            catch
+            {
+                _deleted = true;
+                return;
+            }
+
+            string showName = new DirectoryInfo(folderLocation).Name;
+            foreach (string filename in files)
+            {
+                try
                 {
                     string fileNameUpper = filename.ToUpper();
                     string exp = Path.GetExtension(fileNameUpper);
@@ -127,10 +142,12 @@ namespace eWolfPodcasterCore.Data
 
                     episodes.Add(ep);
                 }
-            }
-            catch
-            {
-                // safty catch
+                catch (Exception ex)
+                {
+                    int i = 0;
+                    i++;
+                    // safty catch
+                }
             }
             UpdateEpisode(episodes);
         }
@@ -203,6 +220,7 @@ namespace eWolfPodcasterCore.Data
             string[] part = filename.Split('\\');
             return part[part.Length - 2];
         }
+
         private string GetNextToLastFolder(string filename)
         {
             string[] part = filename.Split('\\');
