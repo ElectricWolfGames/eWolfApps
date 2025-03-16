@@ -215,6 +215,14 @@ function myFunction() {
                 File.WriteAllText(_pageDetails.FullLocalFilename, _stringBuilder.ToString());
         }
 
+        public string OutputPath
+        {
+            get
+            {
+                return _pageDetails.FullLocalFilename;
+            }
+        }
+
         public void StartBody()
         {
             _stringBuilder.Append($"<Body><!--{DateTime.Now.ToShortDateString()}-->");
