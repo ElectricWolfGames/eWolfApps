@@ -229,6 +229,20 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.AppendLine("</div>");
             _stringBuilder.AppendLine("</div>");
         }
+        public void JumbotronImage(string title, string body, string imageName,  float percentage, int size = 12)
+        {
+            _stringBuilder.AppendLine("<div class='jumbotron'>");
+            _stringBuilder.AppendLine("<div class='row'>");
+            _stringBuilder.AppendLine($"<div class='col-md-{size}'>");
+
+            _stringBuilder.Append($@"<img class='rounded mx-auto d-block' src='images/{imageName}' width={percentage}%px >");
+            _stringBuilder.AppendLine($"<p class='lead'>{body}</p>");
+
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+            _stringBuilder.AppendLine("</div>");
+        }
+
 
         public void JumbotronWithImage(string title, string body, string imageHtmlPath, string imagePath, string imageName)
         {
