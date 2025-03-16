@@ -169,6 +169,10 @@ function myFunction() {
         {
             _stringBuilder.Append(text);
         }
+        public void AppendLine(string text)
+        {
+            _stringBuilder.AppendLine(text);
+        }
 
         public void CloseAllsDiv()
         {
