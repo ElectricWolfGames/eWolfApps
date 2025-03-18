@@ -44,7 +44,6 @@ namespace eWolfBootstrap.Builders
             HTMLHelper.AddQuickImage(htmlpath, imagePath, this, path);
         }
 
-
         public void AddImages(string htmlpath, string imagePath, string path)
         {
             List<string> images = ImageHelper.GetAllImages(path);
@@ -57,7 +56,6 @@ namespace eWolfBootstrap.Builders
 
             HTMLHelper.Gallery.AddGalleryFooter(this);
         }
-
 
         public void AddImagesGroupedByDate(string htmlpath, string imagePath, string path)
         {
@@ -99,9 +97,6 @@ namespace eWolfBootstrap.Builders
             }
         }
 
-        
-
-
         public void AddImagesWithSeeMore(List<string> imageToUse, List<string> imageToUseSmall, string htmlpath, string imagePath, string path, string offSetFolder, string seeMore)
         {
             HTMLHelper.Gallery.AddGalleryHeaderLocos(this, null);
@@ -119,11 +114,6 @@ namespace eWolfBootstrap.Builders
             Text(HTMLHelper.CreateCard(seeMore));
 
             HTMLHelper.Gallery.AddGalleryFooter(this);
-        }
-
-        public void Text(string text)
-        {
-            _stringBuilder.AppendLine(text);
         }
 
         public void ConvertImages(string htmlpath, string imagePath, string path)
@@ -172,10 +162,14 @@ namespace eWolfBootstrap.Builders
 
         public virtual void Output()
         {
-           
             _stringBuilder.Append("</Body>");
             Directory.CreateDirectory(_path);
             File.WriteAllText(_path + _fileName, _stringBuilder.ToString());
+        }
+
+        public void Text(string text)
+        {
+            _stringBuilder.AppendLine(text);
         }
     }
 }

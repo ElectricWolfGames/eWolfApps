@@ -229,7 +229,8 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.AppendLine("</div>");
             _stringBuilder.AppendLine("</div>");
         }
-        public void JumbotronImage(string title, string body, string imageName,  float percentage, int size = 12)
+
+        public void JumbotronImage(string title, string body, string imageName, float percentage, int size = 12)
         {
             _stringBuilder.AppendLine("<div class='jumbotron'>");
             _stringBuilder.AppendLine("<div class='row'>");
@@ -242,7 +243,6 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.AppendLine("</div>");
             _stringBuilder.AppendLine("</div>");
         }
-
 
         public void JumbotronWithImage(string title, string body, string imageHtmlPath, string imagePath, string imageName)
         {
@@ -395,6 +395,13 @@ namespace eWolfBootstrap.Builders
         }
 
         public void YouTubeLink(string link)
+        {
+            _stringBuilder.Append("<div class='text-center'>");
+            _stringBuilder.Append($@"<iframe width='560' height='315' src='https://www.youtube.com/embed/" + link + "?rel=0' frameborder='0' allowfullscreen></iframe>");
+            _stringBuilder.Append("</div>");
+        }
+
+        public void YouTubeLinkAudio(string link)
         {
             _stringBuilder.Append("<div class='text-center'>");
             _stringBuilder.Append($@"<iframe width='560' height='315' src='https://www.youtube.com/embed/" + link + "?rel=0' frameborder='0' allowfullscreen></iframe>");
