@@ -5,6 +5,14 @@ namespace eWolfCommon.Helpers
 {
     public static class FileHelper
     {
+        public static  string GetSafeFileName(string title)
+        {
+            title = title.Replace("'", "");
+            title = title.Replace(" ", "_");
+
+            return title;
+        }
+
         public static bool CreateBackFileDate(string folder, string filename)
         {
             string oldFileName = $"{folder}\\{filename}";
