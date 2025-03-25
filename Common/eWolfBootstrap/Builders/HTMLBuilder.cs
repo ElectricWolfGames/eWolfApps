@@ -164,6 +164,11 @@ namespace eWolfBootstrap.Builders
             _stringBuilder.Append($@"<img class='img-fluid rounded mx-auto d-block' src='images/{imageName}' width={percentage}%px >");
         }
 
+        public void ImagePath(string imageName, float percentage = 100)
+        {
+            _stringBuilder.Append($@"<img class='img-fluid rounded mx-auto d-block' src='{imageName}' width={percentage}%px >");
+        }
+
         public void ImageFolder(string path, string imageName, float percentage = 100)
         {
             _stringBuilder.Append($@"<img src='{path}/{imageName}' width={percentage}%px >");
