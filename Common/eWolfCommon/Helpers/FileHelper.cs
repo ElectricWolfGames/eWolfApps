@@ -7,6 +7,9 @@ namespace eWolfCommon.Helpers
     {
         public static  string GetSafeFileName(string title)
         {
+            if (string.IsNullOrWhiteSpace(title))
+                return string.Empty;
+            
             title = title.Replace("'", "");
             title = title.Replace(" ", "_");
 
