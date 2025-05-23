@@ -50,6 +50,14 @@ namespace eWolfBootstrap.SiteBuilder
 
         public NavigationTypes NavigationTypes { get; set; }
 
+        public string OutputPath
+        {
+            get
+            {
+                return _pageDetails.FullLocalFilename;
+            }
+        }
+
         public bool SetDontBuild
         {
             get { return _pageDetails.DontBuildPage; }
@@ -62,7 +70,7 @@ namespace eWolfBootstrap.SiteBuilder
             set { _pageDetails.RootAddress = value; }
         }
 
-        public void AddHeader(PageDetails pageDetails, string extraOffSet = "")
+        public void AddHeader(PageDetails pageDetails, string extraOffSet)
         {
             var pageHeaderDetails = SiteBuilderServiceLocator.Instance.GetService<IPageHeaderDetails>();
             _stringBuilder.Append(pageHeaderDetails.Output(pageDetails, extraOffSet));
@@ -169,6 +177,7 @@ function myFunction() {
         {
             _stringBuilder.Append(text);
         }
+
         public void AppendLine(string text)
         {
             _stringBuilder.AppendLine(text);
@@ -217,14 +226,6 @@ function myFunction() {
             Directory.CreateDirectory(_pageDetails.RootAddress + "\\" + HtmlPath);
             if (!_pageDetails.DontBuildPage)
                 File.WriteAllText(_pageDetails.FullLocalFilename, _stringBuilder.ToString());
-        }
-
-        public string OutputPath
-        {
-            get
-            {
-                return _pageDetails.FullLocalFilename;
-            }
         }
 
         public void StartBody()

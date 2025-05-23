@@ -17,12 +17,19 @@ namespace eWolfBootstrap.SiteBuilder
         public bool DontShowNavigation { get; set; }
         public string FullLocalFilename { get; set; }
         public List<string> Keywords { get; set; } = new List<string>();
+
+        public string[] LinkedPackages
+        {
+            get
+            {
+                return _linkedPackages;
+            }
+        }
+
         public string MenuTitle { get; set; }
+        public string MetaDescription { get; set; }
         public string RootAddress { get; set; }
         public WebPage WebPage { get; protected set; }
-
-
-
 
         public static List<ISitePageDetails> GetAllPages(Assembly assembly)
         {
@@ -35,15 +42,12 @@ namespace eWolfBootstrap.SiteBuilder
         }
 
         public abstract void CreatePage();
-        public virtual void NoBuildAction()
-        {
-        }
 
         public string GetRooloffSet()
         {
             return GetRooloffSet(WebPage.HtmlPath);
-
         }
+
         public string GetRooloffSet(string path)
         {
             string[] pathParts = path.Split("\\", StringSplitOptions.RemoveEmptyEntries);
@@ -59,17 +63,13 @@ namespace eWolfBootstrap.SiteBuilder
             return sb.ToString();
         }
 
-        public string[] LinkedPackages
-        {
-            get
-            {
-                return _linkedPackages;
-            }
-        }
-
         public void LinkedThePackages(params string[] packages)
         {
             _linkedPackages = packages;
+        }
+
+        public virtual void NoBuildAction()
+        {
         }
 
         protected void AddIndexItemsWithSideBar(List<HTMLIndexedItems> items)
