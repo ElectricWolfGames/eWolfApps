@@ -104,6 +104,12 @@ namespace eWolfBootstrap.Helpers
                 {
                     files.Add(file);
                 }
+
+                filesOnDrive = Directory.GetFiles(path, "*.jpeg", SearchOption.AllDirectories);
+                foreach (string file in filesOnDrive)
+                {
+                    files.Add(file);
+                }
             }
 
             return files;
