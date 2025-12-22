@@ -9,18 +9,14 @@ namespace eWolfBootstrap.Helpers
 {
     public static class HTMLHelper
     {
-        public static ImagesPair AddImageToGallery(string htmlpath, string imagePath, HTMLBuilder pageBuilder, string image, string offSetFolder = "")
+        public static ImagesPair AddImageToGallery(string htmlpath, string imagePath,
+                HTMLBuilder pageBuilder, string image, string offSetFolder = "")
         {
             htmlpath = htmlpath.Replace("\\\\", "\\");
             imagePath = imagePath.Replace("\\\\", "\\");
             htmlpath = htmlpath.Replace("\\\\", "\\");
             imagePath = imagePath.Replace("\\\\", "\\");
 
-            if (image.Contains("\'"))
-            {
-                int i = 0;
-                i++;
-            }
             image = image.Replace("\'", "");
 
             string newImagePath = ImageHelper.CopyImageTo(imagePath, image);
