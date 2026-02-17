@@ -5,17 +5,6 @@ namespace eWolfCommon.Helpers
 {
     public static class FileHelper
     {
-        public static  string GetSafeFileName(string title)
-        {
-            if (string.IsNullOrWhiteSpace(title))
-                return string.Empty;
-            
-            title = title.Replace("'", "");
-            title = title.Replace(" ", "_");
-
-            return title;
-        }
-
         public static bool CreateBackFileDate(string folder, string filename)
         {
             string oldFileName = $"{folder}\\{filename}";
@@ -63,6 +52,18 @@ namespace eWolfCommon.Helpers
                 }
             }
             return null;
+        }
+
+        public static string GetSafeFileName(string title)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+                return string.Empty;
+
+            title = title.Replace("'", string.Empty);
+            title = title.Replace(":", string.Empty);
+            title = title.Replace(" ", "_");
+
+            return title;
         }
     }
 }
